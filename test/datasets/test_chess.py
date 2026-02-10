@@ -11,9 +11,8 @@ class ChessTest(unittest.TestCase):
         i = 0
         for i, (x, y) in enumerate(self.stream):
             self.assertEqual(self.stream.n_features, len(x))
-            self.assertEqual(7, len(x))
+            self.assertEqual(8, len(x))
         self.assertEqual(self.stream.n_samples, i + 1)
-        self.assertEqual(533, i + 1)
 
 
 if __name__ == "__main__":

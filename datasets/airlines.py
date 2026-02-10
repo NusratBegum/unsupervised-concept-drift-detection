@@ -13,12 +13,23 @@ class Airlines(base.FileDataset):
             n_samples=539_383,
             n_features=7,
             task=base.MULTI_CLF,
-            filename="airlines.arff",
+            filename="airlines.csv",
         )
         self.full_path = path.join(directory_path, self.filename)
 
     def __iter__(self):
-        return stream.iter_arff(
+        converters = {
+            "Airline": str,
+            "Flight": int,
+            "AirportFrom": str,
+            "AirportTo": str,
+            "DayOfWeek": int,
+            "Time": int,
+            "Length": int,
+            "Delay": int,
+        }
+        return stream.iter_csv(
             self.full_path,
             target="Delay",
+            converters=converters,
         )
