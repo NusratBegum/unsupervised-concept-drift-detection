@@ -1,7 +1,7 @@
 # Unsupervised Concept Drift Detection - Learning Fork
 
 > 🔗 **Original Repository**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection)
->
+> Original Paper https://link.springer.com/article/10.1007/s41060-024-00620-y and found here s41060-024-00620-y.pdf
 > This is my personal fork for learning and running experiments with unsupervised concept drift detection algorithms.
 
 ---
@@ -24,17 +24,33 @@
 
 ## 🎓 What is Concept Drift?
 
-**Concept drift** occurs when the statistical properties of data change over time. Imagine:
+In machine learning, **concept drift** refers to changes in the probability distributions governing a data stream over time. The paper distinguishes two types:
 
-- A spam filter trained on 2020 emails fails in 2025 because spam patterns evolved
-- A weather prediction model trained on summer data performs poorly in winter
-- A fraud detection system misses new types of fraud it wasn't trained on
+### Real Concept Drift vs Virtual Concept Drift
 
-**Unsupervised concept drift detection** finds these changes **without needing labels** - it only looks at the features (X), not the target (y).
+| Type | Mathematical Definition | What Changes | Requires Labels to Detect? |
+|------|------------------------|--------------|---------------------------|
+| **Real Concept Drift** | P(y\|X) changes | The relationship between features X and target y | Yes (supervised) |
+| **Virtual Concept Drift** (Covariate Shift) | P(X) changes | The distribution of features X | No (unsupervised) |
+
+**Examples:**
+- **Real drift**: Spam patterns evolve - what makes an email "spam" changes (the relationship between email features and the spam/not-spam label)
+- **Virtual drift**: Email writing styles change - features like word frequency shift, but what constitutes spam may remain the same
+
+### What These Detectors Actually Detect
+
+The detectors in this repository are **fully unsupervised** - they observe **only the features X**, never the labels y. This means:
+
+> "By virtue of operating on the feature space only, these unsupervised concept drift detectors **cannot detect concept drift in the posterior distribution** (real drift) **unless it is accompanied by a covariate shift** (virtual drift)." — from the paper
+
+In practice, this works well because:
+1. Changes in P(X) often correlate with changes in P(y|X)
+2. Virtual drift can still degrade model performance
+3. No labeled data is needed, making it practical for real-time streams
 
 ### Why Does It Matter?
 
-If left undetected, concept drift makes machine learning models unreliable. By detecting drift, we can:
+If left undetected, drift makes machine learning models unreliable. By detecting drift, we can:
 - Retrain models when needed
 - Alert operators to investigate changes
 - Maintain prediction accuracy over time
@@ -263,25 +279,18 @@ The datasets come from the **USP Data Stream Repository** maintained by research
 #### 1. Download the Dataset Archive
 - Go to [USP DS Repository](https://sites.google.com/view/uspdsrepository)
 - Download the dataset archive
-- Extract using the password from the paper
+- Extract the folde
 
 #### 2. Copy Files to the Project
 Place the extracted `USP DS Repository` folder inside `datasets/files/`:
 
 ```
 datasets/files/
-└── USP DS Repository/
-    ├── INSECTS/
     │   ├── INSECTS abrupt_balanced.csv
     │   ├── INSECTS gradual_balanced.csv
-    │   └── ...
-    ├── Old datasets/
     │   ├── NOAA.csv
     │   ├── Outdoor.csv
     │   ├── Electricity.csv
-    │   └── ...
-    └── New datasets/
-        └── ...
 ```
 
 #### 3. Run the Header Script
