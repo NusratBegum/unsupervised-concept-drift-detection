@@ -27,26 +27,26 @@
 
 In machine learning, **concept drift** refers to changes in the probability distributions governing a data stream over time. The paper distinguishes two types:
 
-### Real Concept Drift vs Virtual Concept Drift
+### Real Concept Drift vs Virtual Concept Drift / Covariate Shift / Feature Drift
 
-| Type | Mathematical Definition | What Changes | Requires Labels to Detect? |
-|------|------------------------|--------------|---------------------------|
-| **Real Concept Drift** | P(y\|X) changes | The relationship between features X and target y | Yes (supervised) |
-| **Virtual Concept Drift** (Covariate Shift) | P(X) changes | The distribution of features X | No (unsupervised) |
+| Type | Also Known As | Mathematical Definition | What Changes | Requires Labels? |
+|------|---------------|------------------------|--------------|------------------|
+| **Real Concept Drift** | Concept Drift | P(y\|X) changes | The relationship between features X and target y | Yes (supervised) |
+| **Virtual Concept Drift** | Covariate Shift, Feature Drift | P(X) changes | The distribution of features X | No (unsupervised) |
 
 **Examples:**
 - **Real drift**: Spam patterns evolve - what makes an email "spam" changes (the relationship between email features and the spam/not-spam label)
-- **Virtual drift**: Email writing styles change - features like word frequency shift, but what constitutes spam may remain the same
+- **Virtual drift / Feature drift**: Email writing styles change - features like word frequency shift, but what constitutes spam may remain the same
 
 ### What These Detectors Actually Detect
 
-The detectors in this repository are **fully unsupervised** - they observe **only the features X**, never the labels y. This means:
+The detectors in this repository are **fully unsupervised** - they observe **only the features X**, never the labels y. This means they detect **Virtual Concept Drift / Covariate Shift / Feature Drift** (changes in P(X)).
 
-> "By virtue of operating on the feature space only, these unsupervised concept drift detectors **cannot detect concept drift in the posterior distribution** (real drift) **unless it is accompanied by a covariate shift** (virtual drift)." — from the paper
+> "By virtue of operating on the feature space only, these unsupervised concept drift detectors **cannot detect concept drift in the posterior distribution** (real drift) **unless it is accompanied by a covariate shift** (feature drift)." — from the paper
 
 In practice, this works well because:
 1. Changes in P(X) often correlate with changes in P(y|X)
-2. Virtual drift can still degrade model performance
+2. Feature drift can still degrade model performance
 3. No labeled data is needed, making it practical for real-time streams
 
 ### Why Does It Matter?
