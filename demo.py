@@ -1,130 +1,138 @@
 """
 Demo: How Unsupervised Concept Drift Detection Works
 =====================================================
-This script demonstrates drift detection step-by-step.
+This script demonstrates drift detection on ALL available datasets.
+
+Created by: Nusrat Begum (Learning Fork)
 """
 
-from datasets import InsectsAbruptBalanced
+from datasets import (
+    InsectsAbruptBalanced,
+    InsectsGradualBalanced,
+    InsectsIncrementalBalanced,
+    InsectsIncrementalAbruptBalanced,
+    InsectsIncrementalReoccurringBalanced,
+    Electricity,
+    NOAAWeather,
+    OutdoorObjects,
+    PokerHand,
+    Powersupply,
+    RialtoBridgeTimelapse,
+    Luxembourg,
+    Ozone,
+)
 from detectors import DiscriminativeDriftDetector2019  # D3 detector
 
 
-def main():
-    # ==========================================================
-    # STEP 1: Load a dataset with known drift points
-    # ==========================================================
-    print("=" * 60)
-    print("STEP 1: Loading the INSECTS Abrupt Balanced dataset")
-    print("=" * 60)
+def run_detection_on_dataset(stream, max_samples=10_000):
+    """Run drift detection on a single dataset and return results."""
     
-    stream = InsectsAbruptBalanced()
-    print(f"Dataset: {stream.__class__.__name__}")
-    print(f"Number of samples: {stream.n_samples:,}")
-    print(f"Number of features: {stream.n_features}")
-    print(f"Known drift points: {stream.drifts}")
-    print()
-    
-    # ==========================================================
-    # STEP 2: Initialize a drift detector
-    # ==========================================================
-    print("=" * 60)
-    print("STEP 2: Initializing the D3 (Discriminative Drift Detector)")
-    print("=" * 60)
-    
+    # Initialize detector for each dataset
     detector = DiscriminativeDriftDetector2019(
-        n_reference_samples=200,        # Size of reference window
-        recent_samples_proportion=0.5,  # Size of recent window (relative)
-        threshold=0.7,                  # AUC threshold for drift detection
+        n_reference_samples=200,
+        recent_samples_proportion=0.5,
+        threshold=0.7,
         seed=42
     )
     
-    print(f"Detector: D3 (Discriminative Drift Detector 2019)")
-    print(f"Reference window size: {detector.n_reference_samples}")
-    print(f"Total samples before detection starts: {detector.n_samples}")
-    print(f"Detection threshold (AUC): {detector.threshold}")
-    print()
-    print("How D3 works:")
-    print("  1. Collects 'reference' samples (old data)")
-    print("  2. Collects 'recent' samples (new data)")  
-    print("  3. Trains a classifier to distinguish old vs new")
-    print("  4. If classifier succeeds (AUC > threshold) → DRIFT!")
-    print()
-    
-    # ==========================================================
-    # STEP 3: Process the stream and detect drifts
-    # ==========================================================
-    print("=" * 60)
-    print("STEP 3: Processing the data stream...")
-    print("=" * 60)
-    
     detected_drifts = []
-    
-    # Process only first 40,000 samples for speed
-    max_samples = 40_000
+    samples_processed = min(max_samples, stream.n_samples)
     
     for i, (x, y) in enumerate(stream):
         if i >= max_samples:
             break
-            
-        # Feed the sample to the detector
-        is_drift = detector.update(x)
         
-        # If drift detected, record it
+        is_drift = detector.update(x)
         if is_drift:
             detected_drifts.append(i)
-            print(f"  🔴 DRIFT DETECTED at sample {i:,}")
+    
+    return detected_drifts, samples_processed
+
+
+def main():
+    print("=" * 70)
+    print("   UNSUPERVISED CONCEPT DRIFT DETECTION - FULL DEMO")
+    print("   Testing D3 detector on ALL available datasets")
+    print("=" * 70)
+    print()
+    
+    # Define all datasets to test
+    datasets = [
+        # INSECTS datasets (with known ground truth drifts)
+        ("INSECTS Abrupt Balanced", InsectsAbruptBalanced),
+        ("INSECTS Gradual Balanced", InsectsGradualBalanced),
+        ("INSECTS Incremental Balanced", InsectsIncrementalBalanced),
+        ("INSECTS Incremental-Abrupt Balanced", InsectsIncrementalAbruptBalanced),
+        ("INSECTS Incremental-Reoccurring Balanced", InsectsIncrementalReoccurringBalanced),
+        # Other real-world datasets (no ground truth drifts)
+        ("Electricity", Electricity),
+        ("NOAA Weather", NOAAWeather),
+        ("Outdoor Objects", OutdoorObjects),
+        ("Poker Hand", PokerHand),
+        ("Powersupply", Powersupply),
+        ("Rialto Bridge Timelapse", RialtoBridgeTimelapse),
+        ("Luxembourg", Luxembourg),
+        ("Ozone", Ozone),
+    ]
+    
+    results = []
+    
+    for name, DatasetClass in datasets:
+        print(f"{'─' * 70}")
+        print(f"Testing: {name}")
+        print(f"{'─' * 70}")
         
-        # Progress indicator
-        if (i + 1) % 10000 == 0:
-            print(f"  Processed {i + 1:,} samples...")
-    
-    print()
-    
-    # ==========================================================
-    # STEP 4: Compare with ground truth
-    # ==========================================================
-    print("=" * 60)
-    print("STEP 4: Results - Comparing detected vs actual drifts")
-    print("=" * 60)
-    
-    # Filter ground truth drifts within our processed range
-    actual_drifts = [d for d in stream.drifts if d < max_samples]
-    
-    print(f"\nActual drift points (ground truth): {actual_drifts}")
-    print(f"Detected drift points:              {detected_drifts}")
-    print()
-    
-    # Simple evaluation
-    print("Analysis:")
-    print("-" * 40)
-    
-    for actual in actual_drifts:
-        # Find closest detection
-        if detected_drifts:
-            closest = min(detected_drifts, key=lambda d: abs(d - actual))
-            delay = closest - actual
-            if abs(delay) < 2000:  # Within 2000 samples
-                print(f"  ✅ Drift at {actual:,} detected at {closest:,} (delay: {delay:+,})")
+        try:
+            stream = DatasetClass()
+            print(f"  Samples: {stream.n_samples:,} | Features: {stream.n_features}")
+            
+            # Check if dataset has ground truth drifts
+            has_ground_truth = hasattr(stream, 'drifts') and stream.drifts
+            if has_ground_truth:
+                print(f"  Ground truth drifts: {stream.drifts}")
             else:
-                print(f"  ❌ Drift at {actual:,} NOT detected nearby")
-        else:
-            print(f"  ❌ Drift at {actual:,} NOT detected")
+                print(f"  Ground truth drifts: None (unknown)")
+            
+            # Run detection (limit samples for speed)
+            max_samples = min(20_000, stream.n_samples)
+            detected, processed = run_detection_on_dataset(stream, max_samples)
+            
+            print(f"  Processed: {processed:,} samples")
+            print(f"  Drifts detected: {len(detected)}")
+            if detected:
+                print(f"  Detection points: {detected[:10]}{'...' if len(detected) > 10 else ''}")
+            
+            # If we have ground truth, evaluate
+            if has_ground_truth:
+                actual_in_range = [d for d in stream.drifts if d < max_samples]
+                hits = 0
+                for actual in actual_in_range:
+                    if any(abs(det - actual) < 2000 for det in detected):
+                        hits += 1
+                print(f"  Evaluation: {hits}/{len(actual_in_range)} ground truth drifts detected")
+            
+            results.append((name, "✅ Success", len(detected)))
+            
+        except Exception as e:
+            print(f"  ❌ Error: {e}")
+            results.append((name, f"❌ Error", 0))
+        
+        print()
     
-    # Check for false alarms
-    false_alarms = []
-    for detected in detected_drifts:
-        is_near_actual = any(abs(detected - actual) < 2000 for actual in actual_drifts)
-        if not is_near_actual:
-            false_alarms.append(detected)
-    
-    if false_alarms:
-        print(f"\n  ⚠️  False alarms (detections not near actual drifts): {false_alarms}")
-    else:
-        print(f"\n  ✅ No false alarms!")
+    # Summary
+    print("=" * 70)
+    print("   SUMMARY")
+    print("=" * 70)
+    print()
+    print(f"{'Dataset':<45} {'Status':<15} {'Drifts'}")
+    print("-" * 70)
+    for name, status, drifts in results:
+        print(f"{name:<45} {status:<15} {drifts}")
     
     print()
-    print("=" * 60)
-    print("Demo complete! This shows how drift detectors work.")
-    print("=" * 60)
+    print("=" * 70)
+    print("Demo complete! All datasets tested with D3 detector.")
+    print("=" * 70)
 
 
 if __name__ == "__main__":

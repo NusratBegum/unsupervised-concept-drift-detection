@@ -29,8 +29,8 @@ DATASETS = {
     # Powersupply: 2 attributes + class
     "powersupply.csv": {"attrs": ["attribute0", "attribute1"], "target": "class"},
     
-    # Ozone: 72 attributes + class
-    "ozone.csv": {"attrs": [f"att{i}" for i in range(1, 73)], "target": "class"},
+    # Ozone: 72 attributes (V1-V72) + Class (matching ozone.py loader)
+    "ozone.csv": {"attrs": [f"V{i}" for i in range(1, 73)], "target": "Class"},
     
     # Rialto: 27 attributes + class
     "rialto.csv": {"attrs": [f"att{i}" for i in range(1, 28)], "target": "class"},

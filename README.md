@@ -19,6 +19,7 @@
 9. [Understanding the Metrics](#-understanding-the-metrics)
 10. [Dataset Fix Documentation](#-dataset-fix-documentation)
 11. [Test Results](#-test-results)
+12. [Our Modifications Summary](#-our-modifications-summary)
 
 ---
 
@@ -154,22 +155,23 @@ unsupervised-concept-drift-detection/
 ├── main.py                 # Entry point - starts experiments
 ├── runner.py               # Runs all detector/dataset combinations
 ├── config.py               # Configuration: which datasets & detectors to test
-├── demo.py                 # ⭐ Simple demo showing drift detection step-by-step
-├── add_headers.py          # ⭐ Helper script to add headers to USP DS CSVs
+├── demo.py                 # ⭐ CREATED BY US - Demo testing ALL datasets
+├── add_headers.py          # ⭐ CREATED BY US - Adds headers to USP DS CSVs
 ├── convert_datasets.py     # Original script to convert .arff to .csv
 ├── eval.py                 # Evaluation and plotting script
-├── requirements.txt        # Python dependencies
+├── requirements.txt        # ✏️ MODIFIED BY US - Changed == to >= for Python 3.13
 │
 ├── datasets/               # Dataset loader classes
 │   ├── __init__.py         # Exports all dataset classes
 │   ├── insects.py          # INSECTS datasets (10 variants)
-│   ├── electricity.py      # Electricity price dataset
-│   ├── noaa_weather.py     # NOAA weather dataset
-│   ├── outdoor_objects.py  # Outdoor objects dataset
-│   ├── poker_hand.py       # Poker hand dataset
+│   ├── airlines.py         # ✏️ MODIFIED - Use CSV instead of ARFF
+│   ├── chess.py            # ✏️ MODIFIED - Use CSV, column names at1-at8
+│   ├── electricity.py      # ✏️ MODIFIED - Use CSV instead of ARFF
+│   ├── intrusion_detection.py # ✏️ MODIFIED - Use CSV instead of ARFF
+│   ├── keystroke.py        # ✏️ MODIFIED - Use CSV instead of ARFF
 │   ├── ...                 # Other dataset loaders
-│   └── files/              # ⚠️ Put CSV data files here
-│       └── .gitkeep
+│   └── files/              # CSV data files (from USP DS Repository)
+│       └── *.csv           # ✏️ Headers added by add_headers.py
 │
 ├── detectors/              # Drift detection algorithms
 │   ├── __init__.py         # Exports all detector classes
@@ -271,50 +273,55 @@ The datasets come from the **USP Data Stream Repository** maintained by research
 
 **Download Link**: [USP DS Repository](https://sites.google.com/view/uspdsrepository)
 
-> ⚠️ **Note**: The archive is password-protected. The password is provided in the paper:
-> *"Challenges in Benchmarking Stream Learning Algorithms with Real-world Data"* by Souza et al.
+### Step-by-Step Dataset Setup (What We Did)
 
-### Step-by-Step Dataset Setup
-
-#### 1. Download the Dataset Archive
-- Go to [USP DS Repository](https://sites.google.com/view/uspdsrepository)
-- Download the dataset archive
-- Extract the folde
-
-#### 2. Copy Files to the Project
-Place the extracted `USP DS Repository` folder inside `datasets/files/`:
-
-```
-datasets/files/
-    │   ├── INSECTS abrupt_balanced.csv
-    │   ├── INSECTS gradual_balanced.csv
-    │   ├── NOAA.csv
-    │   ├── Outdoor.csv
-    │   ├── Electricity.csv
+#### 1. Download and Extract
+```bash
+# Downloaded USP DS Repository.zip from the website
+# Extracted the zip file
 ```
 
-#### 3. Run the Header Script
-The USP DS Repository CSV files **don't have headers**. Run this script to:
-- Copy files to the correct location with correct names
-- Add proper header rows
+#### 2. Copy CSV Files to `datasets/files/`
+We copied all CSV files from the extracted folder directly into `datasets/files/`:
+
+```bash
+# Copy all CSV files from the extracted folder
+cp "USP DS Repository/Old datasets/"*.csv datasets/files/
+cp "USP DS Repository/New datasets/"*.csv datasets/files/
+```
+
+Files we copied:
+- `INSECTS-abrupt_balanced_norm.csv`
+- `INSECTS-gradual_balanced_norm.csv`
+- `NOAA.csv`
+- `outdoor.csv`
+- `elec.csv`
+- `poker-lsn.csv`
+- `powersupply.csv`
+- `rialto.csv`
+- `luxembourg.csv`
+- `ozone.csv`
+- And more...
+
+#### 3. Run the Header Script (Created by Us)
+The USP DS Repository CSV files **don't have headers**. We created `add_headers.py` to add proper header rows:
 
 ```bash
 python add_headers.py
 ```
 
-Expected output:
-```
-Adding headers to USP DS Repository CSV files...
+This script:
+- Reads each CSV file
+- Adds the correct header row (column names that match what the loaders expect)
+- Saves the file back
 
-  INSECTS-abrupt_balanced_norm.csv: Added header
-  INSECTS-abrupt_imbalanced_norm.csv: Added header
-  ...
-  NOAA.csv: Added header
-  outdoor.csv: Added header
-  ...
-
-Done! You can now run the tests.
-```
+#### 4. Dataset Loader Fixes (Done by Us)
+Some dataset loaders expected `.arff` format but USP DS provides `.csv`. We modified:
+- `datasets/airlines.py` - Use CSV, fix string column types
+- `datasets/chess.py` - Use CSV, 8 features (at1-at8)
+- `datasets/electricity.py` - Use CSV instead of ARFF
+- `datasets/intrusion_detection.py` - Use CSV instead of ARFF
+- `datasets/keystroke.py` - Use CSV instead of ARFF
 
 #### 4. Verify Dataset Setup
 
@@ -343,39 +350,48 @@ OK (skipped=1)
 python demo.py
 ```
 
-This shows drift detection step-by-step with explanations:
+This tests D3 detector on **ALL** available datasets:
 
 ```
-============================================================
-STEP 1: Loading the INSECTS Abrupt Balanced dataset
-============================================================
-Dataset: InsectsAbruptBalanced
-Number of samples: 52,848
-Number of features: 33
-Known drift points: [14352, 19500, 33240, 38682, 39510]
+======================================================================
+   UNSUPERVISED CONCEPT DRIFT DETECTION - FULL DEMO
+   Testing D3 detector on ALL available datasets
+======================================================================
 
-============================================================
-STEP 2: Initializing the D3 (Discriminative Drift Detector)
-============================================================
-...
+──────────────────────────────────────────────────────────────────────
+Testing: INSECTS Abrupt Balanced
+──────────────────────────────────────────────────────────────────────
+  Samples: 52,848 | Features: 33
+  Ground truth drifts: [14352, 19500, 33240, 38682, 39510]
+  Processed: 20,000 samples
+  Drifts detected: 4
+  Evaluation: 2/2 ground truth drifts detected
 
-============================================================
-STEP 3: Processing the data stream...
-============================================================
-  Processed 10,000 samples...
-  🔴 DRIFT DETECTED at sample 14,439
-  ...
+... (tests all 13 datasets)
 
-============================================================
-STEP 4: Results - Comparing detected vs actual drifts
-============================================================
-Actual drift points: [14352, 19500, 33240, 38682, 39510]
-Detected drift points: [14439, 19588, 33221, 38773, ...]
+======================================================================
+   SUMMARY
+======================================================================
 
-Analysis:
-  ✅ Drift at 14,352 detected at 14,439 (delay: +87)
-  ✅ Drift at 19,500 detected at 19,588 (delay: +88)
-  ...
+Dataset                                       Status          Drifts
+----------------------------------------------------------------------
+INSECTS Abrupt Balanced                       ✅ Success       4
+INSECTS Gradual Balanced                      ✅ Success       3
+INSECTS Incremental Balanced                  ✅ Success       0
+INSECTS Incremental-Abrupt Balanced           ✅ Success       1
+INSECTS Incremental-Reoccurring Balanced      ✅ Success       0
+Electricity                                   ✅ Success       87
+NOAA Weather                                  ✅ Success       83
+Outdoor Objects                               ✅ Success       11
+Poker Hand                                    ✅ Success       96
+Powersupply                                   ✅ Success       26
+Rialto Bridge Timelapse                       ✅ Success       65
+Luxembourg                                    ✅ Success       1
+Ozone                                         ✅ Success       12
+
+======================================================================
+Demo complete! All datasets tested with D3 detector.
+======================================================================
 ```
 
 ### Option 2: Run Tests
@@ -617,7 +633,48 @@ python eval.py
 
 ---
 
-## 🔗 References
+## � Our Modifications Summary
+
+This section documents all files **created** or **modified** by us in this learning fork.
+
+### Files Created (New)
+
+| File | Purpose |
+|------|---------|
+| `demo.py` | Demo script testing D3 detector on ALL 13 datasets |
+| `add_headers.py` | Script to add headers to USP DS Repository CSV files |
+
+### Files Modified
+
+| File | What Changed |
+|------|-------------|
+| `requirements.txt` | Changed `==` to `>=` for Python 3.13 compatibility |
+| `datasets/airlines.py` | Use CSV instead of ARFF, fix string column types |
+| `datasets/chess.py` | Use CSV, update to 8 features (at1-at8), 503 samples |
+| `datasets/electricity.py` | Use CSV instead of ARFF |
+| `datasets/intrusion_detection.py` | Use CSV instead of ARFF |
+| `datasets/keystroke.py` | Use CSV instead of ARFF |
+| `test/datasets/test_chess.py` | Updated expected features/samples |
+| `README.md` | Complete rewrite with documentation |
+| `.gitignore` | Added .DS_Store, __MACOSX/, USP DS Repository folder |
+
+### Dataset Files (Headers Added)
+
+All CSV files in `datasets/files/` had headers added by `add_headers.py`:
+- INSECTS datasets (10 variants): `Att1-Att33,class`
+- NOAA.csv: `attribute1-attribute8,class`
+- outdoor.csv: `att1-att21,class`
+- luxembourg.csv: `att1-att31,class`
+- powersupply.csv: `attribute0,attribute1,class`
+- ozone.csv: `V1-V72,Class`
+- rialto.csv: `att1-att27,class`
+- poker-lsn.csv: `s1,r1,s2,r2,...,s5,r5,class`
+- elec.csv: `date,day,period,nswprice,nswdemand,vicprice,vicdemand,transfer,class`
+- And more...
+
+---
+
+## �🔗 References
 
 - Original Paper: [A benchmark and survey of fully unsupervised concept drift detectors](https://link.springer.com/article/10.1007/s41060-024-00620-y)
 - Original Repository: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection)
