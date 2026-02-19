@@ -2,7 +2,7 @@
 
 > 🔗 **Original Repository**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection)
 > Original Paper https://link.springer.com/article/10.1007/s41060-024-00620-y and found here s41060-024-00620-y.pdf
-> This is my personal fork for learning and running experiments with unsupervised concept drift detection algorithms.
+> This is my personal fork for learning and running experiments with unsupervised concept drift detection algorithms. I am working on my own masters research paper here 
 
 ---
 
