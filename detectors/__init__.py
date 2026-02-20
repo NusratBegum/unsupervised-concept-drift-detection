@@ -1,6 +1,7 @@
 from .bndm import BayesianNonparametricDetectionMethod
 from .csddm import ClusteredStatisticalTestDriftDetectionMethod
 from .d3 import DiscriminativeDriftDetector2019
+from .eadd import ExplainableAdversarialDriftDetector
 from .edfs import EDFS
 from .ibdd import ImageBasedDriftDetector
 from .nndvi import NNDVI
