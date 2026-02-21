@@ -113,9 +113,11 @@ def run_experiment_2(output_dir="experiments/results"):
     results = []
 
     for ds_name, stream in datasets.items():
+        n_samples = getattr(stream, 'n_samples', None) or getattr(stream, 'stream_length', None)
+        n_features = getattr(stream, 'n_features', None)
         print(f"\n{'='*60}")
         print(f"  Dataset: {ds_name}")
-        print(f"  Samples: {stream.n_samples}, Features: {stream.n_features}")
+        print(f"  Samples: {n_samples}, Features: {n_features}")
         known_drifts = getattr(stream, 'drifts', [])
         if known_drifts:
             print(f"  Known drifts: {known_drifts}")
@@ -174,8 +176,8 @@ def run_experiment_2(output_dir="experiments/results"):
 
         result = {
             "dataset": ds_name,
-            "n_samples": min(stream.n_samples, max_samples),
-            "n_features": stream.n_features,
+            "n_samples": min(n_samples, max_samples) if n_samples else max_samples,
+            "n_features": n_features,
             "known_drifts": len(known_drifts) if known_drifts else 0,
             "eadd_n_detections": len(eadd_dets),
             "d3_n_detections": len(d3_dets),
