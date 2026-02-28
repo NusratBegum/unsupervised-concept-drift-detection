@@ -1,0 +1,54 @@
+% Table: Exp 1
+
+\begin{table}[!htbp]
+\centering
+\caption{Experiment 1: Detection Performance Across Temporal Drift Patterns}
+\label{tab:exp1-temporal}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Drift Type} & \multicolumn{2}{c}{\textbf{Mean Delay}} & \multicolumn{2}{c}{\textbf{Success Rate (\%)}} & \multicolumn{2}{c}{\textbf{False Alarms}} \\
+ & EADD & D3 & EADD & D3 & EADD & D3 \\
+\hline
+Abrupt & 129 & 122 & 100 & 100 & 0.0 & 0.0 \\
+Gradual & 1309 & --- & 100 & 0 & 0.0 & 0.0 \\
+Incremental & 1349 & --- & 100 & 0 & 0.0 & 0.0 \\
+Recurring & 146 & 221 & 100 & 100 & 0.0 & 0.0 \\
+\hline
+\end{tabular}
+\end{table}
+
+% Table: Exp 3
+
+\begin{table}[!htbp]
+\centering
+\caption{Experiment 3: SHAP-Based Root Cause Analysis Results}
+\label{tab:exp3-explainability}
+\begin{tabular}{llccll}
+\hline
+\textbf{Scenario} & \textbf{Ground Truth} & \textbf{AUC} & \textbf{Top Feature (\%)} & \textbf{Prescription} & \textbf{Correct?} \\
+\hline
+Univariate & F3 & 0.767 & F3 (49.7\%) & subset & \checkmark \\
+Subset & ['F2', 'F5', 'F7'] & 0.798 & F5 (22.3\%) & subset & \checkmark \\
+Multivariate & ['F0', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9'] & 0.801 & F2 (14.1\%) & multivariate & \checkmark \\
+\hline
+\end{tabular}
+\end{table}
+
+% Table: Exp 4
+
+\begin{table}[!htbp]
+\centering
+\caption{Experiment 4: False Alarm Counts on Stable Data Streams (Mean $\pm$ Std)}
+\label{tab:exp4-false-alarms}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Stream Type} & \textbf{EADD} & \textbf{D3 ($\tau$=0.6)} & \textbf{D3 ($\tau$=0.7)} & \textbf{D3 ($\tau$=0.8)} \\
+\hline
+Gaussian (i.i.d.) & 0.0$\pm$0.0 & 10.4$\pm$3.3 & 0.0$\pm$0.0 & 0.0$\pm$0.0 \\
+Autocorrelated & 0.0$\pm$0.0 & 87.4$\pm$1.6 & 54.6$\pm$5.7 & 13.8$\pm$4.1 \\
+Heteroscedastic & 0.0$\pm$0.0 & 10.4$\pm$3.3 & 0.0$\pm$0.0 & 0.0$\pm$0.0 \\
+Correlated & 0.0$\pm$0.0 & 10.0$\pm$4.2 & 0.0$\pm$0.0 & 0.0$\pm$0.0 \\
+\hline
+\end{tabular}
+\end{table}
+

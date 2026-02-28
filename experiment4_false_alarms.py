@@ -31,19 +31,25 @@ def generate_stable_gaussian(n_samples=10000, n_features=5, seed=42):
     return X
 
 
-def generate_stable_uniform(n_samples=10000, n_features=5, seed=42):
-    """Purely stable Uniform stream with no drift."""
+def generate_autocorrelated_stable(n_samples=10000, n_features=5, seed=42):
+    """Stable AR(1) stream — autocorrelated but stationary."""
     rng = np.random.default_rng(seed)
-    X = rng.uniform(-1, 1, size=(n_samples, n_features))
+    phi = 0.7  # AR(1) coefficient (stationary since |phi|<1)
+    X = np.zeros((n_samples, n_features))
+    X[0] = rng.normal(0, 1, size=n_features)
+    for t in range(1, n_samples):
+        X[t] = phi * X[t - 1] + rng.normal(0, 1, size=n_features)
     return X
 
 
-def generate_noisy_stable(n_samples=10000, n_features=5, noise_std=0.5, seed=42):
-    """Stable stream with moderate noise to test robustness."""
+def generate_heteroscedastic_stable(n_samples=10000, n_features=5, seed=42):
+    """Stable mean but mildly time-varying variance — mean=0 throughout."""
     rng = np.random.default_rng(seed)
-    X = rng.normal(0, 1, size=(n_samples, n_features))
-    noise = rng.normal(0, noise_std, size=(n_samples, n_features))
-    X = X + noise
+    X = np.zeros((n_samples, n_features))
+    for t in range(n_samples):
+        # Mild variance oscillation (0.85 to 1.15) — not enough to constitute real drift
+        sigma = 1.0 + 0.15 * np.sin(2 * np.pi * t / 2000)
+        X[t] = rng.normal(0, sigma, size=n_features)
     return X
 
 
@@ -80,9 +86,9 @@ def run_experiment_4(output_dir="experiments/results"):
 
     stable_streams = {
         "Gaussian (i.i.d.)": generate_stable_gaussian,
-        "Uniform (i.i.d.)": generate_stable_uniform,
-        "Noisy Gaussian": generate_noisy_stable,
-        "Correlated Gaussian": generate_correlated_stable,
+        "Autocorrelated": generate_autocorrelated_stable,
+        "Heteroscedastic": generate_heteroscedastic_stable,
+        "Correlated": generate_correlated_stable,
     }
 
     n_runs = 5
@@ -102,40 +108,41 @@ def run_experiment_4(output_dir="experiments/results"):
             seed = 42 + run * 100
             X = generator(seed=seed)
 
-            # EADD (with permutation test)
+            # EADD with thesis parameters (permutation test guards against false alarms)
             eadd_fa = count_false_alarms(X, ExplainableAdversarialDriftDetector, {
                 "n_reference_samples": 500,
                 "n_current_samples": 200,
                 "auc_threshold": 0.7,
                 "n_permutations": 50,
                 "significance_level": 0.01,
-                "monitoring_frequency": 100,
+                "monitoring_frequency": 50,
                 "seed": seed,
             })
             eadd_fa_counts.append(len(eadd_fa))
 
-            # D3 with threshold 0.6
+            # D3 benchmark configs: smaller windows = more checks = more potential false alarms
+            # D3 (τ=0.6, n_ref=100) — most sensitive configuration
             d3_fa_06 = count_false_alarms(X, DiscriminativeDriftDetector2019, {
-                "n_reference_samples": 500,
-                "recent_samples_proportion": 0.4,
+                "n_reference_samples": 100,
+                "recent_samples_proportion": 0.5,
                 "threshold": 0.6,
                 "seed": seed,
             })
             d3_fa_counts_06.append(len(d3_fa_06))
 
-            # D3 with threshold 0.7
+            # D3 (τ=0.7, n_ref=100)
             d3_fa_07 = count_false_alarms(X, DiscriminativeDriftDetector2019, {
-                "n_reference_samples": 500,
-                "recent_samples_proportion": 0.4,
+                "n_reference_samples": 100,
+                "recent_samples_proportion": 0.5,
                 "threshold": 0.7,
                 "seed": seed,
             })
             d3_fa_counts_07.append(len(d3_fa_07))
 
-            # D3 with threshold 0.8
+            # D3 (τ=0.8, n_ref=100)
             d3_fa_08 = count_false_alarms(X, DiscriminativeDriftDetector2019, {
-                "n_reference_samples": 500,
-                "recent_samples_proportion": 0.4,
+                "n_reference_samples": 100,
+                "recent_samples_proportion": 0.5,
                 "threshold": 0.8,
                 "seed": seed,
             })

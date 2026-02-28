@@ -11,6 +11,9 @@ Author: Nusrat Begum
 Thesis: Feature Drift Detection via Adversarial Validation
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -106,25 +109,25 @@ def run_experiment_2(output_dir="experiments/results"):
     """Run Experiment 2: Real-World Benchmark Comparison."""
     os.makedirs(output_dir, exist_ok=True)
 
-    print("Loading datasets...")
+    print("Loading datasets...", flush=True)
     datasets = load_real_world_datasets()
     max_samples = 30000  # Limit for computational feasibility
 
     results = []
 
-    for ds_name, stream in datasets.items():
+    for ds_idx, (ds_name, stream) in enumerate(datasets.items(), 1):
         n_samples = getattr(stream, 'n_samples', None) or getattr(stream, 'stream_length', None)
         n_features = getattr(stream, 'n_features', None)
-        print(f"\n{'='*60}")
-        print(f"  Dataset: {ds_name}")
-        print(f"  Samples: {n_samples}, Features: {n_features}")
+        print(f"\n{'='*60}", flush=True)
+        print(f"  [{ds_idx}/{len(datasets)}] Dataset: {ds_name}", flush=True)
+        print(f"  Samples: {n_samples}, Features: {n_features}", flush=True)
         known_drifts = getattr(stream, 'drifts', [])
         if known_drifts:
-            print(f"  Known drifts: {known_drifts}")
-        print(f"{'='*60}")
+            print(f"  Known drifts: {known_drifts}", flush=True)
+        print(f"{'='*60}", flush=True)
 
         # EADD
-        print("  Running EADD...")
+        print("  Running EADD...", flush=True)
         try:
             eadd_dets, eadd_time, eadd_detector = run_detector_on_stream(
                 stream,
@@ -140,13 +143,13 @@ def run_experiment_2(output_dir="experiments/results"):
                 },
                 max_samples=max_samples,
             )
-            print(f"    EADD: {len(eadd_dets)} drifts in {eadd_time:.1f}s")
+            print(f"    EADD: {len(eadd_dets)} drifts in {eadd_time:.1f}s", flush=True)
         except Exception as e:
-            print(f"    EADD Error: {e}")
+            print(f"    EADD Error: {e}", flush=True)
             eadd_dets, eadd_time = [], 0.0
 
         # D3 baseline
-        print("  Running D3...")
+        print("  Running D3...", flush=True)
         try:
             d3_dets, d3_time, d3_detector = run_detector_on_stream(
                 stream,
@@ -159,9 +162,9 @@ def run_experiment_2(output_dir="experiments/results"):
                 },
                 max_samples=max_samples,
             )
-            print(f"    D3: {len(d3_dets)} drifts in {d3_time:.1f}s")
+            print(f"    D3: {len(d3_dets)} drifts in {d3_time:.1f}s", flush=True)
         except Exception as e:
-            print(f"    D3 Error: {e}")
+            print(f"    D3 Error: {e}", flush=True)
             d3_dets, d3_time = [], 0.0
 
         # Drift metrics (if ground truth available)

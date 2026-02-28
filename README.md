@@ -1,687 +1,358 @@
-# Unsupervised Concept Drift Detection - Learning Fork
+# Explainable Adversarial Drift Detection (EADD)
 
-> 🔗 **Original Repository**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection)
-> Original Paper https://link.springer.com/article/10.1007/s41060-024-00620-y and found here s41060-024-00620-y.pdf
-> This is my personal fork for learning and running experiments with unsupervised concept drift detection algorithms. I am working on my own masters research paper here 
-
----
-
-## 📚 Table of Contents
-
-1. [What is Concept Drift?](#-what-is-concept-drift)
-2. [Project Overview](#-project-overview)
-3. [How the Code Works](#-how-the-code-works)
-4. [Directory Structure](#-directory-structure)
-5. [Installation Guide](#-installation-guide)
-6. [Dataset Setup](#-dataset-setup)
-7. [Running the Project](#-running-the-project)
-8. [Understanding the Detectors](#-understanding-the-detectors)
-9. [Understanding the Metrics](#-understanding-the-metrics)
-10. [Dataset Fix Documentation](#-dataset-fix-documentation)
-11. [Test Results](#-test-results)
-12. [Our Modifications Summary](#-our-modifications-summary)
+> **Thesis**: *Feature Drift Detection via Adversarial Validation*
+> **Author**: Nusrat Begum — Mahidol University, ICT, 2026
+> **Built on**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection) benchmark by [Lukats et al. (2025)](https://link.springer.com/article/10.1007/s41060-024-00620-y)
 
 ---
 
-## 🎓 What is Concept Drift?
+## Table of Contents
 
-In machine learning, **concept drift** refers to changes in the probability distributions governing a data stream over time. The paper distinguishes two types:
+1. [Overview](#overview)
+2. [Key Results](#key-results)
+3. [What is Feature Drift?](#what-is-feature-drift)
+4. [How EADD Works](#how-eadd-works)
+5. [Project Structure](#project-structure)
+6. [Installation](#installation)
+7. [Running the Experiments](#running-the-experiments)
+8. [Experiment Details](#experiment-details)
+9. [Hypothesis Testing](#hypothesis-testing)
+10. [Benchmark Detectors](#benchmark-detectors)
+11. [Datasets](#datasets)
+12. [Modifications from Original Repo](#modifications-from-original-repo)
+13. [References](#references)
 
-### Real Concept Drift vs Virtual Concept Drift / Covariate Shift / Feature Drift
+---
 
-| Type | Also Known As | Mathematical Definition | What Changes | Requires Labels? |
-|------|---------------|------------------------|--------------|------------------|
-| **Real Concept Drift** | Concept Drift | P(y\|X) changes | The relationship between features X and target y | Yes (supervised) |
-| **Virtual Concept Drift** | Covariate Shift, Feature Drift | P(X) changes | The distribution of features X | No (unsupervised) |
+## Overview
 
-**Examples:**
-- **Real drift**: Spam patterns evolve - what makes an email "spam" changes (the relationship between email features and the spam/not-spam label)
-- **Virtual drift / Feature drift**: Email writing styles change - features like word frequency shift, but what constitutes spam may remain the same
+**EADD (Explainable Adversarial Drift Detection)** is a novel framework for unsupervised feature drift detection that extends adversarial validation with:
 
-### What These Detectors Actually Detect
+1. **LightGBM** as the adversarial classifier (non-linear, captures feature interactions)
+2. **Permutation testing** for statistically principled threshold calibration (p < 0.01)
+3. **SHAP-based root cause analysis** that identifies *which* features drifted
+4. **Automated prescriptions** that recommend remediation actions
 
-The detectors in this repository are **fully unsupervised** - they observe **only the features X**, never the labels y. This means they detect **Virtual Concept Drift / Covariate Shift / Feature Drift** (changes in P(X)).
+Unlike existing detectors (e.g., D3) that only signal *that* drift occurred, EADD transforms drift detection from a binary alarm into an **intelligent diagnostic tool** — answering both *"Is there drift?"* and *"What caused it?"*.
 
-> "By virtue of operating on the feature space only, these unsupervised concept drift detectors **cannot detect concept drift in the posterior distribution** (real drift) **unless it is accompanied by a covariate shift** (feature drift)." — from the paper
+### The Problem EADD Solves
 
-In practice, this works well because:
-1. Changes in P(X) often correlate with changes in P(y|X)
-2. Feature drift can still degrade model performance
-3. No labeled data is needed, making it practical for real-time streams
+| Existing Detectors | EADD |
+|---|---|
+| "Drift detected" (binary alarm) | "Drift detected: **Feature Age** (45%), **Income** (25%)" |
+| No guidance on response | "Prescription: Univariate drift on Age — investigate data pipeline" |
+| Fixed thresholds causing false alarms | Permutation test provides statistical validation (p < 0.01) |
+| Linear classifiers miss interactions | LightGBM captures non-linear multivariate shifts |
+
+---
+
+## Key Results
+
+Results from our four experiments (synthetic + 13 real-world datasets):
+
+### Experiment 1: Temporal Drift Pattern Sensitivity
+
+| Drift Type | EADD Delay | D3 Delay | EADD Success | D3 Success |
+|---|---|---|---|---|
+| **Abrupt** | 129 | 122 | **100%** | 100% |
+| **Gradual** | 1,309 | -- | **100%** | **0%** |
+| **Incremental** | 1,349 | -- | **100%** | **0%** |
+| **Recurring** | 146 | 221 | **100%** | 100% |
+
+EADD detects **all 4 drift types** (100%), D3 only detects 2/4 (misses gradual and incremental).
+
+### Experiment 3: Explainability (SHAP Attribution)
+
+| Scenario | Target | EADD Top Feature | SHAP % | Prescription |
+|---|---|---|---|---|
+| Univariate | F3 | **F3** | 49.7% | Correct |
+| Subset | F2, F5, F7 | **F5** (22.3%) | 75% combined | Correct |
+| Multivariate | All features | Distributed | Max 14.1% | Correct |
+
+SHAP correctly identifies the drifting features in **all 3 scenarios**.
+
+### Experiment 4: False Alarm Robustness
+
+| Stream Type | EADD | D3 (t=0.6) | D3 (t=0.7) | D3 (t=0.8) |
+|---|---|---|---|---|
+| Gaussian (i.i.d.) | **0** | 10.4 | 0 | 0 |
+| Autocorrelated | **0** | 87.4 | 54.6 | 13.8 |
+| Heteroscedastic | **0** | 10.4 | 0 | 0 |
+| Correlated | **0** | 10.0 | 0 | 0 |
+
+EADD produces **zero false alarms** across all stable stream types.
+
+### Hypothesis Testing Summary
+
+| Hypothesis | Test | Result | p-value |
+|---|---|---|---|
+| H1a: EADD detects more drift types | Binomial | 4/4 vs 2/4 | 0.69 |
+| H2: EADD FA < D3(t=0.6) FA | Mann-Whitney U | **Supported** | **0.0101** |
+| H3: SHAP correct attribution | Qualitative | **3/3 correct** | -- |
+
+---
+
+## What is Feature Drift?
+
+In machine learning, **feature drift** (also called covariate shift or virtual concept drift) occurs when the distribution of input features P(X) changes over time, while the relationship between inputs and outputs P(y|X) may or may not change.
+
+| Type | Definition | What Changes | Requires Labels? |
+|------|-----------|--------------|------------------|
+| **Feature Drift** | P(X) changes | Input feature distributions | No (unsupervised) |
+| **Concept Drift** | P(y\|X) changes | Input-output relationship | Yes (supervised) |
 
 ### Why Does It Matter?
 
-If left undetected, drift makes machine learning models unreliable. By detecting drift, we can:
-- Retrain models when needed
-- Alert operators to investigate changes
-- Maintain prediction accuracy over time
+If left undetected, drift makes ML models unreliable. EADD enables:
+- **Early warning** before performance degrades (no labels needed)
+- **Root cause diagnosis** -- which features drifted and by how much
+- **Targeted remediation** -- fix the pipeline, not blindly retrain
+
+### Temporal Drift Patterns
+
+| Pattern | Description | EADD Detection |
+|---------|-------------|----------------|
+| **Abrupt** | Sudden distribution change | Fast (129 samples) |
+| **Gradual** | Old/new distributions intermixed during transition | Detected (1,309 samples) |
+| **Incremental** | Slow continuous change over time | Detected (1,349 samples) |
+| **Recurring** | Periodic distribution oscillation | Fast (146 samples) |
 
 ---
 
-## 🔭 Project Overview
+## How EADD Works
 
-This repository benchmarks **10 unsupervised concept drift detectors** on **real-world data streams**:
+### Pipeline Overview
 
-| Detector | Full Name | Key Idea |
-|----------|-----------|----------|
-| **BNDM** | Bayesian Non-parametric Detection Method | Uses Bayesian statistics to detect distribution changes |
-| **CSDDM** | Clustered Statistical Test DDM | Clusters data and uses statistical tests |
-| **D3** | Discriminative Drift Detector | Trains classifier to distinguish old vs new data |
-| **EDFS** | Ensemble Drift with Feature Subspaces | Uses ensemble of detectors on feature subsets |
-| **IBDD** | Image-Based Drift Detector | Converts data to images and detects visual changes |
-| **NN-DVI** | Nearest Neighbor Density Variation | Measures density changes using nearest neighbors |
-| **OCDD** | One-Class Drift Detector | Uses one-class classification |
-| **SPLL** | Semi-Parametric Log Likelihood | Measures likelihood ratio changes |
-| **UCDD** | Unsupervised Concept Drift Detection | Uses clustering-based approach |
-| **UDetect** | Unsupervised Change Detection | Activity recognition approach |
+```
+Data Stream --> Step 1: Windowing (Reservoir Sampling)
+            --> Step 2: Adversarial Validation (LightGBM AUC)
+            --> Step 3: Permutation Test (p < 0.01)
+            --> Step 4: SHAP Feature Attribution + Prescription
+```
+
+### Step 1: Adaptive Reference Windowing
+- **Reference window** (W_ref = 500 samples): maintained via **reservoir sampling** to capture global distribution
+- **Current window** (W_cur = 200 samples): sliding window of most recent data
+- After confirmed drift: reference resets to current data
+
+### Step 2: Adversarial Validation
+- Label reference as class 0, current as class 1
+- Train **LightGBM** classifier (5-fold stratified CV)
+- Compute **AUC-ROC** -- if AUC > 0.7, drift is suspected
+
+### Step 3: Permutation Test
+- Shuffle labels 50x, retrain each time, build null AUC distribution
+- p-value = #(AUC_perm >= AUC_actual) / B
+- Drift confirmed **only if p < 0.01** (99% confidence)
+
+### Step 4: SHAP Feature Attribution (Novel)
+- Apply TreeSHAP to the adversarial classifier
+- Rank features by mean |SHAP| as importance percentages
+- **Automated prescription** based on distribution pattern:
+  - **Univariate**: single feature > 50% --> investigate that data source
+  - **Subset**: 2-5 features > 70% combined --> check shared pipeline
+  - **Multivariate**: no feature > 30% --> full model retraining needed
+
+### Example Output
+
+```
+DRIFT DETECTED (AUC = 0.85, p < 0.01)
+Drift Diagnosis (SHAP):
+  1. Feature Age: 45.2% contribution
+  2. Feature Income: 24.8% contribution
+Prescription: "Correlated feature-subset drift. Investigate common data source."
+```
+
+Compare to D3: `DRIFT DETECTED (AUC = 0.82)` -- no explanation.
 
 ---
 
-## 🔄 How the Code Works
-
-### High-Level Flow
-
-```
-main.py
-   │
-   ▼
-runner.py ─────────────────────────────────────────┐
-   │                                               │
-   ▼                                               │
-config.py (defines which datasets & detectors)    │
-   │                                               │
-   ▼                                               │
-For each (dataset, detector) combination:         │
-   │                                               │
-   ▼                                               │
-ModelOptimizer.optimize()                         │
-   │                                               │
-   ├──► Stream data sample-by-sample              │
-   │       │                                       │
-   │       ▼                                       │
-   │    detector.update(features) ──► Returns True if drift detected
-   │       │                                       │
-   │       ▼                                       │
-   │    If drift: Reset classifiers              │
-   │       │                                       │
-   │       ▼                                       │
-   │    Train classifiers on sample              │
-   │                                               │
-   ▼                                               │
-Calculate metrics (accuracy, LPD, MTR, etc.)      │
-   │                                               │
-   ▼                                               │
-Save results to CSV ◄──────────────────────────────┘
-```
-
-### Key Components Explained
-
-#### 1. **Detector Base Class** (`detectors/base.py`)
-```python
-class UnsupervisedDriftDetector(ABC):
-    def update(self, features: dict) -> bool:
-        """
-        Feed one sample to the detector.
-        Returns True if drift is detected, False otherwise.
-        """
-```
-
-All detectors implement this interface. You feed samples one by one, and the detector signals when it thinks the data distribution has changed.
-
-#### 2. **Model Optimizer** (`optimization/model_optimizer.py`)
-This is the experiment runner. For each detector configuration:
-1. Streams data sample-by-sample
-2. Calls `detector.update()` for each sample
-3. If drift detected: resets the "assisted" classifiers
-4. Trains classifiers on each sample
-5. Records metrics at the end
-
-#### 3. **Classifiers** (`optimization/classifiers.py`)
-Maintains 4 classifiers to evaluate detector quality:
-- **Base Hoeffding Tree** - Never reset, ignores drift signals
-- **Base Naive Bayes** - Never reset, ignores drift signals
-- **Assisted Hoeffding Tree** - Reset when detector signals drift
-- **Assisted Naive Bayes** - Reset when detector signals drift
-
-If the **assisted** classifiers perform better, the detector is helpful!
-
----
-
-## 📁 Directory Structure
+## Project Structure
 
 ```
 unsupervised-concept-drift-detection/
-│
-├── main.py                 # Entry point - starts experiments
-├── runner.py               # Runs all detector/dataset combinations
-├── config.py               # Configuration: which datasets & detectors to test
-├── demo.py                 # ⭐ CREATED BY US - Demo testing ALL datasets
-├── add_headers.py          # ⭐ CREATED BY US - Adds headers to USP DS CSVs
-├── convert_datasets.py     # Original script to convert .arff to .csv
-├── eval.py                 # Evaluation and plotting script
-├── requirements.txt        # ✏️ MODIFIED BY US - Changed == to >= for Python 3.13
-│
-├── datasets/               # Dataset loader classes
-│   ├── __init__.py         # Exports all dataset classes
-│   ├── insects.py          # INSECTS datasets (10 variants)
-│   ├── airlines.py         # ✏️ MODIFIED - Use CSV instead of ARFF
-│   ├── chess.py            # ✏️ MODIFIED - Use CSV, column names at1-at8
-│   ├── electricity.py      # ✏️ MODIFIED - Use CSV instead of ARFF
-│   ├── intrusion_detection.py # ✏️ MODIFIED - Use CSV instead of ARFF
-│   ├── keystroke.py        # ✏️ MODIFIED - Use CSV instead of ARFF
-│   ├── ...                 # Other dataset loaders
-│   └── files/              # CSV data files (from USP DS Repository)
-│       └── *.csv           # ✏️ Headers added by add_headers.py
-│
-├── detectors/              # Drift detection algorithms
-│   ├── __init__.py         # Exports all detector classes
-│   ├── base.py             # Abstract base class
-│   ├── d3.py               # D3 - Discriminative Drift Detector
-│   ├── ibdd.py             # IBDD - Image-Based Drift Detector
-│   ├── spll.py             # SPLL - Semi-Parametric Log Likelihood
-│   ├── ...                 # Other detectors
-│
-├── metrics/                # Performance measurement
-│   ├── metrics.py          # Main metrics calculation
-│   ├── drift.py            # MTR, MTFA, MTD, MDR calculations
-│   └── lift_per_drift.py   # LPD calculation
-│
-├── optimization/           # Experiment infrastructure
-│   ├── model_optimizer.py  # Main experiment runner
-│   ├── classifiers.py      # HoeffdingTree & NaiveBayes classifiers
-│   ├── config_generator.py # Generates parameter combinations
-│   ├── logger.py           # Saves results to CSV
-│   └── parameter.py        # Parameter range definitions
-│
-├── eval/                   # Result analysis
-│   ├── cleaner.py          # Cleans result files
-│   ├── plotter.py          # Generates plots
-│   ├── summarize.py        # Summarizes results
-│   └── parser.py           # Parses result files
-│
-├── results/                # Raw experiment results (CSV files)
-│   ├── Elec2/
-│   ├── InsectsAbruptBalanced/
-│   └── ...
-│
-└── test/                   # Unit tests
-    ├── datasets/           # Dataset tests
-    ├── detectors/          # Detector tests
-    ├── metrics/            # Metrics tests
-    ├── optimization/       # Optimization tests
-    └── integration/        # Integration tests
+|-- detectors/
+|   |-- eadd.py                  # EADD detector (OUR CONTRIBUTION)
+|   |-- d3.py                    # D3 baseline (Gozuacik et al., 2019)
+|   |-- base.py                  # Abstract base class
+|   +-- ...                      # Other benchmark detectors
+|-- experiment1_temporal_patterns.py   # Exp 1: 4 drift types
+|-- experiment2_realworld_benchmark.py # Exp 2: 13 real-world datasets
+|-- experiment3_explainability.py      # Exp 3: SHAP attribution
+|-- experiment4_false_alarms.py        # Exp 4: False alarm robustness
+|-- run_all_experiments.py             # Master runner + hypothesis tests
+|-- EADD_Thesis_Experiments.ipynb      # Interactive notebook
+|-- datasets/                   # Dataset loaders + CSV files
+|-- metrics/                    # Detection performance metrics
+|-- optimization/               # Experiment infrastructure
+|-- eval/                       # Result analysis and plotting
+|-- experiments/                # Output: results/ and figures/
+|-- results/                    # Lukats benchmark raw results
++-- requirements.txt
 ```
 
 ---
 
-## 🛠 Installation Guide
-
-### Prerequisites
-- Python 3.8+ (tested with 3.13)
-- pip (Python package manager)
-- Git
-
-### Step 1: Clone the Repository
+## Installation
 
 ```bash
 git clone https://github.com/NusratBegum/unsupervised-concept-drift-detection.git
 cd unsupervised-concept-drift-detection
-```
-
-### Step 2: Create Virtual Environment
-
-```bash
-# Create virtual environment
-python3 -m venv venv
-
-# Activate it
-source venv/bin/activate  # On macOS/Linux
-# or
-.\venv\Scripts\activate   # On Windows
-```
-
-### Step 3: Install Dependencies
-
-```bash
-pip install --upgrade pip
+python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Step 4: Verify Installation
+Verify:
 
 ```bash
-# Run a quick test (works without datasets)
-python -m unittest test.detectors.test_d3
-```
-
-Expected output:
-```
-.
-----------------------------------------------------------------------
-Ran 1 test in 0.012s
-
-OK
+python -c "from detectors.eadd import ExplainableAdversarialDriftDetector; print('OK')"
+python -m unittest discover -s test -t .   # 105 tests should pass
 ```
 
 ---
 
-## 📊 Dataset Setup
+## Running the Experiments
 
-### About the USP DS Repository
+| Command | Description | Time |
+|---------|-------------|------|
+| `python _run_tests.py` | Quick smoke test (Exp 1, 3, 4) | ~25 min |
+| `python run_all_experiments.py --all` | Full suite + analysis | ~60 min |
+| `python experiment1_temporal_patterns.py` | Temporal patterns only | ~15 min |
+| `python experiment3_explainability.py` | SHAP explainability only | ~3 min |
+| `python experiment4_false_alarms.py` | False alarm test only | ~8 min |
+| `python run_all_experiments.py --analyze` | Hypothesis tests + plots (from existing CSVs) | ~10 sec |
 
-The datasets come from the **USP Data Stream Repository** maintained by researchers at University of São Paulo. The repository contains real-world data streams with known concept drift points.
+### Output Files
 
-**Download Link**: [USP DS Repository](https://sites.google.com/view/uspdsrepository)
-
-### Step-by-Step Dataset Setup (What We Did)
-
-#### 1. Download and Extract
-```bash
-# Downloaded USP DS Repository.zip from the website
-# Extracted the zip file
-```
-
-#### 2. Copy CSV Files to `datasets/files/`
-We copied all CSV files from the extracted folder directly into `datasets/files/`:
-
-```bash
-# Copy all CSV files from the extracted folder
-cp "USP DS Repository/Old datasets/"*.csv datasets/files/
-cp "USP DS Repository/New datasets/"*.csv datasets/files/
-```
-
-Files we copied:
-- `INSECTS-abrupt_balanced_norm.csv`
-- `INSECTS-gradual_balanced_norm.csv`
-- `NOAA.csv`
-- `outdoor.csv`
-- `elec.csv`
-- `poker-lsn.csv`
-- `powersupply.csv`
-- `rialto.csv`
-- `luxembourg.csv`
-- `ozone.csv`
-- And more...
-
-#### 3. Run the Header Script (Created by Us)
-The USP DS Repository CSV files **don't have headers**. We created `add_headers.py` to add proper header rows:
-
-```bash
-python add_headers.py
-```
-
-This script:
-- Reads each CSV file
-- Adds the correct header row (column names that match what the loaders expect)
-- Saves the file back
-
-#### 4. Dataset Loader Fixes (Done by Us)
-Some dataset loaders expected `.arff` format but USP DS provides `.csv`. We modified:
-- `datasets/airlines.py` - Use CSV, fix string column types
-- `datasets/chess.py` - Use CSV, 8 features (at1-at8)
-- `datasets/electricity.py` - Use CSV instead of ARFF
-- `datasets/intrusion_detection.py` - Use CSV instead of ARFF
-- `datasets/keystroke.py` - Use CSV instead of ARFF
-
-#### 4. Verify Dataset Setup
-
-```bash
-# Run all tests - should show 105 tests passing
-python -m unittest discover -s test -t .
-```
-
-Expected output:
-```
-....................................s...........................................
-.........................
-----------------------------------------------------------------------
-Ran 105 tests in 11.050s
-
-OK (skipped=1)
-```
+| File | Description |
+|------|-------------|
+| `experiments/results/experiment1_temporal_patterns.csv` | Delay, success rate, false alarms per drift type |
+| `experiments/results/experiment3_explainability.csv` | SHAP attribution accuracy per scenario |
+| `experiments/results/experiment4_false_alarms.csv` | False alarm counts per stream type |
+| `experiments/results/hypothesis_tests.csv` | Statistical test results |
+| `experiments/figures/summary_comparison.png` | 4-panel comparison figure |
+| `experiments/figures/latex_tables.tex` | Publication-ready LaTeX tables |
 
 ---
 
-## 🚀 Running the Project
+## Experiment Details
 
-### Option 1: Run the Demo (Recommended for Learning)
+### Experiment 1: Sensitivity to Temporal Drift Patterns
 
-```bash
-python demo.py
-```
+**Setup**: Synthetic streams of 10,000 samples x 5 features, drift at t=5,000. 5 runs per type. Config: n_ref=500, n_cur=200, n_perm=50, alpha=0.01, freq=50.
 
-This tests D3 detector on **ALL** available datasets:
+**Key Finding**: EADD detects all 4 types (100% success), D3 misses gradual and incremental entirely. Both have zero false alarms.
 
-```
-======================================================================
-   UNSUPERVISED CONCEPT DRIFT DETECTION - FULL DEMO
-   Testing D3 detector on ALL available datasets
-======================================================================
+### Experiment 3: Explainability Case Study
 
-──────────────────────────────────────────────────────────────────────
-Testing: INSECTS Abrupt Balanced
-──────────────────────────────────────────────────────────────────────
-  Samples: 52,848 | Features: 33
-  Ground truth drifts: [14352, 19500, 33240, 38682, 39510]
-  Processed: 20,000 samples
-  Drifts detected: 4
-  Evaluation: 2/2 ground truth drifts detected
+**Setup**: 10,000 samples x 10 features with controlled drift at t=5,000. Three scenarios: univariate (F3 only), subset (F2, F5, F7), multivariate (all features).
 
-... (tests all 13 datasets)
+**Key Finding**: SHAP correctly identifies drift sources in all 3 scenarios. Prescription system correctly categorizes each drift pattern.
 
-======================================================================
-   SUMMARY
-======================================================================
+### Experiment 4: False Alarm Robustness
 
-Dataset                                       Status          Drifts
-----------------------------------------------------------------------
-INSECTS Abrupt Balanced                       ✅ Success       4
-INSECTS Gradual Balanced                      ✅ Success       3
-INSECTS Incremental Balanced                  ✅ Success       0
-INSECTS Incremental-Abrupt Balanced           ✅ Success       1
-INSECTS Incremental-Reoccurring Balanced      ✅ Success       0
-Electricity                                   ✅ Success       87
-NOAA Weather                                  ✅ Success       83
-Outdoor Objects                               ✅ Success       11
-Poker Hand                                    ✅ Success       96
-Powersupply                                   ✅ Success       26
-Rialto Bridge Timelapse                       ✅ Success       65
-Luxembourg                                    ✅ Success       1
-Ozone                                         ✅ Success       12
+**Setup**: 10,000 samples x 5 features, 4 stable stream types (Gaussian, autocorrelated, heteroscedastic, correlated), 5 runs each.
 
-======================================================================
-Demo complete! All datasets tested with D3 detector.
-======================================================================
-```
-
-### Option 2: Run Tests
-
-```bash
-# Run all tests
-python -m unittest discover -s test -t .
-
-# Run specific test suites
-python -m unittest test.detectors           # All detector tests
-python -m unittest test.datasets.test_insects  # INSECTS tests
-python -m unittest test.metrics             # Metrics tests
-```
-
-### Option 3: Run Full Experiments
-
-```bash
-# Run full experiment suite (takes a long time!)
-python main.py my_experiment
-
-# With limited threads
-OMP_NUM_THREADS=4 python main.py my_experiment
-```
-
-Results are saved to `results/<dataset>/<detector>_my_experiment.csv`
-
-### Option 4: Evaluate Results
-
-```bash
-python eval.py
-```
-
-This generates:
-- Summary statistics
-- Plots and figures
-- Best configuration rankings
+**Key Finding**: EADD: zero false alarms across all streams. D3(t=0.6): 87.4 false alarms on autocorrelated data. The permutation test correctly identifies temporal correlations as stationary noise.
 
 ---
 
-## 🔬 Understanding the Detectors
+## Hypothesis Testing
 
-### Example: D3 (Discriminative Drift Detector)
-
-**Location**: `detectors/d3.py`
-
-**How it works**:
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    D3 Detection Process                     │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  1. Collect reference samples (old data window)             │
-│     ┌───┬───┬───┬───┬───┬───┬───┬───┐                      │
-│     │ ● │ ● │ ● │ ● │ ● │ ● │ ● │ ● │  ← 200 samples       │
-│     └───┴───┴───┴───┴───┴───┴───┴───┘                      │
-│                                                             │
-│  2. Collect recent samples (new data window)                │
-│                         ┌───┬───┬───┬───┐                  │
-│                         │ ○ │ ○ │ ○ │ ○ │  ← 100 samples   │
-│                         └───┴───┴───┴───┘                  │
-│                                                             │
-│  3. Label them: reference=0, recent=1                       │
-│                                                             │
-│  4. Train a classifier to distinguish them                  │
-│     (Logistic Regression)                                   │
-│                                                             │
-│  5. Calculate AUC score                                     │
-│     - AUC ≈ 0.5 → Can't distinguish → NO DRIFT             │
-│     - AUC > 0.7 → Can distinguish → DRIFT DETECTED!        │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
-
-**Intuition**: If a classifier can tell old data from new data, they must be different!
-
-### Detector Parameters
-
-Each detector has tunable parameters. Example for D3:
-
-```python
-detector = DiscriminativeDriftDetector2019(
-    n_reference_samples=200,       # Size of "old" data window
-    recent_samples_proportion=0.5, # Size of "new" window (relative)
-    threshold=0.7,                 # AUC threshold for detection
-    seed=42                        # Random seed for reproducibility
-)
-```
+| Hypothesis | Test | Statistic | p-value | Decision |
+|---|---|---|---|---|
+| H1a: EADD detects more types | Binomial | 2 / 4 | 0.69 | Directional support |
+| H1b: EADD delay <= D3 | Mann-Whitney U | -- | 0.67 | No significant diff |
+| H2: EADD FA < D3(t=0.7) | Mann-Whitney U | 6.0 | 0.23 | Not significant |
+| H2: EADD FA < D3(t=0.6) | Mann-Whitney U | 0.0 | **0.0101** | **Supported** |
+| H3: SHAP attribution | Qualitative | 3/3 | -- | **All correct** |
 
 ---
 
-## 📈 Understanding the Metrics
+## Benchmark Detectors
 
-### Key Metrics
-
-| Metric | Full Name | What It Measures |
-|--------|-----------|------------------|
-| **acc (ht-dd)** | Accuracy (Hoeffding Tree with Drift Detector) | Classification accuracy with drift detection |
-| **acc (ht-no dd)** | Accuracy (Hoeffding Tree, no Drift Detector) | Baseline accuracy without drift detection |
-| **lpd (ht)** | Lift Per Drift | Accuracy improvement per detected drift |
-| **mtr** | Mean Time to Reaction | Average delay to detect a drift |
-| **mtfa** | Mean Time between False Alarms | How often false alarms occur |
-| **mtd** | Mean Time to Detection | Time from drift to detection |
-| **mdr** | Missed Detection Rate | Proportion of drifts not detected |
-
-### Interpretation
-
-- **Higher is better**: `acc`, `lpd`, `mtfa`
-- **Lower is better**: `mtr`, `mtd`, `mdr`
-
-### Example Results
-
-```
-Actual drift at: 14,352
-Detected at:     14,439
-Delay (MTR):     +87 samples
-
-If delay is small → Good detection!
-If delay is large or negative → Poor detection
-```
+| Detector | Method | Reference |
+|----------|--------|-----------|
+| **D3** | Logistic regression adversarial validation | Gozuacik et al., 2019 |
+| **BNDM** | Bayesian non-parametric Polya tree test | -- |
+| **CSDDM** | PCA + K-Means + statistical tests | 2021 |
+| **IBDD** | Image-based comparison | 2020 |
+| **NN-DVI** | Nearest neighbor density | 2018 |
+| **OCDD** | One-class SVM | 2021 |
+| **SPLL** | Semi-parametric log-likelihood | 2013 |
+| **UCDD** | Clustering + pseudo-labels | 2020 |
+| **UDetect** | Shewhart control charts | -- |
+| **EDFS** | Ensemble feature subspaces | -- |
 
 ---
 
-## 🔧 Dataset Fix Documentation
+## Datasets
 
-### The Problem
+### Real-World (USP Data Stream Repository)
 
-The original code was written for `.arff` files (ARFF format includes headers). The USP DS Repository provides `.csv` files **without headers**.
+| Dataset | Samples | Features | Ground Truth |
+|---------|---------|----------|-------------|
+| INSECTS Abrupt Balanced | 52,848 | 33 | Yes |
+| INSECTS Gradual Balanced | 24,150 | 33 | Yes |
+| INSECTS Incremental Balanced | 57,018 | 33 | Yes |
+| INSECTS Incr-Abrupt | 79,986 | 33 | Yes |
+| INSECTS Incr-Reoccurring | 79,986 | 33 | Yes |
+| Electricity | 45,312 | 8 | No |
+| NOAA Weather | 18,159 | 8 | No |
+| Outdoor Objects | 4,000 | 21 | No |
+| Ozone | 2,534 | 72 | No |
+| Poker Hand | 829,201 | 10 | No |
+| Powersupply | 29,928 | 2 | No |
+| Rialto Bridge | varies | 27 | No |
+| Luxembourg | varies | 31 | No |
 
-### Issues Found
-
-| Issue | Description |
-|-------|-------------|
-| **Missing headers** | CSV files from USP DS have raw data only, no column names |
-| **Different column names** | Code expected specific names like `Att1, Att2, ...` |
-| **Format mismatch** | Some loaders expected `.arff`, USP DS has `.csv` |
-| **Sample count differences** | USP DS versions have different row counts |
-
-### Fixes Applied
-
-#### 1. Created `add_headers.py`
-This script adds proper headers to all CSV files:
-
-```python
-# Example of what it does:
-# Before: 19.8,14,1019.6,8.4,9.9,15.9,28.9,14,1
-# After:  attribute1,attribute2,...,class (header row)
-#         19.8,14,1019.6,8.4,9.9,15.9,28.9,14,1
-```
-
-#### 2. Updated Dataset Loaders
-Modified these files to use CSV format:
-
-| File | Change |
-|------|--------|
-| `datasets/airlines.py` | Use CSV, fix string column types |
-| `datasets/chess.py` | Use CSV, update column names to `at1-at8` |
-| `datasets/electricity.py` | Use CSV instead of ARFF |
-| `datasets/intrusion_detection.py` | Use CSV instead of ARFF |
-| `datasets/keystroke.py` | Use CSV instead of ARFF |
-
-#### 3. Updated `requirements.txt`
-Changed from exact versions (`==`) to minimum versions (`>=`) for Python 3.13 compatibility:
-
-```
-matplotlib>=3.6.3
-numpy>=1.23.1
-pandas>=1.4.3
-river>=0.11.1
-scipy>=1.8.1
-scikit-learn>=1.1.1
-```
+Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepository), copy to `datasets/files/`, then `python add_headers.py`.
 
 ---
 
-## ✅ Test Results
+## Modifications from Original Repo
 
-### Current Status
-
-| Test Suite | Tests | Status |
-|------------|-------|--------|
-| Detectors | 34 | ✅ All pass |
-| Metrics | 8 | ✅ All pass |
-| Optimization | 34 | ✅ All pass |
-| Integration | 3 | ✅ All pass |
-| Datasets | 26 | ✅ All pass (1 skipped) |
-| **Total** | **105** | ✅ **All pass** |
-
-### Working Datasets
-
-| Dataset | Samples | Features | Has Ground Truth Drifts |
-|---------|---------|----------|------------------------|
-| INSECTS Abrupt Balanced | 52,848 | 33 | ✅ Yes |
-| INSECTS Gradual Balanced | 24,150 | 33 | ✅ Yes |
-| INSECTS Incremental Balanced | 57,018 | 33 | ✅ Yes |
-| INSECTS Incremental-Abrupt Balanced | 79,986 | 33 | ✅ Yes |
-| INSECTS Incremental-Reoccurring Balanced | 79,986 | 33 | ✅ Yes |
-| NOAA Weather | 18,159 | 8 | ❌ No |
-| Outdoor Objects | 4,000 | 21 | ❌ No |
-| Electricity | 45,312 | 8 | ❌ No |
-| Poker Hand | 829,201 | 10 | ❌ No |
-| Powersupply | 29,928 | 2 | ❌ No |
-| Sensor Stream | 2,219,803 | 5 | ❌ No |
-| And more... | | | |
-
----
-
-## 📝 Quick Reference
-
-### Common Commands
-
-```bash
-# Activate virtual environment
-source venv/bin/activate
-
-# Run demo
-python demo.py
-
-# Run all tests
-python -m unittest discover -s test -t .
-
-# Run specific detector test
-python -m unittest test.detectors.test_d3
-
-# Run experiment
-python main.py experiment_name
-
-# Evaluate results
-python eval.py
-```
-
-### File Locations
-
-| What | Where |
-|------|-------|
-| Dataset CSV files | `datasets/files/*.csv` |
-| Experiment results | `results/<dataset>/<detector>.csv` |
-| Demo script | `demo.py` |
-| Header fixer | `add_headers.py` |
-
----
-
-## � Our Modifications Summary
-
-This section documents all files **created** or **modified** by us in this learning fork.
-
-### Files Created (New)
+### New Files (Our Contributions)
 
 | File | Purpose |
 |------|---------|
-| `demo.py` | Demo script testing D3 detector on ALL 13 datasets |
-| `add_headers.py` | Script to add headers to USP DS Repository CSV files |
+| `detectors/eadd.py` | **EADD detector** -- core thesis contribution |
+| `experiment1_temporal_patterns.py` | Experiment 1: temporal drift patterns |
+| `experiment2_realworld_benchmark.py` | Experiment 2: real-world benchmark |
+| `experiment3_explainability.py` | Experiment 3: SHAP explainability |
+| `experiment4_false_alarms.py` | Experiment 4: false alarm evaluation |
+| `run_all_experiments.py` | Master runner + hypothesis tests + LaTeX |
+| `EADD_Thesis_Experiments.ipynb` | Interactive Jupyter notebook |
+| `demo_eadd.py` | EADD demonstration script |
+| `demo.py` | D3 demo on all datasets |
+| `add_headers.py` | CSV header script for USP datasets |
 
-### Files Modified
+### Modified Files
 
-| File | What Changed |
-|------|-------------|
-| `requirements.txt` | Changed `==` to `>=` for Python 3.13 compatibility |
-| `datasets/airlines.py` | Use CSV instead of ARFF, fix string column types |
-| `datasets/chess.py` | Use CSV, update to 8 features (at1-at8), 503 samples |
-| `datasets/electricity.py` | Use CSV instead of ARFF |
-| `datasets/intrusion_detection.py` | Use CSV instead of ARFF |
-| `datasets/keystroke.py` | Use CSV instead of ARFF |
-| `test/datasets/test_chess.py` | Updated expected features/samples |
-| `README.md` | Complete rewrite with documentation |
-| `.gitignore` | Added .DS_Store, __MACOSX/, USP DS Repository folder |
-
-### Dataset Files (Headers Added)
-
-All CSV files in `datasets/files/` had headers added by `add_headers.py`:
-- INSECTS datasets (10 variants): `Att1-Att33,class`
-- NOAA.csv: `attribute1-attribute8,class`
-- outdoor.csv: `att1-att21,class`
-- luxembourg.csv: `att1-att31,class`
-- powersupply.csv: `attribute0,attribute1,class`
-- ozone.csv: `V1-V72,Class`
-- rialto.csv: `att1-att27,class`
-- poker-lsn.csv: `s1,r1,s2,r2,...,s5,r5,class`
-- elec.csv: `date,day,period,nswprice,nswdemand,vicprice,vicdemand,transfer,class`
-- And more...
+| File | Change |
+|------|--------|
+| `detectors/__init__.py` | Added EADD import |
+| `requirements.txt` | Added lightgbm, shap, seaborn; `==` to `>=` |
+| `datasets/airlines.py` | CSV instead of ARFF |
+| `datasets/chess.py` | CSV, 8 features (at1-at8) |
+| `datasets/electricity.py` | CSV instead of ARFF |
+| `datasets/intrusion_detection.py` | CSV instead of ARFF |
+| `datasets/keystroke.py` | CSV instead of ARFF |
 
 ---
 
-## �🔗 References
+## References
 
-- Original Paper: [A benchmark and survey of fully unsupervised concept drift detectors](https://link.springer.com/article/10.1007/s41060-024-00620-y)
-- Original Repository: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection)
-- USP DS Repository: [sites.google.com/view/uspdsrepository](https://sites.google.com/view/uspdsrepository)
+- **EADD Framework**: This thesis -- Nusrat Begum, Mahidol University, 2026
+- **Lukats et al. (2025)**: [Benchmark of fully unsupervised concept drift detectors](https://link.springer.com/article/10.1007/s41060-024-00620-y)
+- **D3**: Gozuacik et al. (2019), Discriminative Drift Detector
+- **LightGBM**: Ke et al. (2017), [LightGBM](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)
+- **SHAP**: Lundberg and Lee (2017), [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)
+- **Original Repository**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection)
+- **USP DS Repository**: [sites.google.com/view/uspdsrepository](https://sites.google.com/view/uspdsrepository)
 
 ---
 
-## 📄 License
+## License
 
-BSD 3-Clause License - See [LICENSE](LICENSE) file.
+BSD 3-Clause License -- See [LICENSE](LICENSE) file.

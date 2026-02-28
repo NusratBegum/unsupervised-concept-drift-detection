@@ -1,0 +1,5 @@
+drift_type,eadd_mean_delay,d3_mean_delay,eadd_success_rate,d3_success_rate,eadd_mean_false_alarms,d3_mean_false_alarms,eadd_mean_detections,d3_mean_detections
+Abrupt,129.0,122.0,100.0,100.0,0.0,0.0,1.0,1.0
+Gradual,1309.0,,100.0,0.0,0.0,0.0,1.0,0.0
+Incremental,1349.0,,100.0,0.0,0.0,0.0,2.0,0.0
+Recurring,145.66666666666666,221.0,100.0,100.0,0.0,0.0,3.0,3.0

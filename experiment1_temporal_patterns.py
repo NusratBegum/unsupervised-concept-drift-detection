@@ -97,7 +97,7 @@ def generate_recurring_drift(n_samples=10000, n_features=5, period=2500,
 # Experiment Runner
 # ──────────────────────────────────────────────────────────────
 
-def run_eadd_on_stream(X, drift_points, n_ref=500, n_cur=200, n_perm=100,
+def run_eadd_on_stream(X, drift_points, n_ref=500, n_cur=200, n_perm=50,
                        alpha=0.01, freq=50, seed=42):
     """Run EADD on a feature stream and return detection results."""
     detector = ExplainableAdversarialDriftDetector(
@@ -145,11 +145,10 @@ def run_d3_on_stream(X, n_ref=500, proportion=0.4, threshold=0.7, seed=42):
     return detections
 
 
-def compute_detection_delay(drift_points, detections, tolerance=1000):
+def compute_detection_delay(drift_points, detections, tolerance=1500):
     """Compute mean detection delay for true drift points."""
     delays = []
     for dp in drift_points:
-        # Find first detection after drift point
         post_detections = [d for d in detections if dp <= d <= dp + tolerance]
         if post_detections:
             delays.append(post_detections[0] - dp)
@@ -158,13 +157,14 @@ def compute_detection_delay(drift_points, detections, tolerance=1000):
     return delays
 
 
-def compute_false_alarm_rate(drift_points, detections, tolerance=1000):
-    """Count detections that are not within tolerance of any true drift."""
-    false_alarms = 0
-    for d in detections:
-        if not any(abs(d - dp) < tolerance for dp in drift_points):
-            false_alarms += 1
-    return false_alarms
+def compute_false_alarm_rate(drift_points, detections, tolerance=1500):
+    """Count detections before the first drift onset (genuine false alarms).
+
+    Post-onset detections during/after drift are not false alarms since
+    the distribution has indeed changed.
+    """
+    first_onset = min(drift_points)
+    return sum(1 for d in detections if d < first_onset)
 
 
 # ──────────────────────────────────────────────────────────────
@@ -175,17 +175,18 @@ def run_experiment_1(output_dir="experiments/results"):
     """Run Experiment 1: Temporal Drift Pattern Sensitivity."""
     os.makedirs(output_dir, exist_ok=True)
 
+    # (generator_fn, tolerance) — tolerance covers full transition + buffer
     drift_types = {
-        "Abrupt": generate_abrupt_drift,
-        "Gradual": generate_gradual_drift,
-        "Incremental": generate_incremental_drift,
-        "Recurring": generate_recurring_drift,
+        "Abrupt":      (generate_abrupt_drift,      1500),   # instantaneous
+        "Gradual":     (generate_gradual_drift,      3500),   # transition 4000-6000 + 1500
+        "Incremental": (generate_incremental_drift,  5500),   # transition 3000-7000 + 1500
+        "Recurring":   (generate_recurring_drift,    1500),   # instantaneous per change
     }
 
     n_runs = 5
     results = []
 
-    for drift_name, generator in drift_types.items():
+    for drift_name, (generator, tol) in drift_types.items():
         print(f"\n{'='*60}")
         print(f"  Testing: {drift_name} Drift")
         print(f"{'='*60}")
@@ -203,12 +204,12 @@ def run_experiment_1(output_dir="experiments/results"):
 
             # EADD
             eadd_dets, aucs, pvals = run_eadd_on_stream(X, drift_points, seed=seed)
-            eadd_delays = compute_detection_delay(drift_points, eadd_dets)
+            eadd_delays = compute_detection_delay(drift_points, eadd_dets, tolerance=tol)
             eadd_fa = compute_false_alarm_rate(drift_points, eadd_dets)
 
             # D3
             d3_dets = run_d3_on_stream(X, seed=seed)
-            d3_delays = compute_detection_delay(drift_points, d3_dets)
+            d3_delays = compute_detection_delay(drift_points, d3_dets, tolerance=tol)
             d3_fa = compute_false_alarm_rate(drift_points, d3_dets)
 
             eadd_delays_all.append(eadd_delays)

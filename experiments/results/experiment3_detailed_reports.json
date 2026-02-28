@@ -1,0 +1,80 @@
+{
+  "univariate": {
+    "detections": [
+      5149
+    ],
+    "reports": [
+      {
+        "step": 5149,
+        "auc": 0.76716,
+        "p_value": 0.0,
+        "feature_importances": {
+          "F3": 49.74433662106841,
+          "F9": 6.905499002572292,
+          "F8": 6.712546948230874,
+          "F6": 6.694291446222163,
+          "F0": 5.704180534492961,
+          "F7": 5.50412068391007,
+          "F4": 5.081316298653843,
+          "F2": 4.9769115579409595,
+          "F1": 4.688101951831126,
+          "F5": 3.988694955077309
+        },
+        "prescription_type": "subset",
+        "prescription_message": "Correlated feature drift detected in ['F3', 'F9', 'F8', 'F6'] (70.1% cumulative). Investigate common data source. Consider partial retraining."
+      }
+    ]
+  },
+  "subset": {
+    "detections": [
+      5149
+    ],
+    "reports": [
+      {
+        "step": 5149,
+        "auc": 0.79771,
+        "p_value": 0.0,
+        "feature_importances": {
+          "F5": 22.299258956680728,
+          "F2": 21.81402400326965,
+          "F7": 18.030958836894253,
+          "F0": 6.623120213402893,
+          "F8": 6.333802998577805,
+          "F6": 5.896889986033838,
+          "F9": 5.611366483695664,
+          "F3": 4.703692438961942,
+          "F4": 4.396072200793761,
+          "F1": 4.290813881689461
+        },
+        "prescription_type": "subset",
+        "prescription_message": "Correlated feature drift detected in ['F5', 'F2', 'F7', 'F0', 'F8'] (75.1% cumulative). Investigate common data source. Consider partial retraining."
+      }
+    ]
+  },
+  "multivariate": {
+    "detections": [
+      5149
+    ],
+    "reports": [
+      {
+        "step": 5149,
+        "auc": 0.80065,
+        "p_value": 0.0,
+        "feature_importances": {
+          "F2": 14.145147693864073,
+          "F3": 12.98827663203133,
+          "F4": 12.108076798528083,
+          "F0": 11.808312909626428,
+          "F7": 9.45614670589652,
+          "F6": 8.766092511992698,
+          "F5": 8.742352066059997,
+          "F1": 8.531572188952556,
+          "F8": 7.1170323238792355,
+          "F9": 6.336990169169058
+        },
+        "prescription_type": "multivariate",
+        "prescription_message": "Multivariate concept shift detected. No single feature exceeds 30% importance. Full model retraining required. Expand training data to include recent distribution."
+      }
+    ]
+  }
+}

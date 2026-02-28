@@ -67,7 +67,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         n_reference_samples: int = 500,
         n_current_samples: int = 200,
         auc_threshold: float = 0.7,
-        n_permutations: int = 100,
+        n_permutations: int = 50,
         significance_level: float = 0.01,
         use_reservoir_sampling: bool = True,
         monitoring_frequency: int = 50,
@@ -170,8 +170,11 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         # Automated prescription
         self.last_prescription = self._generate_prescription(self.last_shap_importances)
 
-        # Reset current window after drift
+        # Adapt to new distribution: seed reference with current data and reset
+        self.reference_window = list(self.current_window)
         self.current_window = []
+        self.samples_seen = len(self.reference_window)
+        self.steps_since_check = 0
 
         return True
 
@@ -214,7 +217,9 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
 
     def _quick_auc(self, X: np.ndarray, y: np.ndarray) -> float:
         """Quick AUC computation with a single train/test split for permutation efficiency."""
-        kfold = StratifiedKFold(n_splits=2, shuffle=True, random_state=self.seed)
+        # Use a fresh random state per call to avoid identical splits across permutations
+        rs = int(self.rng.integers(0, 2**31))
+        kfold = StratifiedKFold(n_splits=2, shuffle=True, random_state=rs)
         predictions = np.zeros(len(y))
         for train_idx, test_idx in kfold.split(X, y):
             clf = self._create_classifier()

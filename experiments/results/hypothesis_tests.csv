@@ -1,0 +1,6 @@
+hypothesis,test,statistic,p_value,significant_005,conclusion
+H1a: EADD detects more drift types than D3,Binomial test,2.0,0.6875,False,EADD detects 4/4 types vs D3 2/4
+H1b: EADD delay <= D3 delay (where both detect),Mann-Whitney U,2.0,0.6667,False,No significant difference
+H2: EADD false alarms < D3(τ=0.7) false alarms,Mann-Whitney U,6.0,0.2266,False,No significant difference
+H2: EADD false alarms < D3(τ=0.6) false alarms,Mann-Whitney U,0.0,0.0101,True,EADD has significantly fewer false alarms
+H3: SHAP identifies correct drifting features,Qualitative evaluation,,,True,SHAP correctly identifies drift sources across all 3 scenarios
