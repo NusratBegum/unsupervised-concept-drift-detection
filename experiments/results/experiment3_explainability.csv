@@ -1,4 +1,4 @@
-scenario,n_detections,first_detection,auc,p_value,top_feature,top_importance_pct,prescription_type,target
-univariate,1,5149,0.76716,0.0,F3,49.7,subset,F3
-subset,1,5149,0.79771,0.0,F5,22.3,subset,"['F2', 'F5', 'F7']"
-multivariate,1,5149,0.80065,0.0,F2,14.1,multivariate,"['F0', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9']"
+scenario,target,n_detections,top_feature,top_importance_pct,prescription_type,correct_attribution
+univariate,F3,1,F3,71.6,univariate,True
+subset,"F2, F5, F7",1,F7,37.1,subset,True
+multivariate,"F0, F1, F2, F3, F4, F5, F6, F7",1,F7,16.0,multivariate,True
