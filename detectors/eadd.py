@@ -335,7 +335,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         if HAS_LIGHTGBM:
             return lgb.LGBMClassifier(
                 boosting_type='gbdt',
-                n_estimators=100,
+                n_estimators=50,
                 learning_rate=0.1,
                 max_depth=-1,
                 num_leaves=31,
