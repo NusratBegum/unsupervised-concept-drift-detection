@@ -71,6 +71,8 @@ def run_eadd_on_dataset(stream, name, max_samples=15_000):
             print(f"\n  *** DRIFT #{len(detected_drifts)} detected at sample {i:,} ***")
             print(f"      AUC:     {report['auc']:.4f}")
             print(f"      p-value: {report['p_value']:.4f}")
+            if report.get('uncertainty_index') is not None:
+                print(f"      PUI:     {report['uncertainty_index']:.4f} (Uncertainty Index)")
 
             # Show top feature importances from SHAP
             if report['feature_importances']:
