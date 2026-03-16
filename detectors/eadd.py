@@ -1,15 +1,38 @@
 """
 Explainable Adversarial Drift Detection (EADD)
 ================================================
-A novel framework that extends adversarial validation with:
-  1. LightGBM as the adversarial classifier (non-linear)
-  2. Adaptive Sequential Permutation Testing (ASPT) for efficiency
-  3. SHAP Interaction Values for correlated drift diagnosis
-  4. Prediction Uncertainty Index (PUI) for early warning
-  5. Drift Severity Index (DSI) for automated prescriptions
+A novel framework that extends the classifier two-sample test (C2ST)
+[Lopez-Paz & Oquab, 2017] with explainability and adaptive testing:
+
+  1. LightGBM [Ke et al., 2017] as the discriminative classifier for
+     the C2ST, replacing logistic regression with a non-linear model.
+  2. Adaptive Sequential Permutation Testing (ASPT) [Gandy, 2009] for
+     efficient p-value estimation with early stopping.
+  3. SHAP interaction values [Lundberg et al., 2020] for correlated
+     drift diagnosis via feature-level and pairwise attribution.
+  4. Prediction Uncertainty Index (PUI) based on Shannon entropy
+     [Shannon, 1948] of classifier predictions for early warning.
+  5. Drift Severity Index (DSI) combining AUC with normalised SHAP
+     entropy for automated severity prescriptions.
+  6. Reservoir sampling [Vitter, 1985] for representative reference
+     windows in streaming settings.
+
+The term "Adversarial" in EADD refers to the C2ST paradigm where a
+discriminative classifier is trained to distinguish reference from
+current data---not adversarial attacks in the security sense.
+
+References
+----------
+- Gandy (2009). Sequential Monte Carlo tests. JASA 104(488):1504-1511.
+- Ke et al. (2017). LightGBM. NeurIPS.
+- Lopez-Paz & Oquab (2017). Classifier two-sample tests. ICLR.
+- Lundberg & Lee (2017). SHAP. NeurIPS.
+- Lundberg, Erion & Lee (2020). SHAP interaction values. arXiv:1802.03888.
+- Shannon (1948). A mathematical theory of communication. Bell Syst. Tech. J.
+- Vitter (1985). Random sampling with a reservoir. ACM TOMS 11(1):37-57.
 
 Author: Nusrat Begum
-Thesis: Feature Drift Detection via Adversarial Validation
+Thesis: Feature Drift Detection via Discriminative Classification
 Mahidol University, 2026
 """
 
@@ -92,6 +115,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         self.last_interactions = None
         self.last_prescription = None
         self.last_feature_names = None
+        self.last_aspt_permutations = None
+        self.last_pui_trend: List[float] = []
 
     def update(self, features: dict) -> bool:
         feature_vector = np.fromiter(features.values(), dtype=float)
@@ -126,10 +151,11 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         ref_data = np.array(self.reference_window)
         cur_data = np.array(self.current_window)
 
-        # Step 1: Adversarial Validation + PUI
+        # Step 1: C2ST discriminative classification + PUI
         auc, predictions = self._adversarial_auc_with_preds(ref_data, cur_data)
         self.last_auc = auc
         self.last_pui = -np.mean(predictions * np.log(predictions + 1e-9) + (1 - predictions) * np.log(1 - predictions + 1e-9))
+        self.last_pui_trend.append(self.last_pui)
 
         if auc < self.auc_threshold:
             self.last_p_value = 1.0
@@ -166,8 +192,13 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             auc_perm = self._quick_auc(X, y_perm)
             if auc_perm >= actual_auc: count_ge += 1
             if count_ge == 0 and i >= min_perms:
-                if (1 - alpha)**i < 0.05: return 0.001
-            if count_ge / i > 2 * alpha and i >= min_perms: return 1.0
+                if (1 - alpha)**i < 0.05:
+                    self.last_aspt_permutations = i
+                    return 0.001
+            if count_ge / i > 2 * alpha and i >= min_perms:
+                self.last_aspt_permutations = i
+                return 1.0
+        self.last_aspt_permutations = self.n_permutations
         return (count_ge + 1) / (self.n_permutations + 1)
 
     def _adversarial_auc_with_preds(self, ref_data: np.ndarray, cur_data: np.ndarray) -> Tuple[float, np.ndarray]:
@@ -244,8 +275,15 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
 
     def get_last_report(self) -> Dict:
         return {
-            "auc": self.last_auc, "p_value": self.last_p_value, "pui": self.last_pui,
-            "dsi": self.last_dsi, "feature_importances": self.last_shap_importances,
-            "interactions": self.last_interactions, "prescription": self.last_prescription,
+            "auc": self.last_auc,
+            "p_value": self.last_p_value,
+            "pui": self.last_pui,
+            "pui_trend": list(self.last_pui_trend),
+            "dsi": self.last_dsi,
+            "aspt_permutations_used": self.last_aspt_permutations,
+            "aspt_permutations_budget": self.n_permutations,
+            "feature_importances": self.last_shap_importances,
+            "interactions": self.last_interactions,
+            "prescription": self.last_prescription,
             "samples_seen": self.samples_seen,
         }
