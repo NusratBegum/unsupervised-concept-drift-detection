@@ -2,7 +2,7 @@
 EADD Experiments - Experiment 2: Real-World Benchmark
 =====================================================
 Benchmark EADD against D3 on real-world datasets from the
-Lukats et al. (2025) benchmark suite.
+Lukats et al. (2024) benchmark suite.
 
 Datasets: Electricity, Insects variants, NOAA Weather, Poker Hand,
 Powersupply, Outdoor Objects, etc.

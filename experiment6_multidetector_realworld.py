@@ -2,7 +2,7 @@
 Experiment 6: Multi-Detector Comparison on Real-World Datasets
 ===============================================================
 Compares EADD against 7 state-of-the-art unsupervised drift detectors
-on real-world benchmark datasets from Lukats et al. (2025).
+on real-world benchmark datasets from Lukats et al. (2024).
 
 Generates:
   - Time-series detection comparison plots per dataset

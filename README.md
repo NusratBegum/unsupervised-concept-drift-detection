@@ -2,7 +2,7 @@
 
 > **Thesis**: *Feature Drift Detection via Adversarial Validation*
 > **Author**: Nusrat Begum — Mahidol University, ICT, 2026
-> **Built on**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection) benchmark by [Lukats et al. (2025)](https://link.springer.com/article/10.1007/s41060-024-00620-y)
+> **Built on**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection) benchmark by [Lukats et al. (2024)](https://link.springer.com/article/10.1007/s41060-024-00620-y)
 
 ---
 
@@ -344,7 +344,7 @@ Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepo
 ## References
 
 - **EADD Framework**: This thesis -- Nusrat Begum, Mahidol University, 2026
-- **Lukats et al. (2025)**: [Benchmark of fully unsupervised concept drift detectors](https://link.springer.com/article/10.1007/s41060-024-00620-y)
+- **Lukats et al. (2024)**: [Benchmark of fully unsupervised concept drift detectors](https://link.springer.com/article/10.1007/s41060-024-00620-y)
 - **D3**: Gozuacik et al. (2019), Discriminative Drift Detector
 - **LightGBM**: Ke et al. (2017), [LightGBM](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)
 - **SHAP**: Lundberg and Lee (2017), [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)
