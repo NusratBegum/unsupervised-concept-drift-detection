@@ -98,7 +98,7 @@ def generate_recurring_drift(n_samples=10000, n_features=5, period=2500,
 # ──────────────────────────────────────────────────────────────
 
 def run_eadd_on_stream(X, drift_points, n_ref=500, n_cur=200, n_perm=50,
-                       alpha=0.01, freq=50, seed=42):
+                       alpha=0.05, freq=50, seed=42):
     """Run EADD on a feature stream and return detection results."""
     detector = ExplainableAdversarialDriftDetector(
         n_reference_samples=n_ref,

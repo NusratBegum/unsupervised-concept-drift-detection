@@ -64,7 +64,7 @@ def run_explainability_scenario(X, drift_point, scenario_name, seed=42):
         n_current_samples=200,
         auc_threshold=0.7,
         n_permutations=50,
-        significance_level=0.01,
+        significance_level=0.05,
         monitoring_frequency=50,
         seed=seed,
     )

@@ -86,7 +86,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         n_current_samples: int = 200,
         auc_threshold: float = 0.7,
         n_permutations: int = 50,
-        significance_level: float = 0.01,
+        significance_level: float = 0.05,
         use_reservoir_sampling: bool = True,
         monitoring_frequency: int = 50,
         seed: Optional[int] = None,
@@ -191,10 +191,12 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             y_perm = self.rng.permutation(y)
             auc_perm = self._quick_auc(X, y_perm)
             if auc_perm >= actual_auc: count_ge += 1
+            # Conservative early-reject rule: if no exceedances were observed,
+            # the best possible permutation p-value after i draws is 1/(i+1).
             if count_ge == 0 and i >= min_perms:
-                if (1 - alpha)**i < 0.05:
+                if (1.0 / (i + 1)) < alpha:
                     self.last_aspt_permutations = i
-                    return 0.001
+                    return 1.0 / (i + 1)
             if count_ge / i > 2 * alpha and i >= min_perms:
                 self.last_aspt_permutations = i
                 return 1.0
@@ -268,10 +270,18 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         return {"type": "low", "dsi": dsi, "message": f"LOW: Diffuse shift (DSI={dsi:.2f}). Scheduled retraining."}
 
     def _create_classifier(self):
+        model_seed = 42 if self.seed is None else int(self.seed)
         if HAS_LIGHTGBM:
-            return lgb.LGBMClassifier(n_estimators=50, learning_rate=0.1, verbose=-1, random_state=42, n_jobs=1)
+            return lgb.LGBMClassifier(
+                n_estimators=50,
+                learning_rate=0.1,
+                num_leaves=31,
+                verbose=-1,
+                random_state=model_seed,
+                n_jobs=1,
+            )
         from sklearn.ensemble import GradientBoostingClassifier
-        return GradientBoostingClassifier(n_estimators=50, random_state=42)
+        return GradientBoostingClassifier(n_estimators=50, random_state=model_seed)
 
     def get_last_report(self) -> Dict:
         return {

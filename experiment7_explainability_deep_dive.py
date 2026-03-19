@@ -92,7 +92,7 @@ def run_eadd_with_reports(X, drift_point, scenario_name):
     detector = ExplainableAdversarialDriftDetector(
         n_reference_samples=500, n_current_samples=200,
         auc_threshold=0.7, n_permutations=50,
-        significance_level=0.01, monitoring_frequency=50, seed=SEED,
+        significance_level=0.05, monitoring_frequency=50, seed=SEED,
     )
 
     detections = []
