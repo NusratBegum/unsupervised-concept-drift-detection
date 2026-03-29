@@ -56,12 +56,12 @@ MAX_SAMPLES = 5000
 # Detector configurations with reasonable defaults
 DETECTORS = {
     "EADD": (ExplainableAdversarialDriftDetector, {
-        "n_reference_samples": 300,
-        "n_current_samples": 150,
+        "n_reference_samples": 500,
+        "n_current_samples": 200,
         "auc_threshold": 0.7,
-        "n_permutations": 20,
-        "significance_level": 0.01,
-        "monitoring_frequency": 200,
+        "n_permutations": 50,
+        "significance_level": 0.05,
+        "monitoring_frequency": 50,
         "seed": SEED,
     }),
     "D3": (DiscriminativeDriftDetector2019, {

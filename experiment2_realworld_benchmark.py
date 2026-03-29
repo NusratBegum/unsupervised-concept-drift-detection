@@ -136,9 +136,9 @@ def run_experiment_2(output_dir="experiments/results"):
                     "n_reference_samples": 500,
                     "n_current_samples": 200,
                     "auc_threshold": 0.7,
-                    "n_permutations": 50,  # Reduced for speed
-                    "significance_level": 0.01,
-                    "monitoring_frequency": 100,
+                    "n_permutations": 50,
+                    "significance_level": 0.05,
+                    "monitoring_frequency": 50,
                     "seed": 42,
                 },
                 max_samples=max_samples,

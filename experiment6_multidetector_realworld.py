@@ -55,8 +55,8 @@ DETECTORS = {
         "n_current_samples": 200,
         "auc_threshold": 0.7,
         "n_permutations": 50,
-        "significance_level": 0.01,
-        "monitoring_frequency": 100,
+        "significance_level": 0.05,
+        "monitoring_frequency": 50,
         "seed": SEED,
     }),
     "D3": (DiscriminativeDriftDetector2019, {
