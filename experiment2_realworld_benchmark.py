@@ -136,7 +136,7 @@ def run_experiment_2(output_dir="experiments/results"):
                     "n_reference_samples": 500,
                     "n_current_samples": 200,
                     "auc_threshold": 0.7,
-                    "n_permutations": 50,
+                    "n_permutations": 199,
                     "significance_level": 0.05,
                     "monitoring_frequency": 50,
                     "seed": 42,

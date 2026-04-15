@@ -85,7 +85,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         n_reference_samples: int = 500,
         n_current_samples: int = 200,
         auc_threshold: float = 0.7,
-        n_permutations: int = 50,
+        n_permutations: int = 199,
         significance_level: float = 0.05,
         use_reservoir_sampling: bool = True,
         monitoring_frequency: int = 50,
@@ -199,7 +199,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
                     return 1.0 / (i + 1)
             if count_ge / i > 2 * alpha and i >= min_perms:
                 self.last_aspt_permutations = i
-                return 1.0
+                return (count_ge + 1) / (i + 1)
         self.last_aspt_permutations = self.n_permutations
         return (count_ge + 1) / (self.n_permutations + 1)
 
