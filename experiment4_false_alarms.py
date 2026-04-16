@@ -114,7 +114,7 @@ def run_experiment_4(output_dir="experiments/results"):
                 "n_current_samples": 200,
                 "auc_threshold": 0.7,
                 "n_permutations": 199,
-                "significance_level": 0.01,
+                "significance_level": 0.05,
                 "monitoring_frequency": 50,
                 "seed": seed,
             })
@@ -191,7 +191,7 @@ def _plot_experiment4(results, output_dir):
     width = 0.2
 
     bars1 = ax.bar(x - 1.5*width, df["eadd_mean_fa"], width, yerr=df["eadd_std_fa"],
-                   label='EADD (p<0.01)', color='#2196F3', alpha=0.85, capsize=4)
+                   label='EADD (p<0.05)', color='#2196F3', alpha=0.85, capsize=4)
     bars2 = ax.bar(x - 0.5*width, df["d3_06_mean_fa"], width, yerr=df["d3_06_std_fa"],
                    label='D3 (τ=0.6)', color='#FFB74D', alpha=0.85, capsize=4)
     bars3 = ax.bar(x + 0.5*width, df["d3_07_mean_fa"], width, yerr=df["d3_07_std_fa"],

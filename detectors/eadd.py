@@ -10,7 +10,7 @@ A novel framework that extends the classifier two-sample test (C2ST)
      efficient p-value estimation with early stopping.
   3. SHAP interaction values [Lundberg et al., 2020] for correlated
      drift diagnosis via feature-level and pairwise attribution.
-  4. Prediction Uncertainty Index (PUI) based on Shannon entropy
+  4. Prediction Entropy ($H_{\text{pred}}$) based on Shannon entropy
      [Shannon, 1948] of classifier predictions for early warning.
   5. Drift Severity Index (DSI) combining AUC with normalised SHAP
      entropy for automated severity prescriptions.
@@ -109,14 +109,14 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         # Last detection results
         self.last_auc = None
         self.last_p_value = None
-        self.last_pui = None
+        self.last_hpred = None
         self.last_dsi = None
         self.last_shap_importances = None
         self.last_interactions = None
         self.last_prescription = None
         self.last_feature_names = None
         self.last_aspt_permutations = None
-        self.last_pui_trend: List[float] = []
+        self.last_hpred_trend: List[float] = []
 
     def update(self, features: dict) -> bool:
         feature_vector = np.fromiter(features.values(), dtype=float)
@@ -147,15 +147,15 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         return False
 
     def _detect_drift(self) -> bool:
-        """Run the full EADD detection pipeline with ASPT and PUI."""
+        """Run the full EADD detection pipeline with ASPT and H_pred."""
         ref_data = np.array(self.reference_window)
         cur_data = np.array(self.current_window)
 
-        # Step 1: C2ST discriminative classification + PUI
+        # Step 1: C2ST discriminative classification + H_pred
         auc, predictions = self._adversarial_auc_with_preds(ref_data, cur_data)
         self.last_auc = auc
-        self.last_pui = -np.mean(predictions * np.log(predictions + 1e-9) + (1 - predictions) * np.log(1 - predictions + 1e-9))
-        self.last_pui_trend.append(self.last_pui)
+        self.last_hpred = -np.mean(predictions * np.log(predictions + 1e-9) + (1 - predictions) * np.log(1 - predictions + 1e-9))
+        self.last_hpred_trend.append(self.last_hpred)
 
         if auc < self.auc_threshold:
             self.last_p_value = 1.0
@@ -287,8 +287,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         return {
             "auc": self.last_auc,
             "p_value": self.last_p_value,
-            "pui": self.last_pui,
-            "pui_trend": list(self.last_pui_trend),
+            "hpred": self.last_hpred,
+            "hpred_trend": list(self.last_hpred_trend),
             "dsi": self.last_dsi,
             "aspt_permutations_used": self.last_aspt_permutations,
             "aspt_permutations_budget": self.n_permutations,
