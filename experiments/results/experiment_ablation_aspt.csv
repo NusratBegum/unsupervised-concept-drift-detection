@@ -1,0 +1,5 @@
+stream,D3_mean,D3_std,LR_ASPT_mean,LR_ASPT_std,LightGBM_only_mean,LightGBM_only_std,EADD_mean,EADD_std
+Gaussian,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Autocorr.,55.8,2.7129319932501073,26.0,2.0976176963403033,0.0,0.0,0.0,0.0
+Heterosced.,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Correlated,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

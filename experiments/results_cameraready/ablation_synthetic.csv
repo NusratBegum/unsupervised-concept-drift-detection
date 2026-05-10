@@ -1,0 +1,13 @@
+drift_type,detector,detected,n_detections,time_s,first_detection
+Abrupt,EADD-Full,1,1,6.194,5149.0
+Abrupt,EADD-NoASPT,1,1,5.999,5149.0
+Abrupt,D3,1,1,0.075,5122.0
+Gradual,EADD-Full,1,1,6.178,5249.0
+Gradual,EADD-NoASPT,1,1,5.997,5249.0
+Gradual,D3,0,0,0.077,
+Incremental,EADD-Full,1,2,6.151,4349.0
+Incremental,EADD-NoASPT,1,2,5.789,4349.0
+Incremental,D3,0,0,0.079,
+Recurring,EADD-Full,1,3,6.103,2649.0
+Recurring,EADD-NoASPT,1,3,5.548,2649.0
+Recurring,D3,1,3,0.072,2710.0
