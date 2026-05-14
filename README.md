@@ -355,4 +355,32 @@ Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepo
 
 ## License
 
-BSD 3-Clause License -- See [LICENSE](LICENSE) file.
+**This repository is dual-licensed — see [NOTICE](NOTICE) for the full file-by-file breakdown.**
+
+| Scope | License | File |
+|---|---|---|
+| Upstream code (Lukats et al. / DFKI base detectors, evaluation harness, datasets) | [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) | [LICENSE](LICENSE) |
+| EADD contributions (© 2026 Nusrat Begum): `detectors/eadd.py`, all `experiment*.py`, `demo*.py`, `EADD_Thesis_Experiments.ipynb` | [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0) | [LICENSE-EADD](LICENSE-EADD) |
+
+**PolyForm Noncommercial 1.0.0** allows personal, academic, and non-profit research use of the EADD-specific files. **Commercial use** (including internal commercial operations) requires written permission from the author: `nusrat.beg@student.mahidol.ac.th`.
+
+Every EADD-licensed source file carries an SPDX header:
+```
+# SPDX-FileCopyrightText: 2026 Nusrat Begum <nusrat.beg@student.mahidol.ac.th>
+# SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0
+```
+
+**Citation** (required for academic use):
+
+```bibtex
+@inproceedings{begum2026eadd,
+  author    = {Begum, Nusrat and Yamchote, Phaphontee and
+               Amornbunchornvej, Chainarong and Noraset, Thanapon},
+  title     = {Enhanced Adversarial Drift Detection for MLOps
+               Feature Monitoring},
+  booktitle = {Proc. 23rd International Joint Conference on Computer
+               Science and Software Engineering (JCSSE)},
+  year      = {2026},
+  publisher = {IEEE},
+}
+```
