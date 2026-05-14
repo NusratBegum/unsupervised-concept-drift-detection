@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nusrat Begum <nusrat.beg@student.mahidol.ac.th>
+# SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0
+# See LICENSE-EADD for full terms. Noncommercial use only.
 """
 Camera-Ready Experiments for JCSSE 2026 (Round 3 Reviewer Comments)
 ====================================================================

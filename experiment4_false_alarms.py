@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nusrat Begum <nusrat.beg@student.mahidol.ac.th>
+# SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0
+# See LICENSE-EADD for full terms. Noncommercial use only.
 """
 EADD Experiments - Experiment 4: Robustness to Stable Data (False Alarms)
 =========================================================================

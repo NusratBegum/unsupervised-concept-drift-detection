@@ -1,0 +1,160 @@
+PolyForm Noncommercial License 1.0.0
+=====================================
+
+<https://polyformproject.org/licenses/noncommercial/1.0.0>
+
+Copyright (c) 2026 Nusrat Begum
+
+This license covers ONLY the contributions made by Nusrat Begum to this
+repository. The remainder of the repository (forked from upstream) is
+covered by the BSD 3-Clause License in the file `LICENSE`. See the
+section "Scope of this License" below for the exact file list.
+
+================================================================================
+TERMS
+================================================================================
+
+The licensor grants you the rights set out below subject to acceptance
+of and compliance with these terms.
+
+1. ACCEPTANCE
+
+   In order to receive this license, you must agree to its rules.
+   Those rules are both obligations under that agreement and conditions
+   to your license. Do not do anything with the software that triggers
+   a rule you cannot or will not follow.
+
+2. LICENSES
+
+   2.1 Copyright Grant. The licensor grants you a copyright license for
+   the software to do everything you might do with the software that
+   would otherwise infringe the licensor's copyright in it for any
+   permitted purpose. However, you may only distribute the software
+   according to Distribution License and make changes or new works based
+   on the software according to Changes and New Works License.
+
+   2.2 Patent Grant. The licensor grants you a patent license for the
+   software that covers patent claims the licensor can license, or
+   becomes able to license, that you would infringe by using the
+   software for the permitted purposes.
+
+3. PERMITTED PURPOSES
+
+   You may use the software for any noncommercial purpose, including:
+
+     - personal use, including for research, experiment, and testing;
+     - use by charitable organizations, educational institutions, public
+       research organizations, public safety or health organizations,
+       environmental protection organizations, or government institutions;
+     - personal use for research, experiment, and testing for the
+       benefit of public knowledge, personal study, private entertainment,
+       hobby projects, amateur pursuits, or religious observance, without
+       any anticipated commercial application.
+
+   Use is "commercial" if it is primarily intended for or directed toward
+   commercial advantage or monetary compensation. Use by a commercial
+   entity for ITS OWN INTERNAL business operations is "commercial" under
+   this license and is NOT permitted.
+
+4. CHANGES AND NEW WORKS LICENSE
+
+   The licensor grants you permission to make changes and new works
+   based on the software for any permitted purpose. You may share
+   changes and new works under the same terms as you must share the
+   software under Distribution License.
+
+5. DISTRIBUTION LICENSE
+
+   The licensor grants you a license to distribute the software, or
+   distribute changes or new works based on the software, only under
+   this license. You must include a copy of this license with any copy
+   of the software you distribute. You must retain all copyright,
+   patent, trademark, and attribution notices.
+
+6. NOTICES
+
+   You must ensure that anyone who gets a copy of any part of the
+   software from you also gets a copy of these terms.
+
+   If you modify the software, you must include in any modified copies
+   of the software prominent notices stating that you have modified the
+   software.
+
+7. NO OTHER RIGHTS
+
+   These terms do not allow you to sublicense or transfer any of your
+   licenses to anyone else, or prevent the licensor from granting
+   licenses to anyone else. These terms do not imply any other licenses.
+
+8. PATENT DEFENSE
+
+   If you make any written claim that the software infringes or
+   contributes to infringement of any patent, your patent license for
+   the software granted under these terms ends immediately. If your
+   company makes such a claim, your patent license ends immediately
+   for work on behalf of your company.
+
+9. VIOLATIONS
+
+   The first time you are notified in writing that you have violated
+   any of these terms, or done anything with the software not covered
+   by your license, your license ends immediately. If you have not
+   received notice of violation, your license also ends if a court
+   determines you have violated these terms and you do not bring your
+   use into compliance within 30 days of the determination.
+
+10. NO LIABILITY
+
+    AS FAR AS THE LAW ALLOWS, THE SOFTWARE COMES AS IS, WITHOUT ANY
+    WARRANTY OR CONDITION, AND THE LICENSOR WILL NOT BE LIABLE TO YOU
+    FOR ANY DAMAGES ARISING OUT OF THESE TERMS OR THE USE OR NATURE
+    OF THE SOFTWARE, UNDER ANY KIND OF LEGAL CLAIM.
+
+11. DEFINITIONS
+
+    The "licensor" is Nusrat Begum.
+    The "software" is the software the licensor makes available under
+    these terms (the files listed in the "Scope" section below).
+    "You" refers to the individual or entity agreeing to these terms.
+
+================================================================================
+SCOPE OF THIS LICENSE
+================================================================================
+
+This license applies ONLY to the following files in this repository,
+which are original contributions by Nusrat Begum:
+
+    detectors/eadd.py
+    experiment1_temporal_patterns.py
+    experiment2_realworld_benchmark.py
+    experiment3_explainability.py
+    experiment4_false_alarms.py
+    experiment5_multidetector_synthetic.py
+    experiment6_multidetector_realworld.py
+    experiment7_explainability_deep_dive.py
+    experiment_camera_ready.py
+    demo.py
+    demo_eadd.py
+    EADD_Thesis_Experiments.ipynb
+
+All other files in this repository are derived from the upstream project
+(originally by Lukats et al. / DFKI) and remain under the BSD 3-Clause
+License contained in the file `LICENSE` in this directory.
+
+================================================================================
+ATTRIBUTION (when using these files in research)
+================================================================================
+
+@inproceedings{begum2026eadd,
+  author    = {Begum, Nusrat and Yamchote, Phaphontee and
+               Amornbunchornvej, Chainarong and Noraset, Thanapon},
+  title     = {Enhanced Adversarial Drift Detection for MLOps
+               Feature Monitoring},
+  booktitle = {Proc. 23rd International Joint Conference on Computer
+               Science and Software Engineering (JCSSE)},
+  year      = {2026},
+  publisher = {IEEE},
+}
+
+For licensing inquiries beyond PolyForm Noncommercial 1.0.0 (including
+commercial licensing), contact: nusrat.beg@student.mahidol.ac.th

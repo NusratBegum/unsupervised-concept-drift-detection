@@ -1,0 +1,47 @@
+NOTICE — Dual Licensing
+========================
+
+This repository contains source code under TWO different licenses:
+
+1. UPSTREAM CODE (BSD 3-Clause)
+   File: LICENSE
+   Copyright (c) 2023, Deutsches Forschungszentrum für Künstliche
+   Intelligenz GmbH (DFKI) — original Lukats et al. benchmark code.
+
+   Applies to: detectors/d3.py, detectors/bndm.py, detectors/csddm.py,
+   detectors/ibdd.py, detectors/ocdd.py, detectors/spll.py,
+   detectors/udetect.py, detectors/base.py, detectors/edfs.py,
+   detectors/ks.py, detectors/nndvi.py, detectors/ucdd.py, config.py,
+   main.py, runner.py, eval/, datasets/, metrics/, optimization/,
+   and other files retained from the upstream repository unchanged.
+
+2. EADD CONTRIBUTIONS (PolyForm Noncommercial 1.0.0)
+   File: LICENSE-EADD
+   Copyright (c) 2026 Nusrat Begum.
+
+   Applies to:
+     detectors/eadd.py
+     experiment1_temporal_patterns.py
+     experiment2_realworld_benchmark.py
+     experiment3_explainability.py
+     experiment4_false_alarms.py
+     experiment5_multidetector_synthetic.py
+     experiment6_multidetector_realworld.py
+     experiment7_explainability_deep_dive.py
+     experiment_camera_ready.py
+     demo.py
+     demo_eadd.py
+     EADD_Thesis_Experiments.ipynb
+
+   The PolyForm Noncommercial 1.0.0 license restricts these files to
+   NONCOMMERCIAL use only. Commercial use, redistribution, or derivative
+   works require explicit written permission from Nusrat Begum.
+
+If you use the EADD-licensed files in research, cite:
+
+  Begum, N., Yamchote, P., Amornbunchornvej, C., Noraset, T.,
+  "Enhanced Adversarial Drift Detection for MLOps Feature Monitoring,"
+  Proc. 23rd International Joint Conference on Computer Science and
+  Software Engineering (JCSSE), Bangkok, Thailand, June 2026.
+
+Contact for commercial licensing: nusrat.beg@student.mahidol.ac.th
