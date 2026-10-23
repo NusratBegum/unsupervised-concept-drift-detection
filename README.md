@@ -1,169 +1,58 @@
-# Explainable Adversarial Drift Detection (EADD)
+# Enhanced Adversarial Drift Detection (EADD)
 
-> **Thesis**: *Feature Drift Detection via Adversarial Validation*
-> **Author**: Nusrat Begum — Mahidol University, ICT, 2026
-> **Built on**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection) benchmark by [Lukats et al. (2024)](https://link.springer.com/article/10.1007/s41060-024-00620-y)
-
----
-
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Key Results](#key-results)
-3. [What is Feature Drift?](#what-is-feature-drift)
-4. [How EADD Works](#how-eadd-works)
-5. [Project Structure](#project-structure)
-6. [Installation](#installation)
-7. [Running the Experiments](#running-the-experiments)
-8. [Experiment Details](#experiment-details)
-9. [Hypothesis Testing](#hypothesis-testing)
-10. [Benchmark Detectors](#benchmark-detectors)
-11. [Datasets](#datasets)
-12. [Modifications from Original Repo](#modifications-from-original-repo)
-13. [References](#references)
+> **Thesis**: Master's thesis, Faculty of ICT, Mahidol University, 2026 (LaTeX source: [Nusrat-Thesis-Mahidol-University](https://github.com/NusratBegum/Nusrat-Thesis-Mahidol-University))
+> **Author**: Nusrat Begum
+> **Built on**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection), the benchmark of [Lukats et al. (2024)](https://link.springer.com/article/10.1007/s41060-024-00620-y)
 
 ---
 
 ## Overview
 
-**EADD (Explainable Adversarial Drift Detection)** is a novel framework for unsupervised feature drift detection that extends adversarial validation with:
+EADD is an integrated framework for unsupervised feature drift detection. It combines:
 
-1. **LightGBM** as the adversarial classifier (non-linear, captures feature interactions)
-2. **Permutation testing** for statistically principled threshold calibration (p < 0.01)
-3. **SHAP-based root cause analysis** that identifies *which* features drifted
-4. **Automated prescriptions** that recommend remediation actions
+1. A **LightGBM classifier two-sample test** (C2ST) on a reference and a current window
+2. A **reservoir-sampled reference window** that summarises all data since the last confirmed drift
+3. **Prediction entropy monitoring** ($H_{pred}$) of the discriminator's outputs
+4. An **adaptive sequential permutation test (ASPT)** that confirms a clear drift after 20 of 199 permutations
+5. A **TreeSHAP ranking** of the features behind each confirmed drift (reported, not evaluated in the thesis)
 
-Unlike existing detectors (e.g., D3) that only signal *that* drift occurred, EADD transforms drift detection from a binary alarm into an **intelligent diagnostic tool** — answering both *"Is there drift?"* and *"What caused it?"*.
-
-### The Problem EADD Solves
-
-| Existing Detectors | EADD |
-|---|---|
-| "Drift detected" (binary alarm) | "Drift detected: **Feature Age** (45%), **Income** (25%)" |
-| No guidance on response | "Prescription: Univariate drift on Age — investigate data pipeline" |
-| Fixed thresholds causing false alarms | Permutation test provides statistical validation (p < 0.01) |
-| Linear classifiers miss interactions | LightGBM captures non-linear multivariate shifts |
+The thesis compares EADD with seven unsupervised detectors and runs an ablation with D3 using a LightGBM classifier to find which design choice causes the differences.
 
 ---
 
-## Key Results
+## Key Results (thesis, Chapter 4)
 
-Results from our four experiments (synthetic + 13 real-world datasets):
+**Experiment 1, synthetic drift (8 detectors):** EADD is the only detector that detects all four drift types (abrupt, gradual, incremental, recurring) with zero false alarms. D3 and SPLL miss gradual and incremental drift.
 
-### Experiment 1: Temporal Drift Pattern Sensitivity
+**Experiment 2, 13 real-world streams (3 seeds, matched windows):**
 
-| Drift Type | EADD Delay | D3 Delay | EADD Success | D3 Success |
+| Dataset | MTD EADD | MTD D3 | Recall EADD | Recall D3 |
 |---|---|---|---|---|
-| **Abrupt** | 129 | 122 | **100%** | 100% |
-| **Gradual** | 1,309 | -- | **100%** | **0%** |
-| **Incremental** | 1,349 | -- | **100%** | **0%** |
-| **Recurring** | 146 | 221 | **100%** | 100% |
+| InsectsAbrupt | **124** | 166 | 0.60 | 0.73 |
+| InsectsGradual | -- | -- | 0.00 | 0.00 |
+| InsectsIncrAbrupt | **50** | 126 | 1.00 | 1.00 |
+| InsectsIncrRecur | **84** | 256 | 0.83 | 1.00 |
 
-EADD detects **all 4 drift types** (100%), D3 only detects 2/4 (misses gradual and incremental).
+**Experiment 3, stable streams:** EADD raises no false alarms; D3 with small windows (100/50) raises up to 87.4 on autocorrelated data.
 
-### Experiment 3: Explainability (SHAP Attribution)
+**Experiment 4, ablation:**
+- D3 with LightGBM behaves like D3 (misses gradual and incremental drift), so the classifier is not EADD's advantage.
+- D3's false alarms disappear with EADD's window sizes (500/200).
+- The long-memory reference window is what lets EADD detect slow drift.
+- At the default threshold (AUC 0.7), ASPT confirmed every alarm it tested; it halves false alarms only when the threshold is lowered to 0.5.
 
-| Scenario | Target | EADD Top Feature | SHAP % | Prescription |
-|---|---|---|---|---|
-| Univariate | F3 | **F3** | 49.7% | Correct |
-| Subset | F2, F5, F7 | **F5** (22.3%) | 75% combined | Correct |
-| Multivariate | All features | Distributed | Max 14.1% | Correct |
-
-SHAP correctly identifies the drifting features in **all 3 scenarios**.
-
-### Experiment 4: False Alarm Robustness
-
-| Stream Type | EADD | D3 (t=0.6) | D3 (t=0.7) | D3 (t=0.8) |
-|---|---|---|---|---|
-| Gaussian (i.i.d.) | **0** | 10.4 | 0 | 0 |
-| Autocorrelated | **0** | 87.4 | 54.6 | 13.8 |
-| Heteroscedastic | **0** | 10.4 | 0 | 0 |
-| Correlated | **0** | 10.0 | 0 | 0 |
-
-EADD produces **zero false alarms** across all stable stream types.
-
-### Hypothesis Testing Summary
-
-| Hypothesis | Test | Result | p-value |
-|---|---|---|---|
-| H1a: EADD detects more drift types | Binomial | 4/4 vs 2/4 | 0.69 |
-| H2: EADD FA < D3(t=0.6) FA | Mann-Whitney U | **Supported** | **0.0101** |
-| H3: SHAP correct attribution | Qualitative | **3/3 correct** | -- |
-
----
-
-## What is Feature Drift?
-
-In machine learning, **feature drift** (also called covariate shift or virtual concept drift) occurs when the distribution of input features P(X) changes over time, while the relationship between inputs and outputs P(y|X) may or may not change.
-
-| Type | Definition | What Changes | Requires Labels? |
-|------|-----------|--------------|------------------|
-| **Feature Drift** | P(X) changes | Input feature distributions | No (unsupervised) |
-| **Concept Drift** | P(y\|X) changes | Input-output relationship | Yes (supervised) |
-
-### Why Does It Matter?
-
-If left undetected, drift makes ML models unreliable. EADD enables:
-- **Early warning** before performance degrades (no labels needed)
-- **Root cause diagnosis** -- which features drifted and by how much
-- **Targeted remediation** -- fix the pipeline, not blindly retrain
-
-### Temporal Drift Patterns
-
-| Pattern | Description | EADD Detection |
-|---------|-------------|----------------|
-| **Abrupt** | Sudden distribution change | Fast (129 samples) |
-| **Gradual** | Old/new distributions intermixed during transition | Detected (1,309 samples) |
-| **Incremental** | Slow continuous change over time | Detected (1,349 samples) |
-| **Recurring** | Periodic distribution oscillation | Fast (146 samples) |
+**Hypotheses:** H1a supported (sign test p = 0.001); H1b not supported (D3 faster where both detect, Wilcoxon p = 0.020); H2 supported at D3 threshold 0.6 (exact Mann-Whitney p = 0.014), explained by window size.
 
 ---
 
 ## How EADD Works
 
-### Pipeline Overview
-
 ```
-Data Stream --> Step 1: Windowing (Reservoir Sampling)
-            --> Step 2: Adversarial Validation (LightGBM AUC)
-            --> Step 3: Permutation Test (p < 0.01)
-            --> Step 4: SHAP Feature Attribution + Prescription
+Data stream --> Step 1: reservoir-sampled W_ref (500), sliding W_cur (200)
+            --> Step 2: LightGBM C2ST, 5-fold CV AUC and H_pred (every 50 samples)
+            --> AUC > 0.7 ? --> Step 3: ASPT (B_max = 199, B_min = 10, alpha = 0.05)
+            --> p < alpha ? --> Step 4: TreeSHAP feature ranking, reset W_ref
 ```
-
-### Step 1: Adaptive Reference Windowing
-- **Reference window** (W_ref = 500 samples): maintained via **reservoir sampling** to capture global distribution
-- **Current window** (W_cur = 200 samples): sliding window of most recent data
-- After confirmed drift: reference resets to current data
-
-### Step 2: Adversarial Validation
-- Label reference as class 0, current as class 1
-- Train **LightGBM** classifier (5-fold stratified CV)
-- Compute **AUC-ROC** -- if AUC > 0.7, drift is suspected
-
-### Step 3: Permutation Test
-- Shuffle labels 50x, retrain each time, build null AUC distribution
-- p-value = #(AUC_perm >= AUC_actual) / B
-- Drift confirmed **only if p < 0.01** (99% confidence)
-
-### Step 4: SHAP Feature Attribution (Novel)
-- Apply TreeSHAP to the adversarial classifier
-- Rank features by mean |SHAP| as importance percentages
-- **Automated prescription** based on distribution pattern:
-  - **Univariate**: single feature > 50% --> investigate that data source
-  - **Subset**: 2-5 features > 70% combined --> check shared pipeline
-  - **Multivariate**: no feature > 30% --> full model retraining needed
-
-### Example Output
-
-```
-DRIFT DETECTED (AUC = 0.85, p < 0.01)
-Drift Diagnosis (SHAP):
-  1. Feature Age: 45.2% contribution
-  2. Feature Income: 24.8% contribution
-Prescription: "Correlated feature-subset drift. Investigate common data source."
-```
-
-Compare to D3: `DRIFT DETECTED (AUC = 0.82)` -- no explanation.
 
 ---
 
@@ -172,24 +61,24 @@ Compare to D3: `DRIFT DETECTED (AUC = 0.82)` -- no explanation.
 ```
 unsupervised-concept-drift-detection/
 |-- detectors/
-|   |-- eadd.py                  # EADD detector (OUR CONTRIBUTION)
-|   |-- d3.py                    # D3 baseline (Gozuacik et al., 2019)
-|   |-- base.py                  # Abstract base class
-|   +-- ...                      # Other benchmark detectors
-|-- experiment1_temporal_patterns.py   # Exp 1: 4 drift types
-|-- experiment2_realworld_benchmark.py # Exp 2: 13 real-world datasets
-|-- experiment3_explainability.py      # Exp 3: SHAP attribution
-|-- experiment4_false_alarms.py        # Exp 4: False alarm robustness
-|-- run_all_experiments.py             # Master runner + hypothesis tests
-|-- EADD_Thesis_Experiments.ipynb      # Interactive notebook
-|-- datasets/                   # Dataset loaders + CSV files
-|-- metrics/                    # Detection performance metrics
-|-- optimization/               # Experiment infrastructure
-|-- eval/                       # Result analysis and plotting
-|-- experiments/                # Output: results/ and figures/
-|-- results/                    # Lukats benchmark raw results
-+-- requirements.txt
+|   |-- eadd.py                          # EADD detector
+|   |-- d3_lightgbm.py                   # D3 with a LightGBM classifier (ablation)
+|   |-- d3.py                            # D3 baseline (Gozuacik et al., 2019)
+|   +-- ...                              # Other benchmark detectors
+|-- experiment5_multidetector_synthetic.py   # Thesis Exp 1: 8 detectors, synthetic drift
+|-- experiment_realworld_ablation.py         # Thesis Exp 2 and 4: 13 real-world streams, 3 seeds
+|-- experiment6_multidetector_realworld.py   # Thesis Exp 2: supplementary 8-detector run
+|-- experiment4_false_alarms.py              # Thesis Exp 3: stable streams
+|-- experiment_d3_lightgbm.py                # Thesis Exp 4: synthetic ablation
+|-- experiment_aspt_threshold.py             # Thesis Exp 4: AUC threshold study
+|-- experiment_camera_ready.py               # JCSSE camera-ready runs
+|-- EADD_Thesis_Experiments.ipynb            # Notebook (earlier Exp 2 run)
+|-- test/detectors/                          # Unit tests, incl. test_eadd.py, test_d3_lightgbm.py
+|-- datasets/                                # Dataset loaders (CSV files not in git)
++-- experiments/                             # results_*/ CSVs and figures
 ```
+
+`experiment1_temporal_patterns.py`, `experiment3_explainability.py` and `experiment7_explainability_deep_dive.py` belong to earlier versions of the work and are not used in the final thesis.
 
 ---
 
@@ -200,72 +89,23 @@ git clone https://github.com/NusratBegum/unsupervised-concept-drift-detection.gi
 cd unsupervised-concept-drift-detection
 python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
-```
-
-Verify:
-
-```bash
-python -c "from detectors.eadd import ExplainableAdversarialDriftDetector; print('OK')"
-python -m unittest discover -s test -t .   # 105 tests should pass
+python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.py
 ```
 
 ---
 
-## Running the Experiments
+## Running the Thesis Experiments
 
-| Command | Description | Time |
-|---------|-------------|------|
-| `python _run_tests.py` | Quick smoke test (Exp 1, 3, 4) | ~25 min |
-| `python run_all_experiments.py --all` | Full suite + analysis | ~60 min |
-| `python experiment1_temporal_patterns.py` | Temporal patterns only | ~15 min |
-| `python experiment3_explainability.py` | SHAP explainability only | ~3 min |
-| `python experiment4_false_alarms.py` | False alarm test only | ~8 min |
-| `python run_all_experiments.py --analyze` | Hypothesis tests + plots (from existing CSVs) | ~10 sec |
+| Command | Thesis | Output |
+|---|---|---|
+| `python experiment5_multidetector_synthetic.py` | Exp 1 | `experiments/results/experiment5_multidetector_synthetic.csv` |
+| `python experiment_realworld_ablation.py` | Exp 2, Exp 4 (real-world) | `experiments/results_realworld_ablation/` |
+| `python experiment6_multidetector_realworld.py` | Exp 2 (supplementary) | `experiments/results/experiment6_multidetector_realworld.csv` |
+| `python experiment4_false_alarms.py` | Exp 3 | `experiments/results/experiment4_false_alarms.csv` |
+| `python experiment_d3_lightgbm.py` | Exp 4 (synthetic) | `experiments/results_d3_lightgbm/` |
+| `python experiment_aspt_threshold.py` | Exp 4 (threshold) | `experiments/results_aspt_threshold/` |
 
-### Output Files
-
-| File | Description |
-|------|-------------|
-| `experiments/results/experiment1_temporal_patterns.csv` | Delay, success rate, false alarms per drift type |
-| `experiments/results/experiment3_explainability.csv` | SHAP attribution accuracy per scenario |
-| `experiments/results/experiment4_false_alarms.csv` | False alarm counts per stream type |
-| `experiments/results/hypothesis_tests.csv` | Statistical test results |
-| `experiments/figures/summary_comparison.png` | 4-panel comparison figure |
-| `experiments/figures/latex_tables.tex` | Publication-ready LaTeX tables |
-
----
-
-## Experiment Details
-
-### Experiment 1: Sensitivity to Temporal Drift Patterns
-
-**Setup**: Synthetic streams of 10,000 samples x 5 features, drift at t=5,000. 5 runs per type. Config: n_ref=500, n_cur=200, n_perm=50, alpha=0.01, freq=50.
-
-**Key Finding**: EADD detects all 4 types (100% success), D3 misses gradual and incremental entirely. Both have zero false alarms.
-
-### Experiment 3: Explainability Case Study
-
-**Setup**: 10,000 samples x 10 features with controlled drift at t=5,000. Three scenarios: univariate (F3 only), subset (F2, F5, F7), multivariate (all features).
-
-**Key Finding**: SHAP correctly identifies drift sources in all 3 scenarios. Prescription system correctly categorizes each drift pattern.
-
-### Experiment 4: False Alarm Robustness
-
-**Setup**: 10,000 samples x 5 features, 4 stable stream types (Gaussian, autocorrelated, heteroscedastic, correlated), 5 runs each.
-
-**Key Finding**: EADD: zero false alarms across all streams. D3(t=0.6): 87.4 false alarms on autocorrelated data. The permutation test correctly identifies temporal correlations as stationary noise.
-
----
-
-## Hypothesis Testing
-
-| Hypothesis | Test | Statistic | p-value | Decision |
-|---|---|---|---|---|
-| H1a: EADD detects more types | Binomial | 2 / 4 | 0.69 | Directional support |
-| H1b: EADD delay <= D3 | Mann-Whitney U | -- | 0.67 | No significant diff |
-| H2: EADD FA < D3(t=0.7) | Mann-Whitney U | 6.0 | 0.23 | Not significant |
-| H2: EADD FA < D3(t=0.6) | Mann-Whitney U | 0.0 | **0.0101** | **Supported** |
-| H3: SHAP attribution | Qualitative | 3/3 | -- | **All correct** |
+Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets).
 
 ---
 
@@ -294,7 +134,7 @@ python -m unittest discover -s test -t .   # 105 tests should pass
 |---------|---------|----------|-------------|
 | INSECTS Abrupt Balanced | 52,848 | 33 | Yes |
 | INSECTS Gradual Balanced | 24,150 | 33 | Yes |
-| INSECTS Incremental Balanced | 57,018 | 33 | Yes |
+| INSECTS Incremental Balanced | 57,018 | 33 | No |
 | INSECTS Incr-Abrupt | 79,986 | 33 | Yes |
 | INSECTS Incr-Reoccurring | 79,986 | 33 | Yes |
 | Electricity | 45,312 | 8 | No |
@@ -303,8 +143,8 @@ python -m unittest discover -s test -t .   # 105 tests should pass
 | Ozone | 2,534 | 72 | No |
 | Poker Hand | 829,201 | 10 | No |
 | Powersupply | 29,928 | 2 | No |
-| Rialto Bridge | varies | 27 | No |
-| Luxembourg | varies | 31 | No |
+| Rialto Bridge | 82,250 | 27 | No |
+| Luxembourg | 1,900 | 31 | No |
 
 Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepository), copy to `datasets/files/`, then `python add_headers.py`.
 
@@ -317,6 +157,9 @@ Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepo
 | File | Purpose |
 |------|---------|
 | `detectors/eadd.py` | **EADD detector** -- core thesis contribution |
+| `detectors/d3_lightgbm.py` | D3 with a LightGBM classifier (ablation) |
+| `experiment_d3_lightgbm.py`, `experiment_realworld_ablation.py`, `experiment_aspt_threshold.py` | Thesis ablation and threshold experiments |
+| `test/detectors/test_eadd.py`, `test/detectors/test_d3_lightgbm.py` | Unit tests for EADD/ASPT and D3-LightGBM |
 | `experiment1_temporal_patterns.py` | Experiment 1: temporal drift patterns |
 | `experiment2_realworld_benchmark.py` | Experiment 2: real-world benchmark |
 | `experiment3_explainability.py` | Experiment 3: SHAP explainability |
@@ -355,7 +198,7 @@ Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepo
 
 ## License
 
-**This repository is dual-licensed — see [NOTICE](NOTICE) for the full file-by-file breakdown.**
+**This repository is dual-licensed. See [NOTICE](NOTICE) for the full file-by-file breakdown.**
 
 | Scope | License | File |
 |---|---|---|

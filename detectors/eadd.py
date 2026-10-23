@@ -2,10 +2,12 @@
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0
 # See LICENSE-EADD for full terms. Noncommercial use only.
 """
-Explainable Adversarial Drift Detection (EADD)
-================================================
-A novel framework that extends the classifier two-sample test (C2ST)
-[Lopez-Paz & Oquab, 2017] with explainability and adaptive testing:
+Enhanced Adversarial Drift Detection (EADD)
+============================================
+A framework that extends the classifier two-sample test (C2ST)
+[Lopez-Paz & Oquab, 2017] with feature attribution and adaptive testing.
+Items 3 and 5 (interaction values, DSI) were used in the JCSSE 2026 paper;
+the final thesis reports the TreeSHAP ranking but not the DSI.
 
   1. LightGBM [Ke et al., 2017] as the discriminative classifier for
      the C2ST, replacing logistic regression with a non-linear model.
