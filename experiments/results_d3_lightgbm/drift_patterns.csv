@@ -1,0 +1,121 @@
+drift_type,seed,detector,n_detections,mtd,mdr,false_alarms,time_s
+Abrupt,42,EADD,1,149.0,0.0,0.0,4.618
+Abrupt,42,EADD-NoASPT,1,149.0,0.0,0.0,4.364
+Abrupt,42,D3,1,98.0,0.0,0.0,0.107
+Abrupt,42,D3-LightGBM,1,98.0,0.0,0.0,0.364
+Abrupt,42,D3-LightGBM matched,1,210.0,0.0,0.0,0.323
+Abrupt,42,EADD-NoASPT fixed-ref,1,99.0,0.0,0.0,4.451
+Abrupt,142,EADD,1,149.0,0.0,0.0,4.695
+Abrupt,142,EADD-NoASPT,1,149.0,0.0,0.0,4.402
+Abrupt,142,D3,1,98.0,0.0,0.0,0.095
+Abrupt,142,D3-LightGBM,1,98.0,0.0,0.0,0.339
+Abrupt,142,D3-LightGBM matched,1,210.0,0.0,0.0,0.325
+Abrupt,142,EADD-NoASPT fixed-ref,1,99.0,0.0,0.0,4.467
+Abrupt,242,EADD,1,149.0,0.0,0.0,4.754
+Abrupt,242,EADD-NoASPT,1,149.0,0.0,0.0,4.364
+Abrupt,242,D3,1,98.0,0.0,0.0,0.095
+Abrupt,242,D3-LightGBM,1,98.0,0.0,0.0,0.351
+Abrupt,242,D3-LightGBM matched,1,210.0,0.0,0.0,0.315
+Abrupt,242,EADD-NoASPT fixed-ref,1,99.0,0.0,0.0,4.483
+Abrupt,342,EADD,1,149.0,0.0,0.0,4.864
+Abrupt,342,EADD-NoASPT,1,149.0,0.0,0.0,4.561
+Abrupt,342,D3,1,98.0,0.0,0.0,0.097
+Abrupt,342,D3-LightGBM,1,98.0,0.0,0.0,0.373
+Abrupt,342,D3-LightGBM matched,1,210.0,0.0,0.0,0.325
+Abrupt,342,EADD-NoASPT fixed-ref,1,149.0,0.0,0.0,4.648
+Abrupt,442,EADD,1,99.0,0.0,0.0,4.918
+Abrupt,442,EADD-NoASPT,1,99.0,0.0,0.0,4.587
+Abrupt,442,D3,1,98.0,0.0,0.0,0.098
+Abrupt,442,D3-LightGBM,1,98.0,0.0,0.0,0.374
+Abrupt,442,D3-LightGBM matched,1,210.0,0.0,0.0,0.338
+Abrupt,442,EADD-NoASPT fixed-ref,1,99.0,0.0,0.0,4.576
+Gradual,42,EADD,1,699.0,0.0,0.0,4.891
+Gradual,42,EADD-NoASPT,1,699.0,0.0,0.0,4.553
+Gradual,42,D3,0,,1.0,,0.11
+Gradual,42,D3-LightGBM,0,,1.0,,0.378
+Gradual,42,D3-LightGBM matched,0,,1.0,,0.36
+Gradual,42,EADD-NoASPT fixed-ref,2,499.0,0.0,1.0,4.395
+Gradual,142,EADD,1,649.0,0.0,0.0,5.017
+Gradual,142,EADD-NoASPT,1,649.0,0.0,0.0,4.671
+Gradual,142,D3,0,,1.0,,0.103
+Gradual,142,D3-LightGBM,0,,1.0,,0.392
+Gradual,142,D3-LightGBM matched,0,,1.0,,0.429
+Gradual,142,EADD-NoASPT fixed-ref,2,549.0,0.0,1.0,4.364
+Gradual,242,EADD,1,749.0,0.0,0.0,5.115
+Gradual,242,EADD-NoASPT,1,749.0,0.0,0.0,4.724
+Gradual,242,D3,0,,1.0,,0.101
+Gradual,242,D3-LightGBM,0,,1.0,,0.391
+Gradual,242,D3-LightGBM matched,0,,1.0,,0.366
+Gradual,242,EADD-NoASPT fixed-ref,2,549.0,0.0,1.0,4.321
+Gradual,342,EADD,1,649.0,0.0,0.0,4.981
+Gradual,342,EADD-NoASPT,1,649.0,0.0,0.0,4.721
+Gradual,342,D3,0,,1.0,,0.106
+Gradual,342,D3-LightGBM,0,,1.0,,0.391
+Gradual,342,D3-LightGBM matched,0,,1.0,,0.362
+Gradual,342,EADD-NoASPT fixed-ref,2,549.0,0.0,1.0,4.408
+Gradual,442,EADD,1,749.0,0.0,0.0,5.003
+Gradual,442,EADD-NoASPT,1,749.0,0.0,0.0,4.662
+Gradual,442,D3,0,,1.0,,0.097
+Gradual,442,D3-LightGBM,0,,1.0,,0.394
+Gradual,442,D3-LightGBM matched,0,,1.0,,0.396
+Gradual,442,EADD-NoASPT fixed-ref,2,599.0,0.0,1.0,4.332
+Incremental,42,EADD,1,849.0,0.0,0.0,5.1
+Incremental,42,EADD-NoASPT,1,849.0,0.0,0.0,4.735
+Incremental,42,D3,0,,1.0,,0.096
+Incremental,42,D3-LightGBM,0,,1.0,,0.407
+Incremental,42,D3-LightGBM matched,1,1411.0,0.0,0.0,0.334
+Incremental,42,EADD-NoASPT fixed-ref,3,599.0,0.0,2.0,4.009
+Incremental,142,EADD,1,849.0,0.0,0.0,4.979
+Incremental,142,EADD-NoASPT,1,849.0,0.0,0.0,4.75
+Incremental,142,D3,0,,1.0,,0.108
+Incremental,142,D3-LightGBM,0,,1.0,,0.411
+Incremental,142,D3-LightGBM matched,0,,1.0,,0.392
+Incremental,142,EADD-NoASPT fixed-ref,3,649.0,0.0,2.0,3.951
+Incremental,242,EADD,1,899.0,0.0,0.0,5.22
+Incremental,242,EADD-NoASPT,1,899.0,0.0,0.0,4.851
+Incremental,242,D3,0,,1.0,,0.11
+Incremental,242,D3-LightGBM,0,,1.0,,0.392
+Incremental,242,D3-LightGBM matched,0,,1.0,,0.386
+Incremental,242,EADD-NoASPT fixed-ref,3,549.0,0.0,2.0,4.121
+Incremental,342,EADD,1,849.0,0.0,0.0,5.276
+Incremental,342,EADD-NoASPT,2,849.0,0.0,1.0,4.554
+Incremental,342,D3,0,,1.0,,0.12
+Incremental,342,D3-LightGBM,0,,1.0,,0.399
+Incremental,342,D3-LightGBM matched,0,,1.0,,0.388
+Incremental,342,EADD-NoASPT fixed-ref,3,549.0,0.0,2.0,4.143
+Incremental,442,EADD,1,849.0,0.0,0.0,5.209
+Incremental,442,EADD-NoASPT,1,849.0,0.0,0.0,4.865
+Incremental,442,D3,0,,1.0,,0.111
+Incremental,442,D3-LightGBM,0,,1.0,,0.427
+Incremental,442,D3-LightGBM matched,0,,1.0,,0.393
+Incremental,442,EADD-NoASPT fixed-ref,3,599.0,0.0,2.0,4.054
+Recurring,42,EADD,3,149.0,0.0,0.0,5.064
+Recurring,42,EADD-NoASPT,3,149.0,0.0,0.0,4.027
+Recurring,42,D3,3,157.0,0.0,0.0,0.099
+Recurring,42,D3-LightGBM,3,116.66666666666667,0.0,0.0,0.368
+Recurring,42,D3-LightGBM matched,3,175.0,0.0,0.0,0.301
+Recurring,42,EADD-NoASPT fixed-ref,3,132.33333333333334,0.0,0.0,4.047
+Recurring,142,EADD,3,149.0,0.0,0.0,5.029
+Recurring,142,EADD-NoASPT,3,149.0,0.0,0.0,4.184
+Recurring,142,D3,3,116.66666666666667,0.0,0.0,0.091
+Recurring,142,D3-LightGBM,3,116.66666666666667,0.0,0.0,0.368
+Recurring,142,D3-LightGBM matched,3,175.0,0.0,0.0,0.316
+Recurring,142,EADD-NoASPT fixed-ref,3,132.33333333333334,0.0,0.0,4.094
+Recurring,242,EADD,3,149.0,0.0,0.0,5.135
+Recurring,242,EADD-NoASPT,3,149.0,0.0,0.0,4.051
+Recurring,242,D3,3,116.66666666666667,0.0,0.0,0.111
+Recurring,242,D3-LightGBM,3,116.66666666666667,0.0,0.0,0.377
+Recurring,242,D3-LightGBM matched,3,175.0,0.0,0.0,0.28
+Recurring,242,EADD-NoASPT fixed-ref,3,132.33333333333334,0.0,0.0,4.048
+Recurring,342,EADD,3,149.0,0.0,0.0,4.738
+Recurring,342,EADD-NoASPT,3,149.0,0.0,0.0,3.817
+Recurring,342,D3,3,116.66666666666667,0.0,0.0,0.109
+Recurring,342,D3-LightGBM,3,116.66666666666667,0.0,0.0,0.381
+Recurring,342,D3-LightGBM matched,3,175.0,0.0,0.0,0.296
+Recurring,342,EADD-NoASPT fixed-ref,3,132.33333333333334,0.0,0.0,3.697
+Recurring,442,EADD,3,149.0,0.0,0.0,4.351
+Recurring,442,EADD-NoASPT,3,149.0,0.0,0.0,3.543
+Recurring,442,D3,3,157.0,0.0,0.0,0.1
+Recurring,442,D3-LightGBM,3,116.66666666666667,0.0,0.0,0.386
+Recurring,442,D3-LightGBM matched,3,175.0,0.0,0.0,0.305
+Recurring,442,EADD-NoASPT fixed-ref,3,132.33333333333334,0.0,0.0,3.463

@@ -1,0 +1,201 @@
+stream,run,detector,false_alarms,time_s
+Gaussian (i.i.d.),0,EADD,0,11.298
+Gaussian (i.i.d.),0,EADD-NoASPT,0,11.336
+Gaussian (i.i.d.),0,D3 small tau=0.6,6,0.44
+Gaussian (i.i.d.),0,D3 small tau=0.7,0,0.467
+Gaussian (i.i.d.),0,D3 small tau=0.8,0,0.466
+Gaussian (i.i.d.),0,D3 matched tau=0.7,0,0.15
+Gaussian (i.i.d.),0,D3-LightGBM small tau=0.6,13,1.148
+Gaussian (i.i.d.),0,D3-LightGBM small tau=0.7,0,1.221
+Gaussian (i.i.d.),0,D3-LightGBM small tau=0.8,0,1.221
+Gaussian (i.i.d.),0,D3-LightGBM matched tau=0.7,0,0.845
+Gaussian (i.i.d.),1,EADD,0,11.314
+Gaussian (i.i.d.),1,EADD-NoASPT,0,11.326
+Gaussian (i.i.d.),1,D3 small tau=0.6,11,0.427
+Gaussian (i.i.d.),1,D3 small tau=0.7,0,0.469
+Gaussian (i.i.d.),1,D3 small tau=0.8,0,0.454
+Gaussian (i.i.d.),1,D3 matched tau=0.7,0,0.145
+Gaussian (i.i.d.),1,D3-LightGBM small tau=0.6,16,1.13
+Gaussian (i.i.d.),1,D3-LightGBM small tau=0.7,0,1.213
+Gaussian (i.i.d.),1,D3-LightGBM small tau=0.8,0,1.225
+Gaussian (i.i.d.),1,D3-LightGBM matched tau=0.7,0,0.836
+Gaussian (i.i.d.),2,EADD,0,11.422
+Gaussian (i.i.d.),2,EADD-NoASPT,0,11.321
+Gaussian (i.i.d.),2,D3 small tau=0.6,10,0.434
+Gaussian (i.i.d.),2,D3 small tau=0.7,0,0.453
+Gaussian (i.i.d.),2,D3 small tau=0.8,0,0.47
+Gaussian (i.i.d.),2,D3 matched tau=0.7,0,0.158
+Gaussian (i.i.d.),2,D3-LightGBM small tau=0.6,7,1.187
+Gaussian (i.i.d.),2,D3-LightGBM small tau=0.7,0,1.223
+Gaussian (i.i.d.),2,D3-LightGBM small tau=0.8,0,1.228
+Gaussian (i.i.d.),2,D3-LightGBM matched tau=0.7,0,0.828
+Gaussian (i.i.d.),3,EADD,0,11.412
+Gaussian (i.i.d.),3,EADD-NoASPT,0,11.533
+Gaussian (i.i.d.),3,D3 small tau=0.6,9,0.448
+Gaussian (i.i.d.),3,D3 small tau=0.7,0,0.472
+Gaussian (i.i.d.),3,D3 small tau=0.8,0,0.476
+Gaussian (i.i.d.),3,D3 matched tau=0.7,0,0.153
+Gaussian (i.i.d.),3,D3-LightGBM small tau=0.6,16,1.122
+Gaussian (i.i.d.),3,D3-LightGBM small tau=0.7,0,1.258
+Gaussian (i.i.d.),3,D3-LightGBM small tau=0.8,0,1.267
+Gaussian (i.i.d.),3,D3-LightGBM matched tau=0.7,0,0.853
+Gaussian (i.i.d.),4,EADD,0,11.474
+Gaussian (i.i.d.),4,EADD-NoASPT,0,11.482
+Gaussian (i.i.d.),4,D3 small tau=0.6,16,0.464
+Gaussian (i.i.d.),4,D3 small tau=0.7,0,0.499
+Gaussian (i.i.d.),4,D3 small tau=0.8,0,0.475
+Gaussian (i.i.d.),4,D3 matched tau=0.7,0,0.16
+Gaussian (i.i.d.),4,D3-LightGBM small tau=0.6,9,1.219
+Gaussian (i.i.d.),4,D3-LightGBM small tau=0.7,0,1.221
+Gaussian (i.i.d.),4,D3-LightGBM small tau=0.8,0,1.244
+Gaussian (i.i.d.),4,D3-LightGBM matched tau=0.7,0,0.849
+Autocorrelated,0,EADD,0,11.453
+Autocorrelated,0,EADD-NoASPT,0,11.447
+Autocorrelated,0,D3 small tau=0.6,90,0.297
+Autocorrelated,0,D3 small tau=0.7,51,0.35
+Autocorrelated,0,D3 small tau=0.8,13,0.455
+Autocorrelated,0,D3 matched tau=0.7,0,0.162
+Autocorrelated,0,D3-LightGBM small tau=0.6,87,0.728
+Autocorrelated,0,D3-LightGBM small tau=0.7,55,0.951
+Autocorrelated,0,D3-LightGBM small tau=0.8,7,1.263
+Autocorrelated,0,D3-LightGBM matched tau=0.7,0,0.835
+Autocorrelated,1,EADD,0,11.39
+Autocorrelated,1,EADD-NoASPT,0,11.474
+Autocorrelated,1,D3 small tau=0.6,88,0.266
+Autocorrelated,1,D3 small tau=0.7,50,0.367
+Autocorrelated,1,D3 small tau=0.8,10,0.441
+Autocorrelated,1,D3 matched tau=0.7,0,0.152
+Autocorrelated,1,D3-LightGBM small tau=0.6,84,0.725
+Autocorrelated,1,D3-LightGBM small tau=0.7,55,0.894
+Autocorrelated,1,D3-LightGBM small tau=0.8,9,1.214
+Autocorrelated,1,D3-LightGBM matched tau=0.7,1,0.797
+Autocorrelated,2,EADD,0,11.514
+Autocorrelated,2,EADD-NoASPT,0,11.441
+Autocorrelated,2,D3 small tau=0.6,87,0.286
+Autocorrelated,2,D3 small tau=0.7,49,0.352
+Autocorrelated,2,D3 small tau=0.8,9,0.448
+Autocorrelated,2,D3 matched tau=0.7,0,0.152
+Autocorrelated,2,D3-LightGBM small tau=0.6,81,0.743
+Autocorrelated,2,D3-LightGBM small tau=0.7,48,0.965
+Autocorrelated,2,D3-LightGBM small tau=0.8,6,1.199
+Autocorrelated,2,D3-LightGBM matched tau=0.7,0,0.841
+Autocorrelated,3,EADD,0,11.713
+Autocorrelated,3,EADD-NoASPT,0,11.77
+Autocorrelated,3,D3 small tau=0.6,85,0.269
+Autocorrelated,3,D3 small tau=0.7,60,0.334
+Autocorrelated,3,D3 small tau=0.8,18,0.439
+Autocorrelated,3,D3 matched tau=0.7,0,0.149
+Autocorrelated,3,D3-LightGBM small tau=0.6,79,0.76
+Autocorrelated,3,D3-LightGBM small tau=0.7,44,0.956
+Autocorrelated,3,D3-LightGBM small tau=0.8,10,1.188
+Autocorrelated,3,D3-LightGBM matched tau=0.7,0,0.831
+Autocorrelated,4,EADD,0,11.828
+Autocorrelated,4,EADD-NoASPT,0,11.862
+Autocorrelated,4,D3 small tau=0.6,87,0.271
+Autocorrelated,4,D3 small tau=0.7,63,0.332
+Autocorrelated,4,D3 small tau=0.8,19,0.44
+Autocorrelated,4,D3 matched tau=0.7,0,0.151
+Autocorrelated,4,D3-LightGBM small tau=0.6,88,0.729
+Autocorrelated,4,D3-LightGBM small tau=0.7,59,0.918
+Autocorrelated,4,D3-LightGBM small tau=0.8,11,1.202
+Autocorrelated,4,D3-LightGBM matched tau=0.7,0,0.865
+Heteroscedastic,0,EADD,0,11.911
+Heteroscedastic,0,EADD-NoASPT,0,11.977
+Heteroscedastic,0,D3 small tau=0.6,6,0.472
+Heteroscedastic,0,D3 small tau=0.7,0,0.493
+Heteroscedastic,0,D3 small tau=0.8,0,0.488
+Heteroscedastic,0,D3 matched tau=0.7,0,0.161
+Heteroscedastic,0,D3-LightGBM small tau=0.6,9,1.237
+Heteroscedastic,0,D3-LightGBM small tau=0.7,0,1.304
+Heteroscedastic,0,D3-LightGBM small tau=0.8,0,1.335
+Heteroscedastic,0,D3-LightGBM matched tau=0.7,0,0.938
+Heteroscedastic,1,EADD,0,11.938
+Heteroscedastic,1,EADD-NoASPT,0,12.054
+Heteroscedastic,1,D3 small tau=0.6,11,0.465
+Heteroscedastic,1,D3 small tau=0.7,0,0.502
+Heteroscedastic,1,D3 small tau=0.8,0,0.501
+Heteroscedastic,1,D3 matched tau=0.7,0,0.167
+Heteroscedastic,1,D3-LightGBM small tau=0.6,15,1.232
+Heteroscedastic,1,D3-LightGBM small tau=0.7,0,1.285
+Heteroscedastic,1,D3-LightGBM small tau=0.8,0,1.284
+Heteroscedastic,1,D3-LightGBM matched tau=0.7,0,0.88
+Heteroscedastic,2,EADD,0,12.218
+Heteroscedastic,2,EADD-NoASPT,0,12.231
+Heteroscedastic,2,D3 small tau=0.6,10,0.469
+Heteroscedastic,2,D3 small tau=0.7,0,0.483
+Heteroscedastic,2,D3 small tau=0.8,0,0.494
+Heteroscedastic,2,D3 matched tau=0.7,0,0.147
+Heteroscedastic,2,D3-LightGBM small tau=0.6,10,1.224
+Heteroscedastic,2,D3-LightGBM small tau=0.7,0,1.278
+Heteroscedastic,2,D3-LightGBM small tau=0.8,0,1.315
+Heteroscedastic,2,D3-LightGBM matched tau=0.7,0,0.869
+Heteroscedastic,3,EADD,0,12.422
+Heteroscedastic,3,EADD-NoASPT,0,12.405
+Heteroscedastic,3,D3 small tau=0.6,9,0.484
+Heteroscedastic,3,D3 small tau=0.7,0,0.499
+Heteroscedastic,3,D3 small tau=0.8,0,0.506
+Heteroscedastic,3,D3 matched tau=0.7,0,0.166
+Heteroscedastic,3,D3-LightGBM small tau=0.6,16,1.238
+Heteroscedastic,3,D3-LightGBM small tau=0.7,0,1.323
+Heteroscedastic,3,D3-LightGBM small tau=0.8,0,1.332
+Heteroscedastic,3,D3-LightGBM matched tau=0.7,0,0.896
+Heteroscedastic,4,EADD,0,12.587
+Heteroscedastic,4,EADD-NoASPT,0,12.603
+Heteroscedastic,4,D3 small tau=0.6,16,0.472
+Heteroscedastic,4,D3 small tau=0.7,0,0.499
+Heteroscedastic,4,D3 small tau=0.8,0,0.498
+Heteroscedastic,4,D3 matched tau=0.7,0,0.165
+Heteroscedastic,4,D3-LightGBM small tau=0.6,9,1.27
+Heteroscedastic,4,D3-LightGBM small tau=0.7,0,1.422
+Heteroscedastic,4,D3-LightGBM small tau=0.8,0,1.34
+Heteroscedastic,4,D3-LightGBM matched tau=0.7,0,0.909
+Correlated,0,EADD,0,12.761
+Correlated,0,EADD-NoASPT,0,12.785
+Correlated,0,D3 small tau=0.6,3,0.516
+Correlated,0,D3 small tau=0.7,0,0.523
+Correlated,0,D3 small tau=0.8,0,0.519
+Correlated,0,D3 matched tau=0.7,0,0.174
+Correlated,0,D3-LightGBM small tau=0.6,15,1.37
+Correlated,0,D3-LightGBM small tau=0.7,0,1.413
+Correlated,0,D3-LightGBM small tau=0.8,0,1.397
+Correlated,0,D3-LightGBM matched tau=0.7,0,0.915
+Correlated,1,EADD,0,12.935
+Correlated,1,EADD-NoASPT,0,13.009
+Correlated,1,D3 small tau=0.6,12,0.498
+Correlated,1,D3 small tau=0.7,0,0.528
+Correlated,1,D3 small tau=0.8,0,0.531
+Correlated,1,D3 matched tau=0.7,0,0.176
+Correlated,1,D3-LightGBM small tau=0.6,10,1.321
+Correlated,1,D3-LightGBM small tau=0.7,0,1.395
+Correlated,1,D3-LightGBM small tau=0.8,0,1.485
+Correlated,1,D3-LightGBM matched tau=0.7,0,0.939
+Correlated,2,EADD,0,12.936
+Correlated,2,EADD-NoASPT,0,12.927
+Correlated,2,D3 small tau=0.6,10,0.521
+Correlated,2,D3 small tau=0.7,0,0.542
+Correlated,2,D3 small tau=0.8,0,0.554
+Correlated,2,D3 matched tau=0.7,0,0.184
+Correlated,2,D3-LightGBM small tau=0.6,11,1.354
+Correlated,2,D3-LightGBM small tau=0.7,0,1.426
+Correlated,2,D3-LightGBM small tau=0.8,0,1.43
+Correlated,2,D3-LightGBM matched tau=0.7,0,0.962
+Correlated,3,EADD,0,12.035
+Correlated,3,EADD-NoASPT,0,11.892
+Correlated,3,D3 small tau=0.6,9,0.524
+Correlated,3,D3 small tau=0.7,0,0.552
+Correlated,3,D3 small tau=0.8,0,0.563
+Correlated,3,D3 matched tau=0.7,0,0.177
+Correlated,3,D3-LightGBM small tau=0.6,9,1.396
+Correlated,3,D3-LightGBM small tau=0.7,0,1.438
+Correlated,3,D3-LightGBM small tau=0.8,0,1.429
+Correlated,3,D3-LightGBM matched tau=0.7,0,0.969
+Correlated,4,EADD,0,10.587
+Correlated,4,EADD-NoASPT,0,10.498
+Correlated,4,D3 small tau=0.6,16,0.501
+Correlated,4,D3 small tau=0.7,0,0.572
+Correlated,4,D3 small tau=0.8,0,0.576
+Correlated,4,D3 matched tau=0.7,0,0.185
+Correlated,4,D3-LightGBM small tau=0.6,9,1.38
+Correlated,4,D3-LightGBM small tau=0.7,0,1.494
+Correlated,4,D3-LightGBM small tau=0.8,0,1.448
+Correlated,4,D3-LightGBM matched tau=0.7,0,0.936

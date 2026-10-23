@@ -1,0 +1,241 @@
+kind,stream,seed,variant,tau,n_detections,time_s,mtd,mdr,false_alarms,checks,aspt_invocations,aspt_rejections,aspt_mean_permutations
+drift,Abrupt,42,EADD,0.5,1,5.92,49.0,0.0,0,78.0,5.0,4.0,15.0
+drift,Abrupt,142,EADD,0.5,1,5.43,99.0,0.0,0,78.0,3.0,2.0,13.333333333333334
+drift,Abrupt,242,EADD,0.5,1,5.37,99.0,0.0,0,78.0,3.0,2.0,13.333333333333334
+drift,Abrupt,342,EADD,0.5,1,5.94,99.0,0.0,0,78.0,3.0,2.0,23.666666666666668
+drift,Abrupt,442,EADD,0.5,1,5.2,49.0,0.0,0,78.0,2.0,1.0,15.0
+drift,Gradual,42,EADD,0.5,1,10.24,449.0,0.0,0,78.0,12.0,11.0,26.666666666666668
+drift,Gradual,142,EADD,0.5,2,11.57,399.0,0.0,1,69.0,14.0,12.0,29.571428571428573
+drift,Gradual,242,EADD,0.5,2,6.19,249.0,0.0,1,69.0,6.0,4.0,19.166666666666668
+drift,Gradual,342,EADD,0.5,2,5.77,399.0,0.0,1,69.0,5.0,3.0,18.8
+drift,Gradual,442,EADD,0.5,2,6.43,349.0,0.0,1,69.0,8.0,6.0,14.125
+drift,Incremental,42,EADD,0.5,2,10.27,599.0,0.0,1,69.0,18.0,16.0,18.27777777777778
+drift,Incremental,142,EADD,0.5,2,13.2,699.0,0.0,1,69.0,10.0,8.0,50.2
+drift,Incremental,242,EADD,0.5,2,11.05,549.0,0.0,1,69.0,11.0,9.0,34.0
+drift,Incremental,342,EADD,0.5,2,9.02,449.0,0.0,1,69.0,20.0,18.0,12.9
+drift,Incremental,442,EADD,0.5,2,8.81,499.0,0.0,1,69.0,4.0,2.0,59.75
+drift,Recurring,42,EADD,0.5,3,5.43,99.0,0.0,0,60.0,4.0,1.0,18.5
+drift,Recurring,142,EADD,0.5,3,8.25,99.0,0.0,0,60.0,3.0,0.0,79.66666666666667
+drift,Recurring,242,EADD,0.5,3,5.04,99.0,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,342,EADD,0.5,3,5.4,99.0,0.0,0,60.0,4.0,1.0,19.25
+drift,Recurring,442,EADD,0.5,3,5.12,99.0,0.0,0,60.0,3.0,0.0,20.0
+stable,Gaussian (i.i.d.),42,EADD,0.5,1,24.54,,,1,178.0,18.0,17.0,39.611111111111114
+stable,Gaussian (i.i.d.),142,EADD,0.5,1,13.43,,,1,178.0,10.0,9.0,11.1
+stable,Gaussian (i.i.d.),242,EADD,0.5,1,14.61,,,1,178.0,16.0,15.0,10.625
+stable,Gaussian (i.i.d.),342,EADD,0.5,1,15.0,,,1,178.0,17.0,16.0,11.117647058823529
+stable,Gaussian (i.i.d.),442,EADD,0.5,1,18.14,,,1,178.0,28.0,27.0,12.392857142857142
+stable,Autocorrelated,42,EADD,0.5,5,30.71,,,5,142.0,44.0,39.0,25.954545454545453
+stable,Autocorrelated,142,EADD,0.5,5,22.59,,,5,142.0,41.0,36.0,16.73170731707317
+stable,Autocorrelated,242,EADD,0.5,5,26.76,,,5,142.0,35.0,30.0,25.6
+stable,Autocorrelated,342,EADD,0.5,5,20.0,,,5,142.0,28.0,23.0,19.321428571428573
+stable,Autocorrelated,442,EADD,0.5,6,21.06,,,6,133.0,29.0,23.0,21.79310344827586
+stable,Heteroscedastic,42,EADD,0.5,1,18.51,,,1,178.0,25.0,24.0,14.44
+stable,Heteroscedastic,142,EADD,0.5,2,15.39,,,2,169.0,17.0,15.0,12.764705882352942
+stable,Heteroscedastic,242,EADD,0.5,2,20.62,,,2,169.0,29.0,27.0,17.82758620689655
+stable,Heteroscedastic,342,EADD,0.5,3,14.34,,,3,160.0,13.0,10.0,15.076923076923077
+stable,Heteroscedastic,442,EADD,0.5,1,25.75,,,1,178.0,32.0,31.0,24.28125
+stable,Correlated,42,EADD,0.5,0,15.73,,,0,187.0,19.0,19.0,11.0
+stable,Correlated,142,EADD,0.5,1,12.49,,,1,178.0,6.0,5.0,11.666666666666666
+stable,Correlated,242,EADD,0.5,0,26.15,,,0,187.0,44.0,44.0,16.40909090909091
+stable,Correlated,342,EADD,0.5,1,26.44,,,1,180.0,36.0,35.0,20.944444444444443
+stable,Correlated,442,EADD,0.5,0,16.65,,,0,187.0,24.0,24.0,10.791666666666666
+drift,Abrupt,42,EADD,0.6,1,5.25,99.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Abrupt,142,EADD,0.6,1,5.28,99.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Abrupt,242,EADD,0.6,1,5.38,99.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Abrupt,342,EADD,0.6,1,5.38,99.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Abrupt,442,EADD,0.6,1,5.47,99.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,42,EADD,0.6,1,5.58,499.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,142,EADD,0.6,1,5.65,549.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,242,EADD,0.6,1,6.09,549.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,342,EADD,0.6,1,6.2,499.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,442,EADD,0.6,1,6.14,599.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Incremental,42,EADD,0.6,2,6.19,599.0,0.0,1,69.0,2.0,0.0,20.0
+drift,Incremental,142,EADD,0.6,2,6.17,699.0,0.0,1,69.0,2.0,0.0,20.0
+drift,Incremental,242,EADD,0.6,2,6.21,649.0,0.0,1,69.0,2.0,0.0,20.0
+drift,Incremental,342,EADD,0.6,2,6.14,549.0,0.0,1,69.0,2.0,0.0,20.0
+drift,Incremental,442,EADD,0.6,2,5.92,699.0,0.0,1,69.0,2.0,0.0,20.0
+drift,Recurring,42,EADD,0.6,3,5.84,115.66666666666667,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,142,EADD,0.6,3,5.82,115.66666666666667,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,242,EADD,0.6,3,5.88,132.33333333333334,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,342,EADD,0.6,3,6.02,132.33333333333334,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,442,EADD,0.6,3,6.14,115.66666666666667,0.0,0,60.0,3.0,0.0,20.0
+stable,Gaussian (i.i.d.),42,EADD,0.6,0,14.37,,,0,187.0,0.0,0.0,
+stable,Gaussian (i.i.d.),142,EADD,0.6,0,14.51,,,0,187.0,0.0,0.0,
+stable,Gaussian (i.i.d.),242,EADD,0.6,0,14.64,,,0,187.0,0.0,0.0,
+stable,Gaussian (i.i.d.),342,EADD,0.6,0,14.86,,,0,187.0,0.0,0.0,
+stable,Gaussian (i.i.d.),442,EADD,0.6,0,14.78,,,0,187.0,0.0,0.0,
+stable,Autocorrelated,42,EADD,0.6,3,14.5,,,3,160.0,3.0,0.0,20.0
+stable,Autocorrelated,142,EADD,0.6,2,14.93,,,2,169.0,2.0,0.0,20.0
+stable,Autocorrelated,242,EADD,0.6,2,15.16,,,2,169.0,2.0,0.0,20.0
+stable,Autocorrelated,342,EADD,0.6,3,15.27,,,3,160.0,3.0,0.0,20.0
+stable,Autocorrelated,442,EADD,0.6,3,17.08,,,3,160.0,3.0,0.0,20.0
+stable,Heteroscedastic,42,EADD,0.6,0,17.15,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,142,EADD,0.6,0,17.08,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,242,EADD,0.6,0,17.15,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,342,EADD,0.6,0,17.25,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,442,EADD,0.6,1,17.02,,,1,178.0,1.0,0.0,20.0
+stable,Correlated,42,EADD,0.6,0,17.19,,,0,187.0,0.0,0.0,
+stable,Correlated,142,EADD,0.6,0,17.04,,,0,187.0,0.0,0.0,
+stable,Correlated,242,EADD,0.6,0,16.76,,,0,187.0,0.0,0.0,
+stable,Correlated,342,EADD,0.6,0,15.33,,,0,187.0,0.0,0.0,
+stable,Correlated,442,EADD,0.6,0,15.36,,,0,187.0,0.0,0.0,
+drift,Abrupt,42,EADD,0.7,1,6.99,149.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Abrupt,142,EADD,0.7,1,7.02,149.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Abrupt,242,EADD,0.7,1,7.02,149.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Abrupt,342,EADD,0.7,1,6.97,149.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Abrupt,442,EADD,0.7,1,6.98,99.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,42,EADD,0.7,1,7.03,699.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,142,EADD,0.7,1,7.09,649.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,242,EADD,0.7,1,7.12,749.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,342,EADD,0.7,1,7.18,649.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Gradual,442,EADD,0.7,1,7.13,749.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Incremental,42,EADD,0.7,1,7.24,849.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Incremental,142,EADD,0.7,1,7.35,849.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Incremental,242,EADD,0.7,1,7.47,899.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Incremental,342,EADD,0.7,1,7.57,849.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Incremental,442,EADD,0.7,1,7.68,849.0,0.0,0,78.0,1.0,0.0,20.0
+drift,Recurring,42,EADD,0.7,3,7.52,149.0,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,142,EADD,0.7,3,7.52,149.0,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,242,EADD,0.7,3,7.54,149.0,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,342,EADD,0.7,3,7.55,149.0,0.0,0,60.0,3.0,0.0,20.0
+drift,Recurring,442,EADD,0.7,3,7.59,149.0,0.0,0,60.0,3.0,0.0,20.0
+stable,Gaussian (i.i.d.),42,EADD,0.7,0,17.46,,,0,187.0,0.0,0.0,
+stable,Gaussian (i.i.d.),142,EADD,0.7,0,17.35,,,0,187.0,0.0,0.0,
+stable,Gaussian (i.i.d.),242,EADD,0.7,0,17.55,,,0,187.0,0.0,0.0,
+stable,Gaussian (i.i.d.),342,EADD,0.7,0,17.38,,,0,187.0,0.0,0.0,
+stable,Gaussian (i.i.d.),442,EADD,0.7,0,17.32,,,0,187.0,0.0,0.0,
+stable,Autocorrelated,42,EADD,0.7,0,17.22,,,0,187.0,0.0,0.0,
+stable,Autocorrelated,142,EADD,0.7,0,17.41,,,0,187.0,0.0,0.0,
+stable,Autocorrelated,242,EADD,0.7,0,17.36,,,0,187.0,0.0,0.0,
+stable,Autocorrelated,342,EADD,0.7,0,17.4,,,0,187.0,0.0,0.0,
+stable,Autocorrelated,442,EADD,0.7,0,16.37,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,42,EADD,0.7,0,16.36,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,142,EADD,0.7,0,16.39,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,242,EADD,0.7,0,16.38,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,342,EADD,0.7,0,16.4,,,0,187.0,0.0,0.0,
+stable,Heteroscedastic,442,EADD,0.7,0,16.35,,,0,187.0,0.0,0.0,
+stable,Correlated,42,EADD,0.7,0,16.49,,,0,187.0,0.0,0.0,
+stable,Correlated,142,EADD,0.7,0,16.38,,,0,187.0,0.0,0.0,
+stable,Correlated,242,EADD,0.7,0,16.5,,,0,187.0,0.0,0.0,
+stable,Correlated,342,EADD,0.7,0,16.84,,,0,187.0,0.0,0.0,
+stable,Correlated,442,EADD,0.7,0,16.8,,,0,187.0,0.0,0.0,
+drift,Abrupt,42,EADD-NoASPT,0.5,1,7.21,49.0,0.0,0,,,,
+drift,Abrupt,142,EADD-NoASPT,0.5,2,6.6,199.0,0.0,1,,,,
+drift,Abrupt,242,EADD-NoASPT,0.5,1,7.21,49.0,0.0,0,,,,
+drift,Abrupt,342,EADD-NoASPT,0.5,2,6.65,49.0,0.0,1,,,,
+drift,Abrupt,442,EADD-NoASPT,0.5,1,7.1,49.0,0.0,0,,,,
+drift,Gradual,42,EADD-NoASPT,0.5,2,6.58,299.0,0.0,1,,,,
+drift,Gradual,142,EADD-NoASPT,0.5,2,6.5,149.0,0.0,1,,,,
+drift,Gradual,242,EADD-NoASPT,0.5,2,6.49,149.0,0.0,1,,,,
+drift,Gradual,342,EADD-NoASPT,0.5,2,6.5,299.0,0.0,1,,,,
+drift,Gradual,442,EADD-NoASPT,0.5,2,6.54,249.0,0.0,1,,,,
+drift,Incremental,42,EADD-NoASPT,0.5,3,5.91,299.0,0.0,2,,,,
+drift,Incremental,142,EADD-NoASPT,0.5,3,5.94,449.0,0.0,2,,,,
+drift,Incremental,242,EADD-NoASPT,0.5,3,5.94,249.0,0.0,2,,,,
+drift,Incremental,342,EADD-NoASPT,0.5,3,5.99,399.0,0.0,2,,,,
+drift,Incremental,442,EADD-NoASPT,0.5,3,5.77,449.0,0.0,2,,,,
+drift,Recurring,42,EADD-NoASPT,0.5,3,5.77,82.33333333333333,0.0,0,,,,
+drift,Recurring,142,EADD-NoASPT,0.5,3,5.71,99.0,0.0,0,,,,
+drift,Recurring,242,EADD-NoASPT,0.5,3,5.71,99.0,0.0,0,,,,
+drift,Recurring,342,EADD-NoASPT,0.5,3,5.73,82.33333333333333,0.0,0,,,,
+drift,Recurring,442,EADD-NoASPT,0.5,3,5.73,99.0,0.0,0,,,,
+stable,Gaussian (i.i.d.),42,EADD-NoASPT,0.5,2,14.66,,,2,,,,
+stable,Gaussian (i.i.d.),142,EADD-NoASPT,0.5,2,14.62,,,2,,,,
+stable,Gaussian (i.i.d.),242,EADD-NoASPT,0.5,2,14.76,,,2,,,,
+stable,Gaussian (i.i.d.),342,EADD-NoASPT,0.5,3,14.11,,,3,,,,
+stable,Gaussian (i.i.d.),442,EADD-NoASPT,0.5,2,14.52,,,2,,,,
+stable,Autocorrelated,42,EADD-NoASPT,0.5,9,11.21,,,9,,,,
+stable,Autocorrelated,142,EADD-NoASPT,0.5,8,11.19,,,8,,,,
+stable,Autocorrelated,242,EADD-NoASPT,0.5,9,11.35,,,9,,,,
+stable,Autocorrelated,342,EADD-NoASPT,0.5,7,11.97,,,7,,,,
+stable,Autocorrelated,442,EADD-NoASPT,0.5,8,11.06,,,8,,,,
+stable,Heteroscedastic,42,EADD-NoASPT,0.5,4,13.21,,,4,,,,
+stable,Heteroscedastic,142,EADD-NoASPT,0.5,4,13.24,,,4,,,,
+stable,Heteroscedastic,242,EADD-NoASPT,0.5,4,13.1,,,4,,,,
+stable,Heteroscedastic,342,EADD-NoASPT,0.5,4,13.18,,,4,,,,
+stable,Heteroscedastic,442,EADD-NoASPT,0.5,5,12.74,,,5,,,,
+stable,Correlated,42,EADD-NoASPT,0.5,2,14.47,,,2,,,,
+stable,Correlated,142,EADD-NoASPT,0.5,3,13.74,,,3,,,,
+stable,Correlated,242,EADD-NoASPT,0.5,3,13.7,,,3,,,,
+stable,Correlated,342,EADD-NoASPT,0.5,3,13.92,,,3,,,,
+stable,Correlated,442,EADD-NoASPT,0.5,3,13.95,,,3,,,,
+drift,Abrupt,42,EADD-NoASPT,0.6,1,6.75,99.0,0.0,0,,,,
+drift,Abrupt,142,EADD-NoASPT,0.6,1,6.77,99.0,0.0,0,,,,
+drift,Abrupt,242,EADD-NoASPT,0.6,1,6.84,99.0,0.0,0,,,,
+drift,Abrupt,342,EADD-NoASPT,0.6,1,6.84,99.0,0.0,0,,,,
+drift,Abrupt,442,EADD-NoASPT,0.6,1,6.68,99.0,0.0,0,,,,
+drift,Gradual,42,EADD-NoASPT,0.6,1,6.73,499.0,0.0,0,,,,
+drift,Gradual,142,EADD-NoASPT,0.6,1,6.69,549.0,0.0,0,,,,
+drift,Gradual,242,EADD-NoASPT,0.6,1,6.65,549.0,0.0,0,,,,
+drift,Gradual,342,EADD-NoASPT,0.6,1,6.6,499.0,0.0,0,,,,
+drift,Gradual,442,EADD-NoASPT,0.6,1,6.71,599.0,0.0,0,,,,
+drift,Incremental,42,EADD-NoASPT,0.6,2,6.06,599.0,0.0,1,,,,
+drift,Incremental,142,EADD-NoASPT,0.6,2,6.03,699.0,0.0,1,,,,
+drift,Incremental,242,EADD-NoASPT,0.6,2,6.04,649.0,0.0,1,,,,
+drift,Incremental,342,EADD-NoASPT,0.6,2,5.94,549.0,0.0,1,,,,
+drift,Incremental,442,EADD-NoASPT,0.6,2,6.02,699.0,0.0,1,,,,
+drift,Recurring,42,EADD-NoASPT,0.6,3,5.37,115.66666666666667,0.0,0,,,,
+drift,Recurring,142,EADD-NoASPT,0.6,3,5.4,115.66666666666667,0.0,0,,,,
+drift,Recurring,242,EADD-NoASPT,0.6,3,5.47,132.33333333333334,0.0,0,,,,
+drift,Recurring,342,EADD-NoASPT,0.6,3,5.38,115.66666666666667,0.0,0,,,,
+drift,Recurring,442,EADD-NoASPT,0.6,3,5.41,115.66666666666667,0.0,0,,,,
+stable,Gaussian (i.i.d.),42,EADD-NoASPT,0.6,0,15.8,,,0,,,,
+stable,Gaussian (i.i.d.),142,EADD-NoASPT,0.6,0,15.73,,,0,,,,
+stable,Gaussian (i.i.d.),242,EADD-NoASPT,0.6,0,15.8,,,0,,,,
+stable,Gaussian (i.i.d.),342,EADD-NoASPT,0.6,0,15.87,,,0,,,,
+stable,Gaussian (i.i.d.),442,EADD-NoASPT,0.6,0,15.91,,,0,,,,
+stable,Autocorrelated,42,EADD-NoASPT,0.6,3,14.0,,,3,,,,
+stable,Autocorrelated,142,EADD-NoASPT,0.6,2,14.7,,,2,,,,
+stable,Autocorrelated,242,EADD-NoASPT,0.6,3,14.28,,,3,,,,
+stable,Autocorrelated,342,EADD-NoASPT,0.6,3,14.25,,,3,,,,
+stable,Autocorrelated,442,EADD-NoASPT,0.6,2,14.67,,,2,,,,
+stable,Heteroscedastic,42,EADD-NoASPT,0.6,0,15.86,,,0,,,,
+stable,Heteroscedastic,142,EADD-NoASPT,0.6,0,15.77,,,0,,,,
+stable,Heteroscedastic,242,EADD-NoASPT,0.6,0,15.81,,,0,,,,
+stable,Heteroscedastic,342,EADD-NoASPT,0.6,0,15.83,,,0,,,,
+stable,Heteroscedastic,442,EADD-NoASPT,0.6,1,15.14,,,1,,,,
+stable,Correlated,42,EADD-NoASPT,0.6,0,15.7,,,0,,,,
+stable,Correlated,142,EADD-NoASPT,0.6,0,15.73,,,0,,,,
+stable,Correlated,242,EADD-NoASPT,0.6,0,15.75,,,0,,,,
+stable,Correlated,342,EADD-NoASPT,0.6,0,15.32,,,0,,,,
+stable,Correlated,442,EADD-NoASPT,0.6,0,15.29,,,0,,,,
+drift,Abrupt,42,EADD-NoASPT,0.7,1,6.44,149.0,0.0,0,,,,
+drift,Abrupt,142,EADD-NoASPT,0.7,1,6.44,149.0,0.0,0,,,,
+drift,Abrupt,242,EADD-NoASPT,0.7,1,6.44,149.0,0.0,0,,,,
+drift,Abrupt,342,EADD-NoASPT,0.7,1,6.43,149.0,0.0,0,,,,
+drift,Abrupt,442,EADD-NoASPT,0.7,1,6.4,99.0,0.0,0,,,,
+drift,Gradual,42,EADD-NoASPT,0.7,1,6.41,699.0,0.0,0,,,,
+drift,Gradual,142,EADD-NoASPT,0.7,1,6.39,649.0,0.0,0,,,,
+drift,Gradual,242,EADD-NoASPT,0.7,1,6.55,749.0,0.0,0,,,,
+drift,Gradual,342,EADD-NoASPT,0.7,1,6.51,649.0,0.0,0,,,,
+drift,Gradual,442,EADD-NoASPT,0.7,1,6.54,749.0,0.0,0,,,,
+drift,Incremental,42,EADD-NoASPT,0.7,1,6.59,849.0,0.0,0,,,,
+drift,Incremental,142,EADD-NoASPT,0.7,1,6.66,849.0,0.0,0,,,,
+drift,Incremental,242,EADD-NoASPT,0.7,1,6.69,899.0,0.0,0,,,,
+drift,Incremental,342,EADD-NoASPT,0.7,2,6.05,849.0,0.0,1,,,,
+drift,Incremental,442,EADD-NoASPT,0.7,1,6.46,849.0,0.0,0,,,,
+drift,Recurring,42,EADD-NoASPT,0.7,3,5.39,149.0,0.0,0,,,,
+drift,Recurring,142,EADD-NoASPT,0.7,3,5.41,149.0,0.0,0,,,,
+drift,Recurring,242,EADD-NoASPT,0.7,3,5.38,149.0,0.0,0,,,,
+drift,Recurring,342,EADD-NoASPT,0.7,3,5.36,149.0,0.0,0,,,,
+drift,Recurring,442,EADD-NoASPT,0.7,3,5.32,149.0,0.0,0,,,,
+stable,Gaussian (i.i.d.),42,EADD-NoASPT,0.7,0,14.68,,,0,,,,
+stable,Gaussian (i.i.d.),142,EADD-NoASPT,0.7,0,14.64,,,0,,,,
+stable,Gaussian (i.i.d.),242,EADD-NoASPT,0.7,0,14.65,,,0,,,,
+stable,Gaussian (i.i.d.),342,EADD-NoASPT,0.7,0,14.54,,,0,,,,
+stable,Gaussian (i.i.d.),442,EADD-NoASPT,0.7,0,14.54,,,0,,,,
+stable,Autocorrelated,42,EADD-NoASPT,0.7,0,14.45,,,0,,,,
+stable,Autocorrelated,142,EADD-NoASPT,0.7,0,14.48,,,0,,,,
+stable,Autocorrelated,242,EADD-NoASPT,0.7,0,14.43,,,0,,,,
+stable,Autocorrelated,342,EADD-NoASPT,0.7,0,14.5,,,0,,,,
+stable,Autocorrelated,442,EADD-NoASPT,0.7,0,14.75,,,0,,,,
+stable,Heteroscedastic,42,EADD-NoASPT,0.7,0,14.83,,,0,,,,
+stable,Heteroscedastic,142,EADD-NoASPT,0.7,0,14.83,,,0,,,,
+stable,Heteroscedastic,242,EADD-NoASPT,0.7,0,14.9,,,0,,,,
+stable,Heteroscedastic,342,EADD-NoASPT,0.7,0,14.89,,,0,,,,
+stable,Heteroscedastic,442,EADD-NoASPT,0.7,0,14.83,,,0,,,,
+stable,Correlated,42,EADD-NoASPT,0.7,0,14.82,,,0,,,,
+stable,Correlated,142,EADD-NoASPT,0.7,0,14.69,,,0,,,,
+stable,Correlated,242,EADD-NoASPT,0.7,0,14.81,,,0,,,,
+stable,Correlated,342,EADD-NoASPT,0.7,0,9.84,,,0,,,,
+stable,Correlated,442,EADD-NoASPT,0.7,0,9.79,,,0,,,,
