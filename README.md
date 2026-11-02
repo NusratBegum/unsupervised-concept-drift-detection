@@ -71,6 +71,7 @@ unsupervised-concept-drift-detection/
 |-- experiment4_false_alarms.py              # Thesis Exp 3: stable streams
 |-- experiment_d3_lightgbm.py                # Thesis Exp 4: synthetic ablation
 |-- experiment_aspt_threshold.py             # Thesis Exp 4: AUC threshold study
+|-- experiment_aspt_type1.py                 # Thesis Ch 3: Type I error of ASPT stopping rules
 |-- experiment_camera_ready.py               # JCSSE camera-ready runs
 |-- EADD_Thesis_Experiments.ipynb            # Notebook (earlier Exp 2 run)
 |-- test/detectors/                          # Unit tests, incl. test_eadd.py, test_d3_lightgbm.py
@@ -104,6 +105,7 @@ python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.
 | `python experiment4_false_alarms.py` | Exp 3 | `experiments/results/experiment4_false_alarms.csv` |
 | `python experiment_d3_lightgbm.py` | Exp 4 (synthetic) | `experiments/results_d3_lightgbm/` |
 | `python experiment_aspt_threshold.py` | Exp 4 (threshold) | `experiments/results_aspt_threshold/` |
+| `python experiment_aspt_type1.py` | Ch 3 (ASPT Type I error) | `experiments/results_aspt_type1/` |
 
 Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets).
 
@@ -158,7 +160,7 @@ Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepo
 |------|---------|
 | `detectors/eadd.py` | **EADD detector** -- core thesis contribution |
 | `detectors/d3_lightgbm.py` | D3 with a LightGBM classifier (ablation) |
-| `experiment_d3_lightgbm.py`, `experiment_realworld_ablation.py`, `experiment_aspt_threshold.py` | Thesis ablation and threshold experiments |
+| `experiment_d3_lightgbm.py`, `experiment_realworld_ablation.py`, `experiment_aspt_threshold.py`, `experiment_aspt_type1.py` | Thesis ablation, threshold and Type I error experiments |
 | `test/detectors/test_eadd.py`, `test/detectors/test_d3_lightgbm.py` | Unit tests for EADD/ASPT and D3-LightGBM |
 | `experiment1_temporal_patterns.py` | Experiment 1: temporal drift patterns |
 | `experiment2_realworld_benchmark.py` | Experiment 2: real-world benchmark |
