@@ -53,14 +53,69 @@ class BayesianNonparametricDetectionMethod(UnsupervisedDriftDetector):
         self.data_window.append(features)
         if len(self.data_window) == self.data_window.maxlen:
             data = np.array(self.data_window)
-            for i in range(len(features)):
-                sample_one, sample_two = self._get_samples(feature_index=i)
-                log_odd_ratios = self.polya_tree_test(sample_one, sample_two, 0)
+            # all features at once; same decision as polya_tree_test per feature
+            normalized = np.column_stack([self._normalize(data[:, i]) for i in range(data.shape[1])])
+            counts_one = self._bin_counts(normalized[: self.n_samples])
+            counts_two = self._bin_counts(normalized[self.n_samples:])
+            log_odd_ratios = self._polya_tree_test_binned(counts_one, counts_two, 0, 0)
+            with np.errstate(over="ignore"):
                 test_statistic = 1 / (1 + np.exp(-log_odd_ratios))
-                if test_statistic < self.threshold:
-                    self.reset()
-                    return True
+            if np.any(test_statistic < self.threshold):
+                self.reset()
+                return True
         return False
+
+    def _bin_counts(self, sample: np.array) -> np.array:
+        """
+        Count the samples of each feature in the partitions of the deepest level of the Polya tree.
+
+        :param sample: the normalized sample, one column per feature
+        :returns: an array of shape (2 ** (max_depth + 1), n_features)
+        """
+        n_bins = 2 ** (self.max_depth + 1)
+        if not hasattr(self, "_inner_edges"):
+            self._inner_edges = self.distribution.ppf(np.arange(1, n_bins) / n_bins)
+        # partition k is the interval (edge_k, edge_k+1], as in _get_interval_count
+        bins = np.searchsorted(self._inner_edges, sample, side="left")
+        bins[np.isnan(sample)] = n_bins
+        counts = np.zeros((n_bins + 1, sample.shape[1]), dtype=np.int64)
+        np.add.at(counts, (bins, np.arange(sample.shape[1])), 1)
+        return counts[:n_bins]
+
+    def _polya_tree_test_binned(self, counts_one, counts_two, level, index) -> np.array:
+        """
+        polya_tree_test for all features at once, computed from the counts of _bin_counts.
+
+        :param counts_one: the bin counts of the first sample
+        :param counts_two: the bin counts of the second sample
+        :param level: the current level in the Polya tree
+        :param index: the integer index of the partition at this level
+        :returns: the log odd ratios of all features
+        """
+        if level > self.max_depth:
+            return np.zeros(counts_one.shape[1])
+        width = 2 ** (self.max_depth - level)  # deepest-level bins per child partition
+        left = slice(2 * index * width, (2 * index + 1) * width)
+        right = slice((2 * index + 1) * width, (2 * index + 2) * width)
+        n_one_left, n_two_left = counts_one[left].sum(axis=0), counts_two[left].sum(axis=0)
+        n_one_right, n_two_right = counts_one[right].sum(axis=0), counts_two[right].sum(axis=0)
+        n_left = n_one_left + n_two_left
+        n_right = n_one_right + n_two_right
+        empty = (n_one_left + n_one_right == 0) | (n_two_left + n_two_right == 0)
+
+        alpha = self.const * (level + 1) ** 2
+        contribution_num = -betaln(alpha, alpha) + betaln(
+            alpha + n_left, alpha + n_right
+        )
+        contribution_den = (
+            -2 * betaln(alpha, alpha)
+            + betaln(alpha + n_one_left, alpha + n_one_right)
+            + betaln(alpha + n_two_left, alpha + n_two_right)
+        )
+        contribution = contribution_num - contribution_den
+        contribution_left = self._polya_tree_test_binned(counts_one, counts_two, level + 1, 2 * index)
+        contribution_right = self._polya_tree_test_binned(counts_one, counts_two, level + 1, 2 * index + 1)
+        return np.where(empty, 0.0, contribution + contribution_left + contribution_right)
 
     def polya_tree_test(
         self,

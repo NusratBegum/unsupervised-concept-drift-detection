@@ -37,7 +37,7 @@ References
 - Vitter (1985). Random sampling with a reservoir. ACM TOMS 11(1):37-57.
 
 Author: Nusrat Begum
-Thesis: Feature Drift Detection via Discriminative Classification
+Thesis: Feature Drift Detection Techniques via Adversarial Validation
 Mahidol University, 2026
 """
 
@@ -83,6 +83,11 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         How often (in samples) to run detection.
     seed : int or None
         Random seed.
+    permutation_test : str
+        "aspt" (sequential stopping, default), "full" (all n_permutations)
+        or "none" (accept every alarm with AUC above auc_threshold).
+    min_permutations : int
+        Minimum number of permutations before ASPT may stop early.
     """
 
     def __init__(
@@ -95,6 +100,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         use_reservoir_sampling: bool = True,
         monitoring_frequency: int = 50,
         seed: Optional[int] = None,
+        permutation_test: str = "aspt",
+        min_permutations: int = 10,
     ):
         super().__init__(seed)
         self.n_reference_samples = n_reference_samples
@@ -110,6 +117,18 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         self.samples_seen = 0
         self.steps_since_check = 0
         self.rng = np.random.default_rng(seed)
+        # Separate generator for the permutation test, so that the reservoir
+        # samples do not depend on how many permutations were drawn.
+        self.perm_rng = np.random.default_rng(None if seed is None else seed + 1)
+        if permutation_test not in ("aspt", "full", "none"):
+            raise ValueError(f"unknown permutation_test: {permutation_test}")
+        self.permutation_test = permutation_test
+        self.min_permutations = min_permutations
+        # Permutation test statistics over the whole stream
+        self.n_tests = 0
+        self.n_early_stops = 0
+        self.n_rejections = 0
+        self.n_permutations_used = 0
 
         # Last detection results
         self.last_auc = None
@@ -167,10 +186,17 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             return False
 
         # Step 2: Adaptive Sequential Permutation Test (ASPT)
-        p_val = self._aspt_test(ref_data, cur_data, auc)
+        if self.permutation_test == "none":
+            self.last_aspt_permutations = 0
+            p_val = 0.0
+        else:
+            p_val = self._aspt_test(ref_data, cur_data, auc)
+            self.n_tests += 1
+            self.n_permutations_used += self.last_aspt_permutations
         self.last_p_value = p_val
 
         if p_val >= self.significance_level:
+            self.n_rejections += 1
             return False
 
         # Step 3: Interaction-Aware Attribution
@@ -190,20 +216,24 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         X = np.vstack([ref_data, cur_data])
         y = np.concatenate([np.zeros(len(ref_data)), np.ones(len(cur_data))])
         count_ge = 0
-        min_perms = 10
+        min_perms = self.min_permutations
         alpha = self.significance_level
+        early = self.permutation_test == "aspt"
         for i in range(1, self.n_permutations + 1):
-            y_perm = self.rng.permutation(y)
+            y_perm = self.perm_rng.permutation(y)
             auc_perm = self._quick_auc(X, y_perm)
             if auc_perm >= actual_auc: count_ge += 1
+            if not early or i < min_perms or i == self.n_permutations:
+                continue
             # Conservative early-reject rule: if no exceedances were observed,
             # the best possible permutation p-value after i draws is 1/(i+1).
-            if count_ge == 0 and i >= min_perms:
-                if (1.0 / (i + 1)) < alpha:
-                    self.last_aspt_permutations = i
-                    return 1.0 / (i + 1)
-            if count_ge / i > 2 * alpha and i >= min_perms:
+            if count_ge == 0 and (1.0 / (i + 1)) < alpha:
                 self.last_aspt_permutations = i
+                self.n_early_stops += 1
+                return 1.0 / (i + 1)
+            if count_ge / i > 2 * alpha:
+                self.last_aspt_permutations = i
+                self.n_early_stops += 1
                 return (count_ge + 1) / (i + 1)
         self.last_aspt_permutations = self.n_permutations
         return (count_ge + 1) / (self.n_permutations + 1)
@@ -223,7 +253,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             return 0.5, predictions
 
     def _quick_auc(self, X: np.ndarray, y: np.ndarray) -> float:
-        rs = int(self.rng.integers(0, 2**31))
+        rs = int(self.perm_rng.integers(0, 2**31))
         kfold = StratifiedKFold(n_splits=2, shuffle=True, random_state=rs)
         predictions = np.zeros(len(y))
         for train_idx, test_idx in kfold.split(X, y):

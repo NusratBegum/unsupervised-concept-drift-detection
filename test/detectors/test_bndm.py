@@ -100,6 +100,19 @@ class GetSamplesTest(unittest.TestCase):
             self.assertTrue(np.array_equal(sample_one_result, sample_one))
             self.assertTrue(np.array_equal(sample_two_result, sample_two))
 
+    def test_binned_test_matches_polya_tree_test(self):
+        rng = np.random.default_rng(0)
+        for _ in range(20):
+            bndm = BayesianNonparametricDetectionMethod(50)
+            data = rng.normal(size=(100, 4)) * [1, 0, 3, 1] + rng.choice([0, 2], size=(100, 1))
+            bndm.data_window = data
+            normalized = np.column_stack([bndm._normalize(data[:, i]) for i in range(4)])
+            binned = bndm._polya_tree_test_binned(
+                bndm._bin_counts(normalized[:50]), bndm._bin_counts(normalized[50:]), 0, 0
+            )
+            expected = [bndm.polya_tree_test(*bndm._get_samples(i), 0) for i in range(4)]
+            self.assertTrue(np.array_equal(expected, binned))
+
 
 if __name__ == "__main__":
     unittest.main()
