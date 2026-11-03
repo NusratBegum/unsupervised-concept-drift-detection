@@ -1,0 +1,11 @@
+,recall,recall,recall,recall,mtd,mtd,mtd,mtd,fa,fa,fa,fa,mtd_lukats,mtd_lukats,mtd_lukats,mtd_lukats,mdr_lukats,mdr_lukats,mdr_lukats,mdr_lukats
+dataset,InsectsAbruptBalanced,InsectsGradualBalanced,InsectsIncrementalAbruptBalanced,InsectsIncrementalReoccurringBalanced,InsectsAbruptBalanced,InsectsGradualBalanced,InsectsIncrementalAbruptBalanced,InsectsIncrementalReoccurringBalanced,InsectsAbruptBalanced,InsectsGradualBalanced,InsectsIncrementalAbruptBalanced,InsectsIncrementalReoccurringBalanced,InsectsAbruptBalanced,InsectsGradualBalanced,InsectsIncrementalAbruptBalanced,InsectsIncrementalReoccurringBalanced,InsectsAbruptBalanced,InsectsGradualBalanced,InsectsIncrementalAbruptBalanced,InsectsIncrementalReoccurringBalanced
+variant,,,,,,,,,,,,,,,,,,,,
+BNDM,0.4,0.0,0.5,0.5,347.0,500.0,472.5,441.0,9.0,6.0,28.0,29.0,1307.0,9051.0,691.5,645.0,0.0,0.0,0.0,0.0
+CSDDM,1.0,1.0,1.0,1.0,180.52,427.4,311.8,344.3,33.4,21.6,79.8,77.6,180.52,427.4,311.8,344.3,0.0,0.0,0.0,0.0
+IBDD,1.0,1.0,1.0,1.0,146.6,57.0,34.5,27.0,182.0,67.0,351.0,492.0,146.6,57.0,34.5,27.0,0.0,0.0,0.0,0.0
+OCDD,1.0,1.0,1.0,1.0,342.2,471.0,283.0,283.0,99.0,46.0,156.0,156.0,342.2,471.0,283.0,283.0,0.0,0.0,0.0,0.0
+SPLL,0.8,1.0,1.0,1.0,206.8,304.0,9.5,203.0,2.0,1.0,5.0,6.0,133.5,304.0,9.5,203.0,0.19999999999999996,0.0,0.0,0.0
+UDetect,0.0,0.0,1.0,0.5,500.0,500.0,269.5,429.0,1.0,0.0,21.0,24.0,12992.0,,269.5,11895.0,0.8,1.0,0.0,0.0
+D3-LightGBM,0.8,0.0,1.0,0.8,204.11999999999998,500.0,154.9,255.9,4.8,4.0,5.4,8.2,2028.1599999999999,9481.0,154.9,2082.7,0.0,0.0,0.0,0.0
+EADD,0.6,0.0,0.4,1.0,265.0,500.0,323.6,118.0,6.0,5.0,13.0,11.4,1986.0,9211.0,3963.0,118.0,0.19999999999999996,0.0,0.0,0.0

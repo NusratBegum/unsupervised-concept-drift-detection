@@ -1,0 +1,4 @@
+variant,recall,mtd,fa,detector_time_sec,tests,perms_per_test,early_stop_pct,rejected_pct
+EADD,0.5,301.65,8.85,112.18045,10.3,20.0,100.0,0.0
+EADD-FullPerm,0.5,301.65,8.85,148.93095,10.3,199.0,0.0,0.0
+EADD-NoTest,0.5,301.65,8.85,106.7171,0.0,,,

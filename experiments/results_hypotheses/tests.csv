@@ -1,0 +1,25 @@
+hypothesis,comparison,metric,alternative,n,mean_x,mean_y,p_mannwhitney,p_wilcoxon,identical_runs
+H1a,EADD vs D3-LightGBM,recall,greater,20,0.5,0.65,0.9029609939757351,0.9610944791049763,
+H1b,EADD vs D3-LightGBM,mtd,less,20,301.65,278.73,0.7821994853969163,0.8468831334311772,
+H2,EADD vs D3-LightGBM,fa,less,20,8.85,5.6,0.9995433564844749,0.9999630977145619,
+H1b check,EADD (check every 200) vs D3-LightGBM,mtd,less,20,204.4,278.73,0.07505645451922272,0.1986966470886316,
+H3,EADD (ASPT) vs EADD (full test),recall,two-sided,20,0.5,0.5,1.0,,20.0
+H3,EADD (ASPT) vs EADD (full test),mtd,two-sided,20,301.65,301.65,1.0,,20.0
+H3,EADD (ASPT) vs EADD (full test),fa,two-sided,20,8.85,8.85,1.0,,20.0
+H3,"EADD (ASPT) vs EADD (full test), sequential runtime",detector_time_sec,less,20,112.18045,148.93095,0.021940192230610427,9.5367431640625e-07,20.0
+threshold,EADD tau=0.3 vs D3-LightGBM,fa,less,20,16.8,5.6,0.9999984841578519,0.9999588259388473,
+threshold,EADD-NoTest tau=0.3 vs D3-LightGBM,fa,less,20,87.8,5.6,0.9999999760228562,0.9999562747039218,
+threshold,EADD vs EADD-NoTest tau=0.3,fa,less,20,16.8,87.8,2.9725521789001255e-08,4.298443073857508e-05,
+threshold,EADD tau=0.4 vs D3-LightGBM,fa,less,20,16.25,5.6,0.9999974491968803,0.9999582890490494,
+threshold,EADD-NoTest tau=0.4 vs D3-LightGBM,fa,less,20,49.8,5.6,0.999999976816641,0.9999568312553694,
+threshold,EADD vs EADD-NoTest tau=0.4,fa,less,20,16.25,49.8,2.4940612814769275e-05,4.213220641852674e-05,
+threshold,EADD tau=0.5 vs D3-LightGBM,fa,less,20,16.65,5.6,0.9999968700353928,0.9999594162874165,
+threshold,EADD-NoTest tau=0.5 vs D3-LightGBM,fa,less,20,24.1,5.6,0.9999999492088706,0.9999565845687265,
+threshold,EADD vs EADD-NoTest tau=0.5,fa,less,20,16.65,24.1,0.005100851545519875,4.2313733099626726e-05,
+threshold,EADD tau=0.6 vs D3-LightGBM,fa,less,20,13.3,5.6,0.9998475996968471,0.9999594162874165,
+threshold,EADD-NoTest tau=0.6 vs D3-LightGBM,fa,less,20,13.3,5.6,0.9998475996968471,0.9999594162874165,
+threshold,EADD vs EADD-NoTest tau=0.6,fa,less,20,13.3,13.3,0.5054986401447011,,
+threshold,EADD tau=0.7 vs D3-LightGBM,fa,less,20,8.85,5.6,0.9995433564844749,0.9999630977145619,
+threshold,EADD-NoTest tau=0.7 vs D3-LightGBM,fa,less,20,8.85,5.6,0.9995433564844749,0.9999630977145619,
+threshold,EADD vs EADD-NoTest tau=0.7,fa,less,20,8.85,8.85,0.5055288863637742,,
+E4,EADD vs D3-LightGBM (accuracy per stream),accuracy,two-sided,9,0.6543142208214772,0.6566734908410403,1.0,0.65234375,

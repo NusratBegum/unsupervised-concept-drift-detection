@@ -1,0 +1,13 @@
+dataset,variant,recall,mtd,fa,detector_time_sec,tests,perms_per_test,early_stop_pct,rejected_pct
+InsectsAbruptBalanced,EADD,0.6,265.0,6.0,99.852,9.0,20.0,100.0,0.0
+InsectsAbruptBalanced,EADD-FullPerm,0.6,265.0,6.0,131.2288,9.0,199.0,0.0,0.0
+InsectsAbruptBalanced,EADD-NoTest,0.6,265.0,6.0,94.9606,0.0,,,
+InsectsGradualBalanced,EADD,0.0,500.0,5.0,44.196,5.0,20.0,100.0,0.0
+InsectsGradualBalanced,EADD-FullPerm,0.0,500.0,5.0,62.5318,5.0,199.0,0.0,0.0
+InsectsGradualBalanced,EADD-NoTest,0.0,500.0,5.0,42.245,0.0,,,
+InsectsIncrementalAbruptBalanced,EADD,0.4,323.6,13.0,150.3634,13.8,20.0,100.0,0.0
+InsectsIncrementalAbruptBalanced,EADD-FullPerm,0.4,323.6,13.0,199.79479999999998,13.8,199.0,0.0,0.0
+InsectsIncrementalAbruptBalanced,EADD-NoTest,0.4,323.6,13.0,143.9162,0.0,,,
+InsectsIncrementalReoccurringBalanced,EADD,1.0,118.0,11.4,154.31040000000002,13.4,20.0,100.0,0.0
+InsectsIncrementalReoccurringBalanced,EADD-FullPerm,1.0,118.0,11.4,202.1684,13.4,199.0,0.0,0.0
+InsectsIncrementalReoccurringBalanced,EADD-NoTest,1.0,118.0,11.4,145.7466,0.0,,,

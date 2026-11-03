@@ -8,40 +8,32 @@
 
 ## Overview
 
-EADD is an integrated framework for unsupervised feature drift detection. It combines:
+EADD is an integrated framework for unsupervised feature drift detection based on adversarial validation (the classifier two-sample test, C2ST). It combines:
 
-1. A **LightGBM classifier two-sample test** (C2ST) on a reference and a current window
+1. A **LightGBM classifier two-sample test** on a reference and a current window
 2. A **reservoir-sampled reference window** that summarises all data since the last confirmed drift
 3. **Prediction entropy monitoring** ($H_{pred}$) of the discriminator's outputs
-4. An **adaptive sequential permutation test (ASPT)** that confirms a clear drift after 20 of 199 permutations
+4. An **adaptive sequential permutation test (ASPT)** that stops the permutation test early (`permutation_test="aspt"`; `"full"` draws all 199 permutations, `"none"` skips the test)
 5. A **TreeSHAP ranking** of the features behind each confirmed drift (reported, not evaluated in the thesis)
 
-The thesis compares EADD with seven unsupervised detectors and runs an ablation with D3 using a LightGBM classifier to find which design choice causes the differences.
+The thesis compares EADD with D3 using the same LightGBM classifier and windows (D3-LightGBM) and with six detectors of the Lukats et al. benchmark, on real-world streams only.
 
 ---
 
 ## Key Results (thesis, Chapter 4)
 
-**Experiment 1, synthetic drift (8 detectors):** EADD is the only detector that detects all four drift types (abrupt, gradual, incremental, recurring) with zero false alarms. D3 and SPLL miss gradual and incremental drift.
+Four annotated INSECTS streams (10 drift points), 5 seeds, 20 runs per detector; a detection matches if it is within 500 samples after a drift point; a missed drift point counts as MTD 500. One-sided Mann-Whitney U tests.
 
-**Experiment 2, 13 real-world streams (3 seeds, matched windows):**
+| | Recall | MTD | False alarms per run |
+|---|---|---|---|
+| D3-LightGBM | 0.65 | 279 | 5.6 |
+| EADD | 0.50 | 302 | 8.9 |
 
-| Dataset | MTD EADD | MTD D3 | Recall EADD | Recall D3 |
-|---|---|---|---|---|
-| InsectsAbrupt | **124** | 166 | 0.60 | 0.73 |
-| InsectsGradual | -- | -- | 0.00 | 0.00 |
-| InsectsIncrAbrupt | **50** | 126 | 1.00 | 1.00 |
-| InsectsIncrRecur | **84** | 256 | 0.83 | 1.00 |
-
-**Experiment 3, stable streams:** EADD raises no false alarms; D3 with small windows (100/50) raises up to 87.4 on autocorrelated data.
-
-**Experiment 4, ablation:**
-- D3 with LightGBM behaves like D3 (misses gradual and incremental drift), so the classifier is not EADD's advantage.
-- D3's false alarms disappear with EADD's window sizes (500/200).
-- The long-memory reference window is what lets EADD detect slow drift.
-- At the default threshold (AUC 0.7), ASPT confirmed every alarm it tested; it halves false alarms only when the threshold is lowered to 0.5.
-
-**Hypotheses:** H1a supported (sign test p = 0.001); H1b not supported (D3 faster where both detect, Wilcoxon p = 0.020); H2 supported at D3 threshold 0.6 (exact Mann-Whitney p = 0.014), explained by window size.
+- **H1 (higher recall, lower MTD than D3-LightGBM):** not supported (p = 0.90, p = 0.78). 16 of EADD's 21 missed drift points had an EADD detection in the 500 samples before the annotated point.
+- **H2 (fewer false alarms):** not supported; D3-LightGBM raised significantly fewer (p < 0.001).
+- **H3 (ASPT keeps the decisions of a full permutation test and is faster):** supported; identical detections in 20 of 20 runs, runtime 112 s vs. 149 s per run, measured one run at a time (25% less, faster in 20 of 20 runs; one-sided paired Wilcoxon p < 0.001, Mann-Whitney p = 0.022).
+- **Threshold sensitivity:** at tau <= 0.5 ASPT rejects most alarms and cuts false alarms by 31-81% against no test.
+- **Unannotated streams (Lukats et al. protocol, Hoeffding tree reset at every detection):** EADD 65.4% vs. D3-LightGBM 65.7% accuracy (p = 0.65).
 
 ---
 
@@ -62,24 +54,21 @@ Data stream --> Step 1: reservoir-sampled W_ref (500), sliding W_cur (200)
 unsupervised-concept-drift-detection/
 |-- detectors/
 |   |-- eadd.py                          # EADD detector
-|   |-- d3_lightgbm.py                   # D3 with a LightGBM classifier (ablation)
+|   |-- d3_lightgbm.py                   # D3 with a LightGBM classifier (used in the thesis)
 |   |-- d3.py                            # D3 baseline (Gozuacik et al., 2019)
 |   +-- ...                              # Other benchmark detectors
-|-- experiment5_multidetector_synthetic.py   # Thesis Exp 1: 8 detectors, synthetic drift
-|-- experiment_realworld_ablation.py         # Thesis Exp 2 and 4: 13 real-world streams, 3 seeds
-|-- experiment6_multidetector_realworld.py   # Thesis Exp 2: supplementary 8-detector run
-|-- experiment4_false_alarms.py              # Thesis Exp 3: stable streams
-|-- experiment_d3_lightgbm.py                # Thesis Exp 4: synthetic ablation
-|-- experiment_aspt_threshold.py             # Thesis Exp 4: AUC threshold study
+|-- experiment_hypotheses.py                # Thesis Exp 1-4: all detectors, real-world streams
+|-- analyze_hypotheses.py                  # Thesis tables and significance tests
+|-- experiment_aspt_runtime.py             # Thesis Exp 3: ASPT runtime, one run at a time
+|-- make_hypothesis_figures.py             # Thesis Ch 4 figures
 |-- experiment_aspt_type1.py                 # Thesis Ch 3: Type I error of ASPT stopping rules
-|-- experiment_camera_ready.py               # JCSSE camera-ready runs
-|-- EADD_Thesis_Experiments.ipynb            # Notebook (earlier Exp 2 run)
+|-- experiment_*.py, EADD_Thesis_Experiments.ipynb  # Earlier versions of the work and the JCSSE paper
 |-- test/detectors/                          # Unit tests, incl. test_eadd.py, test_d3_lightgbm.py
 |-- datasets/                                # Dataset loaders (CSV files not in git)
 +-- experiments/                             # results_*/ CSVs and figures
 ```
 
-`experiment1_temporal_patterns.py`, `experiment3_explainability.py` and `experiment7_explainability_deep_dive.py` belong to earlier versions of the work and are not used in the final thesis.
+The other `experiment*.py` scripts (synthetic streams, D3 with logistic regression, the 20,000-sample multi-detector run) belong to earlier versions of the work and the JCSSE paper; they are not used in the final thesis.
 
 ---
 
@@ -90,7 +79,7 @@ git clone https://github.com/NusratBegum/unsupervised-concept-drift-detection.gi
 cd unsupervised-concept-drift-detection
 python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
-python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.py
+python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.py test/detectors/test_bndm.py
 ```
 
 ---
@@ -99,12 +88,10 @@ python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.
 
 | Command | Thesis | Output |
 |---|---|---|
-| `python experiment5_multidetector_synthetic.py` | Exp 1 | `experiments/results/experiment5_multidetector_synthetic.csv` |
-| `python experiment_realworld_ablation.py` | Exp 2, Exp 4 (real-world) | `experiments/results_realworld_ablation/` |
-| `python experiment6_multidetector_realworld.py` | Exp 2 (supplementary) | `experiments/results/experiment6_multidetector_realworld.csv` |
-| `python experiment4_false_alarms.py` | Exp 3 | `experiments/results/experiment4_false_alarms.csv` |
-| `python experiment_d3_lightgbm.py` | Exp 4 (synthetic) | `experiments/results_d3_lightgbm/` |
-| `python experiment_aspt_threshold.py` | Exp 4 (threshold) | `experiments/results_aspt_threshold/` |
+| `python experiment_hypotheses.py` | Exp 1-4 (resumable; about 25 CPU-hours) | `experiments/results_hypotheses/runs.jsonl` |
+| `python experiment_aspt_runtime.py` | Exp 3 runtime (about 3 hours, run alone on the machine) | `experiments/results_hypotheses/aspt_runtime.csv` |
+| `python analyze_hypotheses.py` | Tables 4.1-4.7, tests | `experiments/results_hypotheses/*.csv`, `latex/*.tex` |
+| `python make_hypothesis_figures.py` | Figures 4.1-4.3 | `experiments/results_hypotheses/figures/*.pdf` |
 | `python experiment_aspt_type1.py` | Ch 3 (ASPT Type I error) | `experiments/results_aspt_type1/` |
 
 Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets).
@@ -116,7 +103,7 @@ Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets)
 | Detector | Method | Reference |
 |----------|--------|-----------|
 | **D3** | Logistic regression adversarial validation | Gozuacik et al., 2019 |
-| **BNDM** | Bayesian non-parametric Polya tree test | -- |
+| **BNDM** | Bayesian non-parametric Polya tree test, computed for all features at once | Xuan et al. (2020) |
 | **CSDDM** | PCA + K-Means + statistical tests | 2021 |
 | **IBDD** | Image-based comparison | 2020 |
 | **NN-DVI** | Nearest neighbor density | 2018 |
@@ -159,8 +146,8 @@ Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepo
 | File | Purpose |
 |------|---------|
 | `detectors/eadd.py` | **EADD detector** -- core thesis contribution |
-| `detectors/d3_lightgbm.py` | D3 with a LightGBM classifier (ablation) |
-| `experiment_d3_lightgbm.py`, `experiment_realworld_ablation.py`, `experiment_aspt_threshold.py`, `experiment_aspt_type1.py` | Thesis ablation, threshold and Type I error experiments |
+| `detectors/d3_lightgbm.py` | D3 with a LightGBM classifier (the D3 used in the thesis) |
+| `experiment_hypotheses.py`, `analyze_hypotheses.py`, `experiment_aspt_type1.py` | Thesis experiments, tables and tests |
 | `test/detectors/test_eadd.py`, `test/detectors/test_d3_lightgbm.py` | Unit tests for EADD/ASPT and D3-LightGBM |
 | `experiment1_temporal_patterns.py` | Experiment 1: temporal drift patterns |
 | `experiment2_realworld_benchmark.py` | Experiment 2: real-world benchmark |
