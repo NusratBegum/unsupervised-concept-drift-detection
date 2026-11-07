@@ -88,6 +88,11 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         or "none" (accept every alarm with AUC above auc_threshold).
     min_permutations : int
         Minimum number of permutations before ASPT may stop early.
+    n_folds : int
+        Cross-validation folds for the AUC (D3 uses 2).
+    sliding_reference : bool
+        Without reservoir sampling, keep the reference as the samples just
+        before the current window, as D3 does, instead of fixing it.
     """
 
     def __init__(
@@ -102,6 +107,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         seed: Optional[int] = None,
         permutation_test: str = "aspt",
         min_permutations: int = 10,
+        n_folds: int = 5,
+        sliding_reference: bool = False,
     ):
         super().__init__(seed)
         self.n_reference_samples = n_reference_samples
@@ -111,6 +118,9 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         self.significance_level = significance_level
         self.use_reservoir_sampling = use_reservoir_sampling
         self.monitoring_frequency = monitoring_frequency
+        self.n_folds = n_folds
+        assert not (sliding_reference and use_reservoir_sampling), "sliding_reference replaces reservoir sampling"
+        self.sliding_reference = sliding_reference
 
         self.reference_window: List[np.ndarray] = []
         self.current_window: List[np.ndarray] = []
@@ -161,7 +171,10 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
 
         self.current_window.append(feature_vector)
         if len(self.current_window) > self.n_current_samples:
-            self.current_window.pop(0)
+            oldest = self.current_window.pop(0)
+            if self.sliding_reference:
+                self.reference_window.pop(0)
+                self.reference_window.append(oldest)
 
         if (self.steps_since_check >= self.monitoring_frequency and
                 len(self.current_window) >= self.n_current_samples):
@@ -241,7 +254,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
     def _adversarial_auc_with_preds(self, ref_data: np.ndarray, cur_data: np.ndarray) -> Tuple[float, np.ndarray]:
         X = np.vstack([ref_data, cur_data])
         y = np.concatenate([np.zeros(len(ref_data)), np.ones(len(cur_data))])
-        kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=self.seed)
+        kfold = StratifiedKFold(n_splits=self.n_folds, shuffle=True, random_state=self.seed)
         predictions = np.zeros(len(y))
         for train_idx, test_idx in kfold.split(X, y):
             clf = self._create_classifier()

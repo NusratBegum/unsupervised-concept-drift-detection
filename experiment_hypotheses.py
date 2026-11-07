@@ -63,12 +63,12 @@ SEEDS_UNANNOTATED = [42, 142, 242]
 THRESHOLDS = [0.3, 0.4, 0.5, 0.6, 0.7]
 
 
-def make_detector(name, seed, tau=0.7, test="aspt", freq=50):
+def make_detector(name, seed, tau=0.7, test="aspt", freq=50, **eadd_kwargs):
     if name == "EADD":
-        return ExplainableAdversarialDriftDetector(
-            n_reference_samples=500, n_current_samples=200, auc_threshold=tau,
-            n_permutations=199, significance_level=0.05, monitoring_frequency=freq,
-            permutation_test=test, seed=seed)
+        kwargs = dict(n_reference_samples=500, n_current_samples=200, auc_threshold=tau,
+                      n_permutations=199, significance_level=0.05, monitoring_frequency=freq,
+                      permutation_test=test, seed=seed)
+        return ExplainableAdversarialDriftDetector(**{**kwargs, **eadd_kwargs})
     if name == "D3-LightGBM":
         return DiscriminativeDriftDetectorLightGBM(
             n_reference_samples=500, recent_samples_proportion=0.4, threshold=tau, seed=seed)
@@ -99,7 +99,7 @@ def run_job(job):
     stream = getattr(ds, job["dataset"])()
     detector = None if job["detector"] == "NoDetection" else make_detector(
         job["detector"], job["seed"], job.get("tau", 0.7), job.get("test", "aspt"),
-        job.get("freq", 50))
+        job.get("freq", 50), **job.get("eadd_kwargs", {}))
     with_classifier = job["part"] == "unannotated"
     if with_classifier:
         from river.tree import HoeffdingTreeClassifier
@@ -111,6 +111,9 @@ def run_job(job):
     for i, (x, y) in enumerate(stream):
         if i >= MAX_SAMPLES:
             break
+        if i < job.get("offset", 0):
+            n += 1  # a later start moves the detector's check grid relative to the drift points
+            continue
         if with_classifier and i != 0:
             correct_base += base.predict_one(x) == y
             correct_assisted += assisted.predict_one(x) == y

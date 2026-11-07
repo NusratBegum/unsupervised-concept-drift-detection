@@ -69,6 +69,16 @@ class EADDTest(unittest.TestCase):
         # the permutations use their own generator, so the reservoir samples are the same
         self.assertEqual(runs["aspt"], runs["none"])
 
+    def test_sliding_reference_holds_the_samples_before_the_current_window(self):
+        detector = ExplainableAdversarialDriftDetector(
+            n_reference_samples=5, n_current_samples=3, use_reservoir_sampling=False,
+            sliding_reference=True, monitoring_frequency=10**6, seed=0
+        )
+        for i in range(20):
+            detector.update({"x": float(i)})
+        self.assertEqual([12, 13, 14, 15, 16], [int(v[0]) for v in detector.reference_window])
+        self.assertEqual([17, 18, 19], [int(v[0]) for v in detector.current_window])
+
 
 if __name__ == "__main__":
     unittest.main()
