@@ -35,8 +35,8 @@ DATASETS = {
     # Rialto: 27 attributes + class
     "rialto.csv": {"attrs": [f"att{i}" for i in range(1, 28)], "target": "class"},
     
-    # Poker Hand: 10 attributes (s1,c1,s2,c2,...,s5,c5) + class
-    "poker-lsn.csv": {"attrs": ["s1", "c1", "s2", "c2", "s3", "c3", "s4", "c4", "s5", "c5"], "target": "class"},
+    # Poker Hand: 10 attributes (s1,r1,...,s5,r5, matching poker_hand.py) + class
+    "poker-lsn.csv": {"attrs": ["s1", "r1", "s2", "r2", "s3", "r3", "s4", "r4", "s5", "r5"], "target": "class"},
     
     # Sensor Stream: many attributes
     "sensorstream.csv": {"attrs": ["rcdminutes"] + [f"att{i}" for i in range(1, 55)], "target": "class"},

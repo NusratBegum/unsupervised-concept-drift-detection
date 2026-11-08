@@ -137,6 +137,8 @@ Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets)
 
 Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepository), copy to `datasets/files/`, then `python add_headers.py`.
 
+File names the loaders expect: `INSECTS <type>_<balanced|imbalanced>.csv` becomes `INSECTS-<type>_<balanced|imbalanced>_norm.csv`; `Electricity.csv` becomes `elec.csv`, `Outdoor.csv` becomes `outdoor.csv`, `Ozone.csv` becomes `ozone.csv`, `PokerHand.csv` becomes `poker-lsn.csv`, `Powersupply.csv` becomes `powersupply.csv`, `Rialto.csv` becomes `rialto.csv`, `Luxembourg.csv` becomes `luxembourg.csv`; `NOAA.csv` keeps its name. `Luxembourg.csv` ships with its own header: delete its first two lines (`sed -i '' '1,2d' luxembourg.csv`) before `add_headers.py`. The thesis results used these 1,900 rows, so the first data row is left out to reproduce them.
+
 ---
 
 ## Modifications from Original Repo
