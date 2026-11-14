@@ -1,6 +1,7 @@
 # Enhanced Adversarial Drift Detection (EADD)
 
 > **Thesis**: Master's thesis, Faculty of ICT, Mahidol University, 2026 (LaTeX source: [Nusrat-Thesis-Mahidol-University](https://github.com/NusratBegum/Nusrat-Thesis-Mahidol-University))
+> **Paper**: [JCSSE 2026, IEEE Xplore](https://ieeexplore.ieee.org/document/11596765) (source: [JCSEE-Submission](https://github.com/NusratBegum/JCSEE-Submission))
 > **Author**: Nusrat Begum
 > **Built on**: [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection), the benchmark of [Lukats et al. (2024)](https://link.springer.com/article/10.1007/s41060-024-00620-y)
 
@@ -77,7 +78,7 @@ The other `experiment*.py` scripts (synthetic streams, D3 with logistic regressi
 ```bash
 git clone https://github.com/NusratBegum/unsupervised-concept-drift-detection.git
 cd unsupervised-concept-drift-detection
-python3 -m venv venv && source venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.py test/detectors/test_bndm.py
 ```
@@ -93,6 +94,8 @@ python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.
 | `python analyze_hypotheses.py` | Tables 4.1-4.7, tests | `experiments/results_hypotheses/*.csv`, `latex/*.tex` |
 | `python make_hypothesis_figures.py` | Figures 4.1-4.3 | `experiments/results_hypotheses/figures/*.pdf` |
 | `python experiment_aspt_type1.py` | Ch 3 (ASPT Type I error) | `experiments/results_aspt_type1/` |
+| `python experiment_root_cause.py` | Ablation: one design choice at a time, D3-like EADD to EADD (not yet in the thesis) | `experiments/results_hypotheses/root_cause_table.csv` |
+| `python experiment_offsets.py` | Runs with a different stream start per seed (not yet in the thesis) | `experiments/results_hypotheses/offsets_table.csv` |
 
 Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets).
 
