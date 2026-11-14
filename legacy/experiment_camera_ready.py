@@ -22,7 +22,7 @@ import json
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from detectors.eadd import ExplainableAdversarialDriftDetector
 from detectors.d3 import DiscriminativeDriftDetector2019
@@ -247,7 +247,7 @@ def correlated_features(out_dir):
 # Main
 # ──────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+    out_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                            "experiments", "results_cameraready")
     os.makedirs(out_dir, exist_ok=True)
 

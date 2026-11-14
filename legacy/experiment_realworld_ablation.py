@@ -30,7 +30,7 @@ warnings.filterwarnings("ignore")
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from detectors.eadd import ExplainableAdversarialDriftDetector
 from detectors.d3 import DiscriminativeDriftDetector2019
@@ -40,7 +40,7 @@ from experiment_camera_ready import EADDNoASPT
 SEEDS = [42, 142, 242]
 MAX_SAMPLES = 100_000
 TOLERANCE = 500
-OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+OUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                        "experiments", "results_realworld_ablation")
 
 DATASETS = [

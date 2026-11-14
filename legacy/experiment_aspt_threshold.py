@@ -21,7 +21,7 @@ from concurrent.futures import ProcessPoolExecutor
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from experiment_camera_ready import EADDNoASPT
 from experiment_realworld_ablation import LoggingEADD
@@ -30,7 +30,7 @@ import experiment5_multidetector_synthetic as e5
 
 SEEDS = [42, 142, 242, 342, 442]
 TAUS = [0.5, 0.6, 0.7]
-OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+OUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                        "experiments", "results_aspt_threshold")
 
 DRIFT_GENERATORS = {

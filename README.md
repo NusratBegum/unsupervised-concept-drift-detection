@@ -63,13 +63,15 @@ unsupervised-concept-drift-detection/
 |-- experiment_aspt_runtime.py             # Thesis Exp 3: ASPT runtime, one run at a time
 |-- make_hypothesis_figures.py             # Thesis Ch 4 figures
 |-- experiment_aspt_type1.py                 # Thesis Ch 3: Type I error of ASPT stopping rules
-|-- experiment_*.py, EADD_Thesis_Experiments.ipynb  # Earlier versions of the work and the JCSSE paper
+|-- experiment_root_cause.py, experiment_offsets.py  # Root-cause ablations (not yet in the thesis)
+|-- legacy/                                  # JCSSE paper scripts, October drafts, demos (see legacy/README.md)
+|-- main.py, runner.py, config.py, eval.py, eval/, optimization/, metrics/, results/  # Upstream benchmark harness and its results
 |-- test/detectors/                          # Unit tests, incl. test_eadd.py, test_d3_lightgbm.py
 |-- datasets/                                # Dataset loaders (CSV files not in git)
 +-- experiments/                             # results_*/ CSVs and figures
 ```
 
-The other `experiment*.py` scripts (synthetic streams, D3 with logistic regression, the 20,000-sample multi-detector run) belong to earlier versions of the work and the JCSSE paper; they are not used in the final thesis.
+The scripts in `legacy/` (synthetic streams, D3 with logistic regression, the 20,000-sample multi-detector run) belong to the JCSSE paper and to earlier versions of the work; they are not used in the final thesis. Run them from the repository root, e.g. `PYTHONPATH=. python legacy/demo_eadd.py`.
 
 ---
 
@@ -154,14 +156,14 @@ File names the loaders expect: `INSECTS <type>_<balanced|imbalanced>.csv` become
 | `detectors/d3_lightgbm.py` | D3 with a LightGBM classifier (the D3 used in the thesis) |
 | `experiment_hypotheses.py`, `analyze_hypotheses.py`, `experiment_aspt_type1.py` | Thesis experiments, tables and tests |
 | `test/detectors/test_eadd.py`, `test/detectors/test_d3_lightgbm.py` | Unit tests for EADD/ASPT and D3-LightGBM |
-| `experiment1_temporal_patterns.py` | Experiment 1: temporal drift patterns |
-| `experiment2_realworld_benchmark.py` | Experiment 2: real-world benchmark |
-| `experiment3_explainability.py` | Experiment 3: SHAP explainability |
-| `experiment4_false_alarms.py` | Experiment 4: false alarm evaluation |
-| `run_all_experiments.py` | Master runner + hypothesis tests + LaTeX |
-| `EADD_Thesis_Experiments.ipynb` | Interactive Jupyter notebook |
-| `demo_eadd.py` | EADD demonstration script |
-| `demo.py` | D3 demo on all datasets |
+| `legacy/experiment1_temporal_patterns.py` | Experiment 1: temporal drift patterns |
+| `legacy/experiment2_realworld_benchmark.py` | Experiment 2: real-world benchmark |
+| `legacy/experiment3_explainability.py` | Experiment 3: SHAP explainability |
+| `legacy/experiment4_false_alarms.py` | Experiment 4: false alarm evaluation |
+| `legacy/run_all_experiments.py` | Master runner + hypothesis tests + LaTeX |
+| `legacy/EADD_Thesis_Experiments.ipynb` | Interactive Jupyter notebook |
+| `legacy/demo_eadd.py` | EADD demonstration script |
+| `legacy/demo.py` | D3 demo on all datasets |
 | `add_headers.py` | CSV header script for USP datasets |
 
 ### Modified Files
@@ -197,7 +199,7 @@ File names the loaders expect: `INSECTS <type>_<balanced|imbalanced>.csv` become
 | Scope | License | File |
 |---|---|---|
 | Upstream code (Lukats et al. / DFKI base detectors, evaluation harness, datasets) | [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) | [LICENSE](LICENSE) |
-| EADD contributions (© 2026 Nusrat Begum): `detectors/eadd.py`, all `experiment*.py`, `demo*.py`, `EADD_Thesis_Experiments.ipynb` | [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0) | [LICENSE-EADD](LICENSE-EADD) |
+| EADD contributions (© 2026 Nusrat Begum): `detectors/eadd.py`, all `experiment*.py`, `legacy/` | [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0) | [LICENSE-EADD](LICENSE-EADD) |
 
 **PolyForm Noncommercial 1.0.0** allows personal, academic, and non-profit research use of the EADD-specific files. **Commercial use** (including internal commercial operations) requires written permission from the author: `nusrat.beg@student.mahidol.ac.th`.
 

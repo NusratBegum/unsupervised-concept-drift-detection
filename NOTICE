@@ -21,17 +21,17 @@ This repository contains source code under TWO different licenses:
 
    Applies to:
      detectors/eadd.py
-     experiment1_temporal_patterns.py
-     experiment2_realworld_benchmark.py
-     experiment3_explainability.py
-     experiment4_false_alarms.py
-     experiment5_multidetector_synthetic.py
-     experiment6_multidetector_realworld.py
-     experiment7_explainability_deep_dive.py
-     experiment_camera_ready.py
-     demo.py
-     demo_eadd.py
-     EADD_Thesis_Experiments.ipynb
+     legacy/experiment1_temporal_patterns.py
+     legacy/experiment2_realworld_benchmark.py
+     legacy/experiment3_explainability.py
+     legacy/experiment4_false_alarms.py
+     legacy/experiment5_multidetector_synthetic.py
+     legacy/experiment6_multidetector_realworld.py
+     legacy/experiment7_explainability_deep_dive.py
+     legacy/experiment_camera_ready.py
+     legacy/demo.py
+     legacy/demo_eadd.py
+     legacy/EADD_Thesis_Experiments.ipynb
 
    The PolyForm Noncommercial 1.0.0 license restricts these files to
    NONCOMMERCIAL use only. Commercial use, redistribution, or derivative
