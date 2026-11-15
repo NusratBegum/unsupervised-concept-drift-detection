@@ -93,6 +93,9 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
     sliding_reference : bool
         Without reservoir sampling, keep the reference as the samples just
         before the current window, as D3 does, instead of fixing it.
+    reservoir_after_current : bool
+        Offer a sample to the reservoir only once it leaves the current
+        window, so no sample is in both windows (False in the thesis runs).
     """
 
     def __init__(
@@ -109,6 +112,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         min_permutations: int = 10,
         n_folds: int = 5,
         sliding_reference: bool = False,
+        reservoir_after_current: bool = False,
     ):
         super().__init__(seed)
         self.n_reference_samples = n_reference_samples
@@ -121,6 +125,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         self.n_folds = n_folds
         assert not (sliding_reference and use_reservoir_sampling), "sliding_reference replaces reservoir sampling"
         self.sliding_reference = sliding_reference
+        # False reproduces the thesis runs, where a sample can be in both windows at once
+        self.reservoir_after_current = reservoir_after_current
 
         self.reference_window: List[np.ndarray] = []
         self.current_window: List[np.ndarray] = []
@@ -163,11 +169,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             self.reference_window.append(feature_vector)
             return False
 
-        if self.use_reservoir_sampling:
-            prob = self.n_reference_samples / self.samples_seen
-            if self.rng.random() < prob:
-                idx = self.rng.integers(0, self.n_reference_samples)
-                self.reference_window[idx] = feature_vector
+        if self.use_reservoir_sampling and not self.reservoir_after_current:
+            self._offer_to_reservoir(feature_vector)
 
         self.current_window.append(feature_vector)
         if len(self.current_window) > self.n_current_samples:
@@ -175,6 +178,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             if self.sliding_reference:
                 self.reference_window.pop(0)
                 self.reference_window.append(oldest)
+            elif self.use_reservoir_sampling and self.reservoir_after_current:
+                self._offer_to_reservoir(oldest)
 
         if (self.steps_since_check >= self.monitoring_frequency and
                 len(self.current_window) >= self.n_current_samples):
@@ -182,6 +187,11 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             return self._detect_drift()
 
         return False
+
+    def _offer_to_reservoir(self, x):
+        # reservoir sampling (Algorithm R)
+        if self.rng.random() < self.n_reference_samples / self.samples_seen:
+            self.reference_window[self.rng.integers(0, self.n_reference_samples)] = x
 
     def _detect_drift(self) -> bool:
         """Run the full EADD detection pipeline with ASPT and H_pred."""

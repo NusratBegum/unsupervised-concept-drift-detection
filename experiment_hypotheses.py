@@ -45,6 +45,7 @@ from detectors import (
     SemiParametricLogLikelihood,
     UDetect,
 )
+from detectors.d3 import DiscriminativeDriftDetector2019
 from detectors.d3_lightgbm import DiscriminativeDriftDetectorLightGBM
 from detectors.eadd import ExplainableAdversarialDriftDetector
 
@@ -70,8 +71,11 @@ def make_detector(name, seed, tau=0.7, test="aspt", freq=50, **eadd_kwargs):
                       permutation_test=test, seed=seed)
         return ExplainableAdversarialDriftDetector(**{**kwargs, **eadd_kwargs})
     if name == "D3-LightGBM":
-        return DiscriminativeDriftDetectorLightGBM(
-            n_reference_samples=500, recent_samples_proportion=0.4, threshold=tau, seed=seed)
+        return DiscriminativeDriftDetectorLightGBM(**{
+            **dict(n_reference_samples=500, recent_samples_proportion=0.4, threshold=tau, seed=seed), **eadd_kwargs})
+    if name == "D3":  # the authors' D3: logistic regression; w=100, rho=0.1, tau=0.7 in their code
+        return DiscriminativeDriftDetector2019(**{
+            **dict(n_reference_samples=100, recent_samples_proportion=0.1, threshold=tau, seed=seed), **eadd_kwargs})
     if name == "BNDM":
         return BayesianNonparametricDetectionMethod(
             n_samples=500, const=1.0, threshold=0.5, max_depth=3, seed=seed)
@@ -91,12 +95,16 @@ def make_detector(name, seed, tau=0.7, test="aspt", freq=50, **eadd_kwargs):
     raise ValueError(name)
 
 
+from synthetic_streams import synthetic_stream  # noqa: E402
+
+
 def job_key(job):
     return json.dumps(job, sort_keys=True)
 
 
 def run_job(job):
-    stream = getattr(ds, job["dataset"])()
+    stream = synthetic_stream(job["dataset"], job["seed"]) if job["dataset"].startswith("Synth") \
+        else getattr(ds, job["dataset"])()
     detector = None if job["detector"] == "NoDetection" else make_detector(
         job["detector"], job["seed"], job.get("tau", 0.7), job.get("test", "aspt"),
         job.get("freq", 50), **job.get("eadd_kwargs", {}))

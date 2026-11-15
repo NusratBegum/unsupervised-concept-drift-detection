@@ -28,6 +28,8 @@ class DiscriminativeDriftDetector2019(UnsupervisedDriftDetector):
         recent_samples_proportion: float = 0.1,
         threshold: float = 0.7,
         seed: Optional[int] = None,
+        step: Optional[int] = None,
+        n_folds: int = 2,
     ):
         """
         Init new D3 instance.
@@ -36,6 +38,9 @@ class DiscriminativeDriftDetector2019(UnsupervisedDriftDetector):
         :param recent_samples_proportion: the proportion of data used to represent the new concept relative to the
             number of data used to represent current concept
         :param threshold: the threshold above which two concepts can be reliably discerned and a drift is signalled
+        :param step: samples dropped after a check without drift, i.e. the check interval (default: the size of the
+            recent window, as in the original D3)
+        :param n_folds: folds of the cross-validated AUC (2 in the authors' code)
         """
         super().__init__(seed)
         self.data = []
@@ -43,7 +48,8 @@ class DiscriminativeDriftDetector2019(UnsupervisedDriftDetector):
         self.recent_samples_proportion = recent_samples_proportion
         self.n_samples = int(n_reference_samples * (1 + recent_samples_proportion))
         self.threshold = threshold
-        self.kfold = StratifiedKFold(n_splits=2, shuffle=True, random_state=self.seed)
+        self.step = step or int(np.ceil(n_reference_samples * recent_samples_proportion))
+        self.kfold = StratifiedKFold(n_splits=n_folds, shuffle=True, random_state=self.seed)
 
     def update(self, features: dict) -> bool:
         """
@@ -60,8 +66,7 @@ class DiscriminativeDriftDetector2019(UnsupervisedDriftDetector):
                 self.data = self.data[self.n_reference_samples :]
                 return True
             else:
-                step = int(np.ceil(self.n_reference_samples * self.recent_samples_proportion))
-                self.data = self.data[step:]
+                self.data = self.data[self.step :]
         return False
 
     def _detect_drift(self) -> bool:

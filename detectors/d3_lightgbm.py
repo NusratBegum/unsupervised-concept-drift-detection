@@ -26,6 +26,8 @@ class DiscriminativeDriftDetectorLightGBM(DiscriminativeDriftDetector2019):
         recent_samples_proportion: float = 0.1,
         threshold: float = 0.7,
         seed: Optional[int] = None,
+        step: Optional[int] = None,
+        n_folds: int = 2,
     ):
         """
         Init new D3-LightGBM instance.
@@ -34,8 +36,10 @@ class DiscriminativeDriftDetectorLightGBM(DiscriminativeDriftDetector2019):
         :param recent_samples_proportion: the proportion of data used to represent the new concept relative to the
             number of data used to represent current concept
         :param threshold: the threshold above which two concepts can be reliably discerned and a drift is signalled
+        :param step: check interval, see D3
+        :param n_folds: folds of the cross-validated AUC, see D3
         """
-        super().__init__(n_reference_samples, recent_samples_proportion, threshold, seed)
+        super().__init__(n_reference_samples, recent_samples_proportion, threshold, seed, step, n_folds)
 
     def _detect_drift(self) -> bool:
         """
