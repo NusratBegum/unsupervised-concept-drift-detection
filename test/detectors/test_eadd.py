@@ -79,6 +79,29 @@ class EADDTest(unittest.TestCase):
         self.assertEqual([12, 13, 14, 15, 16], [int(v[0]) for v in detector.reference_window])
         self.assertEqual([17, 18, 19], [int(v[0]) for v in detector.current_window])
 
+    def test_reservoir_after_current_keeps_windows_disjoint(self):
+        detector = ExplainableAdversarialDriftDetector(
+            n_reference_samples=50, n_current_samples=20, reservoir_after_current=True,
+            monitoring_frequency=10**6, seed=0
+        )
+        for i in range(500):
+            detector.update({"x": float(i)})
+        ref = {int(v[0]) for v in detector.reference_window}
+        cur = {int(v[0]) for v in detector.current_window}
+        self.assertEqual(set(range(480, 500)), cur)
+        self.assertFalse(ref & cur)
+        self.assertGreater(max(ref), 49)  # the reservoir was updated after it filled
+
+    def test_default_reservoir_can_overlap(self):
+        detector = ExplainableAdversarialDriftDetector(
+            n_reference_samples=50, n_current_samples=20, monitoring_frequency=10**6, seed=0
+        )
+        for i in range(70):
+            detector.update({"x": float(i)})
+        ref = {int(v[0]) for v in detector.reference_window}
+        cur = {int(v[0]) for v in detector.current_window}
+        self.assertTrue(ref & cur)  # the thesis behaviour, kept as the default
+
 
 if __name__ == "__main__":
     unittest.main()

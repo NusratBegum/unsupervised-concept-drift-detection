@@ -241,10 +241,11 @@ NAMES = {"D3-LightGBM": "D3-LightGBM", "EADD": "EADD (ASPT)", "EADD-FullPerm": "
 
 
 def fmt(v, digits):
-    # round half up on the shortest decimal repr, so 8.85 prints 8.9 as in the prose
+    # Remove sub-picounit aggregation noise before decimal half-up rounding.
     if pd.isna(v):
         return "--"
-    return str(Decimal(repr(float(v))).quantize(Decimal(1).scaleb(-digits), rounding=ROUND_HALF_UP))
+    value = Decimal(str(round(float(v), 12)))
+    return str(value.quantize(Decimal(1).scaleb(-digits), rounding=ROUND_HALF_UP))
 
 
 def bold_best(values, digits, best):

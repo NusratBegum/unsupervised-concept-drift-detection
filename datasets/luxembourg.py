@@ -10,7 +10,7 @@ class Luxembourg(base.FileDataset):
         directory_path: str = "datasets/files",
     ):
         super().__init__(
-            n_samples=1_901,
+            n_samples=1_900,  # the USP file has 1,901 rows; the thesis runs dropped the first (see README)
             n_features=31,
             task=base.MULTI_CLF,
             filename="luxembourg.csv",
