@@ -283,7 +283,7 @@ uv pip install -r requirements-lock.txt      # the exact package versions used h
 python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.py test/detectors/test_d3.py
 ```
 
-**Step 4. Try one run** (about 10 seconds): EADD on the synthetic gradual stream.
+**Step 4. Try one run** (a few seconds): EADD on the synthetic gradual stream.
 
 ```bash
 python -c "
@@ -294,7 +294,7 @@ print('alarms at samples', r['detections'])
 print(detection_metrics(r['detections'], r['true_drifts'], 1500))"
 ```
 
-It prints three alarms, one after each drift point (5,000, 10,000, 15,000), and recall 1.0. Replace `detector='EADD'` by `detector='D3-LightGBM'` and use `eadd_kwargs=dict(n_reference_samples=500, recent_samples_proportion=0.4, step=200, n_folds=2)` to see D3 miss them.
+It prints alarms at samples 5,899, 10,999 and 16,099 (one after each drift point at 5,000, 10,000 and 15,000) and recall 1.0. Replace `detector='EADD'` by `detector='D3-LightGBM'` and use `eadd_kwargs=dict(n_reference_samples=500, recent_samples_proportion=0.4, step=200, n_folds=2)` to see D3-LightGBM miss them: it prints no alarms and recall 0.0.
 
 **Step 5. Run everything** (1,645 runs; about 2.5 hours on 10 cores; it can be stopped and restarted, finished runs are skipped):
 
