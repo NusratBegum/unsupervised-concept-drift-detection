@@ -183,7 +183,7 @@ if __name__ == "__main__":
             done = {json.loads(line)["key"] for line in f if line.strip()}
     jobs = [j for j in all_jobs() if job_key(j) not in done]
     jobs.sort(key=expected_cost)
-    workers = max(1, (os.cpu_count() or 2) - 1)
+    workers = max(1, (os.process_cpu_count() or 2) - 1)
     print(f"{len(jobs)} jobs to run ({len(done)} done) on {workers} workers", flush=True)
     with ProcessPoolExecutor(max_workers=workers) as pool, open(OUT_FILE, "a") as out:
         futures = {pool.submit(run_job, j): j for j in jobs}

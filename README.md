@@ -80,8 +80,8 @@ The scripts in `legacy/` (synthetic streams, D3 with logistic regression, the 20
 ```bash
 git clone https://github.com/NusratBegum/unsupervised-concept-drift-detection.git
 cd unsupervised-concept-drift-detection
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+uv venv --python 3.13 && source .venv/bin/activate
+uv pip install -r requirements-lock.txt     # exact versions used for the thesis results
 python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.py test/detectors/test_bndm.py
 ```
 

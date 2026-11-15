@@ -9,7 +9,7 @@ Experiment code for Nusrat Begum's M.Sc. thesis (Mahidol University) on EADD, an
 ## Commands
 
 ```bash
-source .venv/bin/activate                 # Python 3.13; or: pip install -r requirements.txt
+source .venv/bin/activate                 # Python 3.13, managed with uv: uv pip install -r requirements-lock.txt
 python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.py test/detectors/test_bndm.py
 python -m pytest -q test/detectors/test_eadd.py -k sliding_reference      # single test
 
@@ -49,6 +49,7 @@ There is no linter or build step.
 - EADD's permutation test uses its own RNG (`perm_rng`) so that test variants see the same reservoir samples.
 - Known open issues in EADD (found 7-8 Nov 2026, not yet fixed): new samples enter the reservoir while still in the current window; the observed AUC uses 5-fold CV but permuted AUCs use 2-fold.
 - Timing runs must be sequential; LightGBM is multithreaded and parallel jobs distort runtimes.
-- On the advisor's server use at most 8 CPUs.
+- Use uv for every Python package (`uv pip install`, `uv venv`); never plain pip.
+- Advisor's server (`ssh mcai_ngrok`, key login): no internet access. Code in `~/eadd/code` (rsync from here), uv in `~/.local/bin`, Python 3.13 in `~/eadd/python`, offline wheels in `~/eadd/bundle/wheels` (`uv pip install --offline --no-index --find-links ~/eadd/bundle/wheels`). Use at most 10 cores: run jobs under `taskset -c 0-9`; the scripts size their worker pool from `os.process_cpu_count()`, so they follow that limit.
 - New EADD files carry the SPDX header used in `detectors/eadd.py` (PolyForm Noncommercial); upstream files are BSD-3.
 - Commit messages: plain imperative sentences describing what and why.

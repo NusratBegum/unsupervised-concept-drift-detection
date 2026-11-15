@@ -59,7 +59,7 @@ def run_all():
             done = {json.loads(line)["key"] for line in f if line.strip()}
     todo = [j for j in jobs() if job_key(j) not in done]
     print(f"{len(todo)} jobs to run ({len(done)} done)", flush=True)
-    with ProcessPoolExecutor(max_workers=max(1, (os.cpu_count() or 2) - 1)) as pool, open(OUT_FILE, "a") as out:
+    with ProcessPoolExecutor(max_workers=max(1, (os.process_cpu_count() or 2) - 1)) as pool, open(OUT_FILE, "a") as out:
         for k, r in enumerate(pool.map(run_job, todo), 1):
             out.write(json.dumps(r) + "\n")
             out.flush()
