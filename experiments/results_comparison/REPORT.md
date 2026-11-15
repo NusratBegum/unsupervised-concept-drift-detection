@@ -98,7 +98,7 @@ print(r['detections'], detection_metrics(r['detections'], r['true_drifts'], 1500
 | D3-LightGBM (thesis) | 0.65 | 279 | 5.6 | 0.47 | 872 | 0.0 | 0.0 |
 | EADD (thesis) | 0.50 | 302 | 8.9 | 1.00 | 522 | 0.0 | 0.0 |
 
-With its authors' settings D3 finds most drift points, but only because it raises an alarm about every 120 samples: 170 false alarms per run on INSECTS and 71 on a stream with no drift at all (precision 1 to 4%). This confirms why D3 needs the larger windows, and the comparison with EADD is only meaningful in an identical setup.
+With its authors' settings D3 finds most drift points, but only because it raises an alarm about every 300 samples: 170 false alarms per run on INSECTS and 71 on a stream with no drift at all (precision 1 to 4%). This confirms why D3 needs the larger windows, and the comparison with EADD is only meaningful in an identical setup.
 
 ### 5.2 Identical setup (group B)
 
@@ -112,8 +112,8 @@ With its authors' settings D3 finds most drift points, but only because it raise
 | B50 | EADD | 0.50 | 302 | 8.9 | **1.00** | **522** | 0.0 |
 
 One-sided tests of EADD against each D3 in the same setup (`tests.csv`; 20 runs each):
-- **Real streams:** EADD is never better. Recall p > 0.7 in every comparison. In B200, D3 has fewer false alarms than EADD.
-- **Synthetic streams:** EADD has a higher recall than both D3 versions in both setups (Mann-Whitney p ≤ 0.0002, Wilcoxon p ≤ 0.001) and a lower MTD (Wilcoxon p = 0.004 to 0.03), with no false alarms.
+- **Real streams:** EADD has neither a higher recall (p > 0.7 in every comparison) nor a lower MTD. In B200, both D3 versions have fewer false alarms than EADD. The one exception is B50, where EADD raised fewer false alarms than D3-LightGBM (8.9 vs 9.8 per run; paired Wilcoxon p = 0.027, Mann-Whitney p = 0.15).
+- **Synthetic streams:** EADD has a higher recall than both D3 versions in both setups (Mann-Whitney p ≤ 0.0002, Wilcoxon p ≤ 0.002) and a lower MTD (Wilcoxon p = 0.004 to 0.03), with no false alarms.
 - **Logistic regression vs LightGBM in D3:** almost the same in both setups. The classifier is not what separates the detectors.
 
 ### 5.3 Which component matters (group C)
@@ -130,7 +130,7 @@ One-sided tests of EADD against each D3 in the same setup (`tests.csv`; 20 runs 
 
 - **ASPT changes nothing at tau 0.7.** Adding it never alters a detection: with a threshold of 0.7 every alarm that reaches the test is confirmed. This is why H1 and H2 cannot come from ASPT.
 - **The reference memory decides the result, and it works in opposite directions on the two kinds of data.**
-  - On the synthetic gradual and incremental streams the change is slow. A sliding reference moves along with the change, so the two windows always look alike, and D3 misses every slow drift (recall 0). EADD's reservoir keeps samples from before the change, so it finds all of them.
+  - On the synthetic gradual and incremental streams the change is slow. A sliding reference moves along with the change, so the two windows always look alike, and D3 misses almost every slow drift (recall 0 to 0.07). EADD's reservoir keeps samples from before the change, so it finds all of them.
   - On the INSECTS streams the distribution keeps changing slowly between the annotated points. The reservoir then sees "drift" that is not annotated, so it raises more false alarms and resets at the wrong times; the sliding reference does better there.
   - Figure 5 shows the synthetic gradual stream: D3 never fires, EADD fires once per drift.
 - **Fixing the window overlap makes EADD more sensitive** (more false alarms on real data, slightly shorter delay on synthetic data). The overlap was hiding drift by lowering the AUC.
