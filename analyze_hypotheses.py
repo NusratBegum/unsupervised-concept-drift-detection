@@ -29,6 +29,7 @@ Outputs (experiments/results_hypotheses/):
 """
 import json
 import os
+from decimal import ROUND_HALF_UP, Decimal
 
 import numpy as np
 import pandas as pd
@@ -240,7 +241,10 @@ NAMES = {"D3-LightGBM": "D3-LightGBM", "EADD": "EADD (ASPT)", "EADD-FullPerm": "
 
 
 def fmt(v, digits):
-    return "--" if pd.isna(v) else f"{v:.{digits}f}"
+    # round half up on the shortest decimal repr, so 8.85 prints 8.9 as in the prose
+    if pd.isna(v):
+        return "--"
+    return str(Decimal(repr(float(v))).quantize(Decimal(1).scaleb(-digits), rounding=ROUND_HALF_UP))
 
 
 def bold_best(values, digits, best):
