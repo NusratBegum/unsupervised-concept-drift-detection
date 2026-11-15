@@ -50,7 +50,7 @@ class UpdateTest(unittest.TestCase):
         """
         Test that no drift is called when no drift happens.
         """
-        sample = {f"feature_{i}": {i} for i in range(20)}
+        sample = {f"feature_{i}": float(i) for i in range(20)}
         edfs = EDFS(5, 0.4)
         for _ in range(200):
             drift = edfs.update(sample)

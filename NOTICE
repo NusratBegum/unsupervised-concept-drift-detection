@@ -19,8 +19,21 @@ This repository contains source code under TWO different licenses:
    File: LICENSE-EADD
    Copyright (c) 2026 Nusrat Begum.
 
-   Applies to:
+   Applies to (the .py files carry the PolyForm SPDX header):
      detectors/eadd.py
+     analyze_comparison.py
+     analyze_hypotheses.py
+     experiment_aspt_runtime.py
+     experiment_aspt_type1.py
+     experiment_comparison.py
+     experiment_hypotheses.py
+     experiment_offsets.py
+     experiment_root_cause.py
+     make_comparison_figures.py
+     make_hypothesis_figures.py
+     synthetic_streams.py
+     legacy/demo.py
+     legacy/demo_eadd.py
      legacy/experiment1_temporal_patterns.py
      legacy/experiment2_realworld_benchmark.py
      legacy/experiment3_explainability.py
@@ -28,14 +41,16 @@ This repository contains source code under TWO different licenses:
      legacy/experiment5_multidetector_synthetic.py
      legacy/experiment6_multidetector_realworld.py
      legacy/experiment7_explainability_deep_dive.py
+     legacy/experiment_aspt_threshold.py
      legacy/experiment_camera_ready.py
-     legacy/demo.py
-     legacy/demo_eadd.py
+     legacy/experiment_d3_lightgbm.py
+     legacy/experiment_realworld_ablation.py
      legacy/EADD_Thesis_Experiments.ipynb
 
    The PolyForm Noncommercial 1.0.0 license restricts these files to
-   NONCOMMERCIAL use only. Commercial use, redistribution, or derivative
-   works require explicit written permission from Nusrat Begum.
+   NONCOMMERCIAL use only. Commercial use requires explicit written
+   permission from Nusrat Begum; noncommercial changes and redistribution
+   are allowed under the terms in LICENSE-EADD.
 
 If you use the EADD-licensed files in research, cite:
 

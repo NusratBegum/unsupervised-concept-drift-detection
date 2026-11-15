@@ -73,7 +73,34 @@ def timeline(df, dataset, seed, variants, labels, name, title):
     save(fig, name)
 
 
+def windows_diagram():
+    """How the two reference memories pick their samples, at one check."""
+    import numpy as np
+    rng = np.random.default_rng(0)
+    t, n_ref, n_cur = 2000, 500, 200
+    fig, axes = plt.subplots(2, 1, figsize=(10, 3.2), sharex=True)
+    rows = [("Sliding reference (D3, D3-LightGBM)", np.arange(t - n_cur - n_ref, t - n_cur), 200),
+            ("Reservoir reference (EADD)", np.sort(rng.choice(t - n_cur, n_ref, replace=False)), 50)]
+    for ax, (title, ref, every) in zip(axes, rows):
+        ax.scatter(ref, np.zeros_like(ref), marker="|", s=200, color=OI[0], label="reference window (500 samples)")
+        cur = np.arange(t - n_cur, t)
+        ax.scatter(cur, np.zeros_like(cur), marker="|", s=200, color=OI[1], label="current window (newest 200)")
+        checks = np.arange(every, t + 1, every)
+        ax.scatter(checks, np.full_like(checks, 0.6), marker="v", s=14, color=OI[7],
+                   label=f"a check (here every {every} samples)")
+        ax.set_ylim(-0.6, 1.0)
+        ax.set_yticks([])
+        ax.spines["left"].set_visible(False)
+        ax.set_title(title, fontsize=9, loc="left")
+        ax.legend(fontsize=7, frameon=False, loc="upper left", bbox_to_anchor=(1.0, 1.0))
+    axes[1].set_xlabel("samples seen since the last detected drift (now = 2,000)")
+    fig.suptitle("Which samples a detector compares at one check", fontsize=10)
+    fig.tight_layout()
+    save(fig, "fig0_windows")
+
+
 if __name__ == "__main__":
+    windows_diagram()
     df = load()
     summary = pd.read_csv(os.path.join(OUT_DIR, "summary.csv"))
     main = ["D3 (authors)", "D3-LightGBM (thesis)", "EADD (thesis)",

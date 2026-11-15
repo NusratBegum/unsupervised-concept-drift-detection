@@ -34,7 +34,7 @@ Four annotated INSECTS streams (10 drift points), 5 seeds, 20 runs per detector;
 - **H2 (fewer false alarms):** not supported; D3-LightGBM raised significantly fewer (p < 0.001).
 - **H3 (ASPT keeps the decisions of a full permutation test and is faster):** supported; identical detections in 20 of 20 runs, runtime 112 s vs. 149 s per run, measured one run at a time (25% less, faster in 20 of 20 runs; one-sided paired Wilcoxon p < 0.001, Mann-Whitney p = 0.022).
 - **Threshold sensitivity:** at tau <= 0.5 ASPT rejects most alarms and cuts false alarms by 31-81% against no test.
-- **Unannotated streams (Lukats et al. protocol, Hoeffding tree reset at every detection):** EADD 65.4% vs. D3-LightGBM 65.7% accuracy (p = 0.65).
+- **Unannotated streams (Lukats et al. protocol, Hoeffding tree reset at every detection):** EADD 65.4% vs. D3-LightGBM 65.7% accuracy (two-sided paired Wilcoxon over 9 streams, p = 0.65).
 
 ---
 
@@ -63,7 +63,9 @@ unsupervised-concept-drift-detection/
 |-- experiment_aspt_runtime.py             # Thesis Exp 3: ASPT runtime, one run at a time
 |-- make_hypothesis_figures.py             # Thesis Ch 4 figures
 |-- experiment_aspt_type1.py                 # Thesis Ch 3: Type I error of ASPT stopping rules
-|-- experiment_root_cause.py, experiment_offsets.py  # Root-cause ablations (not yet in the thesis)
+|-- experiment_root_cause.py, experiment_offsets.py  # Further analyses (described in Ch 4; results only in this repository)
+|-- experiment_comparison.py, synthetic_streams.py  # EADD vs D3 vs D3-LightGBM (10 Nov 2026), INSECTS and synthetic streams; not in the thesis
+|-- analyze_comparison.py, make_comparison_figures.py  # Tables, tests and figures for that comparison
 |-- legacy/                                  # JCSSE paper scripts, October drafts, demos (see legacy/README.md)
 |-- main.py, runner.py, config.py, eval.py, eval/, optimization/, metrics/, results/  # Upstream benchmark harness and its results
 |-- test/detectors/                          # Unit tests, incl. test_eadd.py, test_d3_lightgbm.py
@@ -96,10 +98,20 @@ python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.
 | `python analyze_hypotheses.py` | Tables 4.1-4.7, tests | `experiments/results_hypotheses/*.csv`, `latex/*.tex` |
 | `python make_hypothesis_figures.py` | Figures 4.1-4.3 | `experiments/results_hypotheses/figures/*.pdf` |
 | `python experiment_aspt_type1.py` | Ch 3 (ASPT Type I error) | `experiments/results_aspt_type1/` |
-| `python experiment_root_cause.py` | Ablation: one design choice at a time, D3-like EADD to EADD (not yet in the thesis) | `experiments/results_hypotheses/root_cause_table.csv` |
-| `python experiment_offsets.py` | Runs with a different stream start per seed (not yet in the thesis) | `experiments/results_hypotheses/offsets_table.csv` |
+| `python experiment_root_cause.py` | Ablation: one design choice at a time, D3-like EADD to EADD (described in Ch 4, results here only) | `experiments/results_hypotheses/root_cause_table.csv` |
+| `python experiment_offsets.py` | Runs with a different stream start per seed (described in Ch 4, results here only) | `experiments/results_hypotheses/offsets_table.csv` |
 
 Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets).
+
+### EADD vs D3 comparison (10 Nov 2026)
+
+A comparison requested at the 10 Nov 2026 meeting: D3 with its authors' settings, D3-LightGBM and EADD, then all three in the same setup, then EADD's components one at a time, on the four annotated INSECTS streams and five synthetic streams (`synthetic_streams.py`). It is not part of the thesis. Results and discussion: [experiments/results_comparison/REPORT.md](experiments/results_comparison/REPORT.md).
+
+```bash
+taskset -c 0-9 python experiment_comparison.py   # runs, resumable; writes experiments/results_comparison/runs.jsonl
+python analyze_comparison.py                      # summary.csv, per_stream.csv, tests.csv, reproduced.txt
+python make_comparison_figures.py                 # experiments/results_comparison/figures/
+```
 
 ---
 
@@ -107,16 +119,18 @@ Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets)
 
 | Detector | Method | Reference |
 |----------|--------|-----------|
+| **EADD** | LightGBM C2ST, reservoir reference window, ASPT | this thesis |
+| **D3-LightGBM** | D3 with a LightGBM discriminator and EADD's LightGBM settings (thesis baseline; `detectors/d3_lightgbm.py`) | this repository |
 | **D3** | Logistic regression adversarial validation | Gozuacik et al., 2019 |
-| **BNDM** | Bayesian non-parametric Polya tree test, computed for all features at once | Xuan et al. (2020) |
-| **CSDDM** | PCA + K-Means + statistical tests | 2021 |
-| **IBDD** | Image-based comparison | 2020 |
-| **NN-DVI** | Nearest neighbor density | 2018 |
-| **OCDD** | One-class SVM | 2021 |
-| **SPLL** | Semi-parametric log-likelihood | 2013 |
-| **UCDD** | Clustering + pseudo-labels | 2020 |
-| **UDetect** | Shewhart control charts | -- |
-| **EDFS** | Ensemble feature subspaces | -- |
+| **BNDM** | Bayesian non-parametric Polya tree test, computed for all features at once | Xuan et al., 2020 |
+| **CSDDM** | PCA + K-Means + statistical tests | Wan and Wang, 2021 |
+| **IBDD** | Image-based comparison | Souza et al., 2021 |
+| **NN-DVI** | Nearest neighbor density | Liu et al., 2018 |
+| **OCDD** | One-class SVM | Gozuacik and Can, 2020 |
+| **SPLL** | Semi-parametric log-likelihood | Kuncheva, 2013 |
+| **UCDD** | Clustering + pseudo-labels | Shang et al., 2020 |
+| **UDetect** | Shewhart control charts | Bashir et al., 2017 |
+| **EDFS** | Ensemble feature subspaces | Korycki and Krawczyk, 2019 |
 
 ---
 
@@ -140,9 +154,11 @@ Real-world experiments need the dataset CSVs in `datasets/files/` (see Datasets)
 | Rialto Bridge | 82,250 | 27 | No |
 | Luxembourg | 1,900 | 31 | No |
 
-Setup: Download from [USP DS Repository](https://sites.google.com/view/uspdsrepository), copy to `datasets/files/`, then `python add_headers.py`.
+Setup: download from the [USP DS Repository](https://sites.google.com/view/uspdsrepository), copy to `datasets/files/`, rename the files as listed below, then run `python add_headers.py` (it looks for the renamed files and skips any it cannot find).
 
 File names the loaders expect: `INSECTS <type>_<balanced|imbalanced>.csv` becomes `INSECTS-<type>_<balanced|imbalanced>_norm.csv`; `Electricity.csv` becomes `elec.csv`, `Outdoor.csv` becomes `outdoor.csv`, `Ozone.csv` becomes `ozone.csv`, `PokerHand.csv` becomes `poker-lsn.csv`, `Powersupply.csv` becomes `powersupply.csv`, `Rialto.csv` becomes `rialto.csv`, `Luxembourg.csv` becomes `luxembourg.csv`; `NOAA.csv` keeps its name. `Luxembourg.csv` ships with its own header: delete its first two lines (`sed -i '' '1,2d' luxembourg.csv`) before `add_headers.py`. The thesis results used these 1,900 rows, so the first data row is left out to reproduce them.
+
+Airlines, Chess, IntrusionDetection, Keystroke and SensorStream are not used in the thesis; their dataset tests in `test/datasets/` fail unless `airlines.csv`, `chess.csv`, `kddcup99.csv`, `keystroke.csv` and `sensorstream.csv` are supplied.
 
 ---
 
@@ -150,33 +166,43 @@ File names the loaders expect: `INSECTS <type>_<balanced|imbalanced>.csv` become
 
 ### New Files (Our Contributions)
 
+Compared with the last upstream commit (`bc66d2c`): `git diff --name-status bc66d2c HEAD`.
+
 | File | Purpose |
 |------|---------|
 | `detectors/eadd.py` | **EADD detector** -- core thesis contribution |
 | `detectors/d3_lightgbm.py` | D3 with a LightGBM classifier (the D3 used in the thesis) |
-| `experiment_hypotheses.py`, `analyze_hypotheses.py`, `experiment_aspt_type1.py` | Thesis experiments, tables and tests |
-| `test/detectors/test_eadd.py`, `test/detectors/test_d3_lightgbm.py` | Unit tests for EADD/ASPT and D3-LightGBM |
-| `legacy/experiment1_temporal_patterns.py` | Experiment 1: temporal drift patterns |
-| `legacy/experiment2_realworld_benchmark.py` | Experiment 2: real-world benchmark |
-| `legacy/experiment3_explainability.py` | Experiment 3: SHAP explainability |
-| `legacy/experiment4_false_alarms.py` | Experiment 4: false alarm evaluation |
-| `legacy/run_all_experiments.py` | Master runner + hypothesis tests + LaTeX |
-| `legacy/EADD_Thesis_Experiments.ipynb` | Interactive Jupyter notebook |
-| `legacy/demo_eadd.py` | EADD demonstration script |
-| `legacy/demo.py` | D3 demo on all datasets |
+| `experiment_hypotheses.py`, `analyze_hypotheses.py`, `make_hypothesis_figures.py` | Thesis Exp 1-4: runs, tables, tests and figures |
+| `experiment_aspt_runtime.py`, `experiment_aspt_type1.py` | Thesis ASPT runtime (Exp 3) and Type I error (Ch 3) |
+| `experiment_root_cause.py`, `experiment_offsets.py` | Further analyses (Ch 4) |
+| `experiment_comparison.py`, `synthetic_streams.py`, `analyze_comparison.py`, `make_comparison_figures.py` | EADD vs D3 comparison of 10 Nov 2026 (not in the thesis) |
+| `test/detectors/test_eadd.py`, `test/detectors/test_d3_lightgbm.py`, `test/test_analysis_formatting.py` | Unit tests for EADD/ASPT, D3-LightGBM and table number formatting |
+| `legacy/` (all files) | JCSSE paper scripts, October 2026 drafts and demos (see `legacy/README.md`) |
+| `experiments/` (all files) | Results, tables and figures |
 | `add_headers.py` | CSV header script for USP datasets |
+| `requirements-lock.txt` | Exact package versions used for the thesis results |
+| `LICENSE-EADD`, `NOTICE` | Licence of the EADD files and the licence breakdown |
+| `CLAUDE.md` | Notes for working on this code with Claude Code |
 
 ### Modified Files
 
 | File | Change |
 |------|--------|
 | `detectors/__init__.py` | Added EADD import |
-| `requirements.txt` | Added lightgbm, shap, seaborn; `==` to `>=` |
+| `detectors/bndm.py` | Polya tree test computed for all features at once (same decisions, checked in `test/detectors/test_bndm.py`) |
+| `detectors/d3.py` | Options `step` (check interval) and `n_folds`; the defaults keep the upstream behaviour |
+| `requirements.txt` | Added lightgbm, shap, seaborn; removed ydata-profiling; `==` to `>=` |
 | `datasets/airlines.py` | CSV instead of ARFF |
-| `datasets/chess.py` | CSV, 8 features (at1-at8) |
+| `datasets/chess.py` | CSV, 8 features (at1-at8), `n_samples` 533 to 503 |
 | `datasets/electricity.py` | CSV instead of ARFF |
 | `datasets/intrusion_detection.py` | CSV instead of ARFF |
 | `datasets/keystroke.py` | CSV instead of ARFF |
+| `datasets/luxembourg.py` | `n_samples` 1,901 to 1,900 (see Datasets) |
+| `datasets/waveform_drift2.py` | `h_functions` built from a NumPy array, because river now stores `_H_FUNCTION` as a list |
+| `test/datasets/test_chess.py` | Expects 8 features; sample count taken from the loader |
+| `test/detectors/test_bndm.py` | Test that the vectorised BNDM test matches the per-feature test |
+| `test/detectors/test_edfs.py` | Feature values are floats instead of Python sets, which current SciPy rejects |
+| `README.md`, `.gitignore` | This description; ignore caches, macOS files and the raw dataset folder |
 
 ---
 
@@ -199,11 +225,11 @@ File names the loaders expect: `INSECTS <type>_<balanced|imbalanced>.csv` become
 | Scope | License | File |
 |---|---|---|
 | Upstream code (Lukats et al. / DFKI base detectors, evaluation harness, datasets) | [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause) | [LICENSE](LICENSE) |
-| EADD contributions (© 2026 Nusrat Begum): `detectors/eadd.py`, all `experiment*.py`, `legacy/` | [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0) | [LICENSE-EADD](LICENSE-EADD) |
+| EADD contributions (© 2026 Nusrat Begum): `detectors/eadd.py`, all `experiment*.py`, `analyze_*.py`, `make_*_figures.py`, `synthetic_streams.py`, and the files in `legacy/` that carry the PolyForm SPDX header, plus `legacy/EADD_Thesis_Experiments.ipynb` | [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0) | [LICENSE-EADD](LICENSE-EADD) |
 
 **PolyForm Noncommercial 1.0.0** allows personal, academic, and non-profit research use of the EADD-specific files. **Commercial use** (including internal commercial operations) requires written permission from the author: `nusrat.beg@student.mahidol.ac.th`.
 
-Every EADD-licensed source file carries an SPDX header:
+Every EADD-licensed `.py` file carries an SPDX header:
 ```
 # SPDX-FileCopyrightText: 2026 Nusrat Begum <nusrat.beg@student.mahidol.ac.th>
 # SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0

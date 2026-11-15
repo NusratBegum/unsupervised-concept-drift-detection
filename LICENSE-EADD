@@ -125,21 +125,36 @@ This license applies ONLY to the following files in this repository,
 which are original contributions by Nusrat Begum:
 
     detectors/eadd.py
-    experiment1_temporal_patterns.py
-    experiment2_realworld_benchmark.py
-    experiment3_explainability.py
-    experiment4_false_alarms.py
-    experiment5_multidetector_synthetic.py
-    experiment6_multidetector_realworld.py
-    experiment7_explainability_deep_dive.py
-    experiment_camera_ready.py
-    demo.py
-    demo_eadd.py
-    EADD_Thesis_Experiments.ipynb
+    analyze_comparison.py
+    analyze_hypotheses.py
+    experiment_aspt_runtime.py
+    experiment_aspt_type1.py
+    experiment_comparison.py
+    experiment_hypotheses.py
+    experiment_offsets.py
+    experiment_root_cause.py
+    make_comparison_figures.py
+    make_hypothesis_figures.py
+    synthetic_streams.py
+    legacy/demo.py
+    legacy/demo_eadd.py
+    legacy/experiment1_temporal_patterns.py
+    legacy/experiment2_realworld_benchmark.py
+    legacy/experiment3_explainability.py
+    legacy/experiment4_false_alarms.py
+    legacy/experiment5_multidetector_synthetic.py
+    legacy/experiment6_multidetector_realworld.py
+    legacy/experiment7_explainability_deep_dive.py
+    legacy/experiment_aspt_threshold.py
+    legacy/experiment_camera_ready.py
+    legacy/experiment_d3_lightgbm.py
+    legacy/experiment_realworld_ablation.py
+    legacy/EADD_Thesis_Experiments.ipynb
 
-All other files in this repository are derived from the upstream project
-(originally by Lukats et al. / DFKI) and remain under the BSD 3-Clause
-License contained in the file `LICENSE` in this directory.
+The .py files above carry the PolyForm SPDX header
+(LicenseRef-PolyForm-Noncommercial-1.0.0). Files without a PolyForm
+SPDX header, other than the notebook above, remain under the BSD
+3-Clause License contained in the file `LICENSE` in this directory.
 
 ================================================================================
 ATTRIBUTION (when using these files in research)
