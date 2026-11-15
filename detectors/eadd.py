@@ -170,7 +170,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             return False
 
         if self.use_reservoir_sampling and not self.reservoir_after_current:
-            self._offer_to_reservoir(feature_vector)
+            self._offer_to_reservoir(feature_vector, self.samples_seen)
 
         self.current_window.append(feature_vector)
         if len(self.current_window) > self.n_current_samples:
@@ -179,7 +179,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
                 self.reference_window.pop(0)
                 self.reference_window.append(oldest)
             elif self.use_reservoir_sampling and self.reservoir_after_current:
-                self._offer_to_reservoir(oldest)
+                # the oldest sample arrived n_current_samples samples ago
+                self._offer_to_reservoir(oldest, self.samples_seen - self.n_current_samples)
 
         if (self.steps_since_check >= self.monitoring_frequency and
                 len(self.current_window) >= self.n_current_samples):
@@ -188,9 +189,9 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
 
         return False
 
-    def _offer_to_reservoir(self, x):
-        # reservoir sampling (Algorithm R)
-        if self.rng.random() < self.n_reference_samples / self.samples_seen:
+    def _offer_to_reservoir(self, x, index):
+        # reservoir sampling (Algorithm R); index = position of x since the last reset
+        if self.rng.random() < self.n_reference_samples / index:
             self.reference_window[self.rng.integers(0, self.n_reference_samples)] = x
 
     def _detect_drift(self) -> bool:

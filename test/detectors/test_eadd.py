@@ -92,6 +92,19 @@ class EADDTest(unittest.TestCase):
         self.assertFalse(ref & cur)
         self.assertGreater(max(ref), 49)  # the reservoir was updated after it filled
 
+    def test_reservoir_after_current_samples_uniformly(self):
+        # each of the 180 samples that left the current window should be kept with probability 50/180
+        early = []
+        for seed in range(400):
+            detector = ExplainableAdversarialDriftDetector(
+                n_reference_samples=50, n_current_samples=20, reservoir_after_current=True,
+                monitoring_frequency=10**6, seed=seed
+            )
+            for i in range(200):
+                detector.update({"x": float(i)})
+            early.append(np.mean([v[0] < 90 for v in detector.reference_window]))
+        self.assertAlmostEqual(np.mean(early), 0.5, delta=0.02)
+
     def test_default_reservoir_can_overlap(self):
         detector = ExplainableAdversarialDriftDetector(
             n_reference_samples=50, n_current_samples=20, monitoring_frequency=10**6, seed=0

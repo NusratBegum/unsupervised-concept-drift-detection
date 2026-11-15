@@ -10,12 +10,15 @@ Reads experiments/results_comparison/runs.jsonl and writes, next to it:
   summary.csv      recall, MTD, false alarms, precision and runtime per variant and stream type
   per_stream.csv   the same per stream
   tests.csv        one-sided tests of EADD against each D3 inside the same setup
+  aspt_tests.csv   group D: ASPT against the full test and against no test
   reproduced.txt   whether the thesis EADD and D3-LightGBM runs were reproduced exactly
 Metrics are those of the thesis (analyze_hypotheses.detection_metrics): a
 detection matches a drift point if it comes 0-500 samples after it. On the
 synthetic gradual and incremental streams the change itself lasts 1,000
 samples, so there the window is 0-1,500 (the change plus 500). On the
-synthetic stream without drift only false alarms are defined.
+synthetic stream without drift only false alarms are defined. A missed drift
+counts as the window length in the MTD (500, or 1,500 on those two streams);
+"delay" is the mean delay of the detected drifts only.
 """
 import json
 import os
@@ -37,14 +40,19 @@ def load():
     m = [detection_metrics(d, t, 500 + WIDTH * s) if t else
          dict(recall=None, mtd=None, fa=len(d), n_detections=len(d), n_matched=0)
          for d, t, s in zip(df.detections, df.true_drifts, slow)]
-    df = pd.concat([df.reset_index(drop=True), pd.DataFrame(m)[["recall", "mtd", "fa", "n_detections", "n_matched"]]], axis=1)
+    m = pd.DataFrame(m)[["recall", "mtd", "fa", "n_detections", "n_matched"]]
+    tol = 500 + WIDTH * slow.reset_index(drop=True)
+    n = df.true_drifts.map(len).reset_index(drop=True)
+    # mean delay of the detected drifts: remove the penalty of the missed ones from the MTD
+    m["delay"] = ((m.mtd * n - tol * (n - m.n_matched)) / m.n_matched).where(m.n_matched > 0)
+    df = pd.concat([df.reset_index(drop=True), m], axis=1)
     df["kind"] = df.dataset.map(lambda d: "synthetic, no drift" if d == "SynthStable"
                                 else "synthetic" if d.startswith("Synth") else "real (INSECTS)")
     return df
 
 
 def summarise(g):
-    return pd.Series(dict(runs=len(g), recall=g.recall.mean(), mtd=g.mtd.mean(), fa=g.fa.mean(),
+    return pd.Series(dict(runs=len(g), recall=g.recall.mean(), mtd=g.mtd.mean(), delay=g.delay.mean(), fa=g.fa.mean(),
                           precision=g.n_matched.sum() / max(g.n_detections.sum(), 1),
                           seconds=g.detector_time_sec.mean()))
 
@@ -64,6 +72,28 @@ def tests(df):
                     out.append(dict(setup=setup, streams=kind, eadd=f"{setup} EADD", vs=other, metric=metric,
                                     hypothesis=f"EADD {'>' if alt == 'greater' else '<'} other", n=len(a),
                                     eadd_mean=a.mean(), other_mean=b.mean(), p_mannwhitney=p_mw, p_wilcoxon=p_w))
+    return pd.DataFrame(out)
+
+
+def aspt_tests(df):
+    out = []
+    for tau in (0.5, 0.6):
+        for kind in ("real (INSECTS)", "synthetic"):
+            sub = df[df.kind == kind]
+            v = {t: sub[sub.variant == f"S200 EADD tau {tau}, {t}"].set_index(["dataset", "seed"]).sort_index()
+                 for t in ("aspt", "full", "none")}
+            a, f, n = v["aspt"], v["full"].loc[v["aspt"].index], v["none"].loc[v["aspt"].index]
+            row = dict(tau=tau, streams=kind, n=len(a),
+                       identical_to_full=sum(x == y for x, y in zip(a.detections, f.detections)),
+                       seconds_aspt=a.detector_time_sec.mean(), seconds_full=f.detector_time_sec.mean(),
+                       aspt_faster_runs=int((a.detector_time_sec < f.detector_time_sec).sum()),
+                       fa_aspt=a.fa.mean(), fa_none=n.fa.mean(),
+                       p_fa_aspt_less_than_none=wilcoxon(a.fa, n.fa, alternative="less").pvalue
+                       if (a.fa != n.fa).any() else 1.0)
+            for metric in ("recall", "mtd", "fa"):  # two-sided: does ASPT change the result of the full test?
+                x, y = a[metric].astype(float), f[metric].astype(float)
+                row[f"p_{metric}_aspt_vs_full"] = wilcoxon(x, y).pvalue if (x != y).any() else 1.0
+            out.append(row)
     return pd.DataFrame(out)
 
 
@@ -87,6 +117,8 @@ if __name__ == "__main__":
         .to_csv(os.path.join(OUT_DIR, "per_stream.csv"), index=False)
     t = tests(df)
     t.to_csv(os.path.join(OUT_DIR, "tests.csv"), index=False)
+    at = aspt_tests(df)
+    at.to_csv(os.path.join(OUT_DIR, "aspt_tests.csv"), index=False)
     same, n = reproduced(df)
     with open(os.path.join(OUT_DIR, "reproduced.txt"), "w") as f:
         f.write(f"{same} of {n} thesis runs (EADD and D3-LightGBM, tau 0.7, annotated streams) reproduced exactly\n")
@@ -96,4 +128,6 @@ if __name__ == "__main__":
             print(summary[summary.kind == kind].drop(columns="kind").round(3).to_string(index=False))
         print("\n=== tests (EADD vs other, same setup)")
         print(t.round(4).to_string(index=False))
+        print("\n=== ASPT vs full test vs no test (group D)")
+        print(at.round(4).to_string(index=False))
     print(f"\nreproduced: {same} of {n}")

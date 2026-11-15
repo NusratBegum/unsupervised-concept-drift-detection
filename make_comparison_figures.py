@@ -80,11 +80,12 @@ def windows_diagram():
     t, n_ref, n_cur = 2000, 500, 200
     fig, axes = plt.subplots(2, 1, figsize=(10, 3.2), sharex=True)
     rows = [("Sliding reference (D3, D3-LightGBM)", np.arange(t - n_cur - n_ref, t - n_cur), 200),
-            ("Reservoir reference (EADD)", np.sort(rng.choice(t - n_cur, n_ref, replace=False)), 50)]
+            # thesis EADD: the reservoir draws from every sample, so it can include current ones
+            ("Reservoir reference (EADD)", np.sort(rng.choice(t, n_ref, replace=False)), 50)]
     for ax, (title, ref, every) in zip(axes, rows):
-        ax.scatter(ref, np.zeros_like(ref), marker="|", s=200, color=OI[0], label="reference window (500 samples)")
         cur = np.arange(t - n_cur, t)
         ax.scatter(cur, np.zeros_like(cur), marker="|", s=200, color=OI[1], label="current window (newest 200)")
+        ax.scatter(ref, np.zeros_like(ref), marker="|", s=200, color=OI[0], label="reference window (500 samples)")
         checks = np.arange(every, t + 1, every)
         ax.scatter(checks, np.full_like(checks, 0.6), marker="v", s=14, color=OI[7],
                    label=f"a check (here every {every} samples)")

@@ -25,7 +25,8 @@ POINTS = [5_000, 10_000, 15_000]
 class SyntheticStream:
     def __init__(self, kind, seed):
         assert kind in KINDS, kind
-        rng = np.random.default_rng(seed)
+        # seed and kind together, so different kinds do not share their noise
+        rng = np.random.default_rng([seed, KINDS.index(kind)])
         mean = np.zeros(N)  # mean of the drifting features, in units of SHIFT
         if kind != "Stable":
             for k, p in enumerate(POINTS, 1):
@@ -64,5 +65,6 @@ if __name__ == "__main__":
               [round(float(m[i:i + 5000].mean()), 2) for i in range(0, N, 5000)])
     a, b = SyntheticStream("Abrupt", 1), SyntheticStream("Abrupt", 2)
     assert not np.allclose(a.X, b.X) and np.allclose(SyntheticStream("Abrupt", 1).X, a.X)
+    assert not np.allclose(SyntheticStream("Stable", 1).X[:, K:], a.X[:, K:])  # kinds do not share noise
     assert SyntheticStream("Stable", 0).drifts == [] and len(list(SyntheticStream("Gradual", 0))) == N
     print("ok")
