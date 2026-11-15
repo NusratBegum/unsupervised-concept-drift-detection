@@ -1,0 +1,330 @@
+group,variant,dataset,runs,recall,mtd,fa,precision,seconds
+D,"S200 EADD tau 0.5, full",InsectsGradualBalanced,5.0,0.0,500.0,6.2,0.0,181.9448
+D,"S200 EADD tau 0.5, full",InsectsAbruptBalanced,5.0,0.8400000000000001,245.16,7.0,0.375,420.38140000000004
+D,"S200 EADD tau 0.5, full",InsectsIncrementalAbruptBalanced,5.0,1.0,183.0,25.2,0.07352941176470588,650.131
+D,"S200 EADD tau 0.5, full",InsectsIncrementalReoccurringBalanced,5.0,0.9,219.9,25.8,0.06521739130434782,642.5566
+A,EADD (thesis),InsectsAbruptBalanced,5.0,0.6,265.0,6.0,0.3333333333333333,196.17879999999997
+A,EADD (thesis),InsectsGradualBalanced,5.0,0.0,500.0,5.0,0.0,88.47840000000001
+A,EADD (thesis),InsectsIncrementalAbruptBalanced,5.0,0.4,323.6,13.0,0.057971014492753624,302.45140000000004
+A,EADD (thesis),InsectsIncrementalReoccurringBalanced,5.0,1.0,118.0,11.4,0.14925373134328357,295.7012
+B,S50 EADD,InsectsGradualBalanced,5.0,0.0,500.0,5.0,0.0,92.3398
+B,S50 EADD,InsectsAbruptBalanced,5.0,0.6,265.0,6.0,0.3333333333333333,195.641
+B,S50 EADD,InsectsIncrementalAbruptBalanced,5.0,0.4,323.6,13.0,0.057971014492753624,302.447
+B,S50 EADD,InsectsIncrementalReoccurringBalanced,5.0,1.0,118.0,11.4,0.14925373134328357,299.6472
+B,"S50 EADD, no overlap",InsectsGradualBalanced,5.0,0.0,500.0,6.0,0.0,92.91600000000001
+B,"S50 EADD, no overlap",InsectsAbruptBalanced,5.0,0.8400000000000001,179.95999999999998,6.0,0.4117647058823529,195.7694
+B,"S50 EADD, no overlap",InsectsIncrementalAbruptBalanced,5.0,1.0,108.0,20.4,0.08928571428571429,304.97400000000005
+B,"S50 EADD, no overlap",InsectsIncrementalReoccurringBalanced,5.0,1.0,273.0,20.8,0.08771929824561403,305.28420000000006
+C,S50 sliding + ASPT,InsectsGradualBalanced,5.0,0.0,500.0,5.0,0.0,88.4672
+C,S50 sliding + ASPT,InsectsAbruptBalanced,5.0,0.8,178.4,6.0,0.4,200.8182
+C,S50 sliding + ASPT,InsectsIncrementalAbruptBalanced,5.0,1.0,83.0,12.8,0.13513513513513514,302.02720000000005
+C,S50 sliding + ASPT,InsectsIncrementalReoccurringBalanced,5.0,1.0,283.0,15.8,0.11235955056179775,301.6182
+D,"S200 EADD tau 0.5, full",SynthStable,5.0,,,1.0,0.0,115.2414
+D,"S200 EADD tau 0.5, full",SynthAbrupt,5.0,0.8666666666666666,185.8,0.4,0.8666666666666667,66.0944
+D,"S200 EADD tau 0.5, full",SynthGradual,5.0,1.0,559.0000000000001,0.0,1.0,96.4664
+D,"S200 EADD tau 0.5, full",SynthIncremental,5.0,1.0,559.0,0.6,0.8333333333333334,87.80699999999999
+D,"S200 EADD tau 0.5, full",SynthRecurring,5.0,0.8666666666666666,192.46666666666667,0.6,0.8125,67.10640000000001
+D,"S200 EADD tau 0.6, full",InsectsGradualBalanced,5.0,0.0,500.0,5.4,0.0,55.4448
+D,"S200 EADD tau 0.6, full",InsectsAbruptBalanced,5.0,0.8,262.15999999999997,6.0,0.4,102.8712
+D,"S200 EADD tau 0.6, full",InsectsIncrementalAbruptBalanced,5.0,1.0,253.0,19.2,0.09433962264150944,215.29700000000003
+D,"S200 EADD tau 0.6, full",InsectsIncrementalReoccurringBalanced,5.0,0.5,347.1,20.8,0.045871559633027525,218.56660000000002
+F,"S50 EADD, offsets",InsectsGradualBalanced,5.0,0.0,500.0,4.8,0.0,89.65820000000001
+F,"S50 EADD, offsets",InsectsAbruptBalanced,5.0,0.6,269.0,6.0,0.3333333333333333,194.8884
+F,"S50 EADD, offsets",InsectsIncrementalAbruptBalanced,5.0,0.7,186.3,12.2,0.10294117647058823,300.6662
+F,"S50 EADD, offsets",InsectsIncrementalReoccurringBalanced,5.0,0.8,190.8,10.8,0.12903225806451613,301.42539999999997
+F,"S50 EADD, no overlap, offsets",InsectsGradualBalanced,5.0,0.0,500.0,5.8,0.0,89.41460000000002
+F,"S50 EADD, no overlap, offsets",InsectsAbruptBalanced,5.0,0.8,184.4,6.2,0.39215686274509803,199.1024
+F,"S50 EADD, no overlap, offsets",InsectsIncrementalAbruptBalanced,5.0,1.0,208.0,20.6,0.08849557522123894,304.28380000000004
+F,"S50 EADD, no overlap, offsets",InsectsIncrementalReoccurringBalanced,5.0,1.0,273.0,21.2,0.08620689655172414,306.51480000000004
+D,"S200 EADD tau 0.5, aspt",InsectsGradualBalanced,5.0,0.0,500.0,6.4,0.0,25.604999999999997
+D,"S200 EADD tau 0.5, aspt",InsectsAbruptBalanced,5.0,0.72,275.68,7.6,0.32142857142857145,66.0204
+D,"S200 EADD tau 0.5, aspt",InsectsIncrementalAbruptBalanced,5.0,1.0,223.0,25.8,0.07194244604316546,118.1212
+D,"S200 EADD tau 0.5, aspt",InsectsIncrementalReoccurringBalanced,5.0,0.9,229.9,26.0,0.06474820143884892,100.86300000000001
+C,"S50 sliding, threshold only",InsectsGradualBalanced,5.0,0.0,500.0,5.0,0.0,85.5574
+C,"S50 sliding, threshold only",InsectsAbruptBalanced,5.0,0.8,178.4,6.0,0.4,192.62539999999998
+C,"S50 sliding, threshold only",InsectsIncrementalAbruptBalanced,5.0,1.0,83.0,12.8,0.13513513513513514,289.429
+C,"S50 sliding, threshold only",InsectsIncrementalReoccurringBalanced,5.0,1.0,283.0,15.8,0.11235955056179775,289.7272
+C,"S50 reservoir, threshold only",InsectsGradualBalanced,5.0,0.0,500.0,5.0,0.0,83.2164
+C,"S50 reservoir, threshold only",InsectsAbruptBalanced,5.0,0.6,265.0,6.0,0.3333333333333333,189.81980000000001
+C,"S50 reservoir, threshold only",InsectsIncrementalAbruptBalanced,5.0,0.4,323.6,13.0,0.057971014492753624,294.89399999999995
+C,"S50 reservoir, threshold only",InsectsIncrementalReoccurringBalanced,5.0,1.0,118.0,11.4,0.14925373134328357,285.42600000000004
+C,"S50 reservoir without overlap, threshold only",InsectsGradualBalanced,5.0,0.0,500.0,6.0,0.0,88.4242
+C,"S50 reservoir without overlap, threshold only",InsectsAbruptBalanced,5.0,0.8400000000000001,179.95999999999998,6.0,0.4117647058823529,187.90519999999998
+C,"S50 reservoir without overlap, threshold only",InsectsIncrementalAbruptBalanced,5.0,1.0,108.0,20.4,0.08928571428571429,283.6976
+E,S200 D3 (logistic regression) tau 0.3,InsectsAbruptBalanced,5.0,1.0,200.2,100.0,0.047619047619047616,0.8218
+E,S200 D3 (logistic regression) tau 0.3,InsectsGradualBalanced,5.0,1.0,199.0,46.0,0.02127659574468085,0.4372
+E,S200 D3 (logistic regression) tau 0.3,InsectsIncrementalAbruptBalanced,5.0,1.0,313.0,157.0,0.012578616352201259,1.5096
+E,S200 D3 (logistic regression) tau 0.3,InsectsIncrementalReoccurringBalanced,5.0,1.0,313.0,157.0,0.012578616352201259,1.5102
+E,S200 D3-LightGBM tau 0.3,InsectsAbruptBalanced,5.0,1.0,200.2,100.0,0.047619047619047616,4.2722
+E,S200 D3-LightGBM tau 0.3,InsectsGradualBalanced,5.0,1.0,199.0,46.0,0.02127659574468085,2.0236
+C,"S50 reservoir without overlap, threshold only",InsectsIncrementalReoccurringBalanced,5.0,1.0,273.0,20.8,0.08771929824561403,292.1508
+E,S200 D3-LightGBM tau 0.3,InsectsIncrementalAbruptBalanced,5.0,1.0,313.0,157.0,0.012578616352201259,6.846199999999999
+E,S200 D3 (logistic regression) tau 0.4,InsectsAbruptBalanced,5.0,1.0,220.35999999999999,99.8,0.04770992366412214,1.0074
+E,S200 D3-LightGBM tau 0.3,InsectsIncrementalReoccurringBalanced,5.0,1.0,313.0,157.0,0.012578616352201259,6.643600000000001
+E,S200 D3 (logistic regression) tau 0.4,InsectsGradualBalanced,5.0,1.0,199.0,46.0,0.02127659574468085,0.4202
+E,S200 D3 (logistic regression) tau 0.4,InsectsIncrementalAbruptBalanced,5.0,1.0,313.0,157.0,0.012578616352201259,1.4052
+E,S200 D3 (logistic regression) tau 0.4,InsectsIncrementalReoccurringBalanced,5.0,1.0,313.0,157.0,0.012578616352201259,1.3942
+E,S200 D3-LightGBM tau 0.4,InsectsAbruptBalanced,5.0,1.0,200.2,100.0,0.047619047619047616,4.3882
+E,S200 D3-LightGBM tau 0.4,InsectsGradualBalanced,5.0,1.0,199.0,46.0,0.02127659574468085,1.9595999999999996
+E,S200 D3-LightGBM tau 0.4,InsectsIncrementalAbruptBalanced,5.0,1.0,313.0,157.0,0.012578616352201259,6.6842
+E,S200 D3-LightGBM tau 0.4,InsectsIncrementalReoccurringBalanced,5.0,1.0,313.0,157.0,0.012578616352201259,6.650999999999999
+E,S200 D3 (logistic regression) tau 0.5,InsectsAbruptBalanced,5.0,1.0,211.6,73.4,0.06377551020408163,1.29
+E,S200 D3 (logistic regression) tau 0.5,InsectsGradualBalanced,5.0,1.0,268.6,34.4,0.02824858757062147,0.5098
+E,S200 D3 (logistic regression) tau 0.5,InsectsIncrementalAbruptBalanced,5.0,1.0,252.1,118.6,0.01658374792703151,1.8358
+E,S200 D3 (logistic regression) tau 0.5,InsectsIncrementalReoccurringBalanced,5.0,1.0,299.8,120.2,0.016366612111292964,1.9364000000000001
+E,S200 D3-LightGBM tau 0.5,InsectsGradualBalanced,5.0,1.0,288.4,35.4,0.027472527472527472,2.8294
+E,S200 D3-LightGBM tau 0.5,InsectsAbruptBalanced,5.0,1.0,241.95999999999998,73.0,0.0641025641025641,6.282
+E,S200 D3-LightGBM tau 0.5,InsectsIncrementalAbruptBalanced,5.0,1.0,318.4,121.8,0.01615508885298869,9.1654
+E,S200 D3-LightGBM tau 0.5,InsectsIncrementalReoccurringBalanced,5.0,1.0,298.9,122.8,0.016025641025641024,9.522400000000001
+D,"S200 EADD tau 0.5, none",InsectsGradualBalanced,5.0,0.0,500.0,10.2,0.0,17.9658
+D,"S200 EADD tau 0.5, none",InsectsAbruptBalanced,5.0,0.8,287.2,16.4,0.19607843137254902,36.082800000000006
+D,"S200 EADD tau 0.5, none",InsectsIncrementalAbruptBalanced,5.0,1.0,203.0,37.8,0.05025125628140704,66.58200000000001
+D,"S200 EADD tau 0.5, none",InsectsIncrementalReoccurringBalanced,5.0,0.6,270.6,37.4,0.031088082901554404,61.438599999999994
+A,EADD (thesis),SynthStable,5.0,,,0.0,0.0,39.9216
+A,EADD (thesis),SynthAbrupt,5.0,1.0,165.66666666666666,0.0,1.0,38.7784
+A,EADD (thesis),SynthGradual,5.0,1.0,902.3333333333334,0.0,1.0,38.2868
+A,EADD (thesis),SynthIncremental,5.0,1.0,845.6666666666666,0.0,1.0,38.33219999999999
+A,EADD (thesis),SynthRecurring,5.0,1.0,172.33333333333334,0.0,1.0,35.724599999999995
+B,S50 EADD,SynthStable,5.0,,,0.0,0.0,39.60459999999999
+B,S50 EADD,SynthAbrupt,5.0,1.0,165.66666666666666,0.0,1.0,37.931
+B,S50 EADD,SynthGradual,5.0,1.0,902.3333333333334,0.0,1.0,38.5168
+B,S50 EADD,SynthIncremental,5.0,1.0,845.6666666666666,0.0,1.0,37.913199999999996
+B,S50 EADD,SynthRecurring,5.0,1.0,172.33333333333334,0.0,1.0,39.3756
+B,"S50 EADD, no overlap",SynthStable,5.0,,,0.0,0.0,37.61
+B,"S50 EADD, no overlap",SynthAbrupt,5.0,1.0,152.33333333333331,0.0,1.0,37.4852
+B,"S50 EADD, no overlap",SynthGradual,5.0,1.0,795.6666666666667,0.0,1.0,38.790600000000005
+B,"S50 EADD, no overlap",SynthIncremental,5.0,1.0,702.3333333333334,0.0,1.0,38.851800000000004
+B,"S50 EADD, no overlap",SynthRecurring,5.0,1.0,152.33333333333331,0.0,1.0,37.9858
+C,S50 sliding + ASPT,SynthStable,5.0,,,0.0,0.0,37.3296
+C,S50 sliding + ASPT,SynthAbrupt,5.0,1.0,145.66666666666669,0.0,1.0,38.5424
+C,S50 sliding + ASPT,SynthGradual,5.0,0.0,1500.0,0.0,0.0,36.6298
+C,S50 sliding + ASPT,SynthIncremental,5.0,0.0,1500.0,0.0,0.0,37.888799999999996
+D,"S200 EADD tau 0.6, full",SynthStable,5.0,,,0.0,0.0,2.5938
+C,S50 sliding + ASPT,SynthRecurring,5.0,1.0,149.0,0.0,1.0,38.56179999999999
+D,"S200 EADD tau 0.6, full",SynthAbrupt,5.0,1.0,212.33333333333334,0.0,1.0,19.151999999999997
+D,"S200 EADD tau 0.6, full",SynthGradual,5.0,1.0,639.0,0.0,1.0,19.337799999999998
+D,"S200 EADD tau 0.6, full",SynthIncremental,5.0,1.0,585.6666666666667,0.0,1.0,19.057
+D,"S200 EADD tau 0.6, full",SynthRecurring,5.0,1.0,199.0,0.0,1.0,19.494600000000002
+B,S200 EADD,InsectsGradualBalanced,5.0,0.2,414.2,4.6,0.041666666666666664,15.100399999999999
+B,S200 EADD,InsectsAbruptBalanced,5.0,0.6,341.0,6.0,0.3333333333333333,29.0568
+B,S200 EADD,InsectsIncrementalAbruptBalanced,5.0,0.9,139.5,10.2,0.15,40.6728
+B,S200 EADD,InsectsIncrementalReoccurringBalanced,5.0,0.7,273.3,10.8,0.11475409836065574,41.3192
+B,"S200 EADD, no overlap",InsectsGradualBalanced,5.0,0.0,500.0,5.2,0.0,16.1472
+B,"S200 EADD, no overlap",InsectsAbruptBalanced,5.0,0.8,264.4,6.0,0.4,31.7568
+B,"S200 EADD, no overlap",InsectsIncrementalAbruptBalanced,5.0,1.0,293.0,16.6,0.10752688172043011,54.6614
+B,"S200 EADD, no overlap",InsectsIncrementalReoccurringBalanced,5.0,0.6,300.6,17.8,0.06315789473684211,55.10940000000001
+C,S200 sliding + ASPT,InsectsGradualBalanced,5.0,1.0,71.0,3.0,0.25,13.2732
+C,S200 sliding + ASPT,InsectsAbruptBalanced,5.0,0.8,264.4,5.0,0.4444444444444444,29.400799999999997
+C,S200 sliding + ASPT,InsectsIncrementalAbruptBalanced,5.0,1.0,133.0,4.0,0.3333333333333333,28.8906
+D,"S200 EADD tau 0.5, aspt",SynthStable,5.0,,,1.2,0.0,13.27
+C,S200 sliding + ASPT,InsectsIncrementalReoccurringBalanced,5.0,0.6,360.6,8.2,0.1276595744680851,35.2954
+D,"S200 EADD tau 0.5, aspt",SynthAbrupt,5.0,0.9333333333333332,159.06666666666666,0.2,0.9333333333333333,9.591800000000001
+D,"S200 EADD tau 0.5, aspt",SynthGradual,5.0,1.0,519.0,0.6,0.8333333333333334,11.622
+D,"S200 EADD tau 0.5, aspt",SynthIncremental,5.0,1.0,505.6666666666667,0.8,0.7894736842105263,15.371799999999999
+D,"S200 EADD tau 0.5, aspt",SynthRecurring,5.0,0.9333333333333332,159.0666666666667,0.4,0.875,10.6
+D,"S200 EADD tau 0.6, aspt",InsectsGradualBalanced,5.0,0.0,500.0,5.4,0.0,16.1458
+D,"S200 EADD tau 0.6, aspt",InsectsAbruptBalanced,5.0,0.8,262.15999999999997,6.0,0.4,31.365000000000002
+D,"S200 EADD tau 0.6, aspt",InsectsIncrementalAbruptBalanced,5.0,1.0,253.0,19.2,0.09433962264150944,59.873599999999996
+D,"S200 EADD tau 0.6, aspt",InsectsIncrementalReoccurringBalanced,5.0,0.5,347.1,20.8,0.045871559633027525,61.712
+F,"S200 EADD, offsets",InsectsGradualBalanced,5.0,0.6,258.6,4.0,0.13043478260869565,13.828
+F,"S200 EADD, offsets",InsectsAbruptBalanced,5.0,0.6,309.0,6.0,0.3333333333333333,30.086600000000004
+F,"S200 EADD, offsets",InsectsIncrementalAbruptBalanced,5.0,0.6,257.0,11.4,0.09523809523809523,42.364000000000004
+F,"S200 EADD, offsets",InsectsIncrementalReoccurringBalanced,5.0,0.9,209.9,10.2,0.15,40.8198
+F,"S200 EADD, no overlap, offsets",InsectsGradualBalanced,5.0,0.6,230.6,4.6,0.11538461538461539,16.0518
+F,"S200 EADD, no overlap, offsets",InsectsAbruptBalanced,5.0,0.8,248.4,6.2,0.39215686274509803,32.2014
+F,"S200 EADD, no overlap, offsets",InsectsIncrementalAbruptBalanced,5.0,1.0,243.0,17.4,0.10309278350515463,56.5732
+F,"S200 EADD, no overlap, offsets",InsectsIncrementalReoccurringBalanced,5.0,0.7,265.7,17.0,0.07608695652173914,52.4332
+C,"S50 sliding, threshold only",SynthStable,5.0,,,0.0,0.0,38.378
+C,"S50 sliding, threshold only",SynthAbrupt,5.0,1.0,145.66666666666669,0.0,1.0,37.2004
+C,"S50 sliding, threshold only",SynthGradual,5.0,0.0,1500.0,0.0,0.0,38.571
+C,"S50 sliding, threshold only",SynthIncremental,5.0,0.0,1500.0,0.0,0.0,36.8798
+C,"S50 sliding, threshold only",SynthRecurring,5.0,1.0,149.0,0.0,1.0,36.3442
+C,"S50 reservoir, threshold only",SynthStable,5.0,,,0.0,0.0,37.5522
+C,"S50 reservoir, threshold only",SynthAbrupt,5.0,1.0,165.66666666666666,0.0,1.0,36.15859999999999
+C,"S50 reservoir, threshold only",SynthGradual,5.0,1.0,902.3333333333334,0.0,1.0,37.6426
+C,"S50 reservoir, threshold only",SynthIncremental,5.0,1.0,845.6666666666666,0.0,1.0,35.9304
+C,"S50 reservoir, threshold only",SynthRecurring,5.0,1.0,172.33333333333334,0.0,1.0,35.818
+C,"S50 reservoir without overlap, threshold only",SynthStable,5.0,,,0.0,0.0,38.8318
+C,"S50 reservoir without overlap, threshold only",SynthAbrupt,5.0,1.0,152.33333333333331,0.0,1.0,35.4906
+C,"S50 reservoir without overlap, threshold only",SynthGradual,5.0,1.0,795.6666666666667,0.0,1.0,36.4046
+C,"S50 reservoir without overlap, threshold only",SynthIncremental,5.0,1.0,702.3333333333334,0.0,1.0,36.1496
+C,"S50 reservoir without overlap, threshold only",SynthRecurring,5.0,1.0,152.33333333333331,0.0,1.0,34.644400000000005
+A,D3 (authors),InsectsAbruptBalanced,5.0,0.9199999999999999,129.12,145.6,0.03062583222370173,16.2402
+A,D3 (authors),InsectsGradualBalanced,5.0,0.8,213.4,66.6,0.011869436201780416,7.4432
+A,D3 (authors),InsectsIncrementalReoccurringBalanced,5.0,0.9,258.7,230.8,0.007738607050730868,20.7408
+A,D3 (authors),InsectsIncrementalAbruptBalanced,5.0,1.0,22.6,235.6,0.008417508417508417,24.272
+A,D3-LightGBM (thesis),InsectsGradualBalanced,5.0,0.0,500.0,4.0,0.0,4.7744
+A,D3-LightGBM (thesis),InsectsAbruptBalanced,5.0,0.8,204.12,4.8,0.45454545454545453,10.688600000000001
+A,D3-LightGBM (thesis),InsectsIncrementalAbruptBalanced,5.0,1.0,154.9,5.4,0.2702702702702703,15.435399999999998
+A,D3-LightGBM (thesis),InsectsIncrementalReoccurringBalanced,5.0,0.8,255.9,8.2,0.16326530612244897,15.269
+B,S200 D3 (logistic regression),InsectsAbruptBalanced,5.0,0.76,251.68,5.2,0.4222222222222222,2.1162
+B,S200 D3 (logistic regression),InsectsGradualBalanced,5.0,0.0,500.0,4.0,0.0,0.9568
+B,S200 D3 (logistic regression),InsectsIncrementalAbruptBalanced,5.0,1.0,163.6,6.2,0.24390243902439024,3.3513999999999995
+B,S200 D3 (logistic regression),InsectsIncrementalReoccurringBalanced,5.0,0.9,265.1,8.0,0.1836734693877551,3.107
+B,S200 D3-LightGBM,InsectsGradualBalanced,5.0,0.0,500.0,4.0,0.0,4.142
+B,S200 D3-LightGBM,InsectsAbruptBalanced,5.0,0.8,204.12,4.8,0.45454545454545453,10.683599999999998
+B,S200 D3-LightGBM,InsectsIncrementalAbruptBalanced,5.0,1.0,154.9,5.4,0.2702702702702703,15.358200000000002
+B,S200 D3-LightGBM,InsectsIncrementalReoccurringBalanced,5.0,0.8,255.9,8.2,0.16326530612244897,15.160400000000001
+B,S50 D3 (logistic regression),InsectsGradualBalanced,5.0,0.0,500.0,5.0,0.0,8.2454
+B,S50 D3 (logistic regression),InsectsAbruptBalanced,5.0,0.8,180.36,6.0,0.4,21.098999999999997
+B,S50 D3 (logistic regression),InsectsIncrementalAbruptBalanced,5.0,1.0,99.4,10.4,0.16129032258064516,31.317200000000003
+B,S50 D3 (logistic regression),InsectsIncrementalReoccurringBalanced,5.0,1.0,272.5,13.4,0.12987012987012986,30.304199999999998
+B,S50 D3-LightGBM,InsectsGradualBalanced,5.0,0.0,500.0,5.4,0.0,69.50139999999999
+B,S50 D3-LightGBM,InsectsAbruptBalanced,5.0,0.8,172.2,6.0,0.4,181.679
+B,S50 D3-LightGBM,InsectsIncrementalAbruptBalanced,5.0,1.0,95.2,13.4,0.12987012987012986,256.85519999999997
+E,S200 D3 (logistic regression) tau 0.3,SynthStable,5.0,,,39.0,0.0,0.19140000000000001
+E,S200 D3 (logistic regression) tau 0.3,SynthAbrupt,5.0,1.0,219.0,36.0,0.07692307692307693,0.1922
+E,S200 D3 (logistic regression) tau 0.3,SynthGradual,5.0,1.0,219.0,36.0,0.07692307692307693,0.18919999999999998
+E,S200 D3 (logistic regression) tau 0.3,SynthIncremental,5.0,1.0,219.0,36.0,0.07692307692307693,0.1894
+E,S200 D3 (logistic regression) tau 0.3,SynthRecurring,5.0,1.0,219.0,36.0,0.07692307692307693,0.187
+E,S200 D3-LightGBM tau 0.3,SynthStable,5.0,,,39.0,0.0,1.0357999999999998
+E,S200 D3-LightGBM tau 0.3,SynthAbrupt,5.0,1.0,219.0,36.0,0.07692307692307693,1.032
+E,S200 D3-LightGBM tau 0.3,SynthGradual,5.0,1.0,219.0,36.0,0.07692307692307693,1.0408
+E,S200 D3-LightGBM tau 0.3,SynthIncremental,5.0,1.0,219.0,36.0,0.07692307692307693,1.042
+E,S200 D3-LightGBM tau 0.3,SynthRecurring,5.0,1.0,219.0,36.0,0.07692307692307693,1.0516
+E,S200 D3 (logistic regression) tau 0.4,SynthStable,5.0,,,39.0,0.0,0.18980000000000002
+E,S200 D3 (logistic regression) tau 0.4,SynthAbrupt,5.0,1.0,219.0,36.0,0.07692307692307693,0.19580000000000003
+E,S200 D3 (logistic regression) tau 0.4,SynthGradual,5.0,1.0,219.0,36.0,0.07692307692307693,0.195
+E,S200 D3 (logistic regression) tau 0.4,SynthIncremental,5.0,1.0,219.0,36.0,0.07692307692307693,0.19660000000000002
+E,S200 D3 (logistic regression) tau 0.4,SynthRecurring,5.0,1.0,219.0,36.0,0.07692307692307693,0.19099999999999998
+E,S200 D3-LightGBM tau 0.4,SynthStable,5.0,,,39.0,0.0,1.046
+E,S200 D3-LightGBM tau 0.4,SynthAbrupt,5.0,1.0,219.0,36.0,0.07692307692307693,1.0422
+E,S200 D3-LightGBM tau 0.4,SynthGradual,5.0,1.0,219.0,36.0,0.07692307692307693,1.045
+E,S200 D3-LightGBM tau 0.4,SynthIncremental,5.0,1.0,219.0,36.0,0.07692307692307693,1.041
+E,S200 D3-LightGBM tau 0.4,SynthRecurring,5.0,1.0,219.0,36.0,0.07692307692307693,1.0448
+E,S200 D3 (logistic regression) tau 0.5,SynthStable,5.0,,,28.4,0.0,0.2578
+E,S200 D3 (logistic regression) tau 0.5,SynthAbrupt,5.0,1.0,246.6,25.8,0.10416666666666667,0.259
+E,S200 D3 (logistic regression) tau 0.5,SynthGradual,5.0,1.0,286.6,26.6,0.10135135135135136,0.25200000000000006
+E,S200 D3 (logistic regression) tau 0.5,SynthIncremental,5.0,1.0,280.2,26.4,0.10204081632653061,0.256
+E,S200 D3 (logistic regression) tau 0.5,SynthRecurring,5.0,1.0,253.4,25.2,0.10638297872340426,0.2564
+E,S200 D3-LightGBM tau 0.5,SynthStable,5.0,,,26.8,0.0,1.5173999999999999
+E,S200 D3-LightGBM tau 0.5,SynthAbrupt,5.0,1.0,194.2,25.8,0.10416666666666667,1.444
+E,S200 D3-LightGBM tau 0.5,SynthGradual,5.0,1.0,272.8,26.2,0.10273972602739725,1.4125999999999999
+E,S200 D3-LightGBM tau 0.5,SynthIncremental,5.0,1.0,314.8,25.4,0.1056338028169014,1.4552
+E,S200 D3-LightGBM tau 0.5,SynthRecurring,5.0,1.0,194.0,26.2,0.10273972602739725,1.4316
+E,S200 D3 (logistic regression) tau 0.6,InsectsAbruptBalanced,5.0,0.96,178.16000000000003,7.8,0.38095238095238093,2.1356
+E,S200 D3 (logistic regression) tau 0.6,InsectsGradualBalanced,5.0,1.0,154.0,5.8,0.14705882352941177,0.9553999999999998
+E,S200 D3 (logistic regression) tau 0.6,InsectsIncrementalAbruptBalanced,5.0,1.0,211.9,25.0,0.07407407407407407,3.1888
+E,S200 D3 (logistic regression) tau 0.6,InsectsIncrementalReoccurringBalanced,5.0,1.0,330.7,25.4,0.072992700729927,3.178
+E,S200 D3-LightGBM tau 0.6,InsectsAbruptBalanced,5.0,0.9199999999999999,171.96,6.4,0.41818181818181815,10.574000000000002
+E,S200 D3-LightGBM tau 0.6,InsectsGradualBalanced,5.0,0.8,247.2,6.8,0.10526315789473684,4.6278
+B,S50 D3-LightGBM,InsectsIncrementalReoccurringBalanced,5.0,1.0,246.1,14.2,0.12345679012345678,255.2978
+E,S200 D3-LightGBM tau 0.6,InsectsIncrementalAbruptBalanced,5.0,1.0,68.8,27.4,0.06802721088435375,15.1958
+F,"S200 D3 (logistic regression), offsets",InsectsAbruptBalanced,5.0,0.8,235.24,5.8,0.40816326530612246,2.0922000000000005
+F,"S200 D3 (logistic regression), offsets",InsectsGradualBalanced,5.0,0.4,338.8,3.6,0.1,0.944
+E,S200 D3-LightGBM tau 0.6,InsectsIncrementalReoccurringBalanced,5.0,1.0,380.2,27.2,0.0684931506849315,15.201999999999998
+F,"S200 D3 (logistic regression), offsets",InsectsIncrementalAbruptBalanced,5.0,1.0,174.9,5.0,0.2857142857142857,3.2973999999999997
+F,"S200 D3 (logistic regression), offsets",InsectsIncrementalReoccurringBalanced,5.0,1.0,223.2,8.8,0.18518518518518517,3.0172
+F,"S200 D3-LightGBM, offsets",InsectsGradualBalanced,5.0,0.6,229.4,3.4,0.15,4.14
+F,"S200 D3-LightGBM, offsets",InsectsAbruptBalanced,5.0,0.76,239.88000000000002,5.4,0.41304347826086957,10.617
+F,"S200 D3-LightGBM, offsets",InsectsIncrementalAbruptBalanced,5.0,1.0,174.6,5.4,0.2702702702702703,15.435399999999998
+F,"S200 D3-LightGBM, offsets",InsectsIncrementalReoccurringBalanced,5.0,0.9,184.3,7.4,0.1956521739130435,15.316999999999998
+F,"S50 D3 (logistic regression), offsets",InsectsGradualBalanced,5.0,0.0,500.0,5.2,0.0,8.0878
+F,"S50 D3 (logistic regression), offsets",InsectsAbruptBalanced,5.0,0.8,179.08,6.0,0.4,21.2534
+F,"S50 D3 (logistic regression), offsets",InsectsIncrementalAbruptBalanced,5.0,1.0,97.5,11.0,0.15384615384615385,30.9262
+F,"S50 D3 (logistic regression), offsets",InsectsIncrementalReoccurringBalanced,5.0,1.0,272.7,13.8,0.12658227848101267,30.243000000000002
+F,"S50 D3-LightGBM, offsets",InsectsGradualBalanced,5.0,0.0,500.0,5.4,0.0,69.36179999999999
+F,"S50 D3-LightGBM, offsets",InsectsAbruptBalanced,5.0,0.8,179.08,6.0,0.4,181.42559999999997
+F,"S50 D3-LightGBM, offsets",InsectsIncrementalAbruptBalanced,5.0,1.0,90.6,12.2,0.14084507042253522,257.9656
+C,"S200 sliding, threshold only",InsectsAbruptBalanced,5.0,0.8,264.4,5.0,0.4444444444444444,20.453200000000002
+C,"S200 sliding, threshold only",InsectsGradualBalanced,5.0,1.0,71.0,3.0,0.25,9.2872
+C,"S200 sliding, threshold only",InsectsIncrementalAbruptBalanced,5.0,1.0,133.0,4.0,0.3333333333333333,21.873399999999997
+F,"S50 D3-LightGBM, offsets",InsectsIncrementalReoccurringBalanced,5.0,1.0,303.3,13.6,0.1282051282051282,266.01640000000003
+C,"S200 sliding, threshold only",InsectsIncrementalReoccurringBalanced,5.0,0.6,360.6,8.2,0.1276595744680851,27.375999999999998
+C,"S200 reservoir, threshold only",InsectsAbruptBalanced,5.0,0.6,341.0,6.0,0.3333333333333333,20.7378
+C,"S200 reservoir, threshold only",InsectsGradualBalanced,5.0,0.2,414.2,4.6,0.041666666666666664,10.719000000000001
+C,"S200 reservoir, threshold only",InsectsIncrementalAbruptBalanced,5.0,0.9,139.5,10.2,0.15,30.2568
+C,"S200 reservoir, threshold only",InsectsIncrementalReoccurringBalanced,5.0,0.7,273.3,10.8,0.11475409836065574,30.783800000000003
+C,"S200 reservoir without overlap, threshold only",InsectsGradualBalanced,5.0,0.0,500.0,5.2,0.0,11.8726
+C,"S200 reservoir without overlap, threshold only",InsectsAbruptBalanced,5.0,0.8,264.4,6.0,0.4,23.0366
+C,"S200 reservoir without overlap, threshold only",InsectsIncrementalAbruptBalanced,5.0,1.0,293.0,16.6,0.10752688172043011,39.5568
+C,"S200 reservoir without overlap, threshold only",InsectsIncrementalReoccurringBalanced,5.0,0.6,300.6,17.8,0.06315789473684211,41.4912
+D,"S200 EADD tau 0.5, none",SynthStable,5.0,,,5.6,0.0,5.502000000000001
+D,"S200 EADD tau 0.5, none",SynthAbrupt,5.0,0.9333333333333332,192.4,4.2,0.4,6.524800000000001
+D,"S200 EADD tau 0.5, none",SynthGradual,5.0,1.0,552.3333333333334,5.0,0.375,7.474799999999999
+D,"S200 EADD tau 0.5, none",SynthIncremental,5.0,1.0,532.3333333333333,5.2,0.36585365853658536,7.2154
+D,"S200 EADD tau 0.5, none",SynthRecurring,5.0,0.8666666666666666,219.1333333333333,4.4,0.37142857142857144,6.821000000000001
+D,"S200 EADD tau 0.6, none",InsectsGradualBalanced,5.0,0.0,500.0,5.4,0.0,11.472400000000002
+D,"S200 EADD tau 0.6, none",InsectsAbruptBalanced,5.0,0.8,262.16,6.0,0.4,23.324600000000004
+D,"S200 EADD tau 0.6, none",InsectsIncrementalAbruptBalanced,5.0,1.0,253.0,19.2,0.09433962264150944,42.3654
+B,S200 EADD,SynthStable,5.0,,,0.0,0.0,2.8175999999999997
+D,"S200 EADD tau 0.6, none",InsectsIncrementalReoccurringBalanced,5.0,0.5,347.1,20.8,0.045871559633027525,43.047
+B,S200 EADD,SynthAbrupt,5.0,1.0,265.6666666666667,0.0,1.0,5.7459999999999996
+B,S200 EADD,SynthGradual,5.0,1.0,972.3333333333334,0.0,1.0,5.895200000000001
+B,S200 EADD,SynthIncremental,5.0,1.0,879.0,0.0,1.0,5.7356
+B,"S200 EADD, no overlap",SynthStable,5.0,,,0.0,0.0,2.6546
+B,S200 EADD,SynthRecurring,5.0,1.0,265.6666666666667,0.0,1.0,5.8236
+B,"S200 EADD, no overlap",SynthAbrupt,5.0,1.0,265.6666666666667,0.0,1.0,5.8342
+B,"S200 EADD, no overlap",SynthGradual,5.0,1.0,879.0,0.0,1.0,5.904
+B,"S200 EADD, no overlap",SynthIncremental,5.0,1.0,825.6666666666666,0.0,1.0,5.7694
+B,"S200 EADD, no overlap",SynthRecurring,5.0,1.0,265.6666666666667,0.0,1.0,5.618200000000001
+C,S200 sliding + ASPT,SynthStable,5.0,,,0.0,0.0,2.6418
+C,S200 sliding + ASPT,SynthGradual,5.0,0.0,1500.0,0.0,0.0,2.7028000000000003
+C,S200 sliding + ASPT,SynthAbrupt,5.0,1.0,265.6666666666667,0.0,1.0,5.363199999999999
+C,S200 sliding + ASPT,SynthIncremental,5.0,0.0,1500.0,0.0,0.0,2.5774
+D,"S200 EADD tau 0.6, aspt",SynthStable,5.0,,,0.0,0.0,2.7234
+C,S200 sliding + ASPT,SynthRecurring,5.0,1.0,265.6666666666667,0.0,1.0,5.406599999999999
+D,"S200 EADD tau 0.6, aspt",SynthAbrupt,5.0,1.0,212.33333333333334,0.0,1.0,5.6654
+D,"S200 EADD tau 0.6, aspt",SynthGradual,5.0,1.0,639.0,0.0,1.0,5.9306
+D,"S200 EADD tau 0.6, aspt",SynthIncremental,5.0,1.0,585.6666666666666,0.0,1.0,5.83
+D,"S200 EADD tau 0.6, aspt",SynthRecurring,5.0,1.0,199.0,0.0,1.0,5.707600000000001
+A,D3 (authors),SynthStable,5.0,,,70.6,0.0,4.514799999999999
+A,D3 (authors),SynthAbrupt,5.0,0.7333333333333333,250.4,64.4,0.03303303303303303,4.5138
+A,D3 (authors),SynthGradual,5.0,1.0,272.4,62.2,0.046012269938650305,4.8782
+A,D3 (authors),SynthIncremental,5.0,1.0,440.6,62.6,0.04573170731707317,4.5283999999999995
+A,D3 (authors),SynthRecurring,5.0,1.0,64.66666666666666,65.0,0.04411764705882353,4.3666
+A,D3-LightGBM (thesis),SynthStable,5.0,,,0.0,0.0,2.4274
+A,D3-LightGBM (thesis),SynthAbrupt,5.0,0.9333333333333333,244.6,0.0,1.0,2.2812
+A,D3-LightGBM (thesis),SynthGradual,5.0,0.0,1500.0,0.0,0.0,2.3852
+A,D3-LightGBM (thesis),SynthIncremental,5.0,0.0,1500.0,0.0,0.0,2.5486000000000004
+A,D3-LightGBM (thesis),SynthRecurring,5.0,0.9333333333333333,244.6,0.0,1.0,2.327
+B,S200 D3 (logistic regression),SynthStable,5.0,,,0.0,0.0,0.36540000000000006
+B,S200 D3 (logistic regression),SynthAbrupt,5.0,1.0,192.4,0.0,1.0,0.3832
+B,S200 D3 (logistic regression),SynthGradual,5.0,0.0,1500.0,0.0,0.0,0.372
+B,S200 D3 (logistic regression),SynthIncremental,5.0,0.0,1500.0,0.0,0.0,0.40279999999999994
+B,S200 D3 (logistic regression),SynthRecurring,5.0,1.0,192.4,0.0,1.0,0.35000000000000003
+B,S200 D3-LightGBM,SynthAbrupt,5.0,0.9333333333333333,244.6,0.0,1.0,2.118
+B,S200 D3-LightGBM,SynthStable,5.0,,,0.0,0.0,2.565
+B,S200 D3-LightGBM,SynthGradual,5.0,0.0,1500.0,0.0,0.0,2.5486
+B,S200 D3-LightGBM,SynthIncremental,5.0,0.0,1500.0,0.0,0.0,2.387
+B,S50 D3 (logistic regression),SynthStable,5.0,,,0.0,0.0,2.5756
+B,S200 D3-LightGBM,SynthRecurring,5.0,0.9333333333333332,244.6,0.0,1.0,2.4598
+B,S50 D3 (logistic regression),SynthAbrupt,5.0,1.0,136.2,0.0,1.0,2.9422
+B,S50 D3 (logistic regression),SynthGradual,5.0,0.0,1500.0,0.0,0.0,2.9397999999999995
+B,S50 D3 (logistic regression),SynthIncremental,5.0,0.06666666666666667,1470.0666666666666,0.0,1.0,2.9372
+B,S50 D3 (logistic regression),SynthRecurring,5.0,1.0,139.6,0.0,1.0,2.602
+B,S50 D3-LightGBM,SynthAbrupt,5.0,1.0,163.4,0.0,1.0,30.797200000000004
+B,S50 D3-LightGBM,SynthStable,5.0,,,0.0,0.0,38.15240000000001
+B,S50 D3-LightGBM,SynthGradual,5.0,0.0,1500.0,0.0,0.0,37.9234
+B,S50 D3-LightGBM,SynthIncremental,5.0,0.0,1500.0,0.0,0.0,35.67100000000001
+E,S200 D3 (logistic regression) tau 0.6,SynthStable,5.0,,,0.0,0.0,0.42379999999999995
+E,S200 D3 (logistic regression) tau 0.6,SynthAbrupt,5.0,1.0,172.2,0.2,0.9375,0.4142
+E,S200 D3 (logistic regression) tau 0.6,SynthGradual,5.0,0.8666666666666666,799.7333333333333,1.2,0.6842105263157895,0.40939999999999993
+E,S200 D3 (logistic regression) tau 0.6,SynthIncremental,5.0,1.0,579.8,2.2,0.5769230769230769,0.40540000000000004
+E,S200 D3 (logistic regression) tau 0.6,SynthRecurring,5.0,1.0,179.0,0.0,1.0,0.40800000000000003
+E,S200 D3-LightGBM tau 0.6,SynthStable,5.0,,,0.0,0.0,2.5466
+E,S200 D3-LightGBM tau 0.6,SynthAbrupt,5.0,1.0,179.0,0.0,1.0,2.409
+E,S200 D3-LightGBM tau 0.6,SynthGradual,5.0,0.6,1108.1333333333334,0.0,1.0,2.4554
+E,S200 D3-LightGBM tau 0.6,SynthIncremental,5.0,0.6666666666666667,974.2,0.2,0.9090909090909091,2.4417999999999997
+E,S200 D3-LightGBM tau 0.6,SynthRecurring,5.0,1.0,179.0,0.0,1.0,2.42
+B,S50 D3-LightGBM,SynthRecurring,5.0,1.0,160.0,0.0,1.0,33.382799999999996
+C,"S200 sliding, threshold only",SynthStable,5.0,,,0.0,0.0,2.2824
+C,"S200 sliding, threshold only",SynthAbrupt,5.0,1.0,265.6666666666667,0.0,1.0,3.6188000000000002
+C,"S200 sliding, threshold only",SynthGradual,5.0,0.0,1500.0,0.0,0.0,2.555
+C,"S200 sliding, threshold only",SynthIncremental,5.0,0.0,1500.0,0.0,0.0,2.5102
+C,"S200 sliding, threshold only",SynthRecurring,5.0,1.0,265.6666666666667,0.0,1.0,4.016399999999999
+C,"S200 reservoir, threshold only",SynthStable,5.0,,,0.0,0.0,2.7622
+C,"S200 reservoir, threshold only",SynthAbrupt,5.0,1.0,265.6666666666667,0.0,1.0,4.1992
+C,"S200 reservoir, threshold only",SynthGradual,5.0,1.0,972.3333333333334,0.0,1.0,4.3347999999999995
+C,"S200 reservoir, threshold only",SynthIncremental,5.0,1.0,879.0,0.0,1.0,4.5486
+C,"S200 reservoir, threshold only",SynthRecurring,5.0,1.0,265.6666666666667,0.0,1.0,3.9998000000000005
+C,"S200 reservoir without overlap, threshold only",SynthStable,5.0,,,0.0,0.0,2.729
+C,"S200 reservoir without overlap, threshold only",SynthAbrupt,5.0,1.0,265.6666666666667,0.0,1.0,4.2872
+C,"S200 reservoir without overlap, threshold only",SynthGradual,5.0,1.0,879.0,0.0,1.0,4.3754
+C,"S200 reservoir without overlap, threshold only",SynthIncremental,5.0,1.0,825.6666666666666,0.0,1.0,4.340000000000001
+C,"S200 reservoir without overlap, threshold only",SynthRecurring,5.0,1.0,265.6666666666667,0.0,1.0,4.1659999999999995
+D,"S200 EADD tau 0.6, none",SynthStable,5.0,,,0.0,0.0,2.6559999999999997
+D,"S200 EADD tau 0.6, none",SynthAbrupt,5.0,1.0,212.33333333333334,0.0,1.0,4.2798
+D,"S200 EADD tau 0.6, none",SynthGradual,5.0,1.0,639.0,0.0,1.0,4.389
+D,"S200 EADD tau 0.6, none",SynthIncremental,5.0,1.0,585.6666666666667,0.0,1.0,4.2168
+D,"S200 EADD tau 0.6, none",SynthRecurring,5.0,1.0,199.0,0.0,1.0,3.7102000000000004
