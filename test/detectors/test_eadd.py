@@ -118,3 +118,52 @@ class EADDTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EADDValidityOptionsTest(unittest.TestCase):
+    def setUp(self) -> None:
+        warnings.filterwarnings("ignore", category=UserWarning)
+        self.rng = np.random.default_rng(0)
+
+    def test_permuted_auc_uses_the_observed_cv(self):
+        detector = ExplainableAdversarialDriftDetector(n_folds=5, perm_n_folds=None, seed=0)
+        self.assertEqual(5, detector.perm_n_folds)
+        self.assertEqual(2, ExplainableAdversarialDriftDetector(n_folds=5, seed=0).perm_n_folds)
+
+    def test_split_alpha_early_reject_needs_more_draws(self):
+        detector = ExplainableAdversarialDriftDetector(
+            n_reference_samples=200, n_current_samples=100, aspt_alpha_split=1 / 3, seed=0)
+        ref = self.rng.normal(0, 1, size=(200, 3))
+        cur = self.rng.normal(3, 1, size=(100, 3))
+        p_value = detector._aspt_test(ref, cur, actual_auc=0.99)
+        # first i with 1/(i+1) <= 0.05/3 is i = 59
+        self.assertEqual(59, detector.last_aspt_permutations)
+        self.assertTrue(detector.last_aspt_reject)
+        self.assertAlmostEqual(1 / 60, p_value)
+
+    def test_time_blocks_are_consecutive_within_each_window(self):
+        detector = ExplainableAdversarialDriftDetector(block_size=2, seed=0)
+        g = detector._time_blocks(np.array([5.0, 1.0, 3.0, 2.0]), np.array([10.0, 11.0, 12.0]))
+        # reference sorted by time: 1,2 | 3,5 ; current: 10,11 | 12
+        self.assertEqual([1, 0, 1, 0, 2, 2, 3], g.tolist())
+
+    def test_block_permutation_swaps_whole_blocks(self):
+        detector = ExplainableAdversarialDriftDetector(block_size=10, seed=0)
+        groups = np.repeat(np.arange(7), 10)
+        y = (groups >= 5).astype(float)
+        for _ in range(20):
+            y_perm = detector._permute_labels(y, groups)
+            self.assertEqual(20, int(y_perm.sum()))
+            for g in range(7):
+                self.assertEqual(1, len(set(y_perm[groups == g])))
+
+    def test_block_options_run_end_to_end(self):
+        detector = ExplainableAdversarialDriftDetector(
+            n_reference_samples=200, n_current_samples=100, monitoring_frequency=50,
+            perm_n_folds=None, aspt_alpha_split=1 / 3, block_size=20,
+            reservoir_after_current=True, seed=0)
+        X = np.vstack([self.rng.normal(0, 1, size=(1500, 3)), self.rng.normal(2, 1, size=(1500, 3))])
+        drifts = feed(detector, X)
+        self.assertEqual(0, sum(drifts[:1500]))
+        self.assertGreaterEqual(sum(drifts[1500:1800]), 1)
+        self.assertEqual(3, len(detector.last_shap_importances))  # the time column is not a feature

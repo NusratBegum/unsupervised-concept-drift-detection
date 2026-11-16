@@ -43,7 +43,7 @@ Mahidol University, 2026
 
 from typing import Optional, Dict, List, Tuple
 import numpy as np
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedGroupKFold, StratifiedKFold
 from sklearn.metrics import roc_auc_score
 
 try:
@@ -96,6 +96,21 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
     reservoir_after_current : bool
         Offer a sample to the reservoir only once it leaves the current
         window, so no sample is in both windows (False in the thesis runs).
+    perm_n_folds : int or None
+        CV folds of the permuted AUCs. The thesis used 2 while the observed
+        AUC used n_folds, so the null did not match the statistic; None
+        uses n_folds, which makes the permutation p-value valid.
+    aspt_alpha_split : float or None
+        None is the thesis stopping rule, which is not an exact level-alpha
+        test (simulated Type I 0.059 at alpha 0.05). A fraction f spends
+        f * alpha on the early reject (no exceedance in the first i draws,
+        1/(i+1) <= f * alpha) and the rest on the final test, so by the
+        union bound the Type I error is at most alpha.
+    block_size : int
+        1 treats samples as exchangeable. b > 1 groups each window into
+        blocks of b samples that are consecutive in time; the CV keeps a
+        block in one fold and the permutation test swaps whole blocks, so
+        autocorrelated neighbours cannot leak between train and test.
     """
 
     def __init__(
@@ -113,6 +128,9 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         n_folds: int = 5,
         sliding_reference: bool = False,
         reservoir_after_current: bool = False,
+        perm_n_folds: Optional[int] = 2,
+        aspt_alpha_split: Optional[float] = None,
+        block_size: int = 1,
     ):
         super().__init__(seed)
         self.n_reference_samples = n_reference_samples
@@ -127,6 +145,11 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         self.sliding_reference = sliding_reference
         # False reproduces the thesis runs, where a sample can be in both windows at once
         self.reservoir_after_current = reservoir_after_current
+        self.perm_n_folds = perm_n_folds or n_folds
+        assert aspt_alpha_split is None or 0 < aspt_alpha_split < 1
+        self.aspt_alpha_split = aspt_alpha_split
+        self.block_size = block_size
+        self.n_updates = 0
 
         self.reference_window: List[np.ndarray] = []
         self.current_window: List[np.ndarray] = []
@@ -159,7 +182,10 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         self.last_hpred_trend: List[float] = []
 
     def update(self, features: dict) -> bool:
-        feature_vector = np.fromiter(features.values(), dtype=float)
+        # the arrival time rides along as the last element, so it follows a
+        # sample through the reservoir; _detect_drift strips it
+        feature_vector = np.append(np.fromiter(features.values(), dtype=float), self.n_updates)
+        self.n_updates += 1
         if self.last_feature_names is None:
             self.last_feature_names = list(features.keys())
         self.samples_seen += 1
@@ -196,11 +222,13 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
 
     def _detect_drift(self) -> bool:
         """Run the full EADD detection pipeline with ASPT and H_pred."""
-        ref_data = np.array(self.reference_window)
-        cur_data = np.array(self.current_window)
+        ref_all = np.array(self.reference_window)
+        cur_all = np.array(self.current_window)
+        ref_data, cur_data = ref_all[:, :-1], cur_all[:, :-1]
+        groups = self._time_blocks(ref_all[:, -1], cur_all[:, -1])
 
         # Step 1: C2ST discriminative classification + H_pred
-        auc, predictions = self._adversarial_auc_with_preds(ref_data, cur_data)
+        auc, predictions = self._adversarial_auc_with_preds(ref_data, cur_data, groups)
         self.last_auc = auc
         self.last_hpred = -np.mean(predictions * np.log(predictions + 1e-9) + (1 - predictions) * np.log(1 - predictions + 1e-9))
         self.last_hpred_trend.append(self.last_hpred)
@@ -213,13 +241,14 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         if self.permutation_test == "none":
             self.last_aspt_permutations = 0
             p_val = 0.0
+            self.last_aspt_reject = True
         else:
-            p_val = self._aspt_test(ref_data, cur_data, auc)
+            p_val = self._aspt_test(ref_data, cur_data, auc, groups)
             self.n_tests += 1
             self.n_permutations_used += self.last_aspt_permutations
         self.last_p_value = p_val
 
-        if p_val >= self.significance_level:
+        if not self.last_aspt_reject:
             self.n_rejections += 1
             return False
 
@@ -236,59 +265,91 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         self.steps_since_check = 0
         return True
 
-    def _aspt_test(self, ref_data: np.ndarray, cur_data: np.ndarray, actual_auc: float) -> float:
+    def _aspt_test(self, ref_data: np.ndarray, cur_data: np.ndarray, actual_auc: float,
+                   groups: Optional[np.ndarray] = None) -> float:
+        """Permutation p-value of the observed AUC; sets self.last_aspt_reject."""
         X = np.vstack([ref_data, cur_data])
         y = np.concatenate([np.zeros(len(ref_data)), np.ones(len(cur_data))])
-        count_ge = 0
-        min_perms = self.min_permutations
         alpha = self.significance_level
+        if self.aspt_alpha_split is None:  # thesis rule
+            alpha_early, alpha_final = alpha, alpha
+        else:
+            alpha_early = self.aspt_alpha_split * alpha
+            alpha_final = alpha - alpha_early
+        count_ge = 0
         early = self.permutation_test == "aspt"
         for i in range(1, self.n_permutations + 1):
-            y_perm = self.perm_rng.permutation(y)
-            auc_perm = self._quick_auc(X, y_perm)
+            y_perm = self._permute_labels(y, groups)
+            auc_perm = self._cv_auc(X, y_perm, self.perm_n_folds,
+                                    int(self.perm_rng.integers(0, 2**31)), groups)
             if auc_perm >= actual_auc: count_ge += 1
-            if not early or i < min_perms or i == self.n_permutations:
+            if not early or i < self.min_permutations or i == self.n_permutations:
                 continue
-            # Conservative early-reject rule: if no exceedances were observed,
-            # the best possible permutation p-value after i draws is 1/(i+1).
-            if count_ge == 0 and (1.0 / (i + 1)) < alpha:
+            # Early reject: no exceedance in the first i draws, which happens
+            # with probability 1/(i+1) under H0.
+            if count_ge == 0 and (1.0 / (i + 1)) <= alpha_early and (
+                    self.aspt_alpha_split is not None or 1.0 / (i + 1) < alpha):
                 self.last_aspt_permutations = i
                 self.n_early_stops += 1
+                self.last_aspt_reject = True
                 return 1.0 / (i + 1)
+            # Early accept (futility): it can only lower the Type I error.
             if count_ge / i > 2 * alpha:
                 self.last_aspt_permutations = i
                 self.n_early_stops += 1
+                self.last_aspt_reject = False
                 return (count_ge + 1) / (i + 1)
         self.last_aspt_permutations = self.n_permutations
-        return (count_ge + 1) / (self.n_permutations + 1)
+        p = (count_ge + 1) / (self.n_permutations + 1)
+        self.last_aspt_reject = p < alpha if self.aspt_alpha_split is None else p <= alpha_final
+        return p
 
-    def _adversarial_auc_with_preds(self, ref_data: np.ndarray, cur_data: np.ndarray) -> Tuple[float, np.ndarray]:
+    def _time_blocks(self, t_ref: np.ndarray, t_cur: np.ndarray) -> Optional[np.ndarray]:
+        """Block id per sample: consecutive (in time) runs of block_size within each window."""
+        if self.block_size <= 1:
+            return None
+        def blocks(t, offset):
+            rank = np.empty(len(t), dtype=int)
+            rank[np.argsort(t, kind="stable")] = np.arange(len(t))
+            return offset + rank // self.block_size
+        g_ref = blocks(t_ref, 0)
+        return np.concatenate([g_ref, blocks(t_cur, g_ref.max() + 1)])
+
+    def _permute_labels(self, y: np.ndarray, groups: Optional[np.ndarray]) -> np.ndarray:
+        if groups is None:
+            return self.perm_rng.permutation(y)
+        # swap whole blocks: as many blocks get label 1 as the current window has
+        ids = np.unique(groups)
+        n_cur_blocks = len(np.unique(groups[y == 1]))
+        cur_ids = self.perm_rng.choice(ids, n_cur_blocks, replace=False)
+        return np.isin(groups, cur_ids).astype(float)
+
+    def _adversarial_auc_with_preds(self, ref_data: np.ndarray, cur_data: np.ndarray,
+                                    groups: Optional[np.ndarray] = None) -> Tuple[float, np.ndarray]:
         X = np.vstack([ref_data, cur_data])
         y = np.concatenate([np.zeros(len(ref_data)), np.ones(len(cur_data))])
-        kfold = StratifiedKFold(n_splits=self.n_folds, shuffle=True, random_state=self.seed)
-        predictions = np.zeros(len(y))
-        for train_idx, test_idx in kfold.split(X, y):
-            clf = self._create_classifier()
-            clf.fit(X[train_idx], y[train_idx])
-            predictions[test_idx] = clf.predict_proba(X[test_idx])[:, 1]
-        try:
-            return roc_auc_score(y, predictions), predictions
-        except ValueError:
-            return 0.5, predictions
+        return self._cv_auc(X, y, self.n_folds, self.seed, groups, return_predictions=True)
 
-    def _quick_auc(self, X: np.ndarray, y: np.ndarray) -> float:
-        rs = int(self.perm_rng.integers(0, 2**31))
-        kfold = StratifiedKFold(n_splits=2, shuffle=True, random_state=rs)
+    def _cv_auc(self, X, y, n_splits, random_state, groups=None, return_predictions=False):
+        """Cross-validated AUC; the observed and the permuted AUCs both use this."""
+        if groups is None:
+            folds = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=random_state).split(X, y)
+        else:
+            folds = StratifiedGroupKFold(n_splits=n_splits, shuffle=True,
+                                         random_state=random_state).split(X, y, groups)
         predictions = np.zeros(len(y))
-        for train_idx, test_idx in kfold.split(X, y):
+        for train_idx, test_idx in folds:
             clf = self._create_classifier()
             try:
                 clf.fit(X[train_idx], y[train_idx])
                 predictions[test_idx] = clf.predict_proba(X[test_idx])[:, 1]
-            except Exception: return 0.5
+            except Exception:
+                predictions[test_idx] = 0.5
         try:
-            return roc_auc_score(y, predictions)
-        except ValueError: return 0.5
+            auc = roc_auc_score(y, predictions)
+        except ValueError:
+            auc = 0.5
+        return (auc, predictions) if return_predictions else auc
 
     def _compute_shap(self, ref_data: np.ndarray, cur_data: np.ndarray) -> Dict[str, float]:
         X = np.vstack([ref_data, cur_data])

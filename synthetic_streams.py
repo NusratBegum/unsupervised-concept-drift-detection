@@ -52,8 +52,70 @@ class SyntheticStream:
             yield dict(zip(names, x)), int(y)
 
 
+class ArrayStream:
+    def __init__(self, X, drifts=()):
+        self.X, self.drifts = X, list(drifts)
+
+    def __iter__(self):
+        names = [f"x{j}" for j in range(self.X.shape[1])]
+        for x in self.X:
+            yield dict(zip(names, x)), 0
+
+
+def ar_stream(rho, seed, n=N, d=D):
+    """Stationary AR(1) per feature, unit variance: no drift, but autocorrelated."""
+    rng = np.random.default_rng([seed, 100 + int(round(rho * 1000))])
+    e = rng.normal(size=(n, d)) * np.sqrt(1 - rho ** 2)
+    X = np.empty((n, d))
+    X[0] = rng.normal(size=d)
+    for t in range(1, n):
+        X[t] = rho * X[t - 1] + e[t]
+    return ArrayStream(X)
+
+
+def shuffled_stream(dataset, seed, n=N):
+    """Rows of a real stream in random order: real marginals, no drift, no autocorrelation."""
+    import datasets as ds
+    X = np.array([list(x.values()) for i, (x, _) in zip(range(100_000), getattr(ds, dataset)())], dtype=float)
+    rng = np.random.default_rng([seed, 7])
+    return ArrayStream(X[rng.permutation(len(X))[:n]])
+
+
+INJECT_BASES = ["Electricity", "NOAAWeather", "PokerHand", "Powersupply", "RialtoBridgeTimelapse",
+                "InsectsIncrementalBalanced"]
+
+
+def injected_stream(kind, dataset, seed):
+    """A shuffled real stream (no drift of its own) with known drifts injected at
+    5,000/10,000/15,000: 30% of the features (at least one) move by one standard
+    deviation, at once (Abrupt) or linearly over 1,000 samples (Incremental)."""
+    assert kind in ("Abrupt", "Incremental"), kind
+    X = shuffled_stream(dataset, seed).X.copy()
+    rng = np.random.default_rng([seed, 13])
+    k = max(1, round(0.3 * X.shape[1]))
+    feats = rng.choice(X.shape[1], k, replace=False)
+    level = np.zeros(len(X))
+    for j, p in enumerate(POINTS, 1):
+        if kind == "Abrupt":
+            level[p:] = j
+        else:
+            level[p:p + WIDTH] = (j - 1) + np.arange(1, WIDTH + 1) / WIDTH
+            level[p + WIDTH:] = j
+    sd = X[:POINTS[0], feats].std(axis=0)
+    X[:, feats] += level[:, None] * np.where(sd > 0, sd, 1.0)
+    return ArrayStream(X, POINTS)
+
+
 def synthetic_stream(name, seed):
-    """name is 'Synth' + kind, e.g. 'SynthAbrupt'."""
+    """'Synth' + kind (e.g. 'SynthAbrupt'), 'AR0.9', 'Shuffled' + dataset class name,
+    or 'Inject' + Abrupt/Incremental + '_' + dataset class name."""
+    if name.startswith("Inject"):
+        kind, dataset = name[len("Inject"):].split("_")
+        return injected_stream(kind, dataset, seed)
+    if name.startswith("AR"):
+        return ar_stream(float(name[2:]), seed)
+    if name.startswith("Shuffled"):
+        return shuffled_stream(name[len("Shuffled"):], seed)
     return SyntheticStream(name[len("Synth"):], seed)
 
 
@@ -67,4 +129,6 @@ if __name__ == "__main__":
     assert not np.allclose(a.X, b.X) and np.allclose(SyntheticStream("Abrupt", 1).X, a.X)
     assert not np.allclose(SyntheticStream("Stable", 1).X[:, K:], a.X[:, K:])  # kinds do not share noise
     assert SyntheticStream("Stable", 0).drifts == [] and len(list(SyntheticStream("Gradual", 0))) == N
+    x = ar_stream(0.9, 0).X
+    assert abs(np.corrcoef(x[1:, 0], x[:-1, 0])[0, 1] - 0.9) < 0.02 and abs(x.std() - 1) < 0.05
     print("ok")

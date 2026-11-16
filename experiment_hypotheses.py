@@ -103,8 +103,8 @@ def job_key(job):
 
 
 def run_job(job):
-    stream = synthetic_stream(job["dataset"], job["seed"]) if job["dataset"].startswith("Synth") \
-        else getattr(ds, job["dataset"])()
+    stream = synthetic_stream(job["dataset"], job["seed"]) \
+        if job["dataset"].startswith(("Synth", "AR", "Shuffled", "Inject")) else getattr(ds, job["dataset"])()
     detector = None if job["detector"] == "NoDetection" else make_detector(
         job["detector"], job["seed"], job.get("tau", 0.7), job.get("test", "aspt"),
         job.get("freq", 50), **job.get("eadd_kwargs", {}))

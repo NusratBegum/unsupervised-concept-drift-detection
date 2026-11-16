@@ -25,6 +25,12 @@ taskset -c 0-9 python experiment_comparison.py   # 1,645 runs, resumable; --list
 python analyze_comparison.py              # summary.csv, per_stream.csv, tests.csv, aspt_tests.csv, reproduced.txt
 python make_comparison_figures.py         # figures/fig0-fig5
 python synthetic_streams.py               # self-check of the five synthetic streams
+
+# 16 Nov 2026 validity checks and benchmark after the EADD fixes
+taskset -c 0-9 python check_reproduced.py        # thesis EADD runs still reproduced with the current code
+taskset -c 0-9 python experiment_validity.py     # P: p-values under no drift; F: false alarms on no-drift streams
+taskset -c 0-9 python experiment_benchmark.py    # all detectors x INSECTS, synthetic, injected-drift real, unannotated
+python analyze_validity.py; python analyze_benchmark.py   # per-stream stats, Friedman + Nemenyi CD, Holm-corrected Wilcoxon
 ```
 
 One run, for a quick check (D3 ~12 s, EADD ~2-3 min):
@@ -55,7 +61,13 @@ There is no linter or build step.
 
 - Changing a detector's default behaviour invalidates stored runs. Add an option with the old behaviour as default (as `n_folds`, `sliding_reference`, `permutation_test` in `eadd.py`).
 - EADD's permutation test uses its own RNG (`perm_rng`) so that test variants see the same reservoir samples.
-- Known issues in EADD: by default a new sample enters the reservoir while still in the current window (the thesis behaviour); `reservoir_after_current=True` removes this overlap. The observed AUC uses 5-fold CV but permuted AUCs use 2-fold (not fixed).
+- EADD options that fix validity problems (defaults keep the thesis behaviour; `experiment_validity.FIXED` turns them on):
+  - `reservoir_after_current=True`: no sample is in both windows.
+  - `perm_n_folds=None`: permuted AUCs use the same CV as the observed AUC (the thesis used 2-fold vs 5-fold).
+  - `aspt_alpha_split=1/3`: ASPT spends alpha/3 on the early reject and the rest on the final test, an exact level-alpha test (the thesis rule has Type I 0.059 at alpha 0.05; `experiment_aspt_type1.py`).
+  - `block_size=b`: blocked CV and block permutation against autocorrelation.
+- Each stored window vector carries its arrival time as the last element; `_detect_drift` strips it.
+- Stream names understood by `run_job`: `Synth<Kind>`, `AR<rho>` (stationary AR(1)), `Shuffled<Dataset>` (real rows in random order), `Inject<Abrupt|Incremental>_<Dataset>` (shuffled real stream with drifts injected at 5k/10k/15k).
 - Timing runs must be sequential; LightGBM is multithreaded and parallel jobs distort runtimes.
 - Use uv for every Python package (`uv pip install`, `uv venv`); never plain pip.
 - The advisor's server has no internet access and allows at most 10 cores (run under `taskset -c 0-9`); its setup is described in the workspace notes outside this repository. The scripts size their worker pool from `os.process_cpu_count()`, so they follow that limit.
