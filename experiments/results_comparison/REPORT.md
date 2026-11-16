@@ -50,10 +50,10 @@ The AUC is measured on held-out data with **k-fold cross-validation**: train on 
 
 ![Which samples each detector compares](figures/fig0_windows.png)
 
-*Figure 0. At one moment (2,000 samples after the last drift), the orange block is the current window: the newest 200 samples, the same for both. The blue marks are the reference window.*
+*Figure 0. At one moment (2,000 samples after the last drift), the orange block is the current window: the newest 200 samples, the same for both. The blue marks are the reference window. In the thesis EADD the reservoir can also hold samples that are in the current window (blue marks inside the orange block); "EADD, no overlap" (Section 3) removes this.*
 - **Sliding (D3).** The reference is the 500 samples right before the current window, so it moves forward with the stream.
 - **Reservoir (EADD).** The reference is 500 samples spread over the whole period since the last drift, so it remembers older data.
-- **Checks (triangles).** D3 checks every 200 samples; the thesis EADD checks every 50.
+- **Checks (triangles).** D3 checks about every 200 samples (every 201 in the code, which drops the sample that triggers a check); the thesis EADD checks every 50.
 
 Why it matters:
 - **Slow drift.** A sliding reference moves along with a slow change, so the two windows always look alike and the drift is never seen. The reservoir still holds samples from before the change, so it can see it.
@@ -72,7 +72,8 @@ A stream with **known drift points** lets us check every alarm.
 | Measure | Meaning | Better |
 |---|---|---|
 | **Recall** | Share of the true drift points that got an alarm within 500 samples after them | higher |
-| **MTD** (mean time to detection) | How many samples after the drift the alarm came, on average; a missed drift counts as 500 | lower |
+| **MTD** (mean time to detection) | How many samples after the drift the alarm came, on average; a missed drift counts as the length of the matching window (500, or 1,500 on the two slow synthetic streams) | lower |
+| **Delay** | The same, but only over the drifts that were found (no penalty for misses) | lower |
 | **False alarms** | Alarms that match no drift point, per run | lower |
 
 On the synthetic gradual and incremental streams the change itself takes 1,000 samples, so an alarm counts if it comes within 1,500 samples.
@@ -126,12 +127,12 @@ This report does all four. None of these new results is in the thesis yet; that 
 
 ### Experiment groups
 
-Every variant ran on all 9 streams × 5 seeds. In total there were 1,645 runs, on your server (10 cores, about 2.5 hours).
+Groups A to E ran on all 9 streams × 5 seeds; group F only on the 4 INSECTS streams. In total there were 1,645 runs, on your server (10 cores). After a code review on 15 November, 945 of them (all synthetic runs and all "no overlap" runs) were run again with two fixes (Section 7).
 
 | Group | Question | What runs |
 |---|---|---|
 | **A** | (a) Each detector with its own settings | D3 with its authors' settings; D3-LightGBM and EADD as in the thesis |
-| **B** | (b) Identical setup | D3, D3-LightGBM and EADD with the same windows (500 reference, 200 current), the same τ = 0.7, the same seeds, the same check interval and the same folds. Two versions: **B200** = check every 200 samples with 2-fold CV (D3's choice); **B50** = every 50 with 5-fold CV (EADD's choice) |
+| **B** | (b) Identical setup | D3, D3-LightGBM and EADD with the same windows (500 reference, 200 current), the same τ = 0.7, the same seeds, the same check interval and the same folds. Two versions: **B200** = check every 200 samples with 2-fold CV (D3's choice); **B50** = every 50 with 5-fold CV (EADD's choice). One small difference remains: D3's code checks every 201 (or 51) samples instead of 200 (or 50) |
 | **C** | (c) Which part of EADD matters | EADD with each part switched on or off: sliding vs reservoir reference, with or without ASPT |
 | **D** | (c) Does ASPT match the full test where it matters | EADD at τ = 0.5 and 0.6, where many alarms reach the test: ASPT vs full test vs no test |
 | **E** | Threshold check for D3 | D3 and D3-LightGBM at τ = 0.3 to 0.6 |
@@ -154,9 +155,9 @@ Every variant ran on all 9 streams × 5 seeds. In total there were 1,645 runs, o
 
 | | INSECTS: recall | MTD | false alarms/run | Synthetic: recall | MTD | false alarms/run | No-drift stream: false alarms/run |
 |---|---|---|---|---|---|---|---|
-| D3, authors' settings | 0.91 | 156 | **169.7** | 0.93 | 257 | **63.5** | **70.6** |
-| D3-LightGBM (thesis) | 0.65 | 279 | 5.6 | 0.47 | 872 | 0.0 | 0.0 |
-| EADD (thesis) | 0.50 | 302 | 8.9 | 1.00 | 522 | 0.0 | 0.0 |
+| D3, authors' settings | 0.91 | 156 | **169.7** | 0.97 | 214 | **63.2** | **70.6** |
+| D3-LightGBM (thesis) | 0.65 | 279 | 5.6 | 0.50 | 863 | 0.0 | 0.0 |
+| EADD (thesis) | 0.50 | 302 | 8.9 | 1.00 | 509 | 0.0 | 0.0 |
 
 With its authors' settings D3 compares windows of only 100 and 10 samples, so it raises an alarm about every 300 samples. It even raises 71 alarms on a stream with no drift at all. Its high recall is a side effect of raising alarms almost constantly. A fair comparison therefore needs the same larger windows for every detector: that is group B.
 
@@ -173,15 +174,16 @@ With its authors' settings D3 compares windows of only 100 and 10 samples, so it
 | Setup | Detector | INSECTS: recall | MTD | false alarms/run | Synthetic: recall | MTD | false alarms/run |
 |---|---|---|---|---|---|---|---|
 | B200 | D3 (logistic regression) | 0.67 | 295 | 5.9 | 0.50 | 846 | 0.0 |
-| B200 | D3-LightGBM | 0.65 | 279 | 5.6 | 0.47 | 872 | 0.0 |
-| B200 | EADD | 0.60 | 292 | 7.9 | **1.00** | **596** | 0.0 |
-| B50 | D3 (logistic regression) | 0.70 | 263 | 8.7 | 0.52 | 811 | 0.0 |
-| B50 | D3-LightGBM | 0.70 | 253 | 9.8 | 0.50 | 831 | 0.0 |
-| B50 | EADD | 0.50 | 302 | 8.9 | **1.00** | **522** | 0.0 |
+| B200 | D3-LightGBM | 0.65 | 279 | 5.6 | 0.50 | 863 | 0.0 |
+| B200 | EADD | 0.60 | 292 | 7.9 | **1.00** | 602 | 0.0 |
+| B50 | D3 (logistic regression) | 0.70 | 263 | 8.7 | 0.53 | 789 | 0.0 |
+| B50 | D3-LightGBM | 0.70 | 253 | 9.8 | 0.50 | 824 | 0.0 |
+| B50 | EADD | 0.50 | 302 | 8.9 | **1.00** | 509 | 0.0 |
 
 **What the tests say** (one-sided Mann-Whitney and paired Wilcoxon, 20 runs each, in [`tests.csv`](tests.csv)):
 - **On INSECTS, EADD never has a higher recall or a lower MTD than either D3** (recall p > 0.7 everywhere). In B200 both D3 versions also raise fewer false alarms. The one point in EADD's favour: in B50 it raised fewer false alarms than D3-LightGBM (8.9 vs 9.8, Wilcoxon p = 0.027).
-- **On the synthetic streams, EADD finds every drift point and D3 finds about half** (p ≤ 0.002 in all four comparisons), with a shorter delay and no false alarms on either side. The half that D3 misses are the gradual and incremental drifts: it misses almost all of them (Figure 5).
+- **On the synthetic streams, EADD finds every drift point and D3 finds about half** (p ≤ 0.002 in all four comparisons), with no false alarms on either side. The half that D3 misses are the gradual and incremental drifts: it misses almost all of them (Figure 5).
+- **The lower synthetic MTD of EADD comes only from D3's misses**, which count as 1,500. Where both detect the drift, D3 is faster: on the abrupt stream in B200 D3 needs 206 (logistic regression) or 233 (LightGBM) samples, EADD 266. On the slow streams EADD needs 870 to 960 samples, so it finds them only inside the wider 1,500-sample window.
 - **Logistic regression and LightGBM give almost the same D3.** The classifier is not what separates EADD from D3.
 
 ![Synthetic gradual](figures/fig5_timeline_synth_gradual.png)
@@ -196,16 +198,16 @@ With its authors' settings D3 compares windows of only 100 and 10 samples, so it
 
 | Setup B200, τ = 0.7 | INSECTS: recall | MTD | false alarms/run | Synthetic: recall | MTD |
 |---|---|---|---|---|---|
-| Sliding reference, no test | 0.85 | 207 | 5.1 | 0.50 | 883 |
-| Sliding reference + ASPT | 0.85 | 207 | 5.1 | 0.50 | 883 |
-| Reservoir, no test | 0.60 | 292 | 7.9 | 1.00 | 596 |
-| Reservoir + ASPT (= EADD) | 0.60 | 292 | 7.9 | 1.00 | 596 |
-| Reservoir without overlap + ASPT | 0.60 | 340 | 11.4 | 1.00 | 559 |
+| Sliding reference, no test | 0.85 | 207 | 5.1 | 0.50 | 880 |
+| Sliding reference + ASPT | 0.85 | 207 | 5.1 | 0.50 | 880 |
+| Reservoir, no test | 0.60 | 292 | 7.9 | 1.00 | 602 |
+| Reservoir + ASPT (= EADD) | 0.60 | 292 | 7.9 | 1.00 | 602 |
+| Reservoir without overlap + ASPT | 0.68 | 314 | 10.8 | 1.00 | 549 |
 
 Reading the table:
 - **Adding ASPT changes nothing at τ = 0.7.** At that threshold every alarm that reaches the test is confirmed, so ASPT cannot be the reason H1 and H2 failed.
 - **The reference window decides everything.** The reservoir is what lets EADD find the slow synthetic drifts. It is also what makes EADD worse on INSECTS, where the data keep changing slowly between the annotated drift points and the reservoir notices those changes too.
-- **Fixing the overlap makes EADD more sensitive.** On INSECTS that means more false alarms. The overlap had been hiding some drift by lowering the AUC.
+- **Fixing the overlap makes EADD more sensitive.** On INSECTS recall rises from 0.60 to 0.68, but false alarms rise from 7.9 to 10.8 per run (Wilcoxon p = 0.002). The overlap had been hiding some drift by lowering the AUC.
 - **A caution about the first row.** "Sliding reference, no test" has the same settings as D3-LightGBM in B200, but reaches recall 0.85 against 0.65. The two programs differ in small details: what they do right after an alarm, and exactly which samples fall on a check. Group F (Section 4.5) shows that such details move D3's recall by as much as 0.17. So 0.85 is not evidence that EADD with a sliding reference beats D3.
 
 ### 4.4 Does ASPT match the full test where it matters? (group D)
@@ -227,10 +229,11 @@ What this shows:
 - **ASPT is 6.1 times faster,** and faster in 20 of 20 runs.
 - **Both tests remove a third of the false alarms of having no test** (p < 0.001).
 - **On the stream without drift:** ASPT raises 1.2 false alarms per run, the full test 1.0, and no test 5.6.
+- These statistics are in [`aspt_tests.csv`](aspt_tests.csv). At τ = 0.6 the three versions give identical alarms in all 20 INSECTS runs and all 20 synthetic runs: the test confirms every alarm that reaches it.
 
 ### 4.5 Two robustness checks (groups E and F)
 
-- **A lower threshold does not rescue D3.** At τ = 0.3 to 0.5 it raises 87 to 115 false alarms per run on INSECTS, and 27 to 39 on the stream without drift.
+- **D3's threshold matters a lot.** At τ = 0.6, D3 finds almost every synthetic drift (recall 0.98 with logistic regression, 0.83 with LightGBM, against 1.00 for EADD at τ = 0.6) with under one false alarm per run. On INSECTS it then reaches recall 0.99 and 0.93 with about 16 false alarms per run, against 0.58 and 12.9 for EADD at τ = 0.6. So "D3 finds only half the synthetic drifts" holds at τ = 0.7, not in general. At τ = 0.3 to 0.5 D3 raises 87 to 115 false alarms per run on INSECTS, and 27 to 39 on the stream without drift.
 - **Where the checks fall matters.** When each seed starts the stream at a different sample, recall changes:
 
   | | Start at sample 0 | Different start per seed |
@@ -238,6 +241,7 @@ What this shows:
   | D3-LightGBM | 0.65 | 0.82 |
   | D3 (logistic regression) | 0.67 | 0.80 |
   | EADD | 0.60 | 0.68 |
+  | EADD, no overlap | 0.68 | 0.83 |
 
   EADD still comes last, but every recall difference on INSECTS partly depends on where the checks fall relative to the annotated drift points.
 
@@ -247,7 +251,7 @@ What this shows:
 
 **(a) D3 with its authors' settings vs EADD.** With its authors' settings D3 raises an alarm every few hundred samples: 170 false alarms per run on INSECTS and 71 on a stream with no drift. Its recall is high only because it alarms almost constantly. The JCSSE paper did not use these settings; it used windows of 100/50 and 300/120 while calling them "matched", and this should be corrected after the defense.
 
-**(b) Identical setup.** On the real INSECTS streams EADD does not beat D3, with either classifier, so H1 and H2 are still not supported. On synthetic streams with known drift points EADD finds every drift and D3 only about half (p ≤ 0.002), with no false alarms on either side.
+**(b) Identical setup.** On the real INSECTS streams EADD does not beat D3, with either classifier, so H1 and H2 are still not supported. On synthetic streams with known drift points EADD finds every drift and D3 only about half at τ = 0.7 (p ≤ 0.002), with no false alarms on either side. At τ = 0.6 D3 finds almost all of them too, and where both detect a drift D3 is faster.
 
 **(c) Is it ASPT or something else?** It is not ASPT: at τ = 0.7 it changes no detection. The part that decides the result is the **reservoir reference window**. It helps with slow drift (synthetic) and hurts on streams that keep changing slightly (INSECTS). The classifier (logistic regression vs LightGBM) barely matters. ASPT's real contribution shows at τ = 0.5: the same decisions as a full permutation test at one sixth of the cost.
 
@@ -294,9 +298,9 @@ print('alarms at samples', r['detections'])
 print(detection_metrics(r['detections'], r['true_drifts'], 1500))"
 ```
 
-It prints alarms at samples 5,899, 10,999 and 16,099 (one after each drift point at 5,000, 10,000 and 15,000) and recall 1.0. Replace `detector='EADD'` by `detector='D3-LightGBM'` and use `eadd_kwargs=dict(n_reference_samples=500, recent_samples_proportion=0.4, step=200, n_folds=2)` to see D3-LightGBM miss them: it prints no alarms and recall 0.0.
+It prints alarms at samples 6,099, 10,999 and 15,899 (one after each drift point at 5,000, 10,000 and 15,000) and recall 1.0. Replace `detector='EADD'` by `detector='D3-LightGBM'` and use `eadd_kwargs=dict(n_reference_samples=500, recent_samples_proportion=0.4, step=200, n_folds=2)` to see D3-LightGBM miss them: it prints no alarms and recall 0.0.
 
-**Step 5. Run everything** (1,645 runs; about 2.5 hours on 10 cores; it can be stopped and restarted, finished runs are skipped):
+**Step 5. Run everything** (1,645 runs; a few hours on 10 cores; it can be stopped and restarted, finished runs are skipped):
 
 ```bash
 taskset -c 0-9 python experiment_comparison.py    # all groups; on Linux taskset limits it to 10 cores
@@ -321,22 +325,23 @@ python make_comparison_figures.py                 # figures (1 minute)
 | Check | Result |
 |---|---|
 | The thesis results are reproduced | The thesis EADD and D3-LightGBM runs were run again inside this experiment: **40 of 40 runs give exactly the same alarms** as the runs reported in the thesis ([`reproduced.txt`](reproduced.txt)). So the new options added to the code did not change the old behaviour, and the package versions in `requirements-lock.txt` reproduce the thesis. |
-| Unit tests | 20 tests pass, including new ones: the D3 check interval, the number of CV folds, and that the overlap-free reservoir never shares a sample with the current window. |
+| Unit tests | The 13 tests of Step 3 pass (47 in `test/detectors`), including new ones: the D3 check interval, the number of CV folds, that the overlap-free reservoir never shares a sample with the current window, and that it keeps a uniform random sample. |
 | Behaviour on a stream without drift | Every detector in the identical setup raises 0 false alarms on the no-drift stream at τ = 0.7, as it should. |
-| ASPT vs full test | Identical alarms in all 20 runs at τ = 0.6 and 0.7, as expected when the test confirms every alarm. |
+| ASPT vs full test | Identical alarms in all 40 runs at τ = 0.6 (20 INSECTS, 20 synthetic), as expected when the test confirms every alarm ([`aspt_tests.csv`](aspt_tests.csv)). |
 | Logistic regression vs LightGBM in D3 | Nearly identical results, as expected for well-separated windows. |
 | D3 settings | Taken from the authors' published code, not from memory (Section 3). |
 | Thesis numbers | 13 independent reviewers rechecked every number, the method description, the data and the chapters of the thesis on 15 Nov; every finding was checked again by a second reviewer, and 80 confirmed problems were fixed. |
 
-Not yet done: an independent second reviewer has not yet checked the new scripts in this report (`experiment_comparison.py`, `analyze_comparison.py`, `synthetic_streams.py`).
+**Independent code review (15 November).** A second reviewer checked the new scripts and every number in this report against the result files. It found two errors in the code, both fixed and the affected 945 runs repeated: (1) the overlap-free reservoir kept older samples too often, because a sample was offered with the probability for the newest sample instead of its own (a new test now checks that the sample is uniform); (2) four of the five synthetic stream types shared the same random noise for a given seed, so their runs were not independent (each type now has its own noise). It also found statements in this report that were wrong or incomplete: a delay claim, the missing τ = 0.6 results, the check interval of 201, and statistics that no script produced. These are corrected above, and `analyze_comparison.py` now produces every statistic quoted here.
 
 ---
 
 ## 8. Limitations
 
-- **The real runs are not independent.** The four INSECTS streams are the same files for every seed, so many detectors produce the same alarms in all five seeds. The 20 real runs are closer to 4 independent results than 20. The synthetic streams do not have this problem.
+- **The real runs are not independent.** The four INSECTS streams are the same files for every seed, so many detectors produce the same alarms in all five seeds. The 20 real runs are closer to 4 independent results than 20. Each synthetic stream type and seed has its own random draw, so the 20 synthetic runs are independent.
 - **The synthetic streams are simple.** Normal distributions, 3 drifting features, shifts of one standard deviation. They show *why* the detectors differ, not how well they do on real data.
-- **The matching window shapes every number.** 500 samples, or 1,500 for slow synthetic changes.
+- **The matching window shapes every number.** 500 samples, or 1,500 for slow synthetic changes. A missed drift counts as the window length in the MTD.
+- **The threshold shapes the synthetic result.** The large recall gap between EADD and D3 on synthetic data is at τ = 0.7; at τ = 0.6 it almost disappears (Section 4.5).
 - **The analyses were not planned in advance.** Groups C to F were designed after the root-cause analysis of 8 November. Any new hypothesis based on them should be tested on data that was not used to design it.
 
 ---
@@ -351,9 +356,10 @@ Not yet done: an independent second reviewer has not yet checked the new scripts
 | [`summary.csv`](summary.csv) | Mean recall, MTD, false alarms, precision and runtime per variant and stream type |
 | [`per_stream.csv`](per_stream.csv) | The same per stream |
 | [`tests.csv`](tests.csv) | Significance tests of EADD against each D3 in the same setup |
+| [`aspt_tests.csv`](aspt_tests.csv) | ASPT against the full test and against no test (group D) |
 | [`reproduced.txt`](reproduced.txt) | The reproduction check (40 of 40) |
 | [`figures/`](figures/) | Figures 0 to 5 as PDF and 300 dpi PNG |
-| [`run.log`](run.log) | Log of the server run |
+| [`run.log`](run.log), [`run2.log`](run2.log) | Logs of the server runs (the second repeats the 945 runs affected by the review fixes) |
 
 **Glossary**
 
