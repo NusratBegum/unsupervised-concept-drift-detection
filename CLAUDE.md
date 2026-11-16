@@ -19,6 +19,12 @@ python analyze_hypotheses.py              # tables, tests, latex/*.tex rows (~1 
 python make_hypothesis_figures.py         # Chapter 4 figures
 python experiment_root_cause.py           # one-design-choice-at-a-time ablation (reuses runs.jsonl)
 python experiment_offsets.py              # runs with a different stream start per seed
+
+# 10 Nov 2026 comparison (authors' D3, identical setup, components, ASPT at tau 0.5/0.6); report: experiments/results_comparison/REPORT.md
+taskset -c 0-9 python experiment_comparison.py   # 1,645 runs, resumable; --list, --only A B
+python analyze_comparison.py              # summary.csv, per_stream.csv, tests.csv, aspt_tests.csv, reproduced.txt
+python make_comparison_figures.py         # figures/fig0-fig5
+python synthetic_streams.py               # self-check of the five synthetic streams
 ```
 
 One run, for a quick check (D3 ~12 s, EADD ~2-3 min):
@@ -37,9 +43,11 @@ There is no linter or build step.
 
 - `detectors/`: every detector subclasses `UnsupervisedDriftDetector` (`base.py`) and implements `update(features: dict) -> bool`, called once per sample. `eadd.py` is the thesis detector; `d3_lightgbm.py` is the baseline (D3 with EADD's LightGBM settings). The rest are upstream benchmark detectors.
 - `datasets/`: one iterable class per stream yielding `(x, y)`; annotated streams expose `.drifts`. CSVs go in `datasets/files/` and are git-ignored (setup in README, "Datasets").
+- `synthetic_streams.py`: five synthetic streams (Stable, Abrupt, Gradual, Incremental, Recurring), 20,000 samples, drifts at 5,000/10,000/15,000; `run_job` reads any dataset named `Synth<Kind>`. The generator is seeded with (seed, kind), so kinds do not share noise.
 - Thesis pipeline: `experiment_hypotheses.py` defines `make_detector`, `run_job` and `all_jobs`, and appends one JSON line per run (detections only) to `experiments/results_hypotheses/runs.jsonl`. `analyze_hypotheses.py` recomputes every metric from that file, so metrics can change without rerunning detectors. Its `latex/*.tex` rows are copied into `tables/` of the thesis repo, and the figures into its `figures/`.
 - Jobs are keyed by their JSON (`job_key`); a finished key is skipped on rerun. Adding a detector means adding it to `make_detector` and `all_jobs`.
-- Metrics (`detection_metrics`): a detection matches a drift point if it falls 0-500 samples after it; a missed drift counts as MTD 500; unmatched detections are false alarms.
+- Metrics (`detection_metrics`): a detection matches a drift point if it falls 0-500 samples after it; a missed drift counts as MTD 500; unmatched detections are false alarms. `analyze_comparison.py` uses 0-1,500 on SynthGradual and SynthIncremental (the change lasts 1,000 samples), so a miss there counts 1,500; its `delay` column excludes misses.
+- D3 (`d3.py`, `d3_lightgbm.py`) drops the sample that triggers a check, so it checks every `step + 1` samples (201, not 200).
 - `legacy/` holds the scripts that produced the JCSSE paper (`experiment1..7_*.py`, `experiment_camera_ready.py`, the notebook; outputs in `experiments/results/`, `results_cameraready/`, `figures/`), the October 2026 thesis drafts and two demos. Do not change their logic: they are the paper's provenance. Run them from the repo root with `PYTHONPATH=. python legacy/<script>.py`.
 - `main.py`, `runner.py`, `config.py`, `optimization/`, `eval/`, `metrics/` are the upstream benchmark harness; the thesis pipeline uses only `metrics/` ideas, not this harness.
 
@@ -47,7 +55,7 @@ There is no linter or build step.
 
 - Changing a detector's default behaviour invalidates stored runs. Add an option with the old behaviour as default (as `n_folds`, `sliding_reference`, `permutation_test` in `eadd.py`).
 - EADD's permutation test uses its own RNG (`perm_rng`) so that test variants see the same reservoir samples.
-- Known open issues in EADD (found 7-8 Nov 2026, not yet fixed): new samples enter the reservoir while still in the current window; the observed AUC uses 5-fold CV but permuted AUCs use 2-fold.
+- Known issues in EADD: by default a new sample enters the reservoir while still in the current window (the thesis behaviour); `reservoir_after_current=True` removes this overlap. The observed AUC uses 5-fold CV but permuted AUCs use 2-fold (not fixed).
 - Timing runs must be sequential; LightGBM is multithreaded and parallel jobs distort runtimes.
 - Use uv for every Python package (`uv pip install`, `uv venv`); never plain pip.
 - The advisor's server has no internet access and allows at most 10 cores (run under `taskset -c 0-9`); its setup is described in the workspace notes outside this repository. The scripts size their worker pool from `os.process_cpu_count()`, so they follow that limit.
