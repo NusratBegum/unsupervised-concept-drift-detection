@@ -100,7 +100,7 @@ def run(jobs, fn, out_file):
         with open(out_file) as f:
             done = {json.loads(line)["key"] for line in f if line.strip()}
     todo = [j for j in jobs if job_key(j) not in done]
-    workers = max(1, (os.process_cpu_count() or 2) - 1)
+    workers = os.process_cpu_count() or 1  # the parent process only waits
     print(f"{len(todo)} jobs ({len(done)} done) on {workers} workers", flush=True)
     with ProcessPoolExecutor(max_workers=workers) as pool, open(out_file, "a") as out:
         futures = {pool.submit(fn, j): j for j in todo}

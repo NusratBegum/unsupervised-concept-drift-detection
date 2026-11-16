@@ -15,6 +15,8 @@ incremental drift the drift point is where the change starts; the change
 lasts 1,000 samples. The recurring stream returns to the old concept at
 each drift point.
 """
+import functools
+
 import numpy as np
 
 KINDS = ["Stable", "Abrupt", "Gradual", "Incremental", "Recurring"]
@@ -73,10 +75,16 @@ def ar_stream(rho, seed, n=N, d=D):
     return ArrayStream(X)
 
 
+@functools.lru_cache(maxsize=4)
+def _real_rows(dataset):
+    # parsing a CSV row by row takes seconds; each worker process does it once per dataset
+    import datasets as ds
+    return np.array([list(x.values()) for i, (x, _) in zip(range(100_000), getattr(ds, dataset)())], dtype=float)
+
+
 def shuffled_stream(dataset, seed, n=N):
     """Rows of a real stream in random order: real marginals, no drift, no autocorrelation."""
-    import datasets as ds
-    X = np.array([list(x.values()) for i, (x, _) in zip(range(100_000), getattr(ds, dataset)())], dtype=float)
+    X = _real_rows(dataset)
     rng = np.random.default_rng([seed, 7])
     return ArrayStream(X[rng.permutation(len(X))[:n]])
 
