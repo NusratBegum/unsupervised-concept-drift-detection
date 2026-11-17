@@ -59,10 +59,11 @@ def jobs():
         for group, streams in GROUPS.items():
             out += [dict(part="annotated", group=group, dataset=s, seed=seed, variant=name, **f)
                     for s in streams for seed in SEEDS_ANNOTATED]
-        out += [dict(part="unannotated", group="unannotated", dataset=s, seed=seed, variant=name, **f)
-                for s in UNANNOTATED for seed in SEEDS_UNANNOTATED]
-    # EADD runs first, they take longest
-    return sorted(out, key=lambda j: (j["detector"] != "EADD", j["detector"] != "BNDM"))
+        if not name.startswith("EADD parts"):  # component runs: streams with drift points only
+            out += [dict(part="unannotated", group="unannotated", dataset=s, seed=seed, variant=name, **f)
+                    for s in UNANNOTATED for seed in SEEDS_UNANNOTATED]
+    # streams with drift points first; EADD runs first within each, they take longest
+    return sorted(out, key=lambda j: (j["part"] == "unannotated", j["detector"] != "EADD", j["detector"] != "BNDM"))
 
 
 if __name__ == "__main__":
