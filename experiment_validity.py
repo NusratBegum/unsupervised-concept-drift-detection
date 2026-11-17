@@ -102,26 +102,41 @@ def f_jobs():
             for name, f in detectors().items() for s in NULL_STREAMS for seed in SEEDS_ANNOTATED]
 
 
-def run(jobs, fn, out_file):
-    done = set()
-    if os.path.exists(out_file):
-        with open(out_file) as f:
-            done = {json.loads(line)["key"] for line in f if line.strip()}
-    todo = [j for j in jobs if job_key(j) not in done]
-    workers = os.process_cpu_count() or 1  # the parent process only waits
-    print(f"{len(todo)} jobs ({len(done)} done) on {workers} workers", flush=True)
-    with ProcessPoolExecutor(max_workers=workers) as pool, open(out_file, "a") as out:
-        futures = {pool.submit(fn, j): j for j in todo}
-        for k, fut in enumerate(as_completed(futures), 1):
-            try:
-                r = fut.result()
-            except Exception as e:
-                print(f"[{k}/{len(todo)}] FAILED {futures[fut]}: {e!r}", flush=True)
-                continue
-            out.write(json.dumps(r) + "\n")
-            out.flush()
-            if k % 50 == 0 or k == len(todo):
-                print(f"[{k}/{len(todo)}]", flush=True)
+def _log_crashes(path):
+    import faulthandler
+    faulthandler.enable(open(path, "a"))  # a native crash in a worker leaves a trace here
+
+
+def run(jobs, fn, out_file, rounds=5):
+    """Run the jobs not yet in out_file. If a worker dies (BrokenProcessPool), the
+    remaining jobs fail at once; the next round starts a fresh pool for them."""
+    for _ in range(rounds):
+        done = set()
+        if os.path.exists(out_file):
+            with open(out_file) as f:
+                done = {json.loads(line)["key"] for line in f if line.strip()}
+        todo = [j for j in jobs if job_key(j) not in done]
+        if not todo:
+            return
+        workers = os.process_cpu_count() or 1  # the parent process only waits
+        print(f"{len(todo)} jobs ({len(done)} done) on {workers} workers", flush=True)
+        n_ok = 0
+        with ProcessPoolExecutor(max_workers=workers, initializer=_log_crashes,
+                                 initargs=(out_file + ".crashes.log",)) as pool, open(out_file, "a") as out:
+            futures = {pool.submit(fn, j): j for j in todo}
+            for k, fut in enumerate(as_completed(futures), 1):
+                try:
+                    r = fut.result()
+                except Exception as e:
+                    print(f"[{k}/{len(todo)}] FAILED {futures[fut]}: {e!r}", flush=True)
+                    continue
+                out.write(json.dumps(r) + "\n")
+                out.flush()
+                n_ok += 1
+                if k % 50 == 0 or k == len(todo):
+                    print(f"[{k}/{len(todo)}]", flush=True)
+        if n_ok == 0:
+            return  # no progress: a real error, not a lost worker
 
 
 if __name__ == "__main__":
