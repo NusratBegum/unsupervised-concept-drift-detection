@@ -36,7 +36,8 @@ def shap_job(job):
     stream = synthetic_stream(job["dataset"], job["seed"])
     det = ExplainableAdversarialDriftDetector(
         n_reference_samples=500, n_current_samples=200, auc_threshold=0.7, n_permutations=199,
-        significance_level=0.05, monitoring_frequency=50, seed=job["seed"], **FIXED, null="history")
+        significance_level=0.05, monitoring_frequency=50, seed=job["seed"], **FIXED, null="history",
+        history_stride=job.get("history_stride", 50))  # the 17 Nov SHAP runs used stride 50
     tol = tolerance(job["dataset"])
     out = []
     for i, (x, _) in enumerate(stream):

@@ -7,6 +7,7 @@ Tests of experiments/results_confirm/PREREGISTRATION.md, exactly as registered.
   results.csv     H1a, H1b, H1c, H2b (Holm-corrected) and secondary tests against D3
   h2a.csv         false-rejection rate and one-sided 95% Clopper-Pearson upper bound per condition
   per_type.csv    means per drift group and detector
+  h3_h4.csv       H3a, H3b, H4 (addendum); h4_per_stream.csv
 """
 import json
 import os
@@ -79,5 +80,44 @@ def main():
         print(h.round(4).to_string(index=False))
 
 
+
+
+def h3_h4():
+    """H3a, H3b and H4 as in the addendum of PREREGISTRATION.md."""
+    df = load("runs.jsonl")
+    e = df[df.variant.isin(["EADD", "EADD, full test"])]
+    pairs = e.pivot_table(index=["dataset", "seed"], columns="variant", values="detections", aggfunc="first").dropna()
+    same = sum(a == b for a, b in zip(pairs["EADD"], pairs["EADD, full test"]))
+    e = e.assign(perms_per_test=e.n_permutations_used / e.n_tests.where(e.n_tests > 0))
+    t = e.groupby(["dataset", "variant"]).perms_per_test.mean().unstack().dropna()
+    d = t["EADD"] - t["EADD, full test"]
+    rows = [dict(test="H3a identical detections (>= 95%)", value=same / len(pairs), n=len(pairs),
+                 supported=same / len(pairs) >= 0.95),
+            dict(test="H3b fewer permutations per test", value=f"{t['EADD'].mean():.1f} vs {t['EADD, full test'].mean():.1f}",
+                 n=len(t), p=stats.wilcoxon(d, alternative="less").pvalue if (d != 0).any() else 1.0)]
+    rows[1]["supported"] = rows[1]["p"] < 0.05
+    if os.path.exists(os.path.join(OUT_DIR, "shap.jsonl")):
+        hits = []
+        for r in load("shap.jsonl").itertuples():
+            true, k, seen = set(r.shifted), len(r.shifted), set()
+            for det in r.detections:
+                if det["drift"] is None or det["at"] - det["drift"] > tolerance(r.dataset) or det["drift"] in seen:
+                    continue
+                seen.add(det["drift"])
+                hits.append(dict(dataset=r.dataset, precision=len(true & set(det["ranking"][:k])) / k,
+                                 top1=det["ranking"][0] in true, chance=k / r.n_features))
+        h = pd.DataFrame(hits).groupby("dataset").mean()
+        dd = h.precision - h.chance
+        rows.append(dict(test="H4 precision@k above chance", value=f"{h.precision.mean():.2f} vs {h.chance.mean():.2f} (top-1 {h.top1.mean():.0%})",
+                         n=len(h), p=stats.wilcoxon(dd, alternative="greater").pvalue))
+        rows[-1]["supported"] = rows[-1]["p"] < 0.05
+        h.round(3).to_csv(os.path.join(OUT_DIR, "h4_per_stream.csv"))
+    out = pd.DataFrame(rows)
+    out.to_csv(os.path.join(OUT_DIR, "h3_h4.csv"), index=False)
+    print(out.to_string(index=False))
+
+
 if __name__ == "__main__":
     main()
+    if os.path.exists(os.path.join(OUT_DIR, "runs.jsonl")) and "EADD, full test" in load("runs.jsonl").variant.values:
+        h3_h4()

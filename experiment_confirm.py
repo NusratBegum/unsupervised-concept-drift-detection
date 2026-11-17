@@ -11,6 +11,7 @@ Design, hypotheses and tests: experiments/results_confirm/PREREGISTRATION.md
 import os
 
 from experiment_hypotheses import run_job
+from experiment_shap import shap_job
 from experiment_validity import FIXED, p_job, run
 from synthetic_streams import INJECT_BASES
 
@@ -27,6 +28,8 @@ DETECTORS = {
     "D3-LightGBM": D3("D3-LightGBM"),
     "D3": D3("D3"),
 }
+# H3: the same EADD with the full permutation test
+EADD_FULL = dict(DETECTORS["EADD"], test="full")
 P_SOURCES = ["iid", "real", "ar0.5", "ar0.9"]
 P_CONFIGS = ["history10", "history10_reset"]
 P_REPS = range(1000, 2000)
@@ -41,8 +44,17 @@ def stream_jobs():
     return sorted(out, key=lambda j: j["detector"] != "EADD")  # EADD runs take longest
 
 
+def full_test_jobs():
+    return [dict(part="annotated", group=g, dataset=s, seed=seed, variant="EADD, full test", **EADD_FULL)
+            for g, streams in (("slow", SLOW), ("abrupt", ABRUPT), ("no drift", NO_DRIFT))
+            for s in streams for seed in SEEDS]
+
+
 if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     run(stream_jobs(), run_job, os.path.join(OUT_DIR, "runs.jsonl"))
     run([dict(source=s, config=c, rep=r) for s in P_SOURCES for c in P_CONFIGS for r in P_REPS],
         p_job, os.path.join(OUT_DIR, "pvalues.jsonl"))
+    run([dict(dataset=s, seed=seed, history_stride=10) for s in SLOW + ABRUPT for seed in SEEDS], shap_job,
+        os.path.join(OUT_DIR, "shap.jsonl"))  # H4
+    run(full_test_jobs(), run_job, os.path.join(OUT_DIR, "runs.jsonl"))  # H3
