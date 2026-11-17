@@ -1,0 +1,9 @@
+against,role,test,n_streams,eadd,other_mean,p,p_holm,supported
+D3-LightGBM,primary,H1a slow-drift recall higher,14,1.0,0.5048,0.0057,0.0226,True
+D3-LightGBM,primary,H1b slow-drift MTD lower,14,441.9762,890.1571,0.0247,0.0494,True
+D3-LightGBM,primary,H1c abrupt MTD not worse (margin 50),7,108.2857,119.4429,0.0078,0.0234,True
+D3-LightGBM,primary,H2b fewer false alarms without drift,8,0.6188,2.4375,0.5,0.5,False
+D3,secondary,H1a slow-drift recall higher,14,1.0,0.4857,0.0017,0.005,True
+D3,secondary,H1b slow-drift MTD lower,14,441.9762,990.1929,0.0003,0.0012,True
+D3,secondary,H1c abrupt MTD not worse (margin 50),7,108.2857,123.5714,0.0078,0.0156,True
+D3,secondary,H2b fewer false alarms without drift,8,0.6188,2.375,0.5,0.5,False

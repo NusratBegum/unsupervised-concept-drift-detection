@@ -1,0 +1,10 @@
+group,variant,recall,mtd,fa,fa_per_10k
+abrupt,D3,1.0,123.571,0.0,
+abrupt,D3-LightGBM,1.0,119.443,0.0,
+abrupt,EADD,1.0,108.286,0.0,
+no drift,D3,,,,2.375
+no drift,D3-LightGBM,,,,2.438
+no drift,EADD,,,,0.619
+slow,D3,0.486,990.193,1.557,
+slow,D3-LightGBM,0.505,890.157,2.479,
+slow,EADD,1.0,441.976,1.393,
