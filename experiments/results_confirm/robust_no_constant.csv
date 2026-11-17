@@ -1,0 +1,8 @@
+against,test,n_streams,eadd,other_mean,p,p_holm,supported
+D3-LightGBM,H1a slow-drift recall higher,10,1.0,0.4533,0.0156,0.0469,True
+D3-LightGBM,H1b slow-drift MTD lower,10,470.0,955.95,0.042,0.0625,False
+D3-LightGBM,H1c abrupt MTD not worse (margin 50),5,112.0,123.96,0.0312,0.0625,False
+D3,H1a slow-drift recall higher,10,1.0,0.4133,0.0039,0.0078,True
+D3,H1b slow-drift MTD lower,10,470.0,1062.0533,0.002,0.0059,True
+D3,H1c abrupt MTD not worse (margin 50),5,112.0,125.66,0.0312,0.0312,True
+chance,H4 precision@k above chance,15,0.8061,0.3206,0.0003,,

@@ -1,10 +1,28 @@
 group,variant,recall,mtd,fa,fa_per_10k
+abrupt,BNDM,0.957,158.167,1.6,
+abrupt,CSDDM,0.819,248.362,7.014,
 abrupt,D3,1.0,123.571,0.0,
+abrupt,D3 (authors),0.886,139.5,50.114,
 abrupt,D3-LightGBM,1.0,119.443,0.0,
 abrupt,EADD,1.0,108.286,0.0,
+abrupt,IBDD,0.938,103.186,93.1,
+abrupt,OCDD,1.0,499.0,35.429,
+abrupt,SPLL,0.667,277.305,6.243,
+no drift,BNDM,,,,3.078
+no drift,CSDDM,,,,6.102
 no drift,D3,,,,2.375
+no drift,D3 (authors),,,,42.973
 no drift,D3-LightGBM,,,,2.438
 no drift,EADD,,,,0.619
+no drift,IBDD,,,,56.14
+no drift,OCDD,,,,19.472
+no drift,SPLL,,,,0.899
+slow,BNDM,1.0,429.762,3.343,
+slow,CSDDM,0.902,623.307,8.571,
 slow,D3,0.486,990.193,1.557,
+slow,D3 (authors),0.967,363.938,47.821,
 slow,D3-LightGBM,0.505,890.157,2.479,
 slow,EADD,1.0,441.976,1.393,
+slow,IBDD,0.995,245.798,105.186,
+slow,OCDD,1.0,499.0,35.429,
+slow,SPLL,0.586,845.138,6.221,
