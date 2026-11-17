@@ -11,8 +11,9 @@ EADD's windows, six Lukats detectors) on
   annotated   4 INSECTS streams with known drift points
   synthetic   the five synthetic streams (synthetic_streams.py)
   injected    6 real streams, shuffled, with abrupt or incremental drifts
-              injected at known points (12 streams); none of these was
-              used to design or fix EADD, so they are held-out data
+              injected at known points (12 streams); EADD was not tuned on
+              them, but shuffled Electricity, NOAA and Powersupply rows were
+              also in the no-drift checks that led to the fixes
   unannotated 9 real streams, scored like Lukats et al. (3 seeds)
 
 5 seeds for streams with drift points. Output: experiments/results_benchmark/runs.jsonl

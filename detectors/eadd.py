@@ -112,6 +112,9 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         blocks of b samples that are consecutive in time; the CV keeps a
         block in one fold and the permutation test swaps whole blocks, so
         autocorrelated neighbours cannot leak between train and test.
+        Not a valid null: a reference block spans a much longer time than a
+        current-window block, so swapped blocks are not exchangeable
+        (rejects 68% of no-drift tests at AR 0.9).
     null : str
         "permutation" (thesis): the null AUCs come from shuffled window
         labels, which assumes exchangeable samples. "history": the null AUCs

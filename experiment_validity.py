@@ -39,7 +39,12 @@ OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "experiments"
 REPS = 300
 CONFIGS = {"thesis": dict(perm_n_folds=2), "matched": dict(perm_n_folds=None),
            "blocked": dict(perm_n_folds=None, block_size=20),
-           "history": dict(perm_n_folds=None, reservoir_after_current=True, null="history")}
+           "history": dict(perm_n_folds=None, reservoir_after_current=True, null="history"),
+           # null windows every 10 samples: enough draws (31) right after a reset
+           "history10": dict(perm_n_folds=None, reservoir_after_current=True, null="history", history_stride=10),
+           # the same, in the state right after a reset: history = the last 700 samples,
+           # reference = the 500 contiguous samples before the current window
+           "history10_reset": dict(perm_n_folds=None, reservoir_after_current=True, null="history", history_stride=10)}
 SOURCES = {"iid": ("iid", None), "real": ("real", "InsectsAbruptBalanced"), "ar0.9": ("ar", 0.9),
            "ar0.5": ("ar", 0.5), "ar0.99": ("ar", 0.99)}
 NULL_STREAMS = ["SynthStable", "AR0.5", "AR0.9", "AR0.99",
@@ -69,7 +74,12 @@ def p_job(job):
                                               seed=job["rep"], **CONFIGS[job["config"]])
     if det.null == "history":  # the detector's state at t = 5,200, with arrival times
         Xt = np.column_stack([X, np.arange(len(X))])
-        det.history.extend(Xt)
+        if job["config"].endswith("_reset"):
+            t_ref = np.arange(4500, 5000).astype(float)
+            ref = X[4500:5000]
+            det.history.extend(Xt[4500:])
+        else:
+            det.history.extend(Xt)
         det.reference_window = list(Xt[t_ref.astype(int)])
     groups = det._time_blocks(t_ref, t_cur)
     t0 = time.perf_counter()
@@ -86,6 +96,8 @@ def detectors():
                                       eadd_kwargs=dict(FIXED, block_size=20)),
         "EADD (fixed, history null)": dict(detector="EADD", tau=0.7, test="aspt",
                                            eadd_kwargs=dict(FIXED, null="history")),
+        "EADD (fixed, history null, stride 10)": dict(detector="EADD", tau=0.7, test="aspt",
+                                                      eadd_kwargs=dict(FIXED, null="history", history_stride=10)),
         "D3 (authors)": dict(detector="D3", tau=0.7),
         "D3 (500/200, every 200)": dict(detector="D3", tau=0.7, eadd_kwargs=dict(
             n_reference_samples=500, recent_samples_proportion=0.4, step=200, n_folds=2)),
@@ -136,7 +148,12 @@ def run(jobs, fn, out_file, rounds=5):
                 if k % 50 == 0 or k == len(todo):
                     print(f"[{k}/{len(todo)}]", flush=True)
         if n_ok == 0:
-            return  # no progress: a real error, not a lost worker
+            break  # no progress: a real error, not a lost worker
+    with open(out_file) as f:
+        done = {json.loads(line)["key"] for line in f if line.strip()}
+    missing = sum(job_key(j) not in done for j in jobs)
+    if missing:
+        print(f"INCOMPLETE: {missing} of {len(jobs)} jobs have no result", flush=True)
 
 
 if __name__ == "__main__":
@@ -147,7 +164,7 @@ if __name__ == "__main__":
     if "P" in a.part:
         jobs = [dict(source=s, config=c, rep=r) for s in SOURCES for c in CONFIGS for r in range(REPS)
                 if not (s != "ar0.9" and c == "blocked")
-                and not (s in ("ar0.5", "ar0.99") and c not in ("matched", "history"))]
+                and not (s in ("ar0.5", "ar0.99") and c not in ("matched", "history", "history10", "history10_reset"))]
         run(jobs, p_job, os.path.join(OUT_DIR, "pvalues.jsonl"))
     if "F" in a.part:
         run(f_jobs(), run_job, os.path.join(OUT_DIR, "runs.jsonl"))

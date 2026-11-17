@@ -54,7 +54,7 @@ def summary():
         k, true = len(r["shifted"]), set(r["shifted"])
         seen = set()
         for d in r["detections"]:
-            if d["drift"] is None or d["drift"] in seen:
+            if d["drift"] is None or d["at"] - d["drift"] > tolerance(r["dataset"]) or d["drift"] in seen:
                 continue  # only the first detection of each drift point
             seen.add(d["drift"])
             rows.append(dict(dataset=r["dataset"], seed=r["seed"], k=k, d=r["n_features"],

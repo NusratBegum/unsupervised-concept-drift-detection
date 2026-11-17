@@ -32,7 +32,8 @@ METRICS = {"mtd": "lower", "fa": "lower", "recall": "higher"}
 
 def tolerance(dataset):
     # gradual and incremental changes last 1,000 samples
-    return 1500 if any(k in dataset for k in ("Gradual", "Incremental")) and not dataset.startswith("Insects") else 500
+    # by prefix: "InjectAbrupt_InsectsIncrementalBalanced" is abrupt drift on an INSECTS base stream
+    return 1500 if dataset.startswith(("SynthGradual", "SynthIncremental", "InjectIncremental")) else 500
 
 
 def per_stream(df, before=0):
