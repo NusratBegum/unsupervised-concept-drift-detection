@@ -33,7 +33,8 @@ def tolerance(dataset):
 
 
 def per_stream(df):
-    a = df[df.part == "annotated"].copy()
+    # streams without drift points (SynthStable) have no recall or MTD; see experiment_validity part F
+    a = df[(df.part == "annotated") & (df.true_drifts.str.len() > 0)].copy()
     m = a.apply(lambda r: pd.Series(detection_metrics(r.detections, r.true_drifts, tolerance(r.dataset))), axis=1)
     a = pd.concat([a, m], axis=1)
     a["delay"] = a.apply(lambda r: np.nan if r.n_matched == 0 else
