@@ -43,6 +43,13 @@ def matched():
                                         eadd_kwargs=dict(FIXED, n_folds=2)),
         "D3 (500/200, every 50)": d3("D3", 50, 5),
         "D3-LightGBM (500/200, every 50)": d3("D3-LightGBM", 50, 5),
+        # components one at a time, all every 50 samples with 5-fold CV (EADD (fixed) = reservoir + ASPT).
+        # With both switched off, EADD's code must behave like D3-LightGBM: a check of the pipeline.
+        "EADD parts: sliding, threshold only": dict(detector="EADD", tau=0.7, test="none", eadd_kwargs=dict(
+            FIXED, use_reservoir_sampling=False, sliding_reference=True, reservoir_after_current=False)),
+        "EADD parts: sliding + ASPT": dict(detector="EADD", tau=0.7, test="aspt", eadd_kwargs=dict(
+            FIXED, use_reservoir_sampling=False, sliding_reference=True, reservoir_after_current=False)),
+        "EADD parts: reservoir, threshold only": dict(detector="EADD", tau=0.7, test="none", eadd_kwargs=FIXED),
     }
 
 
