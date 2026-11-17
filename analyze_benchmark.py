@@ -9,6 +9,8 @@ counted as independent samples.
   per_stream.csv   recall, MTD, false alarms, delay per detector and stream
   summary.csv      means per detector and stream group
   friedman.csv     Friedman test over streams, mean ranks, Nemenyi critical difference
+  matched.csv      EADD vs D3 in the same setup (windows, threshold, check interval, folds),
+                   Wilcoxon over streams, Holm-corrected within each metric
   pairwise.csv     EADD (fixed) vs each other detector: Wilcoxon signed-rank over
                    streams, Holm-corrected within each metric
   accuracy.csv     unannotated streams: prequential accuracy (Lukats et al.)
@@ -84,6 +86,38 @@ def pairwise(ps):
     return pd.concat(rows)
 
 
+# EADD vs D3 with the same windows (500/200), threshold 0.7, check interval and CV folds
+MATCHED = [
+    ("every 50, 5-fold", "EADD (fixed, history null)", "D3-LightGBM (500/200, every 50)"),
+    ("every 50, 5-fold", "EADD (fixed, history null)", "D3 (500/200, every 50)"),
+    ("every 50, 5-fold", "EADD (fixed)", "D3-LightGBM (500/200, every 50)"),
+    ("every 50, 5-fold", "EADD (fixed)", "D3 (500/200, every 50)"),
+    ("every 200, 2-fold", "EADD (fixed, every 200)", "D3-LightGBM (500/200, every 200)"),
+    ("every 200, 2-fold", "EADD (fixed, every 200)", "D3 (500/200, every 200)"),
+]
+
+
+def matched(ps):
+    """Wilcoxon over streams for each same-setup pair, Holm-corrected within each metric."""
+    rows = []
+    for metric in METRICS:
+        t = ps.pivot(index="dataset", columns="variant", values=metric)
+        block = []
+        for setup, a, b in MATCHED:
+            if a not in t or b not in t:
+                continue
+            d = (t[a] - t[b]).dropna()
+            better = (d < 0) if METRICS[metric] == "lower" else (d > 0)
+            block.append(dict(metric=metric, setup=setup, eadd=a, d3=b, n_streams=len(d),
+                              eadd_mean=t[a].mean(), d3_mean=t[b].mean(), eadd_better_on=int(better.sum()),
+                              ties=int((d == 0).sum()), p=stats.wilcoxon(d).pvalue if (d != 0).any() else 1.0))
+        if block:
+            b_ = pd.DataFrame(block)
+            b_["p_holm"] = holm(b_.p)
+            rows.append(b_)
+    return pd.concat(rows)
+
+
 def main():
     df = pd.DataFrame([json.loads(l) for l in open(os.path.join(OUT_DIR, "runs.jsonl")) if l.strip()])
     ps = per_stream(df)
@@ -94,6 +128,9 @@ def main():
     fr = pd.concat([friedman(ps, m) for m in METRICS])
     fr.to_csv(os.path.join(OUT_DIR, "friedman.csv"), index=False)
     print(fr.round(3).to_string(index=False))
+    mt = matched(ps)
+    mt.to_csv(os.path.join(OUT_DIR, "matched.csv"), index=False)
+    print(mt.round(4).to_string(index=False))
     pw = pairwise(ps)
     pw.to_csv(os.path.join(OUT_DIR, "pairwise.csv"), index=False)
     print(pw.round(4).to_string(index=False))

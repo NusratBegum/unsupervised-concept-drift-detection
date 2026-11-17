@@ -47,6 +47,7 @@ class SyntheticStream:
         self.X[:, :K] += SHIFT * mean[:, None]
         self.y = (mean > 0).astype(int)
         self.drifts = [] if kind == "Stable" else list(POINTS)
+        self.shifted = list(range(K))
 
     def __iter__(self):
         names = [f"x{j}" for j in range(D)]
@@ -111,7 +112,9 @@ def injected_stream(kind, dataset, seed):
             level[p + WIDTH:] = j
     sd = X[:POINTS[0], feats].std(axis=0)
     X[:, feats] += level[:, None] * np.where(sd > 0, sd, 1.0)
-    return ArrayStream(X, POINTS)
+    out = ArrayStream(X, POINTS)
+    out.shifted = sorted(int(f) for f in feats)  # indices of the features that drift
+    return out
 
 
 def synthetic_stream(name, seed):

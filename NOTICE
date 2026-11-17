@@ -33,6 +33,7 @@ This repository contains source code under TWO different licenses:
      experiment_hypotheses.py
      experiment_offsets.py
      experiment_root_cause.py
+     experiment_shap.py
      experiment_validity.py
      make_comparison_figures.py
      make_hypothesis_figures.py
