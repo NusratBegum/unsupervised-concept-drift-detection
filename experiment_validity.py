@@ -46,7 +46,10 @@ CONFIGS = {"thesis": dict(perm_n_folds=2), "matched": dict(perm_n_folds=None),
            # reference = the 500 contiguous samples before the current window
            "history10_reset": dict(perm_n_folds=None, reservoir_after_current=True, null="history", history_stride=10)}
 SOURCES = {"iid": ("iid", None), "real": ("real", "InsectsAbruptBalanced"), "ar0.9": ("ar", 0.9),
-           "ar0.5": ("ar", 0.5), "ar0.99": ("ar", 0.99)}
+           "ar0.5": ("ar", 0.5), "ar0.99": ("ar", 0.99),
+           # new H2 (experiment_h2.py) only
+           "ar0.3": ("ar", 0.3), "real_elec": ("real", "Electricity"), "real_poker": ("real", "PokerHand")}
+VALIDITY_SOURCES = ["iid", "real", "ar0.9", "ar0.5", "ar0.99"]
 NULL_STREAMS = ["SynthStable", "AR0.5", "AR0.9", "AR0.99",
                 "ShuffledInsectsAbruptBalanced", "ShuffledElectricity", "ShuffledNOAAWeather",
                 "ShuffledPowersupply", "ShuffledOutdoorObjects"]
@@ -162,7 +165,7 @@ if __name__ == "__main__":
     a = ap.parse_args()
     os.makedirs(OUT_DIR, exist_ok=True)
     if "P" in a.part:
-        jobs = [dict(source=s, config=c, rep=r) for s in SOURCES for c in CONFIGS for r in range(REPS)
+        jobs = [dict(source=s, config=c, rep=r) for s in VALIDITY_SOURCES for c in CONFIGS for r in range(REPS)
                 if not (s != "ar0.9" and c == "blocked")
                 and not (s in ("ar0.5", "ar0.99") and c not in ("matched", "history", "history10", "history10_reset"))]
         run(jobs, p_job, os.path.join(OUT_DIR, "pvalues.jsonl"))

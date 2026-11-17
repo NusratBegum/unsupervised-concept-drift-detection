@@ -47,3 +47,12 @@ H3a, H3b and H4 are each tested at alpha 0.05 (separate hypotheses, not in the H
 ## Addendum 2: all detector groups on the same data (registered 17 Nov 2026, before these runs)
 
 For a complete comparison on the same 29 streams and seeds 1000-1009, two groups are added: D3 with its authors' settings (logistic regression, windows 100/10, threshold 0.7, a check every 11 samples) and six fully unsupervised detectors from Lukats et al. (2024) with their benchmark settings (BNDM, CSDDM, IBDD, OCDD, SPLL, UDetect; 500-sample windows). They enter only secondary, descriptive comparisons: per-group means of recall, MTD and false alarms, and a Friedman test with Nemenyi critical difference over the 21 drift streams for MTD, recall and false alarms. The primary tests above are unchanged.
+
+## Addendum 3: a new H2 (registered 17 Nov 2026, evening, before these runs)
+
+H2 as registered above is not supported: the test is not valid at AR 0.9 (H2a), and H2b had too little power (only one no-drift stream had any false alarms). The new H2 below is formed after seeing those results, so it is tested only on data not used before: new p-value repetitions (2000-2999), two real bases not used in any p-value check (Electricity, PokerHand), AR 0.3 (not used before), and new autocorrelated streams and seeds (2000-2009). Detectors and settings are those above (`experiment_confirm.DETECTORS`). Code: `experiment_h2.py`.
+
+- **H2-new a (valid test where its assumption holds).** On data without drift whose samples are independent or at most moderately autocorrelated (lag-1 autocorrelation up to 0.5), EADD's test rejects at alpha = 0.05 at a rate whose one-sided 95% Clopper-Pearson upper bound is at most 0.075, in each of: independent Gaussian, shuffled Electricity, shuffled PokerHand, AR 0.3, AR 0.5; in the steady state and right after a reset. 1,000 tests per condition (10 conditions). Supported if all 10 pass.
+- **H2-new b (fewer false alarms under strong autocorrelation).** On stationary AR(1) streams without drift with rho 0.8, 0.85, 0.9, 0.93, 0.95, 0.97 (10 features, 20,000 samples), EADD raises fewer false alarms per 10,000 samples than D3-LightGBM. One-sided Wilcoxon signed-rank test over the 6 streams (mean of 10 seeds per stream); against D3 as secondary.
+
+H2-new is supported if all 10 conditions of H2-new a pass and H2-new b (the only p-value of this addendum) is significant at alpha 0.05. The AR 0.9 failure of the original H2a is reported as a limitation in either case.
