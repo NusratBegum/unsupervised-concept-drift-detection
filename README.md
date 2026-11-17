@@ -21,6 +21,19 @@ The thesis compares EADD with D3 using the same LightGBM classifier and windows 
 
 ---
 
+## Validity fixes and new benchmark (16-17 Nov 2026, in progress)
+
+A review found problems in EADD's test and in the evaluation; each fix is an option of `ExplainableAdversarialDriftDetector` (the defaults keep the thesis behaviour, and the thesis runs still reproduce exactly):
+
+| Problem | Option |
+|---|---|
+| Reservoir and current window could share samples | `reservoir_after_current=True` |
+| Permuted AUCs used 2-fold CV, the observed AUC 5-fold | `perm_n_folds=None` |
+| ASPT's Type I error was 0.059 at alpha 0.05 | `aspt_alpha_split=1/3` (simulated 0.031) |
+| Shuffling labels assumes exchangeable samples, which autocorrelated streams violate | `null="history"` (null AUCs from earlier windows of the same stream) |
+
+`experiment_validity.py` checks the p-values and false alarms on streams without drift; `experiment_benchmark.py` runs all detectors on INSECTS, synthetic streams and real streams with injected drifts; `analyze_benchmark.py` tests per stream (Friedman, Nemenyi, Holm-corrected Wilcoxon). Results: `experiments/results_validity/`, `experiments/results_benchmark/`. The thesis results below predate these fixes and will be updated.
+
 ## Key Results (thesis, Chapter 4)
 
 Four annotated INSECTS streams (10 drift points), 5 seeds, 20 runs per detector; a detection matches if it is within 500 samples after a drift point; a missed drift point counts as MTD 500. One-sided Mann-Whitney U tests.
