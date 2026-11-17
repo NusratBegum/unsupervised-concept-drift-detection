@@ -56,3 +56,10 @@ H2 as registered above is not supported: the test is not valid at AR 0.9 (H2a), 
 - **H2-new b (fewer false alarms under strong autocorrelation).** On stationary AR(1) streams without drift with rho 0.8, 0.85, 0.9, 0.93, 0.95, 0.97 (10 features, 20,000 samples), EADD raises fewer false alarms per 10,000 samples than D3-LightGBM. One-sided Wilcoxon signed-rank test over the 6 streams (mean of 10 seeds per stream); against D3 as secondary.
 
 H2-new is supported if all 10 conditions of H2-new a pass and H2-new b (the only p-value of this addendum) is significant at alpha 0.05. The AR 0.9 failure of the original H2a is reported as a limitation in either case.
+
+## Addendum 4: robustness checks after the independent review (registered 17 Nov 2026, evening, before these runs)
+
+An independent code review found that the three detectors check on fixed schedules that are not aligned: EADD checks every 50 samples, D3 and D3-LightGBM every 51 (D3 skips the sample that triggers a check), and every seed starts at sample 0, so each detector meets each drift point at the same phase of its schedule in all 10 seeds. Part of each delay is then set by the schedule, not by the detector. A review of the data found that on PokerHand and Rialto some features that are constant in the first 5,000 rows are among the shifted features, so those drifts are trivially separable. The registered results above stand as registered; these checks are reported next to them as robustness checks.
+
+- **R1 (schedule).** H1a, H1b, H1c repeated with D3 and D3-LightGBM at `step=49` (a check every 50 samples, as EADD) and each seed starting at a random offset in 0-49 (`numpy.random.default_rng([seed, 21]).integers(0, 50)`, the same offset for all three detectors), on the 21 drift streams and seeds 1000-1009. Same tests, same Holm family of three, same decision rule. Code: `experiment_robust.py`; output `robust_runs.jsonl`, `robust.csv`.
+- **R2 (constant features).** H1a, H1b, H1c and H4 recomputed from the registered runs without the PokerHand and Rialto streams (15 drift streams left: 10 slow, 5 abrupt). Output `robust_no_constant.csv`.

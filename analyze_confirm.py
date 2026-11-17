@@ -80,8 +80,6 @@ def main():
         print(h.round(4).to_string(index=False))
 
 
-
-
 def h3_h4():
     """H3a, H3b and H4 as in the addendum of PREREGISTRATION.md."""
     df = load("runs.jsonl")
@@ -117,14 +115,6 @@ def h3_h4():
     print(out.to_string(index=False))
 
 
-if __name__ == "__main__":
-    main()
-    if os.path.exists(os.path.join(OUT_DIR, "runs.jsonl")) and "EADD, full test" in load("runs.jsonl").variant.values:
-        h3_h4()
-    if os.path.exists(os.path.join(OUT_DIR, "runs.jsonl")) and "SPLL" in load("runs.jsonl").variant.values:
-        all_groups()
-
-
 def all_groups():
     """Addendum 2: every detector on the same streams; Friedman + Nemenyi over the 21 drift streams."""
     from analyze_benchmark import friedman, METRICS
@@ -138,3 +128,69 @@ def all_groups():
     nd.round(2).to_csv(os.path.join(OUT_DIR, "all_groups_no_drift.csv"))
     print(drift.groupby("variant")[["recall", "mtd", "fa"]].mean().round(2).sort_values("mtd").to_string())
     print(fr.round(3).to_string(index=False))
+
+
+def h2_new():
+    """Addendum 3: the new H2 on fresh data (experiment_h2.py)."""
+    rows = []
+    if os.path.exists(os.path.join(OUT_DIR, "h2_pvalues.jsonl")) and os.path.getsize(os.path.join(OUT_DIR, "h2_pvalues.jsonl")):
+        pv = load("h2_pvalues.jsonl")
+        for (s, c), g in pv.groupby(["source", "config"]):
+            k, n = int((g.p <= 0.05).sum()), len(g)
+            upper = stats.beta.ppf(0.95, k + 1, n - k)
+            rows.append(dict(part="a", source=s, config=c, n=n, reject_rate=k / n, upper95=upper, passes=upper <= 0.075))
+    if os.path.exists(os.path.join(OUT_DIR, "h2_runs.jsonl")) and os.path.getsize(os.path.join(OUT_DIR, "h2_runs.jsonl")):
+        df = load("h2_runs.jsonl").assign(fa_per_10k=lambda d: d.detections.str.len() / d.n_samples * 1e4)
+        t = df.groupby(["dataset", "variant"]).fa_per_10k.mean().unstack()
+        t.round(2).to_csv(os.path.join(OUT_DIR, "h2_new_fa.csv"))
+        for other in ("D3-LightGBM", "D3"):
+            d = (t["EADD"] - t[other]).dropna()
+            rows.append(dict(part="b", source=f"EADD vs {other}", n=len(d), eadd=t["EADD"].mean(), other=t[other].mean(),
+                             fewer_on=int((d < 0).sum()),
+                             p=stats.wilcoxon(d, alternative="less").pvalue if (d != 0).any() else 1.0,
+                             role="primary" if other == "D3-LightGBM" else "secondary"))
+    if rows:
+        out = pd.DataFrame(rows)
+        out.round(4).to_csv(os.path.join(OUT_DIR, "h2_new.csv"), index=False)
+        print(out.round(4).to_string(index=False))
+
+
+def h1_family(ps, other):
+    f = pd.DataFrame([
+        dict(test="H1a slow-drift recall higher", **wilcoxon(ps, "slow", "recall", other, "greater")),
+        dict(test="H1b slow-drift MTD lower", **wilcoxon(ps, "slow", "mtd", other, "less")),
+        dict(test=f"H1c abrupt MTD not worse (margin {MARGIN})", **wilcoxon(ps, "abrupt", "mtd", other, "less", MARGIN))])
+    f["p_holm"] = holm(f.p)
+    f["supported"] = f.p_holm < 0.05
+    f.insert(0, "against", other)
+    return f
+
+
+def robust():
+    """Addendum 4: R1 (aligned check schedule, random offsets) and R2 (without PokerHand and Rialto)."""
+    path = os.path.join(OUT_DIR, "robust_runs.jsonl")
+    if os.path.exists(path) and os.path.getsize(path):
+        ps = per_stream(load("robust_runs.jsonl"))
+        r1 = pd.concat([h1_family(ps, o) for o in ("D3-LightGBM", "D3")])
+        r1.round(4).to_csv(os.path.join(OUT_DIR, "robust.csv"), index=False)
+        print(r1.round(4).to_string(index=False))
+    ps = per_stream(load("runs.jsonl"))
+    keep = lambda d: d[~d.dataset.str.contains("PokerHand|Rialto")]
+    r2 = pd.concat([h1_family(keep(ps), o) for o in ("D3-LightGBM", "D3")])
+    if os.path.exists(os.path.join(OUT_DIR, "h4_per_stream.csv")):
+        h = keep(pd.read_csv(os.path.join(OUT_DIR, "h4_per_stream.csv")))
+        r2 = pd.concat([r2, pd.DataFrame([dict(against="chance", test="H4 precision@k above chance", n_streams=len(h),
+                                                eadd=h.precision.mean(), other_mean=h.chance.mean(),
+                                                p=stats.wilcoxon(h.precision - h.chance, alternative="greater").pvalue)])])
+    r2.round(4).to_csv(os.path.join(OUT_DIR, "robust_no_constant.csv"), index=False)
+    print(r2.round(4).to_string(index=False))
+
+
+if __name__ == "__main__":
+    main()
+    if os.path.exists(os.path.join(OUT_DIR, "runs.jsonl")) and "EADD, full test" in load("runs.jsonl").variant.values:
+        h3_h4()
+    if os.path.exists(os.path.join(OUT_DIR, "runs.jsonl")) and "SPLL" in load("runs.jsonl").variant.values:
+        all_groups()
+    h2_new()
+    robust()
