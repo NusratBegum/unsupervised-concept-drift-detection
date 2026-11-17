@@ -43,3 +43,7 @@ So that all four hypotheses are tested on the same streams, drift types and seed
 - **H4 (localisation).** At the first detection of each drift point, EADD's TreeSHAP ranking is compared with the features that truly drift: precision@k (k = number of drifting features) and whether the top feature drifts. Supported if precision@k exceeds chance (k / d) by a one-sided Wilcoxon over the 21 drift streams (stream means). Only streams where the drifting features are known can be scored: the synthetic and injected streams (6 real bases, abrupt, gradual and incremental drift). INSECTS and the unannotated streams have no known drifting features and are not scored for H4.
 
 H3a, H3b and H4 are each tested at alpha 0.05 (separate hypotheses, not in the H1/H2 family).
+
+## Addendum 2: all detector groups on the same data (registered 17 Nov 2026, before these runs)
+
+For a complete comparison on the same 29 streams and seeds 1000-1009, two groups are added: D3 with its authors' settings (logistic regression, windows 100/10, threshold 0.7, a check every 11 samples) and six fully unsupervised detectors from Lukats et al. (2024) with their benchmark settings (BNDM, CSDDM, IBDD, OCDD, SPLL, UDetect; 500-sample windows). They enter only secondary, descriptive comparisons: per-group means of recall, MTD and false alarms, and a Friedman test with Nemenyi critical difference over the 21 drift streams for MTD, recall and false alarms. The primary tests above are unchanged.

@@ -121,3 +121,20 @@ if __name__ == "__main__":
     main()
     if os.path.exists(os.path.join(OUT_DIR, "runs.jsonl")) and "EADD, full test" in load("runs.jsonl").variant.values:
         h3_h4()
+    if os.path.exists(os.path.join(OUT_DIR, "runs.jsonl")) and "SPLL" in load("runs.jsonl").variant.values:
+        all_groups()
+
+
+def all_groups():
+    """Addendum 2: every detector on the same streams; Friedman + Nemenyi over the 21 drift streams."""
+    from analyze_benchmark import friedman, METRICS
+    ps = per_stream(load("runs.jsonl"))
+    drift = ps[ps.group != "no drift"]
+    drift.groupby(["group", "variant"])[["recall", "mtd", "fa"]].mean().round(3).to_csv(
+        os.path.join(OUT_DIR, "all_groups.csv"))
+    fr = pd.concat([friedman(drift.assign(dataset=drift.dataset), m) for m in METRICS])
+    fr.to_csv(os.path.join(OUT_DIR, "all_groups_friedman.csv"), index=False)
+    nd = ps[ps.group == "no drift"].pivot(index="dataset", columns="variant", values="fa_per_10k")
+    nd.round(2).to_csv(os.path.join(OUT_DIR, "all_groups_no_drift.csv"))
+    print(drift.groupby("variant")[["recall", "mtd", "fa"]].mean().round(2).sort_values("mtd").to_string())
+    print(fr.round(3).to_string(index=False))

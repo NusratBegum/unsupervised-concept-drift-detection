@@ -28,6 +28,9 @@ DETECTORS = {
     "D3-LightGBM": D3("D3-LightGBM"),
     "D3": D3("D3"),
 }
+# Addendum 2: secondary comparison groups
+OTHERS = {"D3 (authors)": dict(detector="D3", tau=0.7)}
+OTHERS.update({d: dict(detector=d) for d in ["BNDM", "CSDDM", "IBDD", "OCDD", "SPLL", "UDetect"]})
 # H3: the same EADD with the full permutation test
 EADD_FULL = dict(DETECTORS["EADD"], test="full")
 P_SOURCES = ["iid", "real", "ar0.5", "ar0.9"]
@@ -44,6 +47,13 @@ def stream_jobs():
     return sorted(out, key=lambda j: j["detector"] != "EADD")  # EADD runs take longest
 
 
+def other_jobs():
+    return [dict(part="annotated", group=g, dataset=s, seed=seed, variant=name, **f)
+            for name, f in OTHERS.items()
+            for g, streams in (("slow", SLOW), ("abrupt", ABRUPT), ("no drift", NO_DRIFT))
+            for s in streams for seed in SEEDS]
+
+
 def full_test_jobs():
     return [dict(part="annotated", group=g, dataset=s, seed=seed, variant="EADD, full test", **EADD_FULL)
             for g, streams in (("slow", SLOW), ("abrupt", ABRUPT), ("no drift", NO_DRIFT))
@@ -57,4 +67,5 @@ if __name__ == "__main__":
         p_job, os.path.join(OUT_DIR, "pvalues.jsonl"))
     run([dict(dataset=s, seed=seed, history_stride=10) for s in SLOW + ABRUPT for seed in SEEDS], shap_job,
         os.path.join(OUT_DIR, "shap.jsonl"))  # H4
+    run(other_jobs(), run_job, os.path.join(OUT_DIR, "runs.jsonl"))  # addendum 2
     run(full_test_jobs(), run_job, os.path.join(OUT_DIR, "runs.jsonl"))  # H3
