@@ -10,7 +10,11 @@ annotated,EADD (fixed),0.71,295.24,13.55,205.78
 annotated,"EADD (fixed, blocked)",0.66,292.49,13.0,186.34666666666666
 annotated,"EADD (fixed, every 200)",0.675,314.325,10.8,217.29999999999998
 annotated,"EADD (fixed, history null)",0.625,243.175,9.6,97.89583333333334
+annotated,"EADD (fixed, history null, stride 10)",0.56,300.28999999999996,12.75,154.11333333333334
 annotated,EADD (thesis),0.5,301.65,8.85,95.1111111111111
+annotated,"EADD parts: reservoir, threshold only",0.71,295.24,13.55,205.78
+annotated,EADD parts: sliding + ASPT,0.7,261.1,9.9,154.66666666666666
+annotated,"EADD parts: sliding, threshold only",0.7,261.1,9.9,154.66666666666666
 annotated,IBDD,1.0,66.275,273.0,66.275
 annotated,OCDD,1.0,344.8,114.25,344.8
 annotated,SPLL,0.95,180.825,3.5,162.5
@@ -26,7 +30,11 @@ injected,EADD (fixed),1.0,135.38888888888889,2.8833333333333333,135.388888888888
 injected,"EADD (fixed, blocked)",1.0,143.16666666666666,2.9,143.16666666666666
 injected,"EADD (fixed, every 200)",1.0,192.33333333333334,2.6333333333333333,192.33333333333334
 injected,"EADD (fixed, history null)",1.0,206.7777777777778,0.0,206.7777777777778
+injected,"EADD (fixed, history null, stride 10)",1.0,168.16666666666666,1.4000000000000001,168.16666666666666
 injected,EADD (thesis),1.0,147.05555555555557,2.0833333333333335,147.05555555555557
+injected,"EADD parts: reservoir, threshold only",1.0,135.38888888888889,2.8833333333333333,135.38888888888889
+injected,EADD parts: sliding + ASPT,1.0,136.7777777777778,2.9,136.7777777777778
+injected,"EADD parts: sliding, threshold only",1.0,136.7777777777778,2.9,136.7777777777778
 injected,IBDD,0.9888888888888889,159.03333333333333,98.86666666666667,155.4777777777778
 injected,OCDD,1.0,499.0,35.333333333333336,499.0
 injected,SPLL,0.7111111111111111,519.3666666666667,7.45,315.794696969697
@@ -42,7 +50,11 @@ synthetic,EADD (fixed),1.0,449.0,0.0,449.0
 synthetic,"EADD (fixed, blocked)",1.0,453.99999999999994,0.0,453.99999999999994
 synthetic,"EADD (fixed, every 200)",1.0,549.0,0.0,549.0
 synthetic,"EADD (fixed, history null)",1.0,449.0,0.0,449.0
+synthetic,"EADD (fixed, history null, stride 10)",1.0,449.0,0.0,449.0
 synthetic,EADD (thesis),1.0,509.0,0.0,509.0
+synthetic,"EADD parts: reservoir, threshold only",1.0,449.0,0.0,449.0
+synthetic,EADD parts: sliding + ASPT,0.5,824.5,0.0,149.0
+synthetic,"EADD parts: sliding, threshold only",0.5,824.5,0.0,149.0
 synthetic,IBDD,1.0,127.73333333333333,99.15,127.73333333333333
 synthetic,OCDD,1.0,499.0,36.0,499.0
 synthetic,SPLL,0.0,1000.0,0.0,

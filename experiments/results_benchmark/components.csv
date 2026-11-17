@@ -1,0 +1,16 @@
+metric,step,variant,n_streams,mean,base_mean,better_on,ties,p,p_holm
+mtd,+ ASPT,EADD parts: sliding + ASPT,20,299.1866666666666,299.1866666666666,0,19,0.31731050786291415,1.0
+mtd,+ reservoir,"EADD parts: reservoir, threshold only",20,230.08133333333336,299.1866666666666,8,5,0.36271272133771115,1.0
+mtd,+ reservoir + ASPT,EADD (fixed),20,230.08133333333336,299.1866666666666,8,5,0.36271272133771115,1.0
+mtd,"+ reservoir + ASPT, history null","EADD (fixed, history null)",20,262.50166666666667,299.1866666666666,7,3,0.477536356531021,1.0
+mtd,"+ reservoir + ASPT, history null (stride 10)","EADD (fixed, history null, stride 10)",20,250.75799999999998,299.1866666666666,6,4,0.3132195064700367,1.0
+fa,+ ASPT,EADD parts: sliding + ASPT,20,3.72,3.72,0,20,1.0,1.0
+fa,+ reservoir,"EADD parts: reservoir, threshold only",20,4.44,3.72,1,16,0.14412703481601533,0.5765081392640613
+fa,+ reservoir + ASPT,EADD (fixed),20,4.44,3.72,1,16,0.14412703481601533,0.5765081392640613
+fa,"+ reservoir + ASPT, history null","EADD (fixed, history null)",20,1.92,3.72,8,11,0.018683395462997684,0.09341697731498842
+fa,"+ reservoir + ASPT, history null (stride 10)","EADD (fixed, history null, stride 10)",20,3.3899999999999997,3.72,6,11,0.5146697234497355,1.0
+recall,+ ASPT,EADD parts: sliding + ASPT,20,0.8400000000000001,0.8400000000000001,0,20,1.0,1.0
+recall,+ reservoir,"EADD parts: reservoir, threshold only",20,0.942,0.8400000000000001,3,17,0.10247043485974941,0.512352174298747
+recall,+ reservoir + ASPT,EADD (fixed),20,0.942,0.8400000000000001,3,17,0.10247043485974941,0.512352174298747
+recall,"+ reservoir + ASPT, history null","EADD (fixed, history null)",20,0.925,0.8400000000000001,3,14,0.3400846081830642,1.0
+recall,"+ reservoir + ASPT, history null (stride 10)","EADD (fixed, history null, stride 10)",20,0.9120000000000001,0.8400000000000001,3,15,0.4982248534183389,1.0

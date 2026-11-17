@@ -1,0 +1,81 @@
+drift_type,variant,recall,mtd,fa
+abrupt,BNDM,0.8833333333333333,181.69166666666666,2.325
+abrupt,CSDDM,0.7666666666666666,263.1483333333333,10.525
+abrupt,"D3 (500/200, every 200)",0.9450000000000001,202.835,0.65
+abrupt,"D3 (500/200, every 50)",0.975,127.695,0.75
+abrupt,D3 (authors),0.9233333333333333,118.43166666666666,63.75
+abrupt,"D3-LightGBM (500/200, every 200)",0.975,188.84,0.6
+abrupt,"D3-LightGBM (500/200, every 50)",0.975,122.0,0.75
+abrupt,EADD (fixed),0.98,116.20333333333333,0.75
+abrupt,"EADD (fixed, blocked)",0.98,123.20333333333333,0.75
+abrupt,"EADD (fixed, every 200)",0.975,170.50833333333333,0.75
+abrupt,"EADD (fixed, history null)",0.95,125.33333333333333,0.75
+abrupt,"EADD (fixed, history null, stride 10)",0.98,116.20333333333333,0.75
+abrupt,EADD (thesis),0.95,137.25,0.75
+abrupt,"EADD parts: reservoir, threshold only",0.98,116.20333333333333,0.75
+abrupt,EADD parts: sliding + ASPT,0.975,117.25833333333334,0.75
+abrupt,"EADD parts: sliding, threshold only",0.975,117.25833333333334,0.75
+abrupt,IBDD,0.9833333333333333,94.58333333333333,106.475
+abrupt,OCDD,1.0,479.4,43.375
+abrupt,SPLL,0.7,256.98333333333335,5.7
+abrupt,UDetect,0.041666666666666664,480.9083333333333,0.125
+gradual,BNDM,0.5,505.2666666666667,7.0
+gradual,CSDDM,0.9666666666666666,570.0666666666666,17.4
+gradual,"D3 (500/200, every 200)",0.0,1000.0,2.0
+gradual,"D3 (500/200, every 50)",0.0,1000.0,2.5
+gradual,D3 (authors),0.9,296.3666666666667,63.5
+gradual,"D3-LightGBM (500/200, every 200)",0.0,1000.0,2.0
+gradual,"D3-LightGBM (500/200, every 50)",0.0,1000.0,2.7
+gradual,EADD (fixed),0.5,629.5,3.0
+gradual,"EADD (fixed, blocked)",0.5,641.1666666666666,3.0
+gradual,"EADD (fixed, every 200)",0.5,676.1666666666667,2.5
+gradual,"EADD (fixed, history null)",1.0,415.0,1.5
+gradual,"EADD (fixed, history null, stride 10)",0.5,629.5,3.0
+gradual,EADD (thesis),0.5,686.1666666666667,2.5
+gradual,"EADD parts: reservoir, threshold only",0.5,629.5,3.0
+gradual,EADD parts: sliding + ASPT,0.0,1000.0,2.5
+gradual,"EADD parts: sliding, threshold only",0.0,1000.0,2.5
+gradual,IBDD,1.0,115.43333333333332,88.6
+gradual,OCDD,1.0,485.0,41.0
+gradual,SPLL,0.5,902.0,0.5
+gradual,UDetect,0.0,1000.0,0.0
+incremental,BNDM,0.9375,372.9125,6.25
+incremental,CSDDM,0.8833333333333333,567.9916666666667,17.425
+incremental,"D3 (500/200, every 200)",0.6833333333333333,697.2333333333333,3.1
+incremental,"D3 (500/200, every 50)",0.7166666666666667,609.8833333333333,4.125
+incremental,D3 (authors),0.9833333333333334,351.8833333333333,73.45
+incremental,"D3-LightGBM (500/200, every 200)",0.875,405.3625,4.5
+incremental,"D3-LightGBM (500/200, every 50)",0.875,333.125,6.025
+incremental,EADD (fixed),1.0,243.875,6.95
+incremental,"EADD (fixed, blocked)",1.0,255.75,6.7749999999999995
+incremental,"EADD (fixed, every 200)",1.0,326.1666666666667,5.875
+incremental,"EADD (fixed, history null)",0.9375,362.62083333333334,1.975
+incremental,"EADD (fixed, history null, stride 10)",0.975,296.01666666666665,4.45
+incremental,EADD (thesis),0.925,279.15833333333336,4.75
+incremental,"EADD parts: reservoir, threshold only",1.0,243.875,6.95
+incremental,EADD parts: sliding + ASPT,0.875,326.2916666666667,5.95
+incremental,"EADD parts: sliding, threshold only",0.875,326.29166666666663,5.95
+incremental,IBDD,1.0,201.22083333333333,136.225
+incremental,OCDD,1.0,472.0,50.5
+incremental,SPLL,0.5916666666666667,799.1041666666667,6.35
+incremental,UDetect,0.125,1346.1875,2.625
+recurring,BNDM,0.6833333333333333,306.8666666666667,18.0
+recurring,CSDDM,0.8666666666666667,334.05,44.9
+recurring,"D3 (500/200, every 200)",0.95,222.05,4.0
+recurring,"D3 (500/200, every 50)",1.0,204.35,6.7
+recurring,D3 (authors),0.9166666666666666,170.95,147.0
+recurring,"D3-LightGBM (500/200, every 200)",0.9,237.55,4.1
+recurring,"D3-LightGBM (500/200, every 50)",1.0,199.64999999999998,7.1
+recurring,EADD (fixed),1.0,231.0,10.6
+recurring,"EADD (fixed, blocked)",0.9,195.0,10.3
+recurring,"EADD (fixed, every 200)",0.95,217.78333333333336,8.4
+recurring,"EADD (fixed, history null)",0.7,258.2,6.8
+recurring,"EADD (fixed, history null, stride 10)",0.8,229.2,10.1
+recurring,EADD (thesis),1.0,151.83333333333334,5.7
+recurring,"EADD parts: reservoir, threshold only",1.0,231.0,10.6
+recurring,EADD parts: sliding + ASPT,1.0,217.66666666666666,7.9
+recurring,"EADD parts: sliding, threshold only",1.0,217.66666666666666,7.9
+recurring,IBDD,1.0,43.56666666666667,278.1
+recurring,OCDD,1.0,391.0,96.0
+recurring,SPLL,0.5,351.5,3.0
+recurring,UDetect,0.25,464.5,12.0

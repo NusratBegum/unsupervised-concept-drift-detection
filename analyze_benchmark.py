@@ -12,6 +12,8 @@ counted as independent samples.
   matched.csv      EADD vs D3 in the same setup (windows, threshold, check interval, folds),
                    Wilcoxon over streams, Holm-corrected within each metric
   matched_two_sided.csv  the same, counting alarms up to 500 samples before a drift as hits
+  drift_type.csv   means per drift type (abrupt, gradual, incremental, recurring)
+  components.csv   EADD's parts one at a time in EADD's code, against both parts off
   pairwise.csv     EADD (fixed) vs each other detector: Wilcoxon signed-rank over
                    streams, Holm-corrected within each metric
   accuracy.csv     unannotated streams: prequential accuracy (Lukats et al.)
@@ -93,8 +95,8 @@ def pairwise(ps):
 
 # EADD vs D3 with the same windows (500/200), threshold 0.7, check interval and CV folds
 MATCHED = [
-    ("every 50, 5-fold", "EADD (fixed, history null)", "D3-LightGBM (500/200, every 50)"),
-    ("every 50, 5-fold", "EADD (fixed, history null)", "D3 (500/200, every 50)"),
+    ("every 50, 5-fold", "EADD (fixed, history null, stride 10)", "D3-LightGBM (500/200, every 50)"),
+    ("every 50, 5-fold", "EADD (fixed, history null, stride 10)", "D3 (500/200, every 50)"),
     ("every 50, 5-fold", "EADD (fixed)", "D3-LightGBM (500/200, every 50)"),
     ("every 50, 5-fold", "EADD (fixed)", "D3 (500/200, every 50)"),
     ("every 200, 2-fold", "EADD (fixed, every 200)", "D3-LightGBM (500/200, every 200)"),
@@ -123,6 +125,49 @@ def matched(ps, metrics=METRICS):
     return pd.concat(rows)
 
 
+DRIFT_TYPE = {"SynthAbrupt": "abrupt", "InsectsAbruptBalanced": "abrupt", "SynthGradual": "gradual",
+              "InsectsGradualBalanced": "gradual", "SynthIncremental": "incremental",
+              "InsectsIncrementalAbruptBalanced": "incremental", "SynthRecurring": "recurring",
+              "InsectsIncrementalReoccurringBalanced": "recurring"}
+
+
+def drift_type(dataset):
+    if dataset.startswith("InjectAbrupt"):
+        return "abrupt"
+    if dataset.startswith("InjectIncremental"):
+        return "incremental"
+    return DRIFT_TYPE[dataset]
+
+
+# one code path (EADD's), identical windows and check times; one part switched at a time
+BASE = "EADD parts: sliding, threshold only"
+COMPONENTS = [("+ ASPT", "EADD parts: sliding + ASPT"), ("+ reservoir", "EADD parts: reservoir, threshold only"),
+              ("+ reservoir + ASPT", "EADD (fixed)"), ("+ reservoir + ASPT, history null", "EADD (fixed, history null)"),
+              ("+ reservoir + ASPT, history null (stride 10)", "EADD (fixed, history null, stride 10)")]
+
+
+def components(ps):
+    """Each EADD part against EADD's code with both parts off; Wilcoxon over streams, Holm per metric."""
+    rows = []
+    for metric in METRICS:
+        t = ps.pivot(index="dataset", columns="variant", values=metric)
+        if BASE not in t:
+            continue
+        block = []
+        for label, v in COMPONENTS:
+            if v not in t:
+                continue
+            d = (t[v] - t[BASE]).dropna()
+            better = (d < 0) if METRICS[metric] == "lower" else (d > 0)
+            block.append(dict(metric=metric, step=label, variant=v, n_streams=len(d), mean=t[v].mean(),
+                              base_mean=t[BASE].mean(), better_on=int(better.sum()), ties=int((d == 0).sum()),
+                              p=stats.wilcoxon(d).pvalue if (d != 0).any() else 1.0))
+        b = pd.DataFrame(block)
+        b["p_holm"] = holm(b.p)
+        rows.append(b)
+    return pd.concat(rows) if rows else pd.DataFrame()
+
+
 def main():
     df = pd.DataFrame([json.loads(l) for l in open(os.path.join(OUT_DIR, "runs.jsonl")) if l.strip()])
     ps = per_stream(df)
@@ -133,6 +178,12 @@ def main():
     fr = pd.concat([friedman(ps, m) for m in METRICS])
     fr.to_csv(os.path.join(OUT_DIR, "friedman.csv"), index=False)
     print(fr.round(3).to_string(index=False))
+    ps["drift_type"] = ps.dataset.map(drift_type)
+    ps.groupby(["drift_type", "variant"])[["recall", "mtd", "fa"]].mean().reset_index().to_csv(
+        os.path.join(OUT_DIR, "drift_type.csv"), index=False)
+    comp = components(ps)
+    comp.to_csv(os.path.join(OUT_DIR, "components.csv"), index=False)
+    print(comp.round(4).to_string(index=False))
     mt = matched(ps)
     mt.to_csv(os.path.join(OUT_DIR, "matched.csv"), index=False)
     # sensitivity: alarms up to 500 samples before a drift point count as hits

@@ -11,8 +11,12 @@ annotated INSECTS streams with five seeds. The order of the variants
 alternates between runs. The detections are stored as well, to confirm that
 they match the parallel runs.
 
+With --fixed, EADD runs with the validity fixes (experiment_validity.FIXED:
+same CV for the permuted AUCs, alpha-split ASPT, no window overlap).
+
 Outputs:
-  experiments/results_hypotheses/aspt_runtime.csv
+  experiments/results_hypotheses/aspt_runtime.csv        (thesis EADD)
+  experiments/results_hypotheses/aspt_runtime_fixed.csv  (--fixed)
 """
 import json
 import os
@@ -32,8 +36,11 @@ from experiment_hypotheses import ANNOTATED, OUT_DIR, SEEDS_ANNOTATED, make_dete
 VARIANTS = ["aspt", "full", "none"]
 
 
+FIXED_KW = {}
+
+
 def time_run(dataset, seed, test):
-    detector = make_detector("EADD", seed, tau=0.7, test=test)
+    detector = make_detector("EADD", seed, tau=0.7, test=test, **FIXED_KW)
     detections, elapsed = [], 0.0
     for i, (x, _) in enumerate(getattr(ds, dataset)()):
         t0 = time.perf_counter()
@@ -49,8 +56,11 @@ def time_run(dataset, seed, test):
 if __name__ == "__main__":
     # optional arguments dataset:seed rerun only those runs, e.g. when another
     # job shared the machine, and replace them in the existing file
-    redo = {(a.split(":")[0], int(a.split(":")[1])) for a in sys.argv[1:]}
-    out = os.path.join(OUT_DIR, "aspt_runtime.csv")
+    if "--fixed" in sys.argv:
+        from experiment_validity import FIXED
+        FIXED_KW.update(FIXED)
+    redo = {(a.split(":")[0], int(a.split(":")[1])) for a in sys.argv[1:] if not a.startswith("--")}
+    out = os.path.join(OUT_DIR, "aspt_runtime_fixed.csv" if FIXED_KW else "aspt_runtime.csv")
     rows = []
     if redo:
         rows = [r for r in pd.read_csv(out).to_dict("records") if (r["dataset"], r["seed"]) not in redo]
