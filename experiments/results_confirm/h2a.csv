@@ -1,0 +1,9 @@
+source,config,n,reject_rate,upper95,passes
+ar0.5,history10,1000,0.051,0.064,True
+ar0.5,history10_reset,1000,0.042,0.054,True
+ar0.9,history10,1000,0.07,0.0847,False
+ar0.9,history10_reset,1000,0.094,0.1106,False
+iid,history10,1000,0.051,0.064,True
+iid,history10_reset,1000,0.051,0.064,True
+real,history10,1000,0.053,0.0662,True
+real,history10_reset,1000,0.061,0.0749,True
