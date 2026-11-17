@@ -1,175 +1,79 @@
-PolyForm Noncommercial License 1.0.0
-=====================================
+Required Notice: Copyright (c) 2026 Nusrat Begum
+
+These terms apply only to the files listed under "EADD CONTRIBUTIONS" in
+NOTICE. The rest of this repository is under the BSD 3-Clause License in LICENSE.
+The text below is the official, unmodified PolyForm Noncommercial License 1.0.0.
+
+# PolyForm Noncommercial License 1.0.0
 
 <https://polyformproject.org/licenses/noncommercial/1.0.0>
 
-Copyright (c) 2026 Nusrat Begum
+## Acceptance
 
-This license covers ONLY the contributions made by Nusrat Begum to this
-repository. The remainder of the repository (forked from upstream) is
-covered by the BSD 3-Clause License in the file `LICENSE`. See the
-section "Scope of this License" below for the exact file list.
+In order to get any license under these terms, you must agree to them as both strict obligations and conditions to all your licenses.
 
-================================================================================
-TERMS
-================================================================================
+## Copyright License
 
-The licensor grants you the rights set out below subject to acceptance
-of and compliance with these terms.
+The licensor grants you a copyright license for the software to do everything you might do with the software that would otherwise infringe the licensor's copyright in it for any permitted purpose.  However, you may only distribute the software according to [Distribution License](#distribution-license) and make changes or new works based on the software according to [Changes and New Works License](#changes-and-new-works-license).
 
-1. ACCEPTANCE
+## Distribution License
 
-   In order to receive this license, you must agree to its rules.
-   Those rules are both obligations under that agreement and conditions
-   to your license. Do not do anything with the software that triggers
-   a rule you cannot or will not follow.
+The licensor grants you an additional copyright license to distribute copies of the software.  Your license to distribute covers distributing the software with changes and new works permitted by [Changes and New Works License](#changes-and-new-works-license).
 
-2. LICENSES
+## Notices
 
-   2.1 Copyright Grant. The licensor grants you a copyright license for
-   the software to do everything you might do with the software that
-   would otherwise infringe the licensor's copyright in it for any
-   permitted purpose. However, you may only distribute the software
-   according to Distribution License and make changes or new works based
-   on the software according to Changes and New Works License.
+You must ensure that anyone who gets a copy of any part of the software from you also gets a copy of these terms or the URL for them above, as well as copies of any plain-text lines beginning with `Required Notice:` that the licensor provided with the software.  For example:
 
-   2.2 Patent Grant. The licensor grants you a patent license for the
-   software that covers patent claims the licensor can license, or
-   becomes able to license, that you would infringe by using the
-   software for the permitted purposes.
+> Required Notice: Copyright Yoyodyne, Inc. (http://example.com)
 
-3. PERMITTED PURPOSES
+## Changes and New Works License
 
-   You may use the software for any noncommercial purpose, including:
+The licensor grants you an additional copyright license to make changes and new works based on the software for any permitted purpose.
 
-     - personal use, including for research, experiment, and testing;
-     - use by charitable organizations, educational institutions, public
-       research organizations, public safety or health organizations,
-       environmental protection organizations, or government institutions;
-     - personal use for research, experiment, and testing for the
-       benefit of public knowledge, personal study, private entertainment,
-       hobby projects, amateur pursuits, or religious observance, without
-       any anticipated commercial application.
+## Patent License
 
-   Use is "commercial" if it is primarily intended for or directed toward
-   commercial advantage or monetary compensation. Use by a commercial
-   entity for ITS OWN INTERNAL business operations is "commercial" under
-   this license and is NOT permitted.
+The licensor grants you a patent license for the software that covers patent claims the licensor can license, or becomes able to license, that you would infringe by using the software.
 
-4. CHANGES AND NEW WORKS LICENSE
+## Noncommercial Purposes
 
-   The licensor grants you permission to make changes and new works
-   based on the software for any permitted purpose. You may share
-   changes and new works under the same terms as you must share the
-   software under Distribution License.
+Any noncommercial purpose is a permitted purpose.
 
-5. DISTRIBUTION LICENSE
+## Personal Uses
 
-   The licensor grants you a license to distribute the software, or
-   distribute changes or new works based on the software, only under
-   this license. You must include a copy of this license with any copy
-   of the software you distribute. You must retain all copyright,
-   patent, trademark, and attribution notices.
+Personal use for research, experiment, and testing for the benefit of public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application, is use for a permitted purpose.
 
-6. NOTICES
+## Noncommercial Organizations
 
-   You must ensure that anyone who gets a copy of any part of the
-   software from you also gets a copy of these terms.
+Use by any charitable organization, educational institution, public research organization, public safety or health organization, environmental protection organization, or government institution is use for a permitted purpose regardless of the source of funding or obligations resulting from the funding.
 
-   If you modify the software, you must include in any modified copies
-   of the software prominent notices stating that you have modified the
-   software.
+## Fair Use
 
-7. NO OTHER RIGHTS
+You may have "fair use" rights for the software under the law. These terms do not limit them.
 
-   These terms do not allow you to sublicense or transfer any of your
-   licenses to anyone else, or prevent the licensor from granting
-   licenses to anyone else. These terms do not imply any other licenses.
+## No Other Rights
 
-8. PATENT DEFENSE
+These terms do not allow you to sublicense or transfer any of your licenses to anyone else, or prevent the licensor from granting licenses to anyone else.  These terms do not imply any other licenses.
 
-   If you make any written claim that the software infringes or
-   contributes to infringement of any patent, your patent license for
-   the software granted under these terms ends immediately. If your
-   company makes such a claim, your patent license ends immediately
-   for work on behalf of your company.
+## Patent Defense
 
-9. VIOLATIONS
+If you make any written claim that the software infringes or contributes to infringement of any patent, your patent license for the software granted under these terms ends immediately. If your company makes such a claim, your patent license ends immediately for work on behalf of your company.
 
-   The first time you are notified in writing that you have violated
-   any of these terms, or done anything with the software not covered
-   by your license, your license ends immediately. If you have not
-   received notice of violation, your license also ends if a court
-   determines you have violated these terms and you do not bring your
-   use into compliance within 30 days of the determination.
+## Violations
 
-10. NO LIABILITY
+The first time you are notified in writing that you have violated any of these terms, or done anything with the software not covered by your licenses, your licenses can nonetheless continue if you come into full compliance with these terms, and take practical steps to correct past violations, within 32 days of receiving notice.  Otherwise, all your licenses end immediately.
 
-    AS FAR AS THE LAW ALLOWS, THE SOFTWARE COMES AS IS, WITHOUT ANY
-    WARRANTY OR CONDITION, AND THE LICENSOR WILL NOT BE LIABLE TO YOU
-    FOR ANY DAMAGES ARISING OUT OF THESE TERMS OR THE USE OR NATURE
-    OF THE SOFTWARE, UNDER ANY KIND OF LEGAL CLAIM.
+## No Liability
 
-11. DEFINITIONS
+***As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will not be liable to you for any damages arising out of these terms or the use or nature of the software, under any kind of legal claim.***
 
-    The "licensor" is Nusrat Begum.
-    The "software" is the software the licensor makes available under
-    these terms (the files listed in the "Scope" section below).
-    "You" refers to the individual or entity agreeing to these terms.
+## Definitions
 
-================================================================================
-SCOPE OF THIS LICENSE
-================================================================================
+The **licensor** is the individual or entity offering these terms, and the **software** is the software the licensor makes available under these terms.
 
-This license applies ONLY to the following files in this repository,
-which are original contributions by Nusrat Begum:
+**You** refers to the individual or entity agreeing to these terms.
 
-    detectors/eadd.py
-    analyze_comparison.py
-    analyze_hypotheses.py
-    experiment_aspt_runtime.py
-    experiment_aspt_type1.py
-    experiment_comparison.py
-    experiment_hypotheses.py
-    experiment_offsets.py
-    experiment_root_cause.py
-    make_comparison_figures.py
-    make_hypothesis_figures.py
-    synthetic_streams.py
-    legacy/demo.py
-    legacy/demo_eadd.py
-    legacy/experiment1_temporal_patterns.py
-    legacy/experiment2_realworld_benchmark.py
-    legacy/experiment3_explainability.py
-    legacy/experiment4_false_alarms.py
-    legacy/experiment5_multidetector_synthetic.py
-    legacy/experiment6_multidetector_realworld.py
-    legacy/experiment7_explainability_deep_dive.py
-    legacy/experiment_aspt_threshold.py
-    legacy/experiment_camera_ready.py
-    legacy/experiment_d3_lightgbm.py
-    legacy/experiment_realworld_ablation.py
-    legacy/EADD_Thesis_Experiments.ipynb
+**Your company** is any legal entity, sole proprietorship, or other kind of organization that you work for, plus all organizations that have control over, are under the control of, or are under common control with that organization.  **Control** means ownership of substantially all the assets of an entity, or the power to direct its management and policies by vote, contract, or otherwise.  Control can be direct or indirect.
 
-The .py files above carry the PolyForm SPDX header
-(LicenseRef-PolyForm-Noncommercial-1.0.0). Files without a PolyForm
-SPDX header, other than the notebook above, remain under the BSD
-3-Clause License contained in the file `LICENSE` in this directory.
+**Your licenses** are all the licenses granted to you for the software under these terms.
 
-================================================================================
-ATTRIBUTION (when using these files in research)
-================================================================================
-
-@inproceedings{begum2026eadd,
-  author    = {Begum, Nusrat and Yamchote, Phaphontee and
-               Amornbunchornvej, Chainarong and Noraset, Thanapon},
-  title     = {Enhanced Adversarial Drift Detection for MLOps
-               Feature Monitoring},
-  booktitle = {Proc. 23rd International Joint Conference on Computer
-               Science and Software Engineering (JCSSE)},
-  year      = {2026},
-  publisher = {IEEE},
-}
-
-For licensing inquiries beyond PolyForm Noncommercial 1.0.0 (including
-commercial licensing), contact: nusrat.beg@student.mahidol.ac.th
+**Use** means anything you do with the software requiring one of your licenses.

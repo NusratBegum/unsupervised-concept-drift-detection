@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Nusrat Begum <nusrat.beg@student.mahidol.ac.th>
+# SPDX-License-Identifier: LicenseRef-PolyForm-Noncommercial-1.0.0
+# See LICENSE-EADD for full terms. Noncommercial use only.
 """Rerun thesis EADD runs with the current code and compare with the stored detections."""
 import json
 from concurrent.futures import ProcessPoolExecutor
