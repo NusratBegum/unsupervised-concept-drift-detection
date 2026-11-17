@@ -97,8 +97,10 @@ INJECT_BASES = ["Electricity", "NOAAWeather", "PokerHand", "Powersupply", "Rialt
 def injected_stream(kind, dataset, seed):
     """A shuffled real stream (no drift of its own) with known drifts injected at
     5,000/10,000/15,000: 30% of the features (at least one) move by one standard
-    deviation, at once (Abrupt) or linearly over 1,000 samples (Incremental)."""
-    assert kind in ("Abrupt", "Incremental"), kind
+    deviation, at once (Abrupt), linearly over 1,000 samples (Incremental), or by
+    drawing each sample from the new concept with a probability rising over
+    1,000 samples (Gradual)."""
+    assert kind in ("Abrupt", "Incremental", "Gradual"), kind
     X = shuffled_stream(dataset, seed).X.copy()
     rng = np.random.default_rng([seed, 13])
     k = max(1, round(0.3 * X.shape[1]))
@@ -107,8 +109,12 @@ def injected_stream(kind, dataset, seed):
     for j, p in enumerate(POINTS, 1):
         if kind == "Abrupt":
             level[p:] = j
-        else:
+        elif kind == "Incremental":
             level[p:p + WIDTH] = (j - 1) + np.arange(1, WIDTH + 1) / WIDTH
+            level[p + WIDTH:] = j
+        else:
+            new = rng.random(WIDTH) < np.arange(1, WIDTH + 1) / WIDTH
+            level[p:p + WIDTH] = np.where(new, j, j - 1)
             level[p + WIDTH:] = j
     sd = X[:POINTS[0], feats].std(axis=0)
     X[:, feats] += level[:, None] * np.where(sd > 0, sd, 1.0)
@@ -140,6 +146,9 @@ if __name__ == "__main__":
     assert not np.allclose(a.X, b.X) and np.allclose(SyntheticStream("Abrupt", 1).X, a.X)
     assert not np.allclose(SyntheticStream("Stable", 1).X[:, K:], a.X[:, K:])  # kinds do not share noise
     assert SyntheticStream("Stable", 0).drifts == [] and len(list(SyntheticStream("Gradual", 0))) == N
+    g = injected_stream("Gradual", "NOAAWeather", 0)
+    lv = (g.X - shuffled_stream("NOAAWeather", 0).X)[:, g.shifted[0]]
+    assert set(np.round(lv / lv[-1] * 3).astype(int)) == {0, 1, 2, 3}  # only whole levels
     x = ar_stream(0.9, 0).X
     assert abs(np.corrcoef(x[1:, 0], x[:-1, 0])[0, 1] - 0.9) < 0.02 and abs(x.std() - 1) < 0.05
     print("ok")
