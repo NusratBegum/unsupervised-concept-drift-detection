@@ -31,9 +31,23 @@ INJECTED = [f"Inject{k}_{b}" for b in INJECT_BASES for k in ("Abrupt", "Incremen
 GROUPS = {"annotated": ANNOTATED, "synthetic": SYNTHETIC, "injected": INJECTED}
 
 
+def matched():
+    """Same check interval and CV for EADD and D3: the main benchmark checks EADD every 50
+    samples (5-fold) but D3 every 200 (2-fold), so delays there are not comparable."""
+    from experiment_validity import FIXED
+    d3 = lambda det, step, k: dict(detector=det, tau=0.7, eadd_kwargs=dict(
+        n_reference_samples=500, recent_samples_proportion=0.4, step=step, n_folds=k))
+    return {
+        "EADD (fixed, every 200)": dict(detector="EADD", tau=0.7, test="aspt", freq=200,
+                                        eadd_kwargs=dict(FIXED, n_folds=2)),
+        "D3 (500/200, every 50)": d3("D3", 50, 5),
+        "D3-LightGBM (500/200, every 50)": d3("D3-LightGBM", 50, 5),
+    }
+
+
 def jobs():
     out = []
-    for name, f in detectors().items():
+    for name, f in {**detectors(), **matched()}.items():
         for group, streams in GROUPS.items():
             out += [dict(part="annotated", group=group, dataset=s, seed=seed, variant=name, **f)
                     for s in streams for seed in SEEDS_ANNOTATED]
