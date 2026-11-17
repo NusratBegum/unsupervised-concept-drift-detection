@@ -41,6 +41,7 @@ Thesis: Feature Drift Detection Techniques via Adversarial Validation
 Mahidol University, 2026
 """
 
+from collections import deque
 from typing import Optional, Dict, List, Tuple
 import numpy as np
 from sklearn.model_selection import StratifiedGroupKFold, StratifiedKFold
@@ -111,6 +112,16 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         blocks of b samples that are consecutive in time; the CV keeps a
         block in one fold and the permutation test swaps whole blocks, so
         autocorrelated neighbours cannot leak between train and test.
+    null : str
+        "permutation" (thesis): the null AUCs come from shuffled window
+        labels, which assumes exchangeable samples. "history": the null AUCs
+        are those of earlier windows of the same stream (contiguous, as the
+        current window) against the reservoir, so the null includes the
+        stream's normal variation, e.g. autocorrelation. Needs
+        reservoir_after_current.
+    history_size, history_stride : int
+        Samples kept for the history null, and the step between the starts
+        of its windows.
     """
 
     def __init__(
@@ -131,6 +142,9 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         perm_n_folds: Optional[int] = 2,
         aspt_alpha_split: Optional[float] = None,
         block_size: int = 1,
+        null: str = "permutation",
+        history_size: int = 5000,
+        history_stride: int = 50,
     ):
         super().__init__(seed)
         self.n_reference_samples = n_reference_samples
@@ -149,6 +163,11 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         assert aspt_alpha_split is None or 0 < aspt_alpha_split < 1
         self.aspt_alpha_split = aspt_alpha_split
         self.block_size = block_size
+        assert null in ("permutation", "history"), null
+        assert null == "permutation" or reservoir_after_current, "history null needs reservoir_after_current"
+        self.null = null
+        self.history_stride = history_stride
+        self.history = deque(maxlen=history_size)  # samples since the last reset, with arrival time
         self.n_updates = 0
 
         self.reference_window: List[np.ndarray] = []
@@ -191,6 +210,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         self.samples_seen += 1
         self.steps_since_check += 1
 
+        self.history.append(feature_vector)
         if len(self.reference_window) < self.n_reference_samples:
             self.reference_window.append(feature_vector)
             return False
@@ -260,6 +280,7 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
 
         # Adapt
         self.reference_window = list(self.current_window)
+        self.history = deque(self.current_window, maxlen=self.history.maxlen)
         self.current_window = []
         self.samples_seen = len(self.reference_window)
         self.steps_since_check = 0
@@ -278,12 +299,17 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
             alpha_final = alpha - alpha_early
         count_ge = 0
         early = self.permutation_test == "aspt"
-        for i in range(1, self.n_permutations + 1):
-            y_perm = self._permute_labels(y, groups)
-            auc_perm = self._cv_auc(X, y_perm, self.perm_n_folds,
-                                    int(self.perm_rng.integers(0, 2**31)), groups)
+        if self.null == "history":
+            draw, n_draws = self._history_null()
+        else:
+            n_draws = self.n_permutations
+            draw = lambda: self._cv_auc(X, self._permute_labels(y, groups), self.perm_n_folds,
+                                        int(self.perm_rng.integers(0, 2**31)), groups)
+        self.last_aspt_permutations = 0
+        for i in range(1, n_draws + 1):
+            auc_perm = draw()
             if auc_perm >= actual_auc: count_ge += 1
-            if not early or i < self.min_permutations or i == self.n_permutations:
+            if not early or i < self.min_permutations or i == n_draws:
                 continue
             # Early reject: no exceedance in the first i draws, which happens
             # with probability 1/(i+1) under H0.
@@ -299,10 +325,27 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
                 self.n_early_stops += 1
                 self.last_aspt_reject = False
                 return (count_ge + 1) / (i + 1)
-        self.last_aspt_permutations = self.n_permutations
-        p = (count_ge + 1) / (self.n_permutations + 1)
+        self.last_aspt_permutations = n_draws
+        p = (count_ge + 1) / (n_draws + 1)
         self.last_aspt_reject = p < alpha if self.aspt_alpha_split is None else p <= alpha_final
         return p
+
+    def _history_null(self):
+        """Draws of the AUC of an earlier window of the same stream against the reservoir."""
+        n = self.n_current_samples
+        past = np.array(self.history)[:-n]  # everything before the current window
+        starts = np.arange(0, len(past) - n + 1, self.history_stride)
+        starts = self.perm_rng.permutation(starts)[:self.n_permutations]
+        ref = np.array(self.reference_window)
+        it = iter(starts)
+
+        def draw():
+            w = past[next(it):][:n]
+            r = ref[~np.isin(ref[:, -1], w[:, -1])]  # a window sample is not also a reference sample
+            X = np.vstack([r[:, :-1], w[:, :-1]])
+            y = np.concatenate([np.zeros(len(r)), np.ones(len(w))])
+            return self._cv_auc(X, y, self.perm_n_folds, int(self.perm_rng.integers(0, 2**31)))
+        return draw, len(starts)
 
     def _time_blocks(self, t_ref: np.ndarray, t_cur: np.ndarray) -> Optional[np.ndarray]:
         """Block id per sample: consecutive (in time) runs of block_size within each window."""

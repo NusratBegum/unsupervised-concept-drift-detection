@@ -167,3 +167,40 @@ class EADDValidityOptionsTest(unittest.TestCase):
         self.assertEqual(0, sum(drifts[:1500]))
         self.assertGreaterEqual(sum(drifts[1500:1800]), 1)
         self.assertEqual(3, len(detector.last_shap_importances))  # the time column is not a feature
+
+
+class EADDHistoryNullTest(unittest.TestCase):
+    def setUp(self) -> None:
+        warnings.filterwarnings("ignore", category=UserWarning)
+        self.rng = np.random.default_rng(0)
+
+    def make(self, **kw):
+        return ExplainableAdversarialDriftDetector(
+            n_reference_samples=200, n_current_samples=100, monitoring_frequency=50,
+            reservoir_after_current=True, perm_n_folds=None, aspt_alpha_split=1 / 3,
+            null="history", history_size=3000, history_stride=50, seed=0, **kw)
+
+    def test_needs_overlap_free_reservoir(self):
+        with self.assertRaises(AssertionError):
+            ExplainableAdversarialDriftDetector(null="history")
+
+    def test_detects_abrupt_shift(self):
+        X = np.vstack([self.rng.normal(0, 1, size=(3000, 3)), self.rng.normal(2, 1, size=(1000, 3))])
+        drifts = feed(self.make(), X)
+        self.assertEqual(0, sum(drifts[:3000]))
+        self.assertGreaterEqual(sum(drifts[3000:3400]), 1)
+
+    def test_history_restarts_after_a_detection(self):
+        detector = self.make()
+        X = np.vstack([self.rng.normal(0, 1, size=(3000, 3)), self.rng.normal(2, 1, size=(1000, 3))])
+        drifts = feed(detector, X)
+        last = max(i for i, d in enumerate(drifts) if d)
+        self.assertEqual(len(X) - last - 1 + 100, len(detector.history))
+
+    def test_quiet_on_autocorrelated_stream_without_drift(self):
+        # AR(1) with rho 0.9: the permutation null alarms here, the history null should not often
+        e = self.rng.normal(size=(4000, 3)) * np.sqrt(1 - 0.81)
+        X = np.zeros((4000, 3))
+        for t in range(1, 4000):
+            X[t] = 0.9 * X[t - 1] + e[t]
+        self.assertLessEqual(sum(feed(self.make(), X)), 1)

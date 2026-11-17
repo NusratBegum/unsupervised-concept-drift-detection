@@ -38,8 +38,10 @@ from synthetic_streams import ar_stream, shuffled_stream
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "experiments", "results_validity")
 REPS = 300
 CONFIGS = {"thesis": dict(perm_n_folds=2), "matched": dict(perm_n_folds=None),
-           "blocked": dict(perm_n_folds=None, block_size=20)}
-SOURCES = {"iid": ("iid", None), "real": ("real", "InsectsAbruptBalanced"), "ar0.9": ("ar", 0.9)}
+           "blocked": dict(perm_n_folds=None, block_size=20),
+           "history": dict(perm_n_folds=None, reservoir_after_current=True, null="history")}
+SOURCES = {"iid": ("iid", None), "real": ("real", "InsectsAbruptBalanced"), "ar0.9": ("ar", 0.9),
+           "ar0.5": ("ar", 0.5), "ar0.99": ("ar", 0.99)}
 NULL_STREAMS = ["SynthStable", "AR0.5", "AR0.9", "AR0.99",
                 "ShuffledInsectsAbruptBalanced", "ShuffledElectricity", "ShuffledNOAAWeather",
                 "ShuffledPowersupply", "ShuffledOutdoorObjects"]
@@ -58,13 +60,17 @@ def window_pair(source, rep):
         X = ar_stream(arg, rep, n=5200).X
     t_ref = np.sort(rng.choice(5000, 500, replace=False))
     t_cur = np.arange(5000, 5200)
-    return X[t_ref], X[t_cur], t_ref.astype(float), t_cur.astype(float)
+    return X[t_ref], X[t_cur], t_ref.astype(float), t_cur.astype(float), X
 
 
 def p_job(job):
-    ref, cur, t_ref, t_cur = window_pair(job["source"], job["rep"])
+    ref, cur, t_ref, t_cur, X = window_pair(job["source"], job["rep"])
     det = ExplainableAdversarialDriftDetector(n_permutations=99, permutation_test="full",
                                               seed=job["rep"], **CONFIGS[job["config"]])
+    if det.null == "history":  # the detector's state at t = 5,200, with arrival times
+        Xt = np.column_stack([X, np.arange(len(X))])
+        det.history.extend(Xt)
+        det.reference_window = list(Xt[t_ref.astype(int)])
     groups = det._time_blocks(t_ref, t_cur)
     t0 = time.perf_counter()
     auc, _ = det._adversarial_auc_with_preds(ref, cur, groups)
@@ -78,6 +84,8 @@ def detectors():
         "EADD (fixed)": dict(detector="EADD", tau=0.7, test="aspt", eadd_kwargs=FIXED),
         "EADD (fixed, blocked)": dict(detector="EADD", tau=0.7, test="aspt",
                                       eadd_kwargs=dict(FIXED, block_size=20)),
+        "EADD (fixed, history null)": dict(detector="EADD", tau=0.7, test="aspt",
+                                           eadd_kwargs=dict(FIXED, null="history")),
         "D3 (authors)": dict(detector="D3", tau=0.7),
         "D3 (500/200, every 200)": dict(detector="D3", tau=0.7, eadd_kwargs=dict(
             n_reference_samples=500, recent_samples_proportion=0.4, step=200, n_folds=2)),
@@ -123,7 +131,8 @@ if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     if "P" in a.part:
         jobs = [dict(source=s, config=c, rep=r) for s in SOURCES for c in CONFIGS for r in range(REPS)
-                if not (s != "ar0.9" and c == "blocked")]
+                if not (s != "ar0.9" and c == "blocked")
+                and not (s in ("ar0.5", "ar0.99") and c not in ("matched", "history"))]
         run(jobs, p_job, os.path.join(OUT_DIR, "pvalues.jsonl"))
     if "F" in a.part:
         run(f_jobs(), run_job, os.path.join(OUT_DIR, "runs.jsonl"))
