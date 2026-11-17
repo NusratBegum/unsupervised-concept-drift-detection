@@ -2,10 +2,14 @@ group,dataset,variant,recall,mtd,fa,delay
 annotated,InsectsAbruptBalanced,BNDM,0.4,347.0,9.0,117.5
 annotated,InsectsAbruptBalanced,CSDDM,1.0,180.52,33.4,180.52
 annotated,InsectsAbruptBalanced,"D3 (500/200, every 200)",0.76,251.68,5.2,171.6
+annotated,InsectsAbruptBalanced,"D3 (500/200, every 50)",0.8,180.35999999999999,6.0,100.45
 annotated,InsectsAbruptBalanced,D3 (authors),0.9199999999999999,129.12,145.6,95.91
 annotated,InsectsAbruptBalanced,"D3-LightGBM (500/200, every 200)",0.8,204.11999999999998,4.8,130.15
+annotated,InsectsAbruptBalanced,"D3-LightGBM (500/200, every 50)",0.8,172.2,6.0,90.25
 annotated,InsectsAbruptBalanced,EADD (fixed),0.8400000000000001,179.95999999999998,6.0,116.34
 annotated,InsectsAbruptBalanced,"EADD (fixed, blocked)",0.8400000000000001,185.95999999999998,6.0,123.84
+annotated,InsectsAbruptBalanced,"EADD (fixed, every 200)",0.8,264.4,6.0,205.5
+annotated,InsectsAbruptBalanced,"EADD (fixed, history null)",0.6,253.0,6.0,88.33333333333334
 annotated,InsectsAbruptBalanced,EADD (thesis),0.6,265.0,6.0,108.33333333333333
 annotated,InsectsAbruptBalanced,IBDD,1.0,146.6,182.0,146.6
 annotated,InsectsAbruptBalanced,OCDD,1.0,342.2,99.0,342.2
@@ -14,10 +18,14 @@ annotated,InsectsAbruptBalanced,UDetect,0.0,500.0,1.0,
 annotated,InsectsGradualBalanced,BNDM,0.0,500.0,6.0,
 annotated,InsectsGradualBalanced,CSDDM,1.0,427.4,21.6,427.4
 annotated,InsectsGradualBalanced,"D3 (500/200, every 200)",0.0,500.0,4.0,
+annotated,InsectsGradualBalanced,"D3 (500/200, every 50)",0.0,500.0,5.0,
 annotated,InsectsGradualBalanced,D3 (authors),0.8,213.4,66.6,141.75
 annotated,InsectsGradualBalanced,"D3-LightGBM (500/200, every 200)",0.0,500.0,4.0,
+annotated,InsectsGradualBalanced,"D3-LightGBM (500/200, every 50)",0.0,500.0,5.4,
 annotated,InsectsGradualBalanced,EADD (fixed),0.0,500.0,6.0,
 annotated,InsectsGradualBalanced,"EADD (fixed, blocked)",0.0,500.0,6.0,
+annotated,InsectsGradualBalanced,"EADD (fixed, every 200)",0.0,500.0,5.0,
+annotated,InsectsGradualBalanced,"EADD (fixed, history null)",1.0,71.0,3.0,71.0
 annotated,InsectsGradualBalanced,EADD (thesis),0.0,500.0,5.0,
 annotated,InsectsGradualBalanced,IBDD,1.0,57.0,67.0,57.0
 annotated,InsectsGradualBalanced,OCDD,1.0,471.0,46.0,471.0
@@ -26,10 +34,14 @@ annotated,InsectsGradualBalanced,UDetect,0.0,500.0,0.0,
 annotated,InsectsIncrementalAbruptBalanced,BNDM,0.5,472.5,28.0,445.0
 annotated,InsectsIncrementalAbruptBalanced,CSDDM,1.0,311.8,79.8,311.8
 annotated,InsectsIncrementalAbruptBalanced,"D3 (500/200, every 200)",1.0,163.6,6.2,163.6
+annotated,InsectsIncrementalAbruptBalanced,"D3 (500/200, every 50)",1.0,99.4,10.4,99.4
 annotated,InsectsIncrementalAbruptBalanced,D3 (authors),1.0,22.6,235.6,22.6
 annotated,InsectsIncrementalAbruptBalanced,"D3-LightGBM (500/200, every 200)",1.0,154.9,5.4,154.9
+annotated,InsectsIncrementalAbruptBalanced,"D3-LightGBM (500/200, every 50)",1.0,95.2,13.4,95.2
 annotated,InsectsIncrementalAbruptBalanced,EADD (fixed),1.0,188.0,21.0,188.0
 annotated,InsectsIncrementalAbruptBalanced,"EADD (fixed, blocked)",1.0,253.0,19.4,253.0
+annotated,InsectsIncrementalAbruptBalanced,"EADD (fixed, every 200)",1.0,323.0,15.4,323.0
+annotated,InsectsIncrementalAbruptBalanced,"EADD (fixed, history null)",0.5,281.3,15.8,63.75
 annotated,InsectsIncrementalAbruptBalanced,EADD (thesis),0.4,323.6,13.0,59.0
 annotated,InsectsIncrementalAbruptBalanced,IBDD,1.0,34.5,351.0,34.5
 annotated,InsectsIncrementalAbruptBalanced,OCDD,1.0,283.0,156.0,283.0
@@ -38,10 +50,14 @@ annotated,InsectsIncrementalAbruptBalanced,UDetect,1.0,269.5,21.0,269.5
 annotated,InsectsIncrementalReoccurringBalanced,BNDM,0.5,441.0,29.0,382.0
 annotated,InsectsIncrementalReoccurringBalanced,CSDDM,1.0,344.3,77.6,344.3
 annotated,InsectsIncrementalReoccurringBalanced,"D3 (500/200, every 200)",0.9,265.1,8.0,231.1
+annotated,InsectsIncrementalReoccurringBalanced,"D3 (500/200, every 50)",1.0,272.5,13.4,272.5
 annotated,InsectsIncrementalReoccurringBalanced,D3 (authors),0.9,258.7,230.8,246.4
 annotated,InsectsIncrementalReoccurringBalanced,"D3-LightGBM (500/200, every 200)",0.8,255.9,8.2,197.5
+annotated,InsectsIncrementalReoccurringBalanced,"D3-LightGBM (500/200, every 50)",1.0,246.1,14.2,246.1
 annotated,InsectsIncrementalReoccurringBalanced,EADD (fixed),1.0,313.0,21.2,313.0
 annotated,InsectsIncrementalReoccurringBalanced,"EADD (fixed, blocked)",0.8,231.0,20.6,182.2
+annotated,InsectsIncrementalReoccurringBalanced,"EADD (fixed, every 200)",0.9,169.9,16.8,123.4
+annotated,InsectsIncrementalReoccurringBalanced,"EADD (fixed, history null)",0.4,367.4,13.6,168.5
 annotated,InsectsIncrementalReoccurringBalanced,EADD (thesis),1.0,118.0,11.4,118.0
 annotated,InsectsIncrementalReoccurringBalanced,IBDD,1.0,27.0,492.0,27.0
 annotated,InsectsIncrementalReoccurringBalanced,OCDD,1.0,283.0,156.0,283.0
@@ -50,10 +66,14 @@ annotated,InsectsIncrementalReoccurringBalanced,UDetect,0.5,429.0,24.0,358.0
 injected,InjectAbrupt_Electricity,BNDM,1.0,134.0,0.0,134.0
 injected,InjectAbrupt_Electricity,CSDDM,0.6,357.93333333333334,4.4,312.76666666666665
 injected,InjectAbrupt_Electricity,"D3 (500/200, every 200)",0.8,270.2,0.0,212.1
+injected,InjectAbrupt_Electricity,"D3 (500/200, every 50)",1.0,149.8,0.0,149.8
 injected,InjectAbrupt_Electricity,D3 (authors),0.6666666666666667,316.66666666666663,35.0,235.83333333333331
 injected,InjectAbrupt_Electricity,"D3-LightGBM (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_Electricity,"D3-LightGBM (500/200, every 50)",1.0,119.2,0.0,119.2
 injected,InjectAbrupt_Electricity,EADD (fixed),1.0,109.0,0.0,109.0
 injected,InjectAbrupt_Electricity,"EADD (fixed, blocked)",1.0,115.66666666666667,0.0,115.66666666666667
+injected,InjectAbrupt_Electricity,"EADD (fixed, every 200)",1.0,159.00000000000003,0.0,159.00000000000003
+injected,InjectAbrupt_Electricity,"EADD (fixed, history null)",1.0,109.0,0.0,109.0
 injected,InjectAbrupt_Electricity,EADD (thesis),1.0,125.66666666666667,0.0,125.66666666666667
 injected,InjectAbrupt_Electricity,IBDD,0.9333333333333332,245.2,59.8,234.3
 injected,InjectAbrupt_Electricity,OCDD,1.0,499.0,36.0,499.0
@@ -62,10 +82,14 @@ injected,InjectAbrupt_Electricity,UDetect,0.0,500.0,0.0,
 injected,InjectAbrupt_InsectsIncrementalBalanced,BNDM,1.0,130.13333333333335,0.0,130.13333333333335
 injected,InjectAbrupt_InsectsIncrementalBalanced,CSDDM,0.9333333333333332,238.0,10.6,162.26666666666665
 injected,InjectAbrupt_InsectsIncrementalBalanced,"D3 (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_InsectsIncrementalBalanced,"D3 (500/200, every 50)",1.0,112.4,0.0,112.4
 injected,InjectAbrupt_InsectsIncrementalBalanced,D3 (authors),1.0,91.93333333333334,57.4,91.93333333333334
 injected,InjectAbrupt_InsectsIncrementalBalanced,"D3-LightGBM (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_InsectsIncrementalBalanced,"D3-LightGBM (500/200, every 50)",1.0,102.2,0.0,102.2
 injected,InjectAbrupt_InsectsIncrementalBalanced,EADD (fixed),1.0,99.0,0.0,99.0
 injected,InjectAbrupt_InsectsIncrementalBalanced,"EADD (fixed, blocked)",1.0,105.66666666666667,0.0,105.66666666666667
+injected,InjectAbrupt_InsectsIncrementalBalanced,"EADD (fixed, every 200)",1.0,132.33333333333334,0.0,132.33333333333334
+injected,InjectAbrupt_InsectsIncrementalBalanced,"EADD (fixed, history null)",1.0,99.0,0.0,99.0
 injected,InjectAbrupt_InsectsIncrementalBalanced,EADD (thesis),1.0,109.0,0.0,109.0
 injected,InjectAbrupt_InsectsIncrementalBalanced,IBDD,1.0,85.73333333333332,102.0,85.73333333333332
 injected,InjectAbrupt_InsectsIncrementalBalanced,OCDD,1.0,499.0,36.0,499.0
@@ -74,10 +98,14 @@ injected,InjectAbrupt_InsectsIncrementalBalanced,UDetect,0.0,1500.0,0.0,
 injected,InjectAbrupt_NOAAWeather,BNDM,0.8666666666666666,162.26666666666668,2.0,105.76666666666668
 injected,InjectAbrupt_NOAAWeather,CSDDM,0.6,289.4,3.6,147.75
 injected,InjectAbrupt_NOAAWeather,"D3 (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_NOAAWeather,"D3 (500/200, every 50)",1.0,115.8,0.0,115.8
 injected,InjectAbrupt_NOAAWeather,D3 (authors),1.0,23.866666666666667,55.0,23.866666666666667
 injected,InjectAbrupt_NOAAWeather,"D3-LightGBM (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_NOAAWeather,"D3-LightGBM (500/200, every 50)",1.0,109.0,0.0,109.0
 injected,InjectAbrupt_NOAAWeather,EADD (fixed),1.0,99.0,0.0,99.0
 injected,InjectAbrupt_NOAAWeather,"EADD (fixed, blocked)",1.0,112.33333333333334,0.0,112.33333333333334
+injected,InjectAbrupt_NOAAWeather,"EADD (fixed, every 200)",1.0,145.66666666666669,0.0,145.66666666666669
+injected,InjectAbrupt_NOAAWeather,"EADD (fixed, history null)",1.0,99.0,0.0,99.0
 injected,InjectAbrupt_NOAAWeather,EADD (thesis),1.0,119.0,0.0,119.0
 injected,InjectAbrupt_NOAAWeather,IBDD,1.0,74.86666666666667,69.8,74.86666666666667
 injected,InjectAbrupt_NOAAWeather,OCDD,1.0,499.0,32.0,499.0
@@ -86,10 +114,14 @@ injected,InjectAbrupt_NOAAWeather,UDetect,0.0,500.0,0.0,
 injected,InjectAbrupt_PokerHand,BNDM,1.0,142.73333333333335,0.0,142.73333333333335
 injected,InjectAbrupt_PokerHand,CSDDM,0.4666666666666667,431.4,5.0,371.0
 injected,InjectAbrupt_PokerHand,"D3 (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_PokerHand,"D3 (500/200, every 50)",1.0,122.6,0.0,122.6
 injected,InjectAbrupt_PokerHand,D3 (authors),1.0,53.6,69.8,53.6
 injected,InjectAbrupt_PokerHand,"D3-LightGBM (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_PokerHand,"D3-LightGBM (500/200, every 50)",1.0,112.4,0.0,112.4
 injected,InjectAbrupt_PokerHand,EADD (fixed),1.0,95.66666666666666,0.0,95.66666666666666
 injected,InjectAbrupt_PokerHand,"EADD (fixed, blocked)",1.0,109.0,0.0,109.0
+injected,InjectAbrupt_PokerHand,"EADD (fixed, every 200)",1.0,132.33333333333334,0.0,132.33333333333334
+injected,InjectAbrupt_PokerHand,"EADD (fixed, history null)",1.0,95.66666666666666,0.0,95.66666666666666
 injected,InjectAbrupt_PokerHand,EADD (thesis),1.0,112.33333333333334,0.0,112.33333333333334
 injected,InjectAbrupt_PokerHand,IBDD,1.0,83.6,82.8,83.6
 injected,InjectAbrupt_PokerHand,OCDD,1.0,499.0,36.0,499.0
@@ -98,10 +130,14 @@ injected,InjectAbrupt_PokerHand,UDetect,0.0,500.0,0.0,
 injected,InjectAbrupt_Powersupply,BNDM,1.0,201.73333333333335,0.0,201.73333333333335
 injected,InjectAbrupt_Powersupply,CSDDM,1.0,172.06666666666666,7.4,172.06666666666666
 injected,InjectAbrupt_Powersupply,"D3 (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_Powersupply,"D3 (500/200, every 50)",1.0,105.6,0.0,105.6
 injected,InjectAbrupt_Powersupply,D3 (authors),1.0,46.13333333333334,35.6,46.13333333333334
 injected,InjectAbrupt_Powersupply,"D3-LightGBM (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_Powersupply,"D3-LightGBM (500/200, every 50)",1.0,109.0,0.0,109.0
 injected,InjectAbrupt_Powersupply,EADD (fixed),1.0,99.0,0.0,99.0
 injected,InjectAbrupt_Powersupply,"EADD (fixed, blocked)",1.0,99.0,0.0,99.0
+injected,InjectAbrupt_Powersupply,"EADD (fixed, every 200)",1.0,132.33333333333334,0.0,132.33333333333334
+injected,InjectAbrupt_Powersupply,"EADD (fixed, history null)",1.0,99.0,0.0,99.0
 injected,InjectAbrupt_Powersupply,EADD (thesis),1.0,99.0,0.0,99.0
 injected,InjectAbrupt_Powersupply,IBDD,1.0,69.93333333333334,92.4,69.93333333333334
 injected,InjectAbrupt_Powersupply,OCDD,1.0,499.0,36.0,499.0
@@ -110,10 +146,14 @@ injected,InjectAbrupt_Powersupply,UDetect,0.0,500.0,0.0,
 injected,InjectAbrupt_RialtoBridgeTimelapse,BNDM,1.0,109.26666666666668,0.0,109.26666666666668
 injected,InjectAbrupt_RialtoBridgeTimelapse,CSDDM,1.0,127.73333333333332,6.0,127.73333333333332
 injected,InjectAbrupt_RialtoBridgeTimelapse,"D3 (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_RialtoBridgeTimelapse,"D3 (500/200, every 50)",1.0,109.0,0.0,109.0
 injected,InjectAbrupt_RialtoBridgeTimelapse,D3 (authors),0.9333333333333332,95.73333333333333,44.2,63.06666666666666
 injected,InjectAbrupt_RialtoBridgeTimelapse,"D3-LightGBM (500/200, every 200)",1.0,179.0,0.0,179.0
+injected,InjectAbrupt_RialtoBridgeTimelapse,"D3-LightGBM (500/200, every 50)",1.0,109.0,0.0,109.0
 injected,InjectAbrupt_RialtoBridgeTimelapse,EADD (fixed),1.0,99.0,0.0,99.0
 injected,InjectAbrupt_RialtoBridgeTimelapse,"EADD (fixed, blocked)",1.0,105.66666666666667,0.0,105.66666666666667
+injected,InjectAbrupt_RialtoBridgeTimelapse,"EADD (fixed, every 200)",1.0,132.33333333333334,0.0,132.33333333333334
+injected,InjectAbrupt_RialtoBridgeTimelapse,"EADD (fixed, history null)",1.0,99.0,0.0,99.0
 injected,InjectAbrupt_RialtoBridgeTimelapse,EADD (thesis),1.0,102.33333333333334,0.0,102.33333333333334
 injected,InjectAbrupt_RialtoBridgeTimelapse,IBDD,1.0,4.066666666666667,147.2,4.066666666666667
 injected,InjectAbrupt_RialtoBridgeTimelapse,OCDD,1.0,499.0,36.0,499.0
@@ -122,10 +162,14 @@ injected,InjectAbrupt_RialtoBridgeTimelapse,UDetect,0.3333333333333333,347.26666
 injected,InjectIncremental_Electricity,BNDM,1.0,287.1333333333333,3.0,287.1333333333333
 injected,InjectIncremental_Electricity,CSDDM,0.8,719.5333333333333,4.8,600.5666666666666
 injected,InjectIncremental_Electricity,"D3 (500/200, every 200)",0.0,1500.0,0.0,
+injected,InjectIncremental_Electricity,"D3 (500/200, every 50)",0.0,1500.0,0.0,
 injected,InjectIncremental_Electricity,D3 (authors),0.8666666666666666,599.2666666666667,34.4,499.8333333333333
 injected,InjectIncremental_Electricity,"D3-LightGBM (500/200, every 200)",1.0,243.2,5.6,243.2
+injected,InjectIncremental_Electricity,"D3-LightGBM (500/200, every 50)",1.0,159.0,6.0,159.0
 injected,InjectIncremental_Electricity,EADD (fixed),1.0,155.66666666666669,6.0,155.66666666666669
 injected,InjectIncremental_Electricity,"EADD (fixed, blocked)",1.0,155.66666666666669,6.0,155.66666666666669
+injected,InjectIncremental_Electricity,"EADD (fixed, every 200)",1.0,265.6666666666667,6.0,265.6666666666667
+injected,InjectIncremental_Electricity,"EADD (fixed, history null)",1.0,289.0,0.0,289.0
 injected,InjectIncremental_Electricity,EADD (thesis),1.0,165.66666666666669,4.6,165.66666666666669
 injected,InjectIncremental_Electricity,IBDD,1.0,307.0,58.6,307.0
 injected,InjectIncremental_Electricity,OCDD,1.0,499.0,36.0,499.0
@@ -134,10 +178,14 @@ injected,InjectIncremental_Electricity,UDetect,0.0,1500.0,0.0,
 injected,InjectIncremental_InsectsIncrementalBalanced,BNDM,1.0,319.2,3.0,319.2
 injected,InjectIncremental_InsectsIncrementalBalanced,CSDDM,0.9333333333333332,391.06666666666666,13.2,315.3333333333333
 injected,InjectIncremental_InsectsIncrementalBalanced,"D3 (500/200, every 200)",0.9333333333333332,574.7333333333333,1.6,497.0
+injected,InjectIncremental_InsectsIncrementalBalanced,"D3 (500/200, every 50)",0.9333333333333332,465.5333333333333,2.6,387.6
 injected,InjectIncremental_InsectsIncrementalBalanced,D3 (authors),1.0,338.3333333333333,55.2,338.3333333333333
 injected,InjectIncremental_InsectsIncrementalBalanced,"D3-LightGBM (500/200, every 200)",1.0,269.8,6.0,269.8
+injected,InjectIncremental_InsectsIncrementalBalanced,"D3-LightGBM (500/200, every 50)",1.0,179.4,6.0,179.4
 injected,InjectIncremental_InsectsIncrementalBalanced,EADD (fixed),1.0,169.0,6.0,169.0
 injected,InjectIncremental_InsectsIncrementalBalanced,"EADD (fixed, blocked)",1.0,169.0,6.0,169.0
+injected,InjectIncremental_InsectsIncrementalBalanced,"EADD (fixed, every 200)",1.0,265.6666666666667,6.0,265.6666666666667
+injected,InjectIncremental_InsectsIncrementalBalanced,"EADD (fixed, history null)",1.0,272.3333333333333,0.0,272.3333333333333
 injected,InjectIncremental_InsectsIncrementalBalanced,EADD (thesis),1.0,189.0,3.0,189.0
 injected,InjectIncremental_InsectsIncrementalBalanced,IBDD,1.0,221.86666666666665,100.2,221.86666666666665
 injected,InjectIncremental_InsectsIncrementalBalanced,OCDD,1.0,499.0,36.0,499.0
@@ -146,10 +194,14 @@ injected,InjectIncremental_InsectsIncrementalBalanced,UDetect,0.0,1500.0,0.0,
 injected,InjectIncremental_NOAAWeather,BNDM,1.0,429.7333333333333,3.0,429.7333333333333
 injected,InjectIncremental_NOAAWeather,CSDDM,0.7333333333333333,860.9333333333334,3.8,631.1666666666666
 injected,InjectIncremental_NOAAWeather,"D3 (500/200, every 200)",1.0,296.6,5.8,296.6
+injected,InjectIncremental_NOAAWeather,"D3 (500/200, every 50)",1.0,216.8,6.0,216.8
 injected,InjectIncremental_NOAAWeather,D3 (authors),1.0,96.86666666666667,63.4,96.86666666666667
 injected,InjectIncremental_NOAAWeather,"D3-LightGBM (500/200, every 200)",1.0,378.2,3.6,378.2
+injected,InjectIncremental_NOAAWeather,"D3-LightGBM (500/200, every 50)",1.0,278.2,4.8,278.2
 injected,InjectIncremental_NOAAWeather,EADD (fixed),1.0,252.33333333333334,4.6,252.33333333333334
 injected,InjectIncremental_NOAAWeather,"EADD (fixed, blocked)",1.0,259.0,4.8,259.0
+injected,InjectIncremental_NOAAWeather,"EADD (fixed, every 200)",1.0,332.33333333333337,3.6,332.33333333333337
+injected,InjectIncremental_NOAAWeather,"EADD (fixed, history null)",1.0,349.0,0.0,349.0
 injected,InjectIncremental_NOAAWeather,EADD (thesis),1.0,279.0,2.4,279.0
 injected,InjectIncremental_NOAAWeather,IBDD,1.0,241.4666666666667,70.4,241.4666666666667
 injected,InjectIncremental_NOAAWeather,OCDD,1.0,499.0,32.0,499.0
@@ -158,10 +210,14 @@ injected,InjectIncremental_NOAAWeather,UDetect,0.0,1500.0,0.0,
 injected,InjectIncremental_PokerHand,BNDM,1.0,185.13333333333335,3.0,185.13333333333335
 injected,InjectIncremental_PokerHand,CSDDM,0.6666666666666666,1054.8666666666666,1.8,820.5833333333333
 injected,InjectIncremental_PokerHand,"D3 (500/200, every 200)",0.5333333333333333,949.7333333333333,1.2,591.5
+injected,InjectIncremental_PokerHand,"D3 (500/200, every 50)",0.6666666666666667,818.8,2.0,557.0
 injected,InjectIncremental_PokerHand,D3 (authors),1.0,166.26666666666665,69.4,166.26666666666665
 injected,InjectIncremental_PokerHand,"D3-LightGBM (500/200, every 200)",1.0,176.0,6.0,176.0
+injected,InjectIncremental_PokerHand,"D3-LightGBM (500/200, every 50)",1.0,111.4,6.0,111.4
 injected,InjectIncremental_PokerHand,EADD (fixed),1.0,99.0,6.0,99.0
 injected,InjectIncremental_PokerHand,"EADD (fixed, blocked)",1.0,122.33333333333333,6.0,122.33333333333333
+injected,InjectIncremental_PokerHand,"EADD (fixed, every 200)",1.0,159.00000000000003,6.0,159.00000000000003
+injected,InjectIncremental_PokerHand,"EADD (fixed, history null)",1.0,392.3333333333333,0.0,392.3333333333333
 injected,InjectIncremental_PokerHand,EADD (thesis),1.0,115.66666666666667,6.0,115.66666666666667
 injected,InjectIncremental_PokerHand,IBDD,1.0,313.2666666666667,76.0,313.2666666666667
 injected,InjectIncremental_PokerHand,OCDD,1.0,499.0,36.0,499.0
@@ -170,10 +226,14 @@ injected,InjectIncremental_PokerHand,UDetect,0.0,1500.0,0.0,
 injected,InjectIncremental_Powersupply,BNDM,1.0,556.4666666666667,0.0,556.4666666666667
 injected,InjectIncremental_Powersupply,CSDDM,1.0,493.3333333333333,8.0,493.3333333333333
 injected,InjectIncremental_Powersupply,"D3 (500/200, every 200)",1.0,310.0,5.0,310.0
+injected,InjectIncremental_Powersupply,"D3 (500/200, every 50)",1.0,227.0,6.0,227.0
 injected,InjectIncremental_Powersupply,D3 (authors),1.0,465.6666666666667,32.0,465.6666666666667
 injected,InjectIncremental_Powersupply,"D3-LightGBM (500/200, every 200)",1.0,344.8,3.4,344.8
+injected,InjectIncremental_Powersupply,"D3-LightGBM (500/200, every 50)",1.0,237.2,6.0,237.2
 injected,InjectIncremental_Powersupply,EADD (fixed),1.0,245.66666666666666,6.0,245.66666666666666
 injected,InjectIncremental_Powersupply,"EADD (fixed, blocked)",1.0,249.0,6.0,249.0
+injected,InjectIncremental_Powersupply,"EADD (fixed, every 200)",1.0,319.0,4.0,319.0
+injected,InjectIncremental_Powersupply,"EADD (fixed, history null)",1.0,352.33333333333337,0.0,352.33333333333337
 injected,InjectIncremental_Powersupply,EADD (thesis),1.0,242.33333333333334,3.0,242.33333333333334
 injected,InjectIncremental_Powersupply,IBDD,1.0,174.06666666666666,83.4,174.06666666666666
 injected,InjectIncremental_Powersupply,OCDD,1.0,499.0,36.0,499.0
@@ -182,10 +242,14 @@ injected,InjectIncremental_Powersupply,UDetect,0.0,1500.0,0.0,
 injected,InjectIncremental_RialtoBridgeTimelapse,BNDM,1.0,116.0,3.0,116.0
 injected,InjectIncremental_RialtoBridgeTimelapse,CSDDM,1.0,229.26666666666665,15.2,229.26666666666665
 injected,InjectIncremental_RialtoBridgeTimelapse,"D3 (500/200, every 200)",1.0,283.2,5.0,283.2
+injected,InjectIncremental_RialtoBridgeTimelapse,"D3 (500/200, every 50)",1.0,159.0,6.0,159.0
 injected,InjectIncremental_RialtoBridgeTimelapse,D3 (authors),1.0,932.4,35.6,932.4
 injected,InjectIncremental_RialtoBridgeTimelapse,"D3-LightGBM (500/200, every 200)",1.0,176.0,6.0,176.0
+injected,InjectIncremental_RialtoBridgeTimelapse,"D3-LightGBM (500/200, every 50)",1.0,104.6,6.0,104.6
 injected,InjectIncremental_RialtoBridgeTimelapse,EADD (fixed),1.0,102.33333333333334,6.0,102.33333333333334
 injected,InjectIncremental_RialtoBridgeTimelapse,"EADD (fixed, blocked)",1.0,115.66666666666667,6.0,115.66666666666667
+injected,InjectIncremental_RialtoBridgeTimelapse,"EADD (fixed, every 200)",1.0,132.33333333333334,6.0,132.33333333333334
+injected,InjectIncremental_RialtoBridgeTimelapse,"EADD (fixed, history null)",1.0,225.66666666666666,0.0,225.66666666666666
 injected,InjectIncremental_RialtoBridgeTimelapse,EADD (thesis),1.0,105.66666666666667,6.0,105.66666666666667
 injected,InjectIncremental_RialtoBridgeTimelapse,IBDD,1.0,87.8,243.6,87.8
 injected,InjectIncremental_RialtoBridgeTimelapse,OCDD,1.0,499.0,36.0,499.0
@@ -194,10 +258,14 @@ injected,InjectIncremental_RialtoBridgeTimelapse,UDetect,0.0,1500.0,0.0,
 synthetic,SynthAbrupt,BNDM,0.8,226.4,7.6,153.26666666666668
 synthetic,SynthAbrupt,CSDDM,0.6,385.2,13.6,342.1
 synthetic,SynthAbrupt,"D3 (500/200, every 200)",1.0,205.8,0.0,205.8
+synthetic,SynthAbrupt,"D3 (500/200, every 50)",1.0,126.0,0.0,126.0
 synthetic,SynthAbrupt,D3 (authors),0.9333333333333333,197.86666666666665,67.2,173.8
 synthetic,SynthAbrupt,"D3-LightGBM (500/200, every 200)",1.0,232.6,0.0,232.6
+synthetic,SynthAbrupt,"D3-LightGBM (500/200, every 50)",1.0,143.0,0.0,143.0
 synthetic,SynthAbrupt,EADD (fixed),1.0,149.0,0.0,149.0
 synthetic,SynthAbrupt,"EADD (fixed, blocked)",1.0,152.33333333333331,0.0,152.33333333333331
+synthetic,SynthAbrupt,"EADD (fixed, every 200)",1.0,265.6666666666667,0.0,265.6666666666667
+synthetic,SynthAbrupt,"EADD (fixed, history null)",1.0,149.0,0.0,149.0
 synthetic,SynthAbrupt,EADD (thesis),1.0,165.66666666666666,0.0,165.66666666666666
 synthetic,SynthAbrupt,IBDD,1.0,47.13333333333333,115.6,47.13333333333333
 synthetic,SynthAbrupt,OCDD,1.0,499.0,36.0,499.0
@@ -206,10 +274,14 @@ synthetic,SynthAbrupt,UDetect,0.0,500.0,0.0,
 synthetic,SynthGradual,BNDM,1.0,510.5333333333334,8.0,510.5333333333334
 synthetic,SynthGradual,CSDDM,0.9333333333333332,712.7333333333333,13.2,670.7666666666667
 synthetic,SynthGradual,"D3 (500/200, every 200)",0.0,1500.0,0.0,
+synthetic,SynthGradual,"D3 (500/200, every 50)",0.0,1500.0,0.0,
 synthetic,SynthGradual,D3 (authors),1.0,379.3333333333333,60.4,379.3333333333333
 synthetic,SynthGradual,"D3-LightGBM (500/200, every 200)",0.0,1500.0,0.0,
+synthetic,SynthGradual,"D3-LightGBM (500/200, every 50)",0.0,1500.0,0.0,
 synthetic,SynthGradual,EADD (fixed),1.0,759.0,0.0,759.0
 synthetic,SynthGradual,"EADD (fixed, blocked)",1.0,782.3333333333333,0.0,782.3333333333333
+synthetic,SynthGradual,"EADD (fixed, every 200)",1.0,852.3333333333334,0.0,852.3333333333334
+synthetic,SynthGradual,"EADD (fixed, history null)",1.0,759.0,0.0,759.0
 synthetic,SynthGradual,EADD (thesis),1.0,872.3333333333334,0.0,872.3333333333334
 synthetic,SynthGradual,IBDD,1.0,173.86666666666665,110.2,173.86666666666665
 synthetic,SynthGradual,OCDD,1.0,499.0,36.0,499.0
@@ -218,10 +290,14 @@ synthetic,SynthGradual,UDetect,0.0,1500.0,0.0,
 synthetic,SynthIncremental,BNDM,1.0,617.1333333333333,7.0,617.1333333333333
 synthetic,SynthIncremental,CSDDM,0.9333333333333332,483.1333333333333,12.8,399.1333333333333
 synthetic,SynthIncremental,"D3 (500/200, every 200)",0.0,1500.0,0.0,
+synthetic,SynthIncremental,"D3 (500/200, every 50)",0.13333333333333333,1392.5333333333333,0.0,694.0
 synthetic,SynthIncremental,D3 (authors),1.0,193.66666666666669,62.0,193.66666666666669
 synthetic,SynthIncremental,"D3-LightGBM (500/200, every 200)",0.0,1500.0,0.0,
+synthetic,SynthIncremental,"D3-LightGBM (500/200, every 50)",0.0,1500.0,0.0,
 synthetic,SynthIncremental,EADD (fixed),1.0,739.0,0.0,739.0
 synthetic,SynthIncremental,"EADD (fixed, blocked)",1.0,722.3333333333333,0.0,722.3333333333333
+synthetic,SynthIncremental,"EADD (fixed, every 200)",1.0,812.3333333333333,0.0,812.3333333333333
+synthetic,SynthIncremental,"EADD (fixed, history null)",1.0,739.0,0.0,739.0
 synthetic,SynthIncremental,EADD (thesis),1.0,812.3333333333334,0.0,812.3333333333334
 synthetic,SynthIncremental,IBDD,1.0,229.8,106.6,229.8
 synthetic,SynthIncremental,OCDD,1.0,499.0,36.0,499.0
@@ -230,10 +306,14 @@ synthetic,SynthIncremental,UDetect,0.0,1500.0,0.0,
 synthetic,SynthRecurring,BNDM,0.8666666666666666,172.73333333333332,7.0,118.53333333333333
 synthetic,SynthRecurring,CSDDM,0.7333333333333333,323.8,12.2,264.1
 synthetic,SynthRecurring,"D3 (500/200, every 200)",1.0,179.0,0.0,179.0
+synthetic,SynthRecurring,"D3 (500/200, every 50)",1.0,136.2,0.0,136.2
 synthetic,SynthRecurring,D3 (authors),0.9333333333333332,83.2,63.2,51.0
 synthetic,SynthRecurring,"D3-LightGBM (500/200, every 200)",1.0,219.2,0.0,219.2
+synthetic,SynthRecurring,"D3-LightGBM (500/200, every 50)",1.0,153.2,0.0,153.2
 synthetic,SynthRecurring,EADD (fixed),1.0,149.0,0.0,149.0
 synthetic,SynthRecurring,"EADD (fixed, blocked)",1.0,159.0,0.0,159.0
+synthetic,SynthRecurring,"EADD (fixed, every 200)",1.0,265.6666666666667,0.0,265.6666666666667
+synthetic,SynthRecurring,"EADD (fixed, history null)",1.0,149.0,0.0,149.0
 synthetic,SynthRecurring,EADD (thesis),1.0,185.66666666666669,0.0,185.66666666666669
 synthetic,SynthRecurring,IBDD,1.0,60.13333333333334,64.2,60.13333333333334
 synthetic,SynthRecurring,OCDD,1.0,499.0,36.0,499.0

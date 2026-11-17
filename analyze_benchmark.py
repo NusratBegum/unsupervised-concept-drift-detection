@@ -11,6 +11,7 @@ counted as independent samples.
   friedman.csv     Friedman test over streams, mean ranks, Nemenyi critical difference
   matched.csv      EADD vs D3 in the same setup (windows, threshold, check interval, folds),
                    Wilcoxon over streams, Holm-corrected within each metric
+  matched_two_sided.csv  the same, counting alarms up to 500 samples before a drift as hits
   pairwise.csv     EADD (fixed) vs each other detector: Wilcoxon signed-rank over
                    streams, Holm-corrected within each metric
   accuracy.csv     unannotated streams: prequential accuracy (Lukats et al.)
@@ -34,10 +35,13 @@ def tolerance(dataset):
     return 1500 if any(k in dataset for k in ("Gradual", "Incremental")) and not dataset.startswith("Insects") else 500
 
 
-def per_stream(df):
+def per_stream(df, before=0):
+    """before > 0 also counts detections up to `before` samples before a drift point as hits
+    (recall and false alarms only; MTD is then measured from the start of the window)."""
     # streams without drift points (SynthStable) have no recall or MTD; see experiment_validity part F
     a = df[(df.part == "annotated") & (df.true_drifts.str.len() > 0)].copy()
-    m = a.apply(lambda r: pd.Series(detection_metrics(r.detections, r.true_drifts, tolerance(r.dataset))), axis=1)
+    m = a.apply(lambda r: pd.Series(detection_metrics(
+        r.detections, [d - before for d in r.true_drifts], tolerance(r.dataset) + before)), axis=1)
     a = pd.concat([a, m], axis=1)
     a["delay"] = a.apply(lambda r: np.nan if r.n_matched == 0 else
                          (r.mtd * len(r.true_drifts) - tolerance(r.dataset) * (len(r.true_drifts) - r.n_matched))
@@ -97,10 +101,10 @@ MATCHED = [
 ]
 
 
-def matched(ps):
+def matched(ps, metrics=METRICS):
     """Wilcoxon over streams for each same-setup pair, Holm-corrected within each metric."""
     rows = []
-    for metric in METRICS:
+    for metric in metrics:
         t = ps.pivot(index="dataset", columns="variant", values=metric)
         block = []
         for setup, a, b in MATCHED:
@@ -130,6 +134,10 @@ def main():
     print(fr.round(3).to_string(index=False))
     mt = matched(ps)
     mt.to_csv(os.path.join(OUT_DIR, "matched.csv"), index=False)
+    # sensitivity: alarms up to 500 samples before a drift point count as hits
+    two = matched(per_stream(df, before=500), metrics=["recall", "fa"])
+    two.to_csv(os.path.join(OUT_DIR, "matched_two_sided.csv"), index=False)
+    print(two.round(4).to_string(index=False))
     print(mt.round(4).to_string(index=False))
     pw = pairwise(ps)
     pw.to_csv(os.path.join(OUT_DIR, "pairwise.csv"), index=False)
