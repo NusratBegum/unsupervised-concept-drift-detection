@@ -1,0 +1,4 @@
+test,value,n,supported,p
+H3a identical detections (>= 95%),0.8137931034482758,290,False,
+H3b fewer permutations per test,52.1 vs 162.6,22,True,1.7383428841814696e-05
+H4 precision@k above chance,0.75 vs 0.31 (top-1 99%),21,True,2.9517890247939984e-05
