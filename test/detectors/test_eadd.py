@@ -180,6 +180,17 @@ class EADDHistoryNullTest(unittest.TestCase):
             reservoir_after_current=True, perm_n_folds=None, aspt_alpha_split=1 / 3,
             null="history", history_size=3000, history_stride=50, seed=0, **kw)
 
+    def test_min_null_draws_skips_the_test_until_enough_windows(self):
+        rng = np.random.default_rng(0)
+        X = np.vstack([rng.normal(size=(1000, 3)), rng.normal(3, 1, size=(2000, 3))])
+        dets = {k: self.make(min_null_draws=k) for k in (None, 10**6)}
+        for x in X:
+            for d in dets.values():
+                d.update(dict(enumerate(x)))
+        self.assertGreater(dets[None].n_tests, 0)
+        self.assertEqual(dets[10**6].n_rejections, dets[10**6].n_tests)  # every test accepted
+        self.assertEqual(dets[10**6].n_permutations_used, 0)
+
     def test_needs_overlap_free_reservoir(self):
         with self.assertRaises(AssertionError):
             ExplainableAdversarialDriftDetector(null="history")

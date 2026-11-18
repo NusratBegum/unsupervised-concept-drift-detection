@@ -63,3 +63,50 @@ An independent code review found that the three detectors check on fixed schedul
 
 - **R1 (schedule).** H1a, H1b, H1c repeated with D3 and D3-LightGBM at `step=49` (a check every 50 samples, as EADD) and each seed starting at a random offset in 0-49 (`numpy.random.default_rng([seed, 21]).integers(0, 50)`, the same offset for all three detectors), on the 21 drift streams and seeds 1000-1009. Same tests, same Holm family of three, same decision rule. Code: `experiment_robust.py`; output `robust_runs.jsonl`, `robust.csv`.
 - **R2 (constant features).** H1a, H1b, H1c and H4 recomputed from the registered runs without the PokerHand and Rialto streams (15 drift streams left: 10 slow, 5 abrupt). Output `robust_no_constant.csv`.
+
+## Addendum 5: final confirmatory test of H1-H4 (registered 18 Nov 2026, morning, before these runs)
+
+**What happened before this addendum.**
+- Confirmatory test (seeds 1000-1009):
+  - H1 supported, and again under R1;
+  - H4 supported;
+  - the revised H2 not supported;
+  - H3a not supported under the strict rule of addendum 1: identical detections in at least 95% of run pairs; observed 81%, with the same recall, MTD and false alarms;
+  - H3b supported.
+- The new H2 of addendum 3 (seeds 2000-2009):
+  - H2b supported;
+  - H2a passed 8 of 10 conditions; it failed at the first test after an alarm on shuffled Electricity (0.065) and PokerHand (0.070).
+- Two fixes for H2a were tried on development data (reps 0-499, `dev_warm.py`, `dev_match.py`, outputs `dev_warm.jsonl`, `dev_match*.jsonl`). Neither helped:
+  - waiting for 59 or 99 earlier windows: PokerHand 0.062 and 0.048, Electricity 0.060;
+  - observed and null AUC on references of the same size: independent Gaussian rose to 0.072-0.082.
+- EADD is therefore **not changed**. The options remain in the code, off by default.
+
+**Hypotheses tested here** (all from the proposal or registered before; none is new):
+
+- **H1 (as revised, addendum 0).** On gradual and incremental drift, EADD has a higher recall (H1a) and a lower MTD (H1b) than D3-LightGBM. On abrupt drift, its MTD is at most 50 samples higher (H1c).
+- **H2 (the approved H2, measured where every alarm is false).** On stationary autocorrelated streams without drift (AR(1), rho 0.8, 0.85, 0.9, 0.93, 0.95, 0.97), EADD raises fewer false alarms per 10,000 samples than D3-LightGBM.
+  - This is H2b of addendum 3, and the approved claim "EADD raises fewer false alarms than D3".
+  - The validity of the test (H2a of addendum 3) is measured again as a **descriptive** result: 10 conditions, reps 3000-3999. It is reported with its numbers, not as a hypothesis.
+- **H3 (the approved H3, unchanged wording).**
+  - H3a: the recall, MTD and false alarms of EADD with ASPT do not differ from EADD with the full permutation test (199 draws, same null and alpha rule). This is tested as equivalence (TOST: both one-sided Wilcoxon tests over streams at 0.05) within these margins:
+    - recall 0.05 and MTD 50 samples (one check interval), on the 21 drift streams;
+    - false alarms 0.5 per stream, on the 21 drift streams;
+    - false alarms 1.0 per 10,000 samples, on the 8 no-drift streams.
+  - H3a is supported if all four equivalence tests are significant (intersection-union, no correction).
+  - H3b: ASPT uses fewer permutations per test (one-sided Wilcoxon over the 29 streams).
+- **H4 (as in addendum 1).** At the first detection of each drift point, TreeSHAP's precision@k exceeds chance k/d. One-sided Wilcoxon over the 21 drift streams. Scored from the same EADD runs (rankings recorded at each detection).
+
+**Design.**
+- Seeds 3000-3009 (new).
+- Streams:
+  - 21 drift streams (7 abrupt, 7 gradual, 7 incremental) and 8 no-drift streams, as in the confirmatory test;
+  - the 6 AR streams of addendum 3.
+- Every detector checks every 50 samples (D3 and D3-LightGBM `step=49`), and each seed starts at a random offset of 0-49 (as R1).
+- EADD as in the confirmatory test (`experiment_validity.FIXED` + history null, stride 10).
+- Code: `experiment_final.py`, `analyze_final.py`; output `experiments/results_final/`.
+
+**Decision.**
+- H1a, H1b, H1c and H2 form one family, Holm-corrected at 0.05. H1 is supported if all three H1 tests are significant. H2 is supported if its test is significant.
+- H3 is supported if H3a and H3b hold.
+- H4 is supported if its test is significant at 0.05.
+- Secondary: the same H1/H2 tests against D3.

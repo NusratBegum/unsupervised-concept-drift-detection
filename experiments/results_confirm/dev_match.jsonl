@@ -1,0 +1,986 @@
+{"source": "real_poker", "config": "warm31m", "rep": 0, "key": "{\"config\": \"warm31m\", \"rep\": 0, \"source\": \"real_poker\"}", "auc": 0.49777000000000005, "p": 0.34375, "n_draws": 31, "sec": 1.16}
+{"source": "real_poker", "config": "warm31m", "rep": 2, "key": "{\"config\": \"warm31m\", \"rep\": 2, \"source\": \"real_poker\"}", "auc": 0.49905, "p": 0.78125, "n_draws": 31, "sec": 1.1}
+{"source": "real_poker", "config": "warm31m", "rep": 1, "key": "{\"config\": \"warm31m\", \"rep\": 1, \"source\": \"real_poker\"}", "auc": 0.5162199999999999, "p": 0.84375, "n_draws": 31, "sec": 1.11}
+{"source": "real_poker", "config": "warm31m", "rep": 3, "key": "{\"config\": \"warm31m\", \"rep\": 3, \"source\": \"real_poker\"}", "auc": 0.50854, "p": 0.03125, "n_draws": 31, "sec": 1.11}
+{"source": "real_poker", "config": "warm31m", "rep": 4, "key": "{\"config\": \"warm31m\", \"rep\": 4, \"source\": \"real_poker\"}", "auc": 0.49493, "p": 0.875, "n_draws": 31, "sec": 1.14}
+{"source": "real_poker", "config": "warm31m", "rep": 7, "key": "{\"config\": \"warm31m\", \"rep\": 7, \"source\": \"real_poker\"}", "auc": 0.5329699999999999, "p": 0.4375, "n_draws": 31, "sec": 1.12}
+{"source": "real_poker", "config": "warm31m", "rep": 5, "key": "{\"config\": \"warm31m\", \"rep\": 5, \"source\": \"real_poker\"}", "auc": 0.5228000000000002, "p": 0.625, "n_draws": 31, "sec": 1.12}
+{"source": "real_poker", "config": "warm31m", "rep": 8, "key": "{\"config\": \"warm31m\", \"rep\": 8, \"source\": \"real_poker\"}", "auc": 0.50952, "p": 0.4375, "n_draws": 31, "sec": 1.13}
+{"source": "real_poker", "config": "warm31m", "rep": 6, "key": "{\"config\": \"warm31m\", \"rep\": 6, \"source\": \"real_poker\"}", "auc": 0.43839, "p": 0.84375, "n_draws": 31, "sec": 1.13}
+{"source": "real_poker", "config": "warm31m", "rep": 9, "key": "{\"config\": \"warm31m\", \"rep\": 9, \"source\": \"real_poker\"}", "auc": 0.48993, "p": 0.90625, "n_draws": 31, "sec": 1.19}
+{"source": "real_poker", "config": "warm31m", "rep": 11, "key": "{\"config\": \"warm31m\", \"rep\": 11, \"source\": \"real_poker\"}", "auc": 0.52269, "p": 0.0625, "n_draws": 31, "sec": 1.12}
+{"source": "real_poker", "config": "warm31m", "rep": 10, "key": "{\"config\": \"warm31m\", \"rep\": 10, \"source\": \"real_poker\"}", "auc": 0.467125, "p": 0.1875, "n_draws": 31, "sec": 1.17}
+{"source": "real_poker", "config": "warm31m", "rep": 13, "key": "{\"config\": \"warm31m\", \"rep\": 13, \"source\": \"real_poker\"}", "auc": 0.52113, "p": 0.03125, "n_draws": 31, "sec": 1.16}
+{"source": "real_poker", "config": "warm31m", "rep": 14, "key": "{\"config\": \"warm31m\", \"rep\": 14, \"source\": \"real_poker\"}", "auc": 0.51925, "p": 0.03125, "n_draws": 31, "sec": 1.18}
+{"source": "real_poker", "config": "warm31m", "rep": 15, "key": "{\"config\": \"warm31m\", \"rep\": 15, \"source\": \"real_poker\"}", "auc": 0.49807, "p": 0.5, "n_draws": 31, "sec": 1.17}
+{"source": "real_poker", "config": "warm31m", "rep": 18, "key": "{\"config\": \"warm31m\", \"rep\": 18, \"source\": \"real_poker\"}", "auc": 0.461225, "p": 0.9375, "n_draws": 31, "sec": 1.18}
+{"source": "real_poker", "config": "warm31m", "rep": 12, "key": "{\"config\": \"warm31m\", \"rep\": 12, \"source\": \"real_poker\"}", "auc": 0.52678, "p": 0.625, "n_draws": 31, "sec": 1.27}
+{"source": "real_poker", "config": "warm31m", "rep": 17, "key": "{\"config\": \"warm31m\", \"rep\": 17, \"source\": \"real_poker\"}", "auc": 0.4920999999999999, "p": 0.375, "n_draws": 31, "sec": 1.2}
+{"source": "real_poker", "config": "warm31m", "rep": 16, "key": "{\"config\": \"warm31m\", \"rep\": 16, \"source\": \"real_poker\"}", "auc": 0.46934, "p": 0.34375, "n_draws": 31, "sec": 1.22}
+{"source": "real_poker", "config": "warm31m", "rep": 19, "key": "{\"config\": \"warm31m\", \"rep\": 19, \"source\": \"real_poker\"}", "auc": 0.456075, "p": 1.0, "n_draws": 31, "sec": 1.15}
+{"source": "real_poker", "config": "warm31m", "rep": 20, "key": "{\"config\": \"warm31m\", \"rep\": 20, \"source\": \"real_poker\"}", "auc": 0.5268400000000001, "p": 0.25, "n_draws": 31, "sec": 1.41}
+{"source": "real_poker", "config": "warm31m", "rep": 21, "key": "{\"config\": \"warm31m\", \"rep\": 21, \"source\": \"real_poker\"}", "auc": 0.46973999999999994, "p": 1.0, "n_draws": 31, "sec": 1.46}
+{"source": "real_poker", "config": "warm31m", "rep": 22, "key": "{\"config\": \"warm31m\", \"rep\": 22, \"source\": \"real_poker\"}", "auc": 0.5125149999999999, "p": 0.5625, "n_draws": 31, "sec": 1.47}
+{"source": "real_poker", "config": "warm31m", "rep": 23, "key": "{\"config\": \"warm31m\", \"rep\": 23, \"source\": \"real_poker\"}", "auc": 0.50481, "p": 0.9375, "n_draws": 31, "sec": 1.48}
+{"source": "real_poker", "config": "warm31m", "rep": 24, "key": "{\"config\": \"warm31m\", \"rep\": 24, \"source\": \"real_poker\"}", "auc": 0.46738, "p": 0.6875, "n_draws": 31, "sec": 1.46}
+{"source": "real_poker", "config": "warm31m", "rep": 25, "key": "{\"config\": \"warm31m\", \"rep\": 25, \"source\": \"real_poker\"}", "auc": 0.49127000000000004, "p": 0.0625, "n_draws": 31, "sec": 1.45}
+{"source": "real_poker", "config": "warm31m", "rep": 27, "key": "{\"config\": \"warm31m\", \"rep\": 27, \"source\": \"real_poker\"}", "auc": 0.51476, "p": 0.96875, "n_draws": 31, "sec": 1.44}
+{"source": "real_poker", "config": "warm31m", "rep": 26, "key": "{\"config\": \"warm31m\", \"rep\": 26, \"source\": \"real_poker\"}", "auc": 0.53558, "p": 0.84375, "n_draws": 31, "sec": 1.48}
+{"source": "real_poker", "config": "warm31m", "rep": 28, "key": "{\"config\": \"warm31m\", \"rep\": 28, \"source\": \"real_poker\"}", "auc": 0.48164500000000005, "p": 0.96875, "n_draws": 31, "sec": 1.47}
+{"source": "real_poker", "config": "warm31m", "rep": 29, "key": "{\"config\": \"warm31m\", \"rep\": 29, \"source\": \"real_poker\"}", "auc": 0.45617, "p": 0.9375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 30, "key": "{\"config\": \"warm31m\", \"rep\": 30, \"source\": \"real_poker\"}", "auc": 0.51263, "p": 0.25, "n_draws": 31, "sec": 1.47}
+{"source": "real_poker", "config": "warm31m", "rep": 31, "key": "{\"config\": \"warm31m\", \"rep\": 31, \"source\": \"real_poker\"}", "auc": 0.46791000000000005, "p": 0.3125, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 32, "key": "{\"config\": \"warm31m\", \"rep\": 32, \"source\": \"real_poker\"}", "auc": 0.49561, "p": 1.0, "n_draws": 31, "sec": 1.6}
+{"source": "real_poker", "config": "warm31m", "rep": 33, "key": "{\"config\": \"warm31m\", \"rep\": 33, \"source\": \"real_poker\"}", "auc": 0.49186, "p": 0.78125, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 35, "key": "{\"config\": \"warm31m\", \"rep\": 35, \"source\": \"real_poker\"}", "auc": 0.45, "p": 0.28125, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 34, "key": "{\"config\": \"warm31m\", \"rep\": 34, \"source\": \"real_poker\"}", "auc": 0.44031, "p": 0.96875, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 36, "key": "{\"config\": \"warm31m\", \"rep\": 36, \"source\": \"real_poker\"}", "auc": 0.50955, "p": 0.4375, "n_draws": 31, "sec": 1.6}
+{"source": "real_poker", "config": "warm31m", "rep": 37, "key": "{\"config\": \"warm31m\", \"rep\": 37, \"source\": \"real_poker\"}", "auc": 0.49096999999999996, "p": 0.96875, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 38, "key": "{\"config\": \"warm31m\", \"rep\": 38, \"source\": \"real_poker\"}", "auc": 0.50946, "p": 0.0625, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 39, "key": "{\"config\": \"warm31m\", \"rep\": 39, \"source\": \"real_poker\"}", "auc": 0.50811, "p": 0.5, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 40, "key": "{\"config\": \"warm31m\", \"rep\": 40, \"source\": \"real_poker\"}", "auc": 0.4795, "p": 0.21875, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 41, "key": "{\"config\": \"warm31m\", \"rep\": 41, \"source\": \"real_poker\"}", "auc": 0.47458999999999996, "p": 0.53125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 43, "key": "{\"config\": \"warm31m\", \"rep\": 43, \"source\": \"real_poker\"}", "auc": 0.4996499999999999, "p": 0.375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 42, "key": "{\"config\": \"warm31m\", \"rep\": 42, \"source\": \"real_poker\"}", "auc": 0.48994999999999994, "p": 0.71875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 45, "key": "{\"config\": \"warm31m\", \"rep\": 45, \"source\": \"real_poker\"}", "auc": 0.51164, "p": 0.78125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 44, "key": "{\"config\": \"warm31m\", \"rep\": 44, \"source\": \"real_poker\"}", "auc": 0.53226, "p": 0.4375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 48, "key": "{\"config\": \"warm31m\", \"rep\": 48, \"source\": \"real_poker\"}", "auc": 0.48901000000000006, "p": 0.4375, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 47, "key": "{\"config\": \"warm31m\", \"rep\": 47, \"source\": \"real_poker\"}", "auc": 0.51036, "p": 0.34375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 46, "key": "{\"config\": \"warm31m\", \"rep\": 46, \"source\": \"real_poker\"}", "auc": 0.50472, "p": 0.125, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 49, "key": "{\"config\": \"warm31m\", \"rep\": 49, \"source\": \"real_poker\"}", "auc": 0.51484, "p": 0.3125, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 50, "key": "{\"config\": \"warm31m\", \"rep\": 50, \"source\": \"real_poker\"}", "auc": 0.545435, "p": 0.03125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 51, "key": "{\"config\": \"warm31m\", \"rep\": 51, \"source\": \"real_poker\"}", "auc": 0.49868999999999997, "p": 0.65625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 54, "key": "{\"config\": \"warm31m\", \"rep\": 54, \"source\": \"real_poker\"}", "auc": 0.56399, "p": 0.125, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 53, "key": "{\"config\": \"warm31m\", \"rep\": 53, \"source\": \"real_poker\"}", "auc": 0.49649000000000004, "p": 0.625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 55, "key": "{\"config\": \"warm31m\", \"rep\": 55, \"source\": \"real_poker\"}", "auc": 0.49287499999999995, "p": 0.8125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 52, "key": "{\"config\": \"warm31m\", \"rep\": 52, \"source\": \"real_poker\"}", "auc": 0.48699, "p": 0.71875, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 56, "key": "{\"config\": \"warm31m\", \"rep\": 56, \"source\": \"real_poker\"}", "auc": 0.48953, "p": 0.875, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 57, "key": "{\"config\": \"warm31m\", \"rep\": 57, \"source\": \"real_poker\"}", "auc": 0.5007, "p": 1.0, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 58, "key": "{\"config\": \"warm31m\", \"rep\": 58, \"source\": \"real_poker\"}", "auc": 0.5246099999999999, "p": 0.75, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 59, "key": "{\"config\": \"warm31m\", \"rep\": 59, \"source\": \"real_poker\"}", "auc": 0.5335399999999999, "p": 0.65625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 60, "key": "{\"config\": \"warm31m\", \"rep\": 60, \"source\": \"real_poker\"}", "auc": 0.53991, "p": 0.03125, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 61, "key": "{\"config\": \"warm31m\", \"rep\": 61, \"source\": \"real_poker\"}", "auc": 0.48746999999999996, "p": 0.8125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 62, "key": "{\"config\": \"warm31m\", \"rep\": 62, \"source\": \"real_poker\"}", "auc": 0.49219999999999997, "p": 0.84375, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 63, "key": "{\"config\": \"warm31m\", \"rep\": 63, \"source\": \"real_poker\"}", "auc": 0.50434, "p": 0.96875, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 64, "key": "{\"config\": \"warm31m\", \"rep\": 64, \"source\": \"real_poker\"}", "auc": 0.46232999999999996, "p": 0.6875, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 66, "key": "{\"config\": \"warm31m\", \"rep\": 66, \"source\": \"real_poker\"}", "auc": 0.53282, "p": 0.8125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 67, "key": "{\"config\": \"warm31m\", \"rep\": 67, \"source\": \"real_poker\"}", "auc": 0.45687, "p": 0.9375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 68, "key": "{\"config\": \"warm31m\", \"rep\": 68, \"source\": \"real_poker\"}", "auc": 0.45026000000000005, "p": 1.0, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 65, "key": "{\"config\": \"warm31m\", \"rep\": 65, \"source\": \"real_poker\"}", "auc": 0.5008400000000001, "p": 0.34375, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 69, "key": "{\"config\": \"warm31m\", \"rep\": 69, \"source\": \"real_poker\"}", "auc": 0.45480000000000004, "p": 0.6875, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 70, "key": "{\"config\": \"warm31m\", \"rep\": 70, \"source\": \"real_poker\"}", "auc": 0.49707999999999997, "p": 0.96875, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 71, "key": "{\"config\": \"warm31m\", \"rep\": 71, \"source\": \"real_poker\"}", "auc": 0.47572499999999995, "p": 0.15625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 72, "key": "{\"config\": \"warm31m\", \"rep\": 72, \"source\": \"real_poker\"}", "auc": 0.56196, "p": 0.125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 73, "key": "{\"config\": \"warm31m\", \"rep\": 73, \"source\": \"real_poker\"}", "auc": 0.46926999999999996, "p": 0.84375, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 75, "key": "{\"config\": \"warm31m\", \"rep\": 75, \"source\": \"real_poker\"}", "auc": 0.49622, "p": 0.78125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 76, "key": "{\"config\": \"warm31m\", \"rep\": 76, \"source\": \"real_poker\"}", "auc": 0.5285799999999999, "p": 0.1875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 77, "key": "{\"config\": \"warm31m\", \"rep\": 77, \"source\": \"real_poker\"}", "auc": 0.5197, "p": 0.5, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 78, "key": "{\"config\": \"warm31m\", \"rep\": 78, \"source\": \"real_poker\"}", "auc": 0.47490999999999994, "p": 0.96875, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 74, "key": "{\"config\": \"warm31m\", \"rep\": 74, \"source\": \"real_poker\"}", "auc": 0.46319, "p": 0.59375, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 79, "key": "{\"config\": \"warm31m\", \"rep\": 79, \"source\": \"real_poker\"}", "auc": 0.46164, "p": 0.71875, "n_draws": 31, "sec": 1.6}
+{"source": "real_poker", "config": "warm31m", "rep": 80, "key": "{\"config\": \"warm31m\", \"rep\": 80, \"source\": \"real_poker\"}", "auc": 0.42884, "p": 0.96875, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 81, "key": "{\"config\": \"warm31m\", \"rep\": 81, \"source\": \"real_poker\"}", "auc": 0.55948, "p": 0.125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 82, "key": "{\"config\": \"warm31m\", \"rep\": 82, \"source\": \"real_poker\"}", "auc": 0.5249999999999999, "p": 0.78125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 83, "key": "{\"config\": \"warm31m\", \"rep\": 83, \"source\": \"real_poker\"}", "auc": 0.4609, "p": 0.875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 84, "key": "{\"config\": \"warm31m\", \"rep\": 84, \"source\": \"real_poker\"}", "auc": 0.5293399999999999, "p": 0.15625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 85, "key": "{\"config\": \"warm31m\", \"rep\": 85, \"source\": \"real_poker\"}", "auc": 0.45842999999999995, "p": 0.78125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 86, "key": "{\"config\": \"warm31m\", \"rep\": 86, \"source\": \"real_poker\"}", "auc": 0.5141249999999999, "p": 0.1875, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 87, "key": "{\"config\": \"warm31m\", \"rep\": 87, \"source\": \"real_poker\"}", "auc": 0.5444150000000001, "p": 0.03125, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 88, "key": "{\"config\": \"warm31m\", \"rep\": 88, \"source\": \"real_poker\"}", "auc": 0.53964, "p": 0.1875, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 89, "key": "{\"config\": \"warm31m\", \"rep\": 89, \"source\": \"real_poker\"}", "auc": 0.5236000000000001, "p": 0.6875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 90, "key": "{\"config\": \"warm31m\", \"rep\": 90, \"source\": \"real_poker\"}", "auc": 0.55518, "p": 0.0625, "n_draws": 31, "sec": 1.77}
+{"source": "real_poker", "config": "warm31m", "rep": 91, "key": "{\"config\": \"warm31m\", \"rep\": 91, \"source\": \"real_poker\"}", "auc": 0.45470000000000005, "p": 1.0, "n_draws": 31, "sec": 1.78}
+{"source": "real_poker", "config": "warm31m", "rep": 92, "key": "{\"config\": \"warm31m\", \"rep\": 92, \"source\": \"real_poker\"}", "auc": 0.4739899999999999, "p": 0.6875, "n_draws": 31, "sec": 1.8}
+{"source": "real_poker", "config": "warm31m", "rep": 94, "key": "{\"config\": \"warm31m\", \"rep\": 94, \"source\": \"real_poker\"}", "auc": 0.51325, "p": 0.5625, "n_draws": 31, "sec": 1.84}
+{"source": "real_poker", "config": "warm31m", "rep": 93, "key": "{\"config\": \"warm31m\", \"rep\": 93, \"source\": \"real_poker\"}", "auc": 0.46926500000000004, "p": 0.875, "n_draws": 31, "sec": 1.86}
+{"source": "real_poker", "config": "warm31m", "rep": 96, "key": "{\"config\": \"warm31m\", \"rep\": 96, \"source\": \"real_poker\"}", "auc": 0.49277, "p": 0.90625, "n_draws": 31, "sec": 1.82}
+{"source": "real_poker", "config": "warm31m", "rep": 95, "key": "{\"config\": \"warm31m\", \"rep\": 95, \"source\": \"real_poker\"}", "auc": 0.5165200000000001, "p": 0.03125, "n_draws": 31, "sec": 1.85}
+{"source": "real_poker", "config": "warm31m", "rep": 98, "key": "{\"config\": \"warm31m\", \"rep\": 98, \"source\": \"real_poker\"}", "auc": 0.5334899999999999, "p": 0.84375, "n_draws": 31, "sec": 1.83}
+{"source": "real_poker", "config": "warm31m", "rep": 97, "key": "{\"config\": \"warm31m\", \"rep\": 97, \"source\": \"real_poker\"}", "auc": 0.51161, "p": 0.875, "n_draws": 31, "sec": 1.84}
+{"source": "real_poker", "config": "warm31m", "rep": 99, "key": "{\"config\": \"warm31m\", \"rep\": 99, \"source\": \"real_poker\"}", "auc": 0.51847, "p": 0.5, "n_draws": 31, "sec": 1.88}
+{"source": "real_poker", "config": "warm31m", "rep": 100, "key": "{\"config\": \"warm31m\", \"rep\": 100, \"source\": \"real_poker\"}", "auc": 0.47641999999999995, "p": 0.125, "n_draws": 31, "sec": 1.76}
+{"source": "real_poker", "config": "warm31m", "rep": 101, "key": "{\"config\": \"warm31m\", \"rep\": 101, \"source\": \"real_poker\"}", "auc": 0.52091, "p": 0.125, "n_draws": 31, "sec": 1.74}
+{"source": "real_poker", "config": "warm31m", "rep": 102, "key": "{\"config\": \"warm31m\", \"rep\": 102, \"source\": \"real_poker\"}", "auc": 0.54429, "p": 0.09375, "n_draws": 31, "sec": 1.77}
+{"source": "real_poker", "config": "warm31m", "rep": 103, "key": "{\"config\": \"warm31m\", \"rep\": 103, \"source\": \"real_poker\"}", "auc": 0.45607000000000003, "p": 0.5625, "n_draws": 31, "sec": 1.73}
+{"source": "real_poker", "config": "warm31m", "rep": 106, "key": "{\"config\": \"warm31m\", \"rep\": 106, \"source\": \"real_poker\"}", "auc": 0.52056, "p": 0.4375, "n_draws": 31, "sec": 1.74}
+{"source": "real_poker", "config": "warm31m", "rep": 104, "key": "{\"config\": \"warm31m\", \"rep\": 104, \"source\": \"real_poker\"}", "auc": 0.52575, "p": 0.46875, "n_draws": 31, "sec": 1.77}
+{"source": "real_poker", "config": "warm31m", "rep": 105, "key": "{\"config\": \"warm31m\", \"rep\": 105, \"source\": \"real_poker\"}", "auc": 0.52265, "p": 0.03125, "n_draws": 31, "sec": 1.76}
+{"source": "real_poker", "config": "warm31m", "rep": 107, "key": "{\"config\": \"warm31m\", \"rep\": 107, \"source\": \"real_poker\"}", "auc": 0.5123, "p": 0.40625, "n_draws": 31, "sec": 1.77}
+{"source": "real_poker", "config": "warm31m", "rep": 108, "key": "{\"config\": \"warm31m\", \"rep\": 108, \"source\": \"real_poker\"}", "auc": 0.47429000000000004, "p": 0.96875, "n_draws": 31, "sec": 1.81}
+{"source": "real_poker", "config": "warm31m", "rep": 109, "key": "{\"config\": \"warm31m\", \"rep\": 109, \"source\": \"real_poker\"}", "auc": 0.4509399999999999, "p": 0.9375, "n_draws": 31, "sec": 1.74}
+{"source": "real_poker", "config": "warm31m", "rep": 110, "key": "{\"config\": \"warm31m\", \"rep\": 110, \"source\": \"real_poker\"}", "auc": 0.45913999999999994, "p": 0.84375, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 111, "key": "{\"config\": \"warm31m\", \"rep\": 111, \"source\": \"real_poker\"}", "auc": 0.5132099999999999, "p": 0.5625, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 112, "key": "{\"config\": \"warm31m\", \"rep\": 112, \"source\": \"real_poker\"}", "auc": 0.48, "p": 0.71875, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 113, "key": "{\"config\": \"warm31m\", \"rep\": 113, \"source\": \"real_poker\"}", "auc": 0.54994, "p": 0.09375, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 114, "key": "{\"config\": \"warm31m\", \"rep\": 114, \"source\": \"real_poker\"}", "auc": 0.52973, "p": 0.5, "n_draws": 31, "sec": 1.63}
+{"source": "real_poker", "config": "warm31m", "rep": 116, "key": "{\"config\": \"warm31m\", \"rep\": 116, \"source\": \"real_poker\"}", "auc": 0.49878, "p": 0.53125, "n_draws": 31, "sec": 1.62}
+{"source": "real_poker", "config": "warm31m", "rep": 115, "key": "{\"config\": \"warm31m\", \"rep\": 115, \"source\": \"real_poker\"}", "auc": 0.48751, "p": 0.78125, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 117, "key": "{\"config\": \"warm31m\", \"rep\": 117, \"source\": \"real_poker\"}", "auc": 0.5262600000000001, "p": 0.375, "n_draws": 31, "sec": 1.64}
+{"source": "real_poker", "config": "warm31m", "rep": 118, "key": "{\"config\": \"warm31m\", \"rep\": 118, \"source\": \"real_poker\"}", "auc": 0.46814999999999996, "p": 0.8125, "n_draws": 31, "sec": 1.62}
+{"source": "real_poker", "config": "warm31m", "rep": 119, "key": "{\"config\": \"warm31m\", \"rep\": 119, \"source\": \"real_poker\"}", "auc": 0.52501, "p": 0.625, "n_draws": 31, "sec": 1.6}
+{"source": "real_poker", "config": "warm31m", "rep": 120, "key": "{\"config\": \"warm31m\", \"rep\": 120, \"source\": \"real_poker\"}", "auc": 0.46595, "p": 1.0, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 121, "key": "{\"config\": \"warm31m\", \"rep\": 121, \"source\": \"real_poker\"}", "auc": 0.479, "p": 0.0625, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 122, "key": "{\"config\": \"warm31m\", \"rep\": 122, \"source\": \"real_poker\"}", "auc": 0.50881, "p": 0.03125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 123, "key": "{\"config\": \"warm31m\", \"rep\": 123, \"source\": \"real_poker\"}", "auc": 0.545585, "p": 0.0625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 124, "key": "{\"config\": \"warm31m\", \"rep\": 124, \"source\": \"real_poker\"}", "auc": 0.49807, "p": 0.40625, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 125, "key": "{\"config\": \"warm31m\", \"rep\": 125, \"source\": \"real_poker\"}", "auc": 0.49449, "p": 0.3125, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 126, "key": "{\"config\": \"warm31m\", \"rep\": 126, \"source\": \"real_poker\"}", "auc": 0.50483, "p": 0.21875, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 127, "key": "{\"config\": \"warm31m\", \"rep\": 127, \"source\": \"real_poker\"}", "auc": 0.50902, "p": 0.1875, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 128, "key": "{\"config\": \"warm31m\", \"rep\": 128, \"source\": \"real_poker\"}", "auc": 0.49851, "p": 0.15625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 129, "key": "{\"config\": \"warm31m\", \"rep\": 129, \"source\": \"real_poker\"}", "auc": 0.47675999999999996, "p": 0.96875, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 130, "key": "{\"config\": \"warm31m\", \"rep\": 130, \"source\": \"real_poker\"}", "auc": 0.50737, "p": 0.6875, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 131, "key": "{\"config\": \"warm31m\", \"rep\": 131, \"source\": \"real_poker\"}", "auc": 0.51273, "p": 0.59375, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 132, "key": "{\"config\": \"warm31m\", \"rep\": 132, \"source\": \"real_poker\"}", "auc": 0.54158, "p": 0.25, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 134, "key": "{\"config\": \"warm31m\", \"rep\": 134, \"source\": \"real_poker\"}", "auc": 0.4755400000000001, "p": 0.25, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 133, "key": "{\"config\": \"warm31m\", \"rep\": 133, \"source\": \"real_poker\"}", "auc": 0.48495, "p": 0.4375, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 135, "key": "{\"config\": \"warm31m\", \"rep\": 135, \"source\": \"real_poker\"}", "auc": 0.48702, "p": 0.84375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 136, "key": "{\"config\": \"warm31m\", \"rep\": 136, \"source\": \"real_poker\"}", "auc": 0.45180000000000003, "p": 0.5625, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 137, "key": "{\"config\": \"warm31m\", \"rep\": 137, \"source\": \"real_poker\"}", "auc": 0.51508, "p": 0.15625, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 138, "key": "{\"config\": \"warm31m\", \"rep\": 138, \"source\": \"real_poker\"}", "auc": 0.52685, "p": 0.28125, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 139, "key": "{\"config\": \"warm31m\", \"rep\": 139, \"source\": \"real_poker\"}", "auc": 0.47216, "p": 0.71875, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 140, "key": "{\"config\": \"warm31m\", \"rep\": 140, \"source\": \"real_poker\"}", "auc": 0.47962000000000005, "p": 0.375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 141, "key": "{\"config\": \"warm31m\", \"rep\": 141, \"source\": \"real_poker\"}", "auc": 0.54978, "p": 0.03125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 142, "key": "{\"config\": \"warm31m\", \"rep\": 142, \"source\": \"real_poker\"}", "auc": 0.47143999999999997, "p": 0.9375, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 144, "key": "{\"config\": \"warm31m\", \"rep\": 144, \"source\": \"real_poker\"}", "auc": 0.5103800000000001, "p": 0.34375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 143, "key": "{\"config\": \"warm31m\", \"rep\": 143, \"source\": \"real_poker\"}", "auc": 0.50091, "p": 0.15625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 145, "key": "{\"config\": \"warm31m\", \"rep\": 145, \"source\": \"real_poker\"}", "auc": 0.5000800000000001, "p": 0.15625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 146, "key": "{\"config\": \"warm31m\", \"rep\": 146, \"source\": \"real_poker\"}", "auc": 0.48694499999999996, "p": 0.0625, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 147, "key": "{\"config\": \"warm31m\", \"rep\": 147, \"source\": \"real_poker\"}", "auc": 0.47879000000000005, "p": 1.0, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 148, "key": "{\"config\": \"warm31m\", \"rep\": 148, \"source\": \"real_poker\"}", "auc": 0.484175, "p": 0.5, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 149, "key": "{\"config\": \"warm31m\", \"rep\": 149, \"source\": \"real_poker\"}", "auc": 0.51552, "p": 0.125, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 150, "key": "{\"config\": \"warm31m\", \"rep\": 150, \"source\": \"real_poker\"}", "auc": 0.44999999999999996, "p": 0.875, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 151, "key": "{\"config\": \"warm31m\", \"rep\": 151, \"source\": \"real_poker\"}", "auc": 0.50243, "p": 0.25, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 152, "key": "{\"config\": \"warm31m\", \"rep\": 152, \"source\": \"real_poker\"}", "auc": 0.48487500000000006, "p": 0.34375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 153, "key": "{\"config\": \"warm31m\", \"rep\": 153, \"source\": \"real_poker\"}", "auc": 0.52414, "p": 0.0625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 155, "key": "{\"config\": \"warm31m\", \"rep\": 155, \"source\": \"real_poker\"}", "auc": 0.42022000000000004, "p": 0.9375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 154, "key": "{\"config\": \"warm31m\", \"rep\": 154, \"source\": \"real_poker\"}", "auc": 0.49553, "p": 0.03125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 156, "key": "{\"config\": \"warm31m\", \"rep\": 156, \"source\": \"real_poker\"}", "auc": 0.487655, "p": 0.6875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 157, "key": "{\"config\": \"warm31m\", \"rep\": 157, \"source\": \"real_poker\"}", "auc": 0.54552, "p": 0.03125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 158, "key": "{\"config\": \"warm31m\", \"rep\": 158, \"source\": \"real_poker\"}", "auc": 0.520575, "p": 0.1875, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 159, "key": "{\"config\": \"warm31m\", \"rep\": 159, \"source\": \"real_poker\"}", "auc": 0.57342, "p": 0.09375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 160, "key": "{\"config\": \"warm31m\", \"rep\": 160, \"source\": \"real_poker\"}", "auc": 0.48486999999999997, "p": 0.625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 161, "key": "{\"config\": \"warm31m\", \"rep\": 161, \"source\": \"real_poker\"}", "auc": 0.45719, "p": 0.6875, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 162, "key": "{\"config\": \"warm31m\", \"rep\": 162, \"source\": \"real_poker\"}", "auc": 0.40754, "p": 1.0, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 163, "key": "{\"config\": \"warm31m\", \"rep\": 163, \"source\": \"real_poker\"}", "auc": 0.44575000000000004, "p": 0.71875, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 164, "key": "{\"config\": \"warm31m\", \"rep\": 164, \"source\": \"real_poker\"}", "auc": 0.50035, "p": 0.03125, "n_draws": 31, "sec": 1.6}
+{"source": "real_poker", "config": "warm31m", "rep": 165, "key": "{\"config\": \"warm31m\", \"rep\": 165, \"source\": \"real_poker\"}", "auc": 0.47542000000000006, "p": 0.25, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 167, "key": "{\"config\": \"warm31m\", \"rep\": 167, \"source\": \"real_poker\"}", "auc": 0.5105999999999999, "p": 0.125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 166, "key": "{\"config\": \"warm31m\", \"rep\": 166, \"source\": \"real_poker\"}", "auc": 0.49598000000000003, "p": 0.125, "n_draws": 31, "sec": 1.6}
+{"source": "real_poker", "config": "warm31m", "rep": 168, "key": "{\"config\": \"warm31m\", \"rep\": 168, \"source\": \"real_poker\"}", "auc": 0.50168, "p": 0.9375, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 169, "key": "{\"config\": \"warm31m\", \"rep\": 169, \"source\": \"real_poker\"}", "auc": 0.53193, "p": 0.5, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 170, "key": "{\"config\": \"warm31m\", \"rep\": 170, \"source\": \"real_poker\"}", "auc": 0.47602, "p": 0.78125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 171, "key": "{\"config\": \"warm31m\", \"rep\": 171, \"source\": \"real_poker\"}", "auc": 0.5063, "p": 0.5625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 172, "key": "{\"config\": \"warm31m\", \"rep\": 172, \"source\": \"real_poker\"}", "auc": 0.46576, "p": 0.3125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 174, "key": "{\"config\": \"warm31m\", \"rep\": 174, \"source\": \"real_poker\"}", "auc": 0.53681, "p": 0.34375, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 173, "key": "{\"config\": \"warm31m\", \"rep\": 173, \"source\": \"real_poker\"}", "auc": 0.54014, "p": 0.34375, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 175, "key": "{\"config\": \"warm31m\", \"rep\": 175, \"source\": \"real_poker\"}", "auc": 0.45305, "p": 0.875, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 176, "key": "{\"config\": \"warm31m\", \"rep\": 176, \"source\": \"real_poker\"}", "auc": 0.53896, "p": 0.46875, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 177, "key": "{\"config\": \"warm31m\", \"rep\": 177, \"source\": \"real_poker\"}", "auc": 0.54044, "p": 0.09375, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 178, "key": "{\"config\": \"warm31m\", \"rep\": 178, \"source\": \"real_poker\"}", "auc": 0.52341, "p": 0.09375, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 179, "key": "{\"config\": \"warm31m\", \"rep\": 179, \"source\": \"real_poker\"}", "auc": 0.551905, "p": 0.78125, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 180, "key": "{\"config\": \"warm31m\", \"rep\": 180, \"source\": \"real_poker\"}", "auc": 0.40813, "p": 0.8125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 181, "key": "{\"config\": \"warm31m\", \"rep\": 181, \"source\": \"real_poker\"}", "auc": 0.5678799999999999, "p": 0.03125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 182, "key": "{\"config\": \"warm31m\", \"rep\": 182, \"source\": \"real_poker\"}", "auc": 0.49996000000000007, "p": 0.875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 184, "key": "{\"config\": \"warm31m\", \"rep\": 184, \"source\": \"real_poker\"}", "auc": 0.46658999999999995, "p": 0.5, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 183, "key": "{\"config\": \"warm31m\", \"rep\": 183, \"source\": \"real_poker\"}", "auc": 0.51437, "p": 0.40625, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 185, "key": "{\"config\": \"warm31m\", \"rep\": 185, \"source\": \"real_poker\"}", "auc": 0.47339, "p": 0.875, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 186, "key": "{\"config\": \"warm31m\", \"rep\": 186, \"source\": \"real_poker\"}", "auc": 0.44209, "p": 0.1875, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 187, "key": "{\"config\": \"warm31m\", \"rep\": 187, \"source\": \"real_poker\"}", "auc": 0.45641000000000004, "p": 0.96875, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 188, "key": "{\"config\": \"warm31m\", \"rep\": 188, \"source\": \"real_poker\"}", "auc": 0.44759999999999994, "p": 0.8125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 189, "key": "{\"config\": \"warm31m\", \"rep\": 189, \"source\": \"real_poker\"}", "auc": 0.50417, "p": 0.15625, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 190, "key": "{\"config\": \"warm31m\", \"rep\": 190, \"source\": \"real_poker\"}", "auc": 0.48076, "p": 0.21875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 191, "key": "{\"config\": \"warm31m\", \"rep\": 191, \"source\": \"real_poker\"}", "auc": 0.54366, "p": 0.6875, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 192, "key": "{\"config\": \"warm31m\", \"rep\": 192, \"source\": \"real_poker\"}", "auc": 0.5273400000000001, "p": 0.34375, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 193, "key": "{\"config\": \"warm31m\", \"rep\": 193, \"source\": \"real_poker\"}", "auc": 0.56752, "p": 0.15625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 194, "key": "{\"config\": \"warm31m\", \"rep\": 194, \"source\": \"real_poker\"}", "auc": 0.4585, "p": 0.9375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 195, "key": "{\"config\": \"warm31m\", \"rep\": 195, \"source\": \"real_poker\"}", "auc": 0.5075799999999999, "p": 0.125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 196, "key": "{\"config\": \"warm31m\", \"rep\": 196, \"source\": \"real_poker\"}", "auc": 0.48046, "p": 0.9375, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 197, "key": "{\"config\": \"warm31m\", \"rep\": 197, \"source\": \"real_poker\"}", "auc": 0.42485, "p": 0.9375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 198, "key": "{\"config\": \"warm31m\", \"rep\": 198, \"source\": \"real_poker\"}", "auc": 0.47659999999999997, "p": 0.75, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 199, "key": "{\"config\": \"warm31m\", \"rep\": 199, \"source\": \"real_poker\"}", "auc": 0.50364, "p": 0.375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 200, "key": "{\"config\": \"warm31m\", \"rep\": 200, \"source\": \"real_poker\"}", "auc": 0.52154, "p": 0.25, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 201, "key": "{\"config\": \"warm31m\", \"rep\": 201, \"source\": \"real_poker\"}", "auc": 0.50728, "p": 0.71875, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 202, "key": "{\"config\": \"warm31m\", \"rep\": 202, \"source\": \"real_poker\"}", "auc": 0.48581, "p": 0.875, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 203, "key": "{\"config\": \"warm31m\", \"rep\": 203, \"source\": \"real_poker\"}", "auc": 0.5227499999999999, "p": 0.34375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 204, "key": "{\"config\": \"warm31m\", \"rep\": 204, \"source\": \"real_poker\"}", "auc": 0.50001, "p": 0.625, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 206, "key": "{\"config\": \"warm31m\", \"rep\": 206, \"source\": \"real_poker\"}", "auc": 0.437105, "p": 0.71875, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 205, "key": "{\"config\": \"warm31m\", \"rep\": 205, \"source\": \"real_poker\"}", "auc": 0.53359, "p": 0.3125, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 207, "key": "{\"config\": \"warm31m\", \"rep\": 207, \"source\": \"real_poker\"}", "auc": 0.44140999999999997, "p": 0.84375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 208, "key": "{\"config\": \"warm31m\", \"rep\": 208, \"source\": \"real_poker\"}", "auc": 0.50207, "p": 0.9375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 209, "key": "{\"config\": \"warm31m\", \"rep\": 209, \"source\": \"real_poker\"}", "auc": 0.53159, "p": 0.03125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 210, "key": "{\"config\": \"warm31m\", \"rep\": 210, \"source\": \"real_poker\"}", "auc": 0.52602, "p": 0.40625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 211, "key": "{\"config\": \"warm31m\", \"rep\": 211, \"source\": \"real_poker\"}", "auc": 0.507055, "p": 0.65625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 212, "key": "{\"config\": \"warm31m\", \"rep\": 212, \"source\": \"real_poker\"}", "auc": 0.516415, "p": 0.9375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 213, "key": "{\"config\": \"warm31m\", \"rep\": 213, \"source\": \"real_poker\"}", "auc": 0.54288, "p": 0.03125, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 215, "key": "{\"config\": \"warm31m\", \"rep\": 215, \"source\": \"real_poker\"}", "auc": 0.5259199999999999, "p": 0.5, "n_draws": 31, "sec": 1.44}
+{"source": "real_poker", "config": "warm31m", "rep": 214, "key": "{\"config\": \"warm31m\", \"rep\": 214, \"source\": \"real_poker\"}", "auc": 0.50803, "p": 0.90625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 216, "key": "{\"config\": \"warm31m\", \"rep\": 216, \"source\": \"real_poker\"}", "auc": 0.4951, "p": 0.625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 217, "key": "{\"config\": \"warm31m\", \"rep\": 217, \"source\": \"real_poker\"}", "auc": 0.47945499999999996, "p": 0.59375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 218, "key": "{\"config\": \"warm31m\", \"rep\": 218, \"source\": \"real_poker\"}", "auc": 0.51435, "p": 1.0, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 219, "key": "{\"config\": \"warm31m\", \"rep\": 219, \"source\": \"real_poker\"}", "auc": 0.45078999999999997, "p": 0.1875, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 220, "key": "{\"config\": \"warm31m\", \"rep\": 220, \"source\": \"real_poker\"}", "auc": 0.49263000000000007, "p": 0.53125, "n_draws": 31, "sec": 1.47}
+{"source": "real_poker", "config": "warm31m", "rep": 221, "key": "{\"config\": \"warm31m\", \"rep\": 221, \"source\": \"real_poker\"}", "auc": 0.5160899999999999, "p": 0.25, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 222, "key": "{\"config\": \"warm31m\", \"rep\": 222, \"source\": \"real_poker\"}", "auc": 0.53852, "p": 0.03125, "n_draws": 31, "sec": 1.47}
+{"source": "real_poker", "config": "warm31m", "rep": 223, "key": "{\"config\": \"warm31m\", \"rep\": 223, \"source\": \"real_poker\"}", "auc": 0.48782, "p": 1.0, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 224, "key": "{\"config\": \"warm31m\", \"rep\": 224, \"source\": \"real_poker\"}", "auc": 0.46542000000000006, "p": 0.96875, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 225, "key": "{\"config\": \"warm31m\", \"rep\": 225, \"source\": \"real_poker\"}", "auc": 0.45730999999999994, "p": 0.34375, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 227, "key": "{\"config\": \"warm31m\", \"rep\": 227, \"source\": \"real_poker\"}", "auc": 0.42988, "p": 0.78125, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 226, "key": "{\"config\": \"warm31m\", \"rep\": 226, \"source\": \"real_poker\"}", "auc": 0.51128, "p": 0.75, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 228, "key": "{\"config\": \"warm31m\", \"rep\": 228, \"source\": \"real_poker\"}", "auc": 0.478485, "p": 0.5625, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 229, "key": "{\"config\": \"warm31m\", \"rep\": 229, \"source\": \"real_poker\"}", "auc": 0.55972, "p": 0.46875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 230, "key": "{\"config\": \"warm31m\", \"rep\": 230, \"source\": \"real_poker\"}", "auc": 0.48923, "p": 1.0, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 231, "key": "{\"config\": \"warm31m\", \"rep\": 231, \"source\": \"real_poker\"}", "auc": 0.47472000000000003, "p": 0.84375, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 232, "key": "{\"config\": \"warm31m\", \"rep\": 232, \"source\": \"real_poker\"}", "auc": 0.5400699999999999, "p": 0.59375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 233, "key": "{\"config\": \"warm31m\", \"rep\": 233, \"source\": \"real_poker\"}", "auc": 0.45543999999999996, "p": 0.65625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 234, "key": "{\"config\": \"warm31m\", \"rep\": 234, \"source\": \"real_poker\"}", "auc": 0.455755, "p": 0.5625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 236, "key": "{\"config\": \"warm31m\", \"rep\": 236, \"source\": \"real_poker\"}", "auc": 0.54392, "p": 0.4375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 237, "key": "{\"config\": \"warm31m\", \"rep\": 237, \"source\": \"real_poker\"}", "auc": 0.47523, "p": 0.5, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 235, "key": "{\"config\": \"warm31m\", \"rep\": 235, \"source\": \"real_poker\"}", "auc": 0.46371, "p": 0.78125, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 238, "key": "{\"config\": \"warm31m\", \"rep\": 238, \"source\": \"real_poker\"}", "auc": 0.56425, "p": 0.09375, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 239, "key": "{\"config\": \"warm31m\", \"rep\": 239, \"source\": \"real_poker\"}", "auc": 0.51764, "p": 0.28125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 240, "key": "{\"config\": \"warm31m\", \"rep\": 240, \"source\": \"real_poker\"}", "auc": 0.54143, "p": 0.09375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 241, "key": "{\"config\": \"warm31m\", \"rep\": 241, \"source\": \"real_poker\"}", "auc": 0.4586549999999999, "p": 0.9375, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 242, "key": "{\"config\": \"warm31m\", \"rep\": 242, \"source\": \"real_poker\"}", "auc": 0.48906999999999995, "p": 0.9375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 244, "key": "{\"config\": \"warm31m\", \"rep\": 244, \"source\": \"real_poker\"}", "auc": 0.5223099999999999, "p": 0.59375, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 243, "key": "{\"config\": \"warm31m\", \"rep\": 243, \"source\": \"real_poker\"}", "auc": 0.52044, "p": 0.4375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 245, "key": "{\"config\": \"warm31m\", \"rep\": 245, \"source\": \"real_poker\"}", "auc": 0.49478, "p": 0.65625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 247, "key": "{\"config\": \"warm31m\", \"rep\": 247, \"source\": \"real_poker\"}", "auc": 0.51181, "p": 0.71875, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 246, "key": "{\"config\": \"warm31m\", \"rep\": 246, \"source\": \"real_poker\"}", "auc": 0.512065, "p": 0.75, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 249, "key": "{\"config\": \"warm31m\", \"rep\": 249, \"source\": \"real_poker\"}", "auc": 0.51725, "p": 0.65625, "n_draws": 31, "sec": 1.49}
+{"source": "real_poker", "config": "warm31m", "rep": 248, "key": "{\"config\": \"warm31m\", \"rep\": 248, \"source\": \"real_poker\"}", "auc": 0.46995, "p": 0.3125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 250, "key": "{\"config\": \"warm31m\", \"rep\": 250, \"source\": \"real_poker\"}", "auc": 0.54789, "p": 0.1875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 251, "key": "{\"config\": \"warm31m\", \"rep\": 251, \"source\": \"real_poker\"}", "auc": 0.47795, "p": 0.96875, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 252, "key": "{\"config\": \"warm31m\", \"rep\": 252, \"source\": \"real_poker\"}", "auc": 0.49675, "p": 0.34375, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 253, "key": "{\"config\": \"warm31m\", \"rep\": 253, \"source\": \"real_poker\"}", "auc": 0.44129, "p": 0.5625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 254, "key": "{\"config\": \"warm31m\", \"rep\": 254, \"source\": \"real_poker\"}", "auc": 0.57248, "p": 0.03125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 257, "key": "{\"config\": \"warm31m\", \"rep\": 257, \"source\": \"real_poker\"}", "auc": 0.49398, "p": 1.0, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 255, "key": "{\"config\": \"warm31m\", \"rep\": 255, \"source\": \"real_poker\"}", "auc": 0.43018999999999996, "p": 1.0, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 256, "key": "{\"config\": \"warm31m\", \"rep\": 256, \"source\": \"real_poker\"}", "auc": 0.51319, "p": 0.3125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 259, "key": "{\"config\": \"warm31m\", \"rep\": 259, \"source\": \"real_poker\"}", "auc": 0.49784999999999996, "p": 0.59375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 258, "key": "{\"config\": \"warm31m\", \"rep\": 258, \"source\": \"real_poker\"}", "auc": 0.4972, "p": 1.0, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 260, "key": "{\"config\": \"warm31m\", \"rep\": 260, \"source\": \"real_poker\"}", "auc": 0.48902, "p": 0.4375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 261, "key": "{\"config\": \"warm31m\", \"rep\": 261, \"source\": \"real_poker\"}", "auc": 0.5364800000000001, "p": 0.625, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 262, "key": "{\"config\": \"warm31m\", \"rep\": 262, \"source\": \"real_poker\"}", "auc": 0.49747, "p": 0.59375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 263, "key": "{\"config\": \"warm31m\", \"rep\": 263, \"source\": \"real_poker\"}", "auc": 0.46142, "p": 0.125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 264, "key": "{\"config\": \"warm31m\", \"rep\": 264, \"source\": \"real_poker\"}", "auc": 0.5047200000000001, "p": 0.34375, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 267, "key": "{\"config\": \"warm31m\", \"rep\": 267, \"source\": \"real_poker\"}", "auc": 0.507515, "p": 0.0625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 265, "key": "{\"config\": \"warm31m\", \"rep\": 265, \"source\": \"real_poker\"}", "auc": 0.5259, "p": 0.03125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 266, "key": "{\"config\": \"warm31m\", \"rep\": 266, \"source\": \"real_poker\"}", "auc": 0.46537999999999996, "p": 0.90625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 269, "key": "{\"config\": \"warm31m\", \"rep\": 269, \"source\": \"real_poker\"}", "auc": 0.476985, "p": 0.625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 268, "key": "{\"config\": \"warm31m\", \"rep\": 268, \"source\": \"real_poker\"}", "auc": 0.4751, "p": 0.4375, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 270, "key": "{\"config\": \"warm31m\", \"rep\": 270, \"source\": \"real_poker\"}", "auc": 0.51058, "p": 0.46875, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 271, "key": "{\"config\": \"warm31m\", \"rep\": 271, \"source\": \"real_poker\"}", "auc": 0.49124999999999996, "p": 0.96875, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 272, "key": "{\"config\": \"warm31m\", \"rep\": 272, \"source\": \"real_poker\"}", "auc": 0.44391, "p": 1.0, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 273, "key": "{\"config\": \"warm31m\", \"rep\": 273, \"source\": \"real_poker\"}", "auc": 0.55115, "p": 0.4375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 274, "key": "{\"config\": \"warm31m\", \"rep\": 274, \"source\": \"real_poker\"}", "auc": 0.48119999999999996, "p": 0.5625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 275, "key": "{\"config\": \"warm31m\", \"rep\": 275, \"source\": \"real_poker\"}", "auc": 0.51108, "p": 0.65625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 277, "key": "{\"config\": \"warm31m\", \"rep\": 277, \"source\": \"real_poker\"}", "auc": 0.51706, "p": 0.71875, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 276, "key": "{\"config\": \"warm31m\", \"rep\": 276, \"source\": \"real_poker\"}", "auc": 0.54763, "p": 0.03125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 278, "key": "{\"config\": \"warm31m\", \"rep\": 278, \"source\": \"real_poker\"}", "auc": 0.48887500000000006, "p": 0.9375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 279, "key": "{\"config\": \"warm31m\", \"rep\": 279, \"source\": \"real_poker\"}", "auc": 0.5211100000000001, "p": 0.4375, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 280, "key": "{\"config\": \"warm31m\", \"rep\": 280, \"source\": \"real_poker\"}", "auc": 0.48712, "p": 0.4375, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 281, "key": "{\"config\": \"warm31m\", \"rep\": 281, \"source\": \"real_poker\"}", "auc": 0.5260400000000001, "p": 0.53125, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 282, "key": "{\"config\": \"warm31m\", \"rep\": 282, \"source\": \"real_poker\"}", "auc": 0.53688, "p": 0.75, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 283, "key": "{\"config\": \"warm31m\", \"rep\": 283, \"source\": \"real_poker\"}", "auc": 0.53021, "p": 0.03125, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 284, "key": "{\"config\": \"warm31m\", \"rep\": 284, \"source\": \"real_poker\"}", "auc": 0.45420000000000005, "p": 0.46875, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 285, "key": "{\"config\": \"warm31m\", \"rep\": 285, \"source\": \"real_poker\"}", "auc": 0.51666, "p": 0.46875, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 286, "key": "{\"config\": \"warm31m\", \"rep\": 286, \"source\": \"real_poker\"}", "auc": 0.49171999999999993, "p": 0.28125, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 287, "key": "{\"config\": \"warm31m\", \"rep\": 287, \"source\": \"real_poker\"}", "auc": 0.51235, "p": 0.5, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 288, "key": "{\"config\": \"warm31m\", \"rep\": 288, \"source\": \"real_poker\"}", "auc": 0.47946999999999995, "p": 0.90625, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 289, "key": "{\"config\": \"warm31m\", \"rep\": 289, \"source\": \"real_poker\"}", "auc": 0.48829999999999996, "p": 0.90625, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 290, "key": "{\"config\": \"warm31m\", \"rep\": 290, \"source\": \"real_poker\"}", "auc": 0.47392999999999996, "p": 0.4375, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 291, "key": "{\"config\": \"warm31m\", \"rep\": 291, \"source\": \"real_poker\"}", "auc": 0.56447, "p": 0.03125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 292, "key": "{\"config\": \"warm31m\", \"rep\": 292, \"source\": \"real_poker\"}", "auc": 0.49961, "p": 0.34375, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 293, "key": "{\"config\": \"warm31m\", \"rep\": 293, \"source\": \"real_poker\"}", "auc": 0.47357000000000005, "p": 0.9375, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 294, "key": "{\"config\": \"warm31m\", \"rep\": 294, \"source\": \"real_poker\"}", "auc": 0.49272000000000005, "p": 0.53125, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 295, "key": "{\"config\": \"warm31m\", \"rep\": 295, \"source\": \"real_poker\"}", "auc": 0.477275, "p": 0.90625, "n_draws": 31, "sec": 1.61}
+{"source": "real_poker", "config": "warm31m", "rep": 296, "key": "{\"config\": \"warm31m\", \"rep\": 296, \"source\": \"real_poker\"}", "auc": 0.5101600000000001, "p": 0.25, "n_draws": 31, "sec": 1.62}
+{"source": "real_poker", "config": "warm31m", "rep": 297, "key": "{\"config\": \"warm31m\", \"rep\": 297, \"source\": \"real_poker\"}", "auc": 0.51915, "p": 0.53125, "n_draws": 31, "sec": 1.6}
+{"source": "real_poker", "config": "warm31m", "rep": 298, "key": "{\"config\": \"warm31m\", \"rep\": 298, \"source\": \"real_poker\"}", "auc": 0.49971999999999994, "p": 0.1875, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 299, "key": "{\"config\": \"warm31m\", \"rep\": 299, \"source\": \"real_poker\"}", "auc": 0.51311, "p": 0.5, "n_draws": 31, "sec": 1.59}
+{"source": "real_poker", "config": "warm31m", "rep": 300, "key": "{\"config\": \"warm31m\", \"rep\": 300, \"source\": \"real_poker\"}", "auc": 0.46194999999999997, "p": 0.375, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 301, "key": "{\"config\": \"warm31m\", \"rep\": 301, \"source\": \"real_poker\"}", "auc": 0.54082, "p": 0.03125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 302, "key": "{\"config\": \"warm31m\", \"rep\": 302, \"source\": \"real_poker\"}", "auc": 0.46815000000000007, "p": 0.28125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 303, "key": "{\"config\": \"warm31m\", \"rep\": 303, \"source\": \"real_poker\"}", "auc": 0.52512, "p": 0.03125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 304, "key": "{\"config\": \"warm31m\", \"rep\": 304, \"source\": \"real_poker\"}", "auc": 0.51223, "p": 1.0, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 305, "key": "{\"config\": \"warm31m\", \"rep\": 305, \"source\": \"real_poker\"}", "auc": 0.53762, "p": 0.9375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 306, "key": "{\"config\": \"warm31m\", \"rep\": 306, \"source\": \"real_poker\"}", "auc": 0.46652000000000005, "p": 0.71875, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 307, "key": "{\"config\": \"warm31m\", \"rep\": 307, \"source\": \"real_poker\"}", "auc": 0.47366, "p": 0.9375, "n_draws": 31, "sec": 1.51}
+{"source": "real_poker", "config": "warm31m", "rep": 308, "key": "{\"config\": \"warm31m\", \"rep\": 308, \"source\": \"real_poker\"}", "auc": 0.48626, "p": 0.78125, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 309, "key": "{\"config\": \"warm31m\", \"rep\": 309, \"source\": \"real_poker\"}", "auc": 0.50993, "p": 0.0625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 310, "key": "{\"config\": \"warm31m\", \"rep\": 310, \"source\": \"real_poker\"}", "auc": 0.5162599999999999, "p": 0.46875, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 311, "key": "{\"config\": \"warm31m\", \"rep\": 311, \"source\": \"real_poker\"}", "auc": 0.504075, "p": 0.78125, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 312, "key": "{\"config\": \"warm31m\", \"rep\": 312, \"source\": \"real_poker\"}", "auc": 0.48653, "p": 0.78125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 313, "key": "{\"config\": \"warm31m\", \"rep\": 313, \"source\": \"real_poker\"}", "auc": 0.5048900000000001, "p": 0.5, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 314, "key": "{\"config\": \"warm31m\", \"rep\": 314, \"source\": \"real_poker\"}", "auc": 0.46221999999999996, "p": 0.84375, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 315, "key": "{\"config\": \"warm31m\", \"rep\": 315, \"source\": \"real_poker\"}", "auc": 0.48725999999999997, "p": 1.0, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 317, "key": "{\"config\": \"warm31m\", \"rep\": 317, \"source\": \"real_poker\"}", "auc": 0.5100699999999999, "p": 0.875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 316, "key": "{\"config\": \"warm31m\", \"rep\": 316, \"source\": \"real_poker\"}", "auc": 0.51528, "p": 0.375, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 318, "key": "{\"config\": \"warm31m\", \"rep\": 318, \"source\": \"real_poker\"}", "auc": 0.5651600000000001, "p": 0.0625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 319, "key": "{\"config\": \"warm31m\", \"rep\": 319, \"source\": \"real_poker\"}", "auc": 0.49411, "p": 0.4375, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 320, "key": "{\"config\": \"warm31m\", \"rep\": 320, \"source\": \"real_poker\"}", "auc": 0.51899, "p": 0.3125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 321, "key": "{\"config\": \"warm31m\", \"rep\": 321, \"source\": \"real_poker\"}", "auc": 0.51869, "p": 0.59375, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 322, "key": "{\"config\": \"warm31m\", \"rep\": 322, \"source\": \"real_poker\"}", "auc": 0.4695, "p": 1.0, "n_draws": 31, "sec": 1.61}
+{"source": "real_poker", "config": "warm31m", "rep": 324, "key": "{\"config\": \"warm31m\", \"rep\": 324, \"source\": \"real_poker\"}", "auc": 0.534985, "p": 0.625, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 323, "key": "{\"config\": \"warm31m\", \"rep\": 323, \"source\": \"real_poker\"}", "auc": 0.45797, "p": 0.96875, "n_draws": 31, "sec": 1.61}
+{"source": "real_poker", "config": "warm31m", "rep": 325, "key": "{\"config\": \"warm31m\", \"rep\": 325, \"source\": \"real_poker\"}", "auc": 0.55469, "p": 0.28125, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 326, "key": "{\"config\": \"warm31m\", \"rep\": 326, \"source\": \"real_poker\"}", "auc": 0.48954, "p": 0.71875, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 327, "key": "{\"config\": \"warm31m\", \"rep\": 327, \"source\": \"real_poker\"}", "auc": 0.5198149999999999, "p": 0.15625, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 328, "key": "{\"config\": \"warm31m\", \"rep\": 328, \"source\": \"real_poker\"}", "auc": 0.4729, "p": 0.6875, "n_draws": 31, "sec": 1.64}
+{"source": "real_poker", "config": "warm31m", "rep": 329, "key": "{\"config\": \"warm31m\", \"rep\": 329, \"source\": \"real_poker\"}", "auc": 0.53726, "p": 0.65625, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 330, "key": "{\"config\": \"warm31m\", \"rep\": 330, \"source\": \"real_poker\"}", "auc": 0.52064, "p": 0.5625, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 331, "key": "{\"config\": \"warm31m\", \"rep\": 331, \"source\": \"real_poker\"}", "auc": 0.5164500000000001, "p": 0.9375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 332, "key": "{\"config\": \"warm31m\", \"rep\": 332, \"source\": \"real_poker\"}", "auc": 0.47226, "p": 0.59375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 333, "key": "{\"config\": \"warm31m\", \"rep\": 333, \"source\": \"real_poker\"}", "auc": 0.45721, "p": 0.875, "n_draws": 31, "sec": 1.52}
+{"source": "real_poker", "config": "warm31m", "rep": 334, "key": "{\"config\": \"warm31m\", \"rep\": 334, \"source\": \"real_poker\"}", "auc": 0.51403, "p": 0.71875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 335, "key": "{\"config\": \"warm31m\", \"rep\": 335, \"source\": \"real_poker\"}", "auc": 0.48996000000000006, "p": 0.53125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 336, "key": "{\"config\": \"warm31m\", \"rep\": 336, \"source\": \"real_poker\"}", "auc": 0.50736, "p": 0.90625, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 337, "key": "{\"config\": \"warm31m\", \"rep\": 337, \"source\": \"real_poker\"}", "auc": 0.48797999999999997, "p": 0.78125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 338, "key": "{\"config\": \"warm31m\", \"rep\": 338, \"source\": \"real_poker\"}", "auc": 0.53172, "p": 0.1875, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 339, "key": "{\"config\": \"warm31m\", \"rep\": 339, \"source\": \"real_poker\"}", "auc": 0.5354399999999999, "p": 0.03125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 340, "key": "{\"config\": \"warm31m\", \"rep\": 340, \"source\": \"real_poker\"}", "auc": 0.50935, "p": 0.34375, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 341, "key": "{\"config\": \"warm31m\", \"rep\": 341, \"source\": \"real_poker\"}", "auc": 0.47641, "p": 0.09375, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 342, "key": "{\"config\": \"warm31m\", \"rep\": 342, \"source\": \"real_poker\"}", "auc": 0.49868, "p": 0.8125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 343, "key": "{\"config\": \"warm31m\", \"rep\": 343, \"source\": \"real_poker\"}", "auc": 0.48062, "p": 0.28125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 344, "key": "{\"config\": \"warm31m\", \"rep\": 344, \"source\": \"real_poker\"}", "auc": 0.49697, "p": 0.8125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 345, "key": "{\"config\": \"warm31m\", \"rep\": 345, \"source\": \"real_poker\"}", "auc": 0.48883000000000004, "p": 0.5, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 346, "key": "{\"config\": \"warm31m\", \"rep\": 346, \"source\": \"real_poker\"}", "auc": 0.41235999999999995, "p": 0.46875, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 347, "key": "{\"config\": \"warm31m\", \"rep\": 347, \"source\": \"real_poker\"}", "auc": 0.48848, "p": 0.5625, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 348, "key": "{\"config\": \"warm31m\", \"rep\": 348, \"source\": \"real_poker\"}", "auc": 0.50785, "p": 0.4375, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 349, "key": "{\"config\": \"warm31m\", \"rep\": 349, \"source\": \"real_poker\"}", "auc": 0.5150300000000001, "p": 0.125, "n_draws": 31, "sec": 1.54}
+{"source": "real_poker", "config": "warm31m", "rep": 350, "key": "{\"config\": \"warm31m\", \"rep\": 350, \"source\": \"real_poker\"}", "auc": 0.5364099999999999, "p": 0.90625, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 351, "key": "{\"config\": \"warm31m\", \"rep\": 351, \"source\": \"real_poker\"}", "auc": 0.51257, "p": 0.28125, "n_draws": 31, "sec": 1.56}
+{"source": "real_poker", "config": "warm31m", "rep": 353, "key": "{\"config\": \"warm31m\", \"rep\": 353, \"source\": \"real_poker\"}", "auc": 0.46412, "p": 0.65625, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 352, "key": "{\"config\": \"warm31m\", \"rep\": 352, \"source\": \"real_poker\"}", "auc": 0.49942, "p": 0.78125, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 354, "key": "{\"config\": \"warm31m\", \"rep\": 354, \"source\": \"real_poker\"}", "auc": 0.49343000000000004, "p": 0.90625, "n_draws": 31, "sec": 1.58}
+{"source": "real_poker", "config": "warm31m", "rep": 355, "key": "{\"config\": \"warm31m\", \"rep\": 355, \"source\": \"real_poker\"}", "auc": 0.47762, "p": 0.3125, "n_draws": 31, "sec": 1.55}
+{"source": "real_poker", "config": "warm31m", "rep": 356, "key": "{\"config\": \"warm31m\", \"rep\": 356, \"source\": \"real_poker\"}", "auc": 0.54665, "p": 0.09375, "n_draws": 31, "sec": 1.5}
+{"source": "real_poker", "config": "warm31m", "rep": 357, "key": "{\"config\": \"warm31m\", \"rep\": 357, \"source\": \"real_poker\"}", "auc": 0.51065, "p": 0.75, "n_draws": 31, "sec": 1.53}
+{"source": "real_poker", "config": "warm31m", "rep": 358, "key": "{\"config\": \"warm31m\", \"rep\": 358, \"source\": \"real_poker\"}", "auc": 0.47884000000000004, "p": 0.5625, "n_draws": 31, "sec": 1.57}
+{"source": "real_poker", "config": "warm31m", "rep": 359, "key": "{\"config\": \"warm31m\", \"rep\": 359, \"source\": \"real_poker\"}", "auc": 0.50516, "p": 0.5, "n_draws": 31, "sec": 1.6}
+{"source": "real_poker", "config": "warm31m", "rep": 360, "key": "{\"config\": \"warm31m\", \"rep\": 360, \"source\": \"real_poker\"}", "auc": 0.52435, "p": 0.34375, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 361, "key": "{\"config\": \"warm31m\", \"rep\": 361, \"source\": \"real_poker\"}", "auc": 0.47981000000000007, "p": 0.9375, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 362, "key": "{\"config\": \"warm31m\", \"rep\": 362, \"source\": \"real_poker\"}", "auc": 0.511, "p": 0.71875, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 363, "key": "{\"config\": \"warm31m\", \"rep\": 363, \"source\": \"real_poker\"}", "auc": 0.48679999999999995, "p": 0.875, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 364, "key": "{\"config\": \"warm31m\", \"rep\": 364, \"source\": \"real_poker\"}", "auc": 0.48989, "p": 0.5625, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 365, "key": "{\"config\": \"warm31m\", \"rep\": 365, \"source\": \"real_poker\"}", "auc": 0.5444, "p": 0.6875, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 367, "key": "{\"config\": \"warm31m\", \"rep\": 367, \"source\": \"real_poker\"}", "auc": 0.49602999999999997, "p": 0.59375, "n_draws": 31, "sec": 1.64}
+{"source": "real_poker", "config": "warm31m", "rep": 366, "key": "{\"config\": \"warm31m\", \"rep\": 366, \"source\": \"real_poker\"}", "auc": 0.46943, "p": 0.375, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 368, "key": "{\"config\": \"warm31m\", \"rep\": 368, \"source\": \"real_poker\"}", "auc": 0.5356850000000001, "p": 0.15625, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 369, "key": "{\"config\": \"warm31m\", \"rep\": 369, \"source\": \"real_poker\"}", "auc": 0.46395, "p": 0.21875, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 370, "key": "{\"config\": \"warm31m\", \"rep\": 370, \"source\": \"real_poker\"}", "auc": 0.51319, "p": 0.5, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 371, "key": "{\"config\": \"warm31m\", \"rep\": 371, \"source\": \"real_poker\"}", "auc": 0.48297, "p": 1.0, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 372, "key": "{\"config\": \"warm31m\", \"rep\": 372, \"source\": \"real_poker\"}", "auc": 0.5295500000000001, "p": 0.03125, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 373, "key": "{\"config\": \"warm31m\", \"rep\": 373, \"source\": \"real_poker\"}", "auc": 0.50674, "p": 0.28125, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 374, "key": "{\"config\": \"warm31m\", \"rep\": 374, \"source\": \"real_poker\"}", "auc": 0.48178, "p": 0.1875, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 375, "key": "{\"config\": \"warm31m\", \"rep\": 375, \"source\": \"real_poker\"}", "auc": 0.46636000000000005, "p": 0.9375, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 377, "key": "{\"config\": \"warm31m\", \"rep\": 377, \"source\": \"real_poker\"}", "auc": 0.53467, "p": 0.78125, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 376, "key": "{\"config\": \"warm31m\", \"rep\": 376, \"source\": \"real_poker\"}", "auc": 0.47791500000000003, "p": 0.8125, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 378, "key": "{\"config\": \"warm31m\", \"rep\": 378, \"source\": \"real_poker\"}", "auc": 0.48508, "p": 0.90625, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 379, "key": "{\"config\": \"warm31m\", \"rep\": 379, \"source\": \"real_poker\"}", "auc": 0.4659, "p": 0.9375, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 380, "key": "{\"config\": \"warm31m\", \"rep\": 380, \"source\": \"real_poker\"}", "auc": 0.47916000000000003, "p": 0.1875, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 381, "key": "{\"config\": \"warm31m\", \"rep\": 381, \"source\": \"real_poker\"}", "auc": 0.47343, "p": 0.53125, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 382, "key": "{\"config\": \"warm31m\", \"rep\": 382, \"source\": \"real_poker\"}", "auc": 0.42568, "p": 0.96875, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 383, "key": "{\"config\": \"warm31m\", \"rep\": 383, \"source\": \"real_poker\"}", "auc": 0.55642, "p": 0.34375, "n_draws": 31, "sec": 1.73}
+{"source": "real_poker", "config": "warm31m", "rep": 384, "key": "{\"config\": \"warm31m\", \"rep\": 384, \"source\": \"real_poker\"}", "auc": 0.51729, "p": 0.3125, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 385, "key": "{\"config\": \"warm31m\", \"rep\": 385, \"source\": \"real_poker\"}", "auc": 0.54812, "p": 0.65625, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 387, "key": "{\"config\": \"warm31m\", \"rep\": 387, \"source\": \"real_poker\"}", "auc": 0.5292300000000001, "p": 0.21875, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 386, "key": "{\"config\": \"warm31m\", \"rep\": 386, \"source\": \"real_poker\"}", "auc": 0.49124, "p": 0.40625, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 388, "key": "{\"config\": \"warm31m\", \"rep\": 388, \"source\": \"real_poker\"}", "auc": 0.52073, "p": 0.34375, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 389, "key": "{\"config\": \"warm31m\", \"rep\": 389, \"source\": \"real_poker\"}", "auc": 0.49149, "p": 1.0, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 390, "key": "{\"config\": \"warm31m\", \"rep\": 390, \"source\": \"real_poker\"}", "auc": 0.5310199999999999, "p": 0.34375, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 391, "key": "{\"config\": \"warm31m\", \"rep\": 391, \"source\": \"real_poker\"}", "auc": 0.5666599999999999, "p": 0.0625, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 392, "key": "{\"config\": \"warm31m\", \"rep\": 392, \"source\": \"real_poker\"}", "auc": 0.48253999999999997, "p": 0.84375, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 393, "key": "{\"config\": \"warm31m\", \"rep\": 393, \"source\": \"real_poker\"}", "auc": 0.44451, "p": 1.0, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 394, "key": "{\"config\": \"warm31m\", \"rep\": 394, \"source\": \"real_poker\"}", "auc": 0.50576, "p": 0.4375, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 395, "key": "{\"config\": \"warm31m\", \"rep\": 395, \"source\": \"real_poker\"}", "auc": 0.55412, "p": 0.28125, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 397, "key": "{\"config\": \"warm31m\", \"rep\": 397, \"source\": \"real_poker\"}", "auc": 0.54784, "p": 0.34375, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 396, "key": "{\"config\": \"warm31m\", \"rep\": 396, \"source\": \"real_poker\"}", "auc": 0.46345000000000003, "p": 0.78125, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 398, "key": "{\"config\": \"warm31m\", \"rep\": 398, \"source\": \"real_poker\"}", "auc": 0.5479, "p": 0.03125, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 399, "key": "{\"config\": \"warm31m\", \"rep\": 399, \"source\": \"real_poker\"}", "auc": 0.4964599999999999, "p": 0.75, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 400, "key": "{\"config\": \"warm31m\", \"rep\": 400, \"source\": \"real_poker\"}", "auc": 0.47505, "p": 0.96875, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 401, "key": "{\"config\": \"warm31m\", \"rep\": 401, \"source\": \"real_poker\"}", "auc": 0.46139, "p": 0.96875, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 402, "key": "{\"config\": \"warm31m\", \"rep\": 402, \"source\": \"real_poker\"}", "auc": 0.455355, "p": 0.875, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 403, "key": "{\"config\": \"warm31m\", \"rep\": 403, \"source\": \"real_poker\"}", "auc": 0.51917, "p": 0.25, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 404, "key": "{\"config\": \"warm31m\", \"rep\": 404, \"source\": \"real_poker\"}", "auc": 0.5180400000000001, "p": 0.53125, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 405, "key": "{\"config\": \"warm31m\", \"rep\": 405, \"source\": \"real_poker\"}", "auc": 0.53446, "p": 0.1875, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 406, "key": "{\"config\": \"warm31m\", \"rep\": 406, \"source\": \"real_poker\"}", "auc": 0.46855, "p": 0.96875, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 407, "key": "{\"config\": \"warm31m\", \"rep\": 407, \"source\": \"real_poker\"}", "auc": 0.5052, "p": 0.71875, "n_draws": 31, "sec": 1.73}
+{"source": "real_poker", "config": "warm31m", "rep": 408, "key": "{\"config\": \"warm31m\", \"rep\": 408, \"source\": \"real_poker\"}", "auc": 0.53104, "p": 0.15625, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 409, "key": "{\"config\": \"warm31m\", \"rep\": 409, \"source\": \"real_poker\"}", "auc": 0.47514, "p": 0.375, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 410, "key": "{\"config\": \"warm31m\", \"rep\": 410, \"source\": \"real_poker\"}", "auc": 0.45943, "p": 0.9375, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 411, "key": "{\"config\": \"warm31m\", \"rep\": 411, \"source\": \"real_poker\"}", "auc": 0.477795, "p": 0.96875, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 412, "key": "{\"config\": \"warm31m\", \"rep\": 412, \"source\": \"real_poker\"}", "auc": 0.5093300000000001, "p": 0.46875, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 413, "key": "{\"config\": \"warm31m\", \"rep\": 413, \"source\": \"real_poker\"}", "auc": 0.50183, "p": 0.40625, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 414, "key": "{\"config\": \"warm31m\", \"rep\": 414, \"source\": \"real_poker\"}", "auc": 0.47966999999999993, "p": 0.96875, "n_draws": 31, "sec": 1.64}
+{"source": "real_poker", "config": "warm31m", "rep": 415, "key": "{\"config\": \"warm31m\", \"rep\": 415, \"source\": \"real_poker\"}", "auc": 0.51313, "p": 0.125, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 416, "key": "{\"config\": \"warm31m\", \"rep\": 416, \"source\": \"real_poker\"}", "auc": 0.53339, "p": 0.34375, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 417, "key": "{\"config\": \"warm31m\", \"rep\": 417, \"source\": \"real_poker\"}", "auc": 0.44165, "p": 0.90625, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 418, "key": "{\"config\": \"warm31m\", \"rep\": 418, \"source\": \"real_poker\"}", "auc": 0.50928, "p": 0.5, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 419, "key": "{\"config\": \"warm31m\", \"rep\": 419, \"source\": \"real_poker\"}", "auc": 0.5045000000000001, "p": 0.6875, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 420, "key": "{\"config\": \"warm31m\", \"rep\": 420, \"source\": \"real_poker\"}", "auc": 0.49236, "p": 0.78125, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 421, "key": "{\"config\": \"warm31m\", \"rep\": 421, \"source\": \"real_poker\"}", "auc": 0.53455, "p": 0.53125, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 422, "key": "{\"config\": \"warm31m\", \"rep\": 422, \"source\": \"real_poker\"}", "auc": 0.48223000000000005, "p": 0.9375, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 423, "key": "{\"config\": \"warm31m\", \"rep\": 423, \"source\": \"real_poker\"}", "auc": 0.48246, "p": 0.90625, "n_draws": 31, "sec": 1.66}
+{"source": "real_poker", "config": "warm31m", "rep": 424, "key": "{\"config\": \"warm31m\", \"rep\": 424, \"source\": \"real_poker\"}", "auc": 0.5024, "p": 0.125, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 425, "key": "{\"config\": \"warm31m\", \"rep\": 425, \"source\": \"real_poker\"}", "auc": 0.4667, "p": 1.0, "n_draws": 31, "sec": 1.65}
+{"source": "real_poker", "config": "warm31m", "rep": 426, "key": "{\"config\": \"warm31m\", \"rep\": 426, \"source\": \"real_poker\"}", "auc": 0.46675999999999995, "p": 0.75, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 427, "key": "{\"config\": \"warm31m\", \"rep\": 427, \"source\": \"real_poker\"}", "auc": 0.5367599999999999, "p": 0.71875, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 428, "key": "{\"config\": \"warm31m\", \"rep\": 428, \"source\": \"real_poker\"}", "auc": 0.49562, "p": 0.8125, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 429, "key": "{\"config\": \"warm31m\", \"rep\": 429, \"source\": \"real_poker\"}", "auc": 0.5086200000000001, "p": 0.5625, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 430, "key": "{\"config\": \"warm31m\", \"rep\": 430, \"source\": \"real_poker\"}", "auc": 0.52869, "p": 0.28125, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 431, "key": "{\"config\": \"warm31m\", \"rep\": 431, \"source\": \"real_poker\"}", "auc": 0.49935999999999997, "p": 0.75, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 432, "key": "{\"config\": \"warm31m\", \"rep\": 432, \"source\": \"real_poker\"}", "auc": 0.52411, "p": 0.4375, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 433, "key": "{\"config\": \"warm31m\", \"rep\": 433, \"source\": \"real_poker\"}", "auc": 0.50506, "p": 0.375, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 434, "key": "{\"config\": \"warm31m\", \"rep\": 434, \"source\": \"real_poker\"}", "auc": 0.47520000000000007, "p": 0.6875, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 435, "key": "{\"config\": \"warm31m\", \"rep\": 435, \"source\": \"real_poker\"}", "auc": 0.49897, "p": 0.40625, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 436, "key": "{\"config\": \"warm31m\", \"rep\": 436, \"source\": \"real_poker\"}", "auc": 0.53231, "p": 0.0625, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 437, "key": "{\"config\": \"warm31m\", \"rep\": 437, \"source\": \"real_poker\"}", "auc": 0.5333600000000001, "p": 0.21875, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 438, "key": "{\"config\": \"warm31m\", \"rep\": 438, \"source\": \"real_poker\"}", "auc": 0.45968000000000003, "p": 0.84375, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 439, "key": "{\"config\": \"warm31m\", \"rep\": 439, \"source\": \"real_poker\"}", "auc": 0.5128699999999999, "p": 0.8125, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 440, "key": "{\"config\": \"warm31m\", \"rep\": 440, \"source\": \"real_poker\"}", "auc": 0.45684, "p": 0.71875, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 441, "key": "{\"config\": \"warm31m\", \"rep\": 441, \"source\": \"real_poker\"}", "auc": 0.43376, "p": 1.0, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 442, "key": "{\"config\": \"warm31m\", \"rep\": 442, \"source\": \"real_poker\"}", "auc": 0.51836, "p": 0.5625, "n_draws": 31, "sec": 1.67}
+{"source": "real_poker", "config": "warm31m", "rep": 443, "key": "{\"config\": \"warm31m\", \"rep\": 443, \"source\": \"real_poker\"}", "auc": 0.4822349999999999, "p": 0.25, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 444, "key": "{\"config\": \"warm31m\", \"rep\": 444, \"source\": \"real_poker\"}", "auc": 0.442, "p": 0.46875, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 445, "key": "{\"config\": \"warm31m\", \"rep\": 445, \"source\": \"real_poker\"}", "auc": 0.52599, "p": 0.90625, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 446, "key": "{\"config\": \"warm31m\", \"rep\": 446, \"source\": \"real_poker\"}", "auc": 0.5303, "p": 0.4375, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 447, "key": "{\"config\": \"warm31m\", \"rep\": 447, \"source\": \"real_poker\"}", "auc": 0.47811000000000003, "p": 0.71875, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 448, "key": "{\"config\": \"warm31m\", \"rep\": 448, \"source\": \"real_poker\"}", "auc": 0.53076, "p": 0.59375, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 449, "key": "{\"config\": \"warm31m\", \"rep\": 449, \"source\": \"real_poker\"}", "auc": 0.52483, "p": 0.3125, "n_draws": 31, "sec": 1.73}
+{"source": "real_poker", "config": "warm31m", "rep": 450, "key": "{\"config\": \"warm31m\", \"rep\": 450, \"source\": \"real_poker\"}", "auc": 0.48267, "p": 1.0, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 451, "key": "{\"config\": \"warm31m\", \"rep\": 451, \"source\": \"real_poker\"}", "auc": 0.51421, "p": 0.84375, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 452, "key": "{\"config\": \"warm31m\", \"rep\": 452, \"source\": \"real_poker\"}", "auc": 0.5311, "p": 0.1875, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 453, "key": "{\"config\": \"warm31m\", \"rep\": 453, \"source\": \"real_poker\"}", "auc": 0.48155000000000003, "p": 0.8125, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 454, "key": "{\"config\": \"warm31m\", \"rep\": 454, \"source\": \"real_poker\"}", "auc": 0.52369, "p": 0.8125, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 455, "key": "{\"config\": \"warm31m\", \"rep\": 455, \"source\": \"real_poker\"}", "auc": 0.49084999999999995, "p": 0.53125, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 456, "key": "{\"config\": \"warm31m\", \"rep\": 456, \"source\": \"real_poker\"}", "auc": 0.49645, "p": 0.59375, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 457, "key": "{\"config\": \"warm31m\", \"rep\": 457, \"source\": \"real_poker\"}", "auc": 0.47992, "p": 0.59375, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 458, "key": "{\"config\": \"warm31m\", \"rep\": 458, \"source\": \"real_poker\"}", "auc": 0.5060899999999999, "p": 0.0625, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 459, "key": "{\"config\": \"warm31m\", \"rep\": 459, \"source\": \"real_poker\"}", "auc": 0.48652999999999996, "p": 0.625, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 460, "key": "{\"config\": \"warm31m\", \"rep\": 460, \"source\": \"real_poker\"}", "auc": 0.50366, "p": 0.75, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 461, "key": "{\"config\": \"warm31m\", \"rep\": 461, \"source\": \"real_poker\"}", "auc": 0.48629999999999995, "p": 0.53125, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 462, "key": "{\"config\": \"warm31m\", \"rep\": 462, \"source\": \"real_poker\"}", "auc": 0.5258499999999999, "p": 0.46875, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 463, "key": "{\"config\": \"warm31m\", \"rep\": 463, \"source\": \"real_poker\"}", "auc": 0.55793, "p": 0.15625, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 464, "key": "{\"config\": \"warm31m\", \"rep\": 464, \"source\": \"real_poker\"}", "auc": 0.5593400000000001, "p": 0.0625, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 465, "key": "{\"config\": \"warm31m\", \"rep\": 465, \"source\": \"real_poker\"}", "auc": 0.479155, "p": 0.40625, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 466, "key": "{\"config\": \"warm31m\", \"rep\": 466, \"source\": \"real_poker\"}", "auc": 0.47246499999999997, "p": 0.78125, "n_draws": 31, "sec": 1.73}
+{"source": "real_poker", "config": "warm31m", "rep": 467, "key": "{\"config\": \"warm31m\", \"rep\": 467, \"source\": \"real_poker\"}", "auc": 0.53973, "p": 0.1875, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 468, "key": "{\"config\": \"warm31m\", \"rep\": 468, \"source\": \"real_poker\"}", "auc": 0.48575999999999997, "p": 0.875, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 469, "key": "{\"config\": \"warm31m\", \"rep\": 469, \"source\": \"real_poker\"}", "auc": 0.45993000000000006, "p": 0.9375, "n_draws": 31, "sec": 1.74}
+{"source": "real_poker", "config": "warm31m", "rep": 470, "key": "{\"config\": \"warm31m\", \"rep\": 470, \"source\": \"real_poker\"}", "auc": 0.5320100000000001, "p": 0.71875, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 471, "key": "{\"config\": \"warm31m\", \"rep\": 471, \"source\": \"real_poker\"}", "auc": 0.5037499999999999, "p": 0.53125, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 472, "key": "{\"config\": \"warm31m\", \"rep\": 472, \"source\": \"real_poker\"}", "auc": 0.47779, "p": 0.9375, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 473, "key": "{\"config\": \"warm31m\", \"rep\": 473, \"source\": \"real_poker\"}", "auc": 0.55053, "p": 0.1875, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 474, "key": "{\"config\": \"warm31m\", \"rep\": 474, \"source\": \"real_poker\"}", "auc": 0.49571000000000004, "p": 0.71875, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 475, "key": "{\"config\": \"warm31m\", \"rep\": 475, \"source\": \"real_poker\"}", "auc": 0.55192, "p": 0.34375, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 476, "key": "{\"config\": \"warm31m\", \"rep\": 476, \"source\": \"real_poker\"}", "auc": 0.5021100000000001, "p": 0.8125, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 477, "key": "{\"config\": \"warm31m\", \"rep\": 477, \"source\": \"real_poker\"}", "auc": 0.5164, "p": 0.28125, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 478, "key": "{\"config\": \"warm31m\", \"rep\": 478, \"source\": \"real_poker\"}", "auc": 0.48650000000000004, "p": 0.28125, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 479, "key": "{\"config\": \"warm31m\", \"rep\": 479, \"source\": \"real_poker\"}", "auc": 0.48364999999999997, "p": 0.78125, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 480, "key": "{\"config\": \"warm31m\", \"rep\": 480, \"source\": \"real_poker\"}", "auc": 0.53502, "p": 0.59375, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 481, "key": "{\"config\": \"warm31m\", \"rep\": 481, \"source\": \"real_poker\"}", "auc": 0.50478, "p": 1.0, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 482, "key": "{\"config\": \"warm31m\", \"rep\": 482, \"source\": \"real_poker\"}", "auc": 0.44297000000000003, "p": 1.0, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 483, "key": "{\"config\": \"warm31m\", \"rep\": 483, \"source\": \"real_poker\"}", "auc": 0.41283000000000003, "p": 0.96875, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 484, "key": "{\"config\": \"warm31m\", \"rep\": 484, \"source\": \"real_poker\"}", "auc": 0.55526, "p": 0.125, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 485, "key": "{\"config\": \"warm31m\", \"rep\": 485, \"source\": \"real_poker\"}", "auc": 0.5084, "p": 0.625, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 486, "key": "{\"config\": \"warm31m\", \"rep\": 486, \"source\": \"real_poker\"}", "auc": 0.52729, "p": 0.0625, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 487, "key": "{\"config\": \"warm31m\", \"rep\": 487, \"source\": \"real_poker\"}", "auc": 0.44682, "p": 0.9375, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 488, "key": "{\"config\": \"warm31m\", \"rep\": 488, \"source\": \"real_poker\"}", "auc": 0.48993000000000003, "p": 0.15625, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 489, "key": "{\"config\": \"warm31m\", \"rep\": 489, \"source\": \"real_poker\"}", "auc": 0.522, "p": 0.71875, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 490, "key": "{\"config\": \"warm31m\", \"rep\": 490, \"source\": \"real_poker\"}", "auc": 0.41566, "p": 0.9375, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 491, "key": "{\"config\": \"warm31m\", \"rep\": 491, \"source\": \"real_poker\"}", "auc": 0.52329, "p": 0.03125, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 492, "key": "{\"config\": \"warm31m\", \"rep\": 492, \"source\": \"real_poker\"}", "auc": 0.4806, "p": 0.4375, "n_draws": 31, "sec": 1.75}
+{"source": "real_poker", "config": "warm31m", "rep": 493, "key": "{\"config\": \"warm31m\", \"rep\": 493, \"source\": \"real_poker\"}", "auc": 0.44043000000000004, "p": 0.84375, "n_draws": 31, "sec": 1.72}
+{"source": "real_poker", "config": "warm31m", "rep": 494, "key": "{\"config\": \"warm31m\", \"rep\": 494, \"source\": \"real_poker\"}", "auc": 0.44844, "p": 0.90625, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 495, "key": "{\"config\": \"warm31m\", \"rep\": 495, \"source\": \"real_poker\"}", "auc": 0.5081800000000001, "p": 0.53125, "n_draws": 31, "sec": 1.69}
+{"source": "real_poker", "config": "warm31m", "rep": 496, "key": "{\"config\": \"warm31m\", \"rep\": 496, \"source\": \"real_poker\"}", "auc": 0.47766999999999993, "p": 0.59375, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "warm31m", "rep": 497, "key": "{\"config\": \"warm31m\", \"rep\": 497, \"source\": \"real_poker\"}", "auc": 0.49117000000000005, "p": 0.875, "n_draws": 31, "sec": 1.68}
+{"source": "real_poker", "config": "warm31m", "rep": 498, "key": "{\"config\": \"warm31m\", \"rep\": 498, \"source\": \"real_poker\"}", "auc": 0.49219, "p": 0.03125, "n_draws": 31, "sec": 1.7}
+{"source": "real_poker", "config": "warm31m", "rep": 499, "key": "{\"config\": \"warm31m\", \"rep\": 499, \"source\": \"real_poker\"}", "auc": 0.47600999999999993, "p": 0.5625, "n_draws": 31, "sec": 1.71}
+{"source": "real_poker", "config": "history10m", "rep": 0, "key": "{\"config\": \"history10m\", \"rep\": 0, \"source\": \"real_poker\"}", "auc": 0.48655, "p": 0.76, "sec": 5.29}
+{"source": "real_poker", "config": "history10m", "rep": 1, "key": "{\"config\": \"history10m\", \"rep\": 1, \"source\": \"real_poker\"}", "auc": 0.52126, "p": 0.29, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 2, "key": "{\"config\": \"history10m\", \"rep\": 2, \"source\": \"real_poker\"}", "auc": 0.51059, "p": 0.54, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 3, "key": "{\"config\": \"history10m\", \"rep\": 3, \"source\": \"real_poker\"}", "auc": 0.5159400000000001, "p": 0.75, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 4, "key": "{\"config\": \"history10m\", \"rep\": 4, \"source\": \"real_poker\"}", "auc": 0.52645, "p": 0.58, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 5, "key": "{\"config\": \"history10m\", \"rep\": 5, \"source\": \"real_poker\"}", "auc": 0.50679, "p": 0.53, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 6, "key": "{\"config\": \"history10m\", \"rep\": 6, \"source\": \"real_poker\"}", "auc": 0.42752, "p": 0.97, "sec": 5.32}
+{"source": "real_poker", "config": "history10m", "rep": 7, "key": "{\"config\": \"history10m\", \"rep\": 7, \"source\": \"real_poker\"}", "auc": 0.56584, "p": 0.17, "sec": 5.33}
+{"source": "real_poker", "config": "history10m", "rep": 8, "key": "{\"config\": \"history10m\", \"rep\": 8, \"source\": \"real_poker\"}", "auc": 0.56059, "p": 0.11, "sec": 5.31}
+{"source": "real_poker", "config": "history10m", "rep": 9, "key": "{\"config\": \"history10m\", \"rep\": 9, \"source\": \"real_poker\"}", "auc": 0.5512900000000001, "p": 0.48, "sec": 5.38}
+{"source": "real_poker", "config": "history10m", "rep": 10, "key": "{\"config\": \"history10m\", \"rep\": 10, \"source\": \"real_poker\"}", "auc": 0.4889800000000001, "p": 0.94, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 11, "key": "{\"config\": \"history10m\", \"rep\": 11, \"source\": \"real_poker\"}", "auc": 0.4859, "p": 0.77, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 12, "key": "{\"config\": \"history10m\", \"rep\": 12, \"source\": \"real_poker\"}", "auc": 0.52973, "p": 0.18, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 13, "key": "{\"config\": \"history10m\", \"rep\": 13, \"source\": \"real_poker\"}", "auc": 0.49491000000000007, "p": 0.56, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 14, "key": "{\"config\": \"history10m\", \"rep\": 14, \"source\": \"real_poker\"}", "auc": 0.50589, "p": 0.57, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 15, "key": "{\"config\": \"history10m\", \"rep\": 15, \"source\": \"real_poker\"}", "auc": 0.50142, "p": 0.22, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 17, "key": "{\"config\": \"history10m\", \"rep\": 17, \"source\": \"real_poker\"}", "auc": 0.5206299999999999, "p": 0.39, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 16, "key": "{\"config\": \"history10m\", \"rep\": 16, \"source\": \"real_poker\"}", "auc": 0.43648, "p": 0.14, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 18, "key": "{\"config\": \"history10m\", \"rep\": 18, \"source\": \"real_poker\"}", "auc": 0.48126, "p": 0.62, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 19, "key": "{\"config\": \"history10m\", \"rep\": 19, \"source\": \"real_poker\"}", "auc": 0.51485, "p": 0.3, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 20, "key": "{\"config\": \"history10m\", \"rep\": 20, \"source\": \"real_poker\"}", "auc": 0.55282, "p": 0.08, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 21, "key": "{\"config\": \"history10m\", \"rep\": 21, \"source\": \"real_poker\"}", "auc": 0.45277999999999996, "p": 0.98, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 22, "key": "{\"config\": \"history10m\", \"rep\": 22, \"source\": \"real_poker\"}", "auc": 0.527, "p": 0.06, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 23, "key": "{\"config\": \"history10m\", \"rep\": 23, \"source\": \"real_poker\"}", "auc": 0.5159199999999999, "p": 0.8, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 24, "key": "{\"config\": \"history10m\", \"rep\": 24, \"source\": \"real_poker\"}", "auc": 0.46672, "p": 0.38, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 25, "key": "{\"config\": \"history10m\", \"rep\": 25, \"source\": \"real_poker\"}", "auc": 0.48516, "p": 0.84, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 26, "key": "{\"config\": \"history10m\", \"rep\": 26, \"source\": \"real_poker\"}", "auc": 0.50879, "p": 0.65, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 27, "key": "{\"config\": \"history10m\", \"rep\": 27, \"source\": \"real_poker\"}", "auc": 0.5415300000000001, "p": 0.15, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 28, "key": "{\"config\": \"history10m\", \"rep\": 28, \"source\": \"real_poker\"}", "auc": 0.52461, "p": 0.45, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 29, "key": "{\"config\": \"history10m\", \"rep\": 29, \"source\": \"real_poker\"}", "auc": 0.50671, "p": 0.23, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 30, "key": "{\"config\": \"history10m\", \"rep\": 30, \"source\": \"real_poker\"}", "auc": 0.477885, "p": 0.89, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 31, "key": "{\"config\": \"history10m\", \"rep\": 31, \"source\": \"real_poker\"}", "auc": 0.49305, "p": 0.18, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 32, "key": "{\"config\": \"history10m\", \"rep\": 32, \"source\": \"real_poker\"}", "auc": 0.60553, "p": 0.01, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 33, "key": "{\"config\": \"history10m\", \"rep\": 33, \"source\": \"real_poker\"}", "auc": 0.49277499999999996, "p": 0.83, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 34, "key": "{\"config\": \"history10m\", \"rep\": 34, \"source\": \"real_poker\"}", "auc": 0.43826, "p": 0.9, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 35, "key": "{\"config\": \"history10m\", \"rep\": 35, \"source\": \"real_poker\"}", "auc": 0.46402, "p": 0.99, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 36, "key": "{\"config\": \"history10m\", \"rep\": 36, \"source\": \"real_poker\"}", "auc": 0.49293, "p": 0.37, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 37, "key": "{\"config\": \"history10m\", \"rep\": 37, \"source\": \"real_poker\"}", "auc": 0.46152, "p": 1.0, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 38, "key": "{\"config\": \"history10m\", \"rep\": 38, \"source\": \"real_poker\"}", "auc": 0.49683999999999995, "p": 0.2, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 39, "key": "{\"config\": \"history10m\", \"rep\": 39, \"source\": \"real_poker\"}", "auc": 0.509055, "p": 0.52, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 40, "key": "{\"config\": \"history10m\", \"rep\": 40, \"source\": \"real_poker\"}", "auc": 0.5342899999999999, "p": 0.47, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 41, "key": "{\"config\": \"history10m\", \"rep\": 41, \"source\": \"real_poker\"}", "auc": 0.44143, "p": 0.77, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 42, "key": "{\"config\": \"history10m\", \"rep\": 42, \"source\": \"real_poker\"}", "auc": 0.48575999999999997, "p": 0.64, "sec": 5.09}
+{"source": "real_poker", "config": "history10m", "rep": 43, "key": "{\"config\": \"history10m\", \"rep\": 43, \"source\": \"real_poker\"}", "auc": 0.4716, "p": 0.36, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 44, "key": "{\"config\": \"history10m\", \"rep\": 44, \"source\": \"real_poker\"}", "auc": 0.50833, "p": 0.2, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 45, "key": "{\"config\": \"history10m\", \"rep\": 45, \"source\": \"real_poker\"}", "auc": 0.48125000000000007, "p": 0.35, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 46, "key": "{\"config\": \"history10m\", \"rep\": 46, \"source\": \"real_poker\"}", "auc": 0.44895, "p": 0.98, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 47, "key": "{\"config\": \"history10m\", \"rep\": 47, \"source\": \"real_poker\"}", "auc": 0.49387499999999995, "p": 0.79, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 48, "key": "{\"config\": \"history10m\", \"rep\": 48, \"source\": \"real_poker\"}", "auc": 0.47778, "p": 0.55, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 49, "key": "{\"config\": \"history10m\", \"rep\": 49, \"source\": \"real_poker\"}", "auc": 0.5198400000000001, "p": 0.94, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 50, "key": "{\"config\": \"history10m\", \"rep\": 50, \"source\": \"real_poker\"}", "auc": 0.5371400000000001, "p": 0.55, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 52, "key": "{\"config\": \"history10m\", \"rep\": 52, \"source\": \"real_poker\"}", "auc": 0.52054, "p": 0.28, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 51, "key": "{\"config\": \"history10m\", \"rep\": 51, \"source\": \"real_poker\"}", "auc": 0.53874, "p": 0.14, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 53, "key": "{\"config\": \"history10m\", \"rep\": 53, \"source\": \"real_poker\"}", "auc": 0.49219, "p": 0.37, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 54, "key": "{\"config\": \"history10m\", \"rep\": 54, \"source\": \"real_poker\"}", "auc": 0.5131699999999999, "p": 0.9, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 55, "key": "{\"config\": \"history10m\", \"rep\": 55, \"source\": \"real_poker\"}", "auc": 0.48284000000000005, "p": 0.38, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 56, "key": "{\"config\": \"history10m\", \"rep\": 56, \"source\": \"real_poker\"}", "auc": 0.525665, "p": 0.57, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 57, "key": "{\"config\": \"history10m\", \"rep\": 57, \"source\": \"real_poker\"}", "auc": 0.47816000000000003, "p": 0.38, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 58, "key": "{\"config\": \"history10m\", \"rep\": 58, \"source\": \"real_poker\"}", "auc": 0.5372600000000001, "p": 0.26, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 59, "key": "{\"config\": \"history10m\", \"rep\": 59, \"source\": \"real_poker\"}", "auc": 0.53042, "p": 0.33, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 60, "key": "{\"config\": \"history10m\", \"rep\": 60, \"source\": \"real_poker\"}", "auc": 0.55251, "p": 0.21, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 61, "key": "{\"config\": \"history10m\", \"rep\": 61, \"source\": \"real_poker\"}", "auc": 0.47107, "p": 0.67, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 62, "key": "{\"config\": \"history10m\", \"rep\": 62, \"source\": \"real_poker\"}", "auc": 0.49636, "p": 0.14, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 64, "key": "{\"config\": \"history10m\", \"rep\": 64, \"source\": \"real_poker\"}", "auc": 0.47326500000000005, "p": 0.92, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 63, "key": "{\"config\": \"history10m\", \"rep\": 63, \"source\": \"real_poker\"}", "auc": 0.50129, "p": 0.54, "sec": 5.22}
+{"source": "real_poker", "config": "history10m", "rep": 65, "key": "{\"config\": \"history10m\", \"rep\": 65, \"source\": \"real_poker\"}", "auc": 0.5286299999999999, "p": 0.84, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 67, "key": "{\"config\": \"history10m\", \"rep\": 67, \"source\": \"real_poker\"}", "auc": 0.517135, "p": 0.03, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 66, "key": "{\"config\": \"history10m\", \"rep\": 66, \"source\": \"real_poker\"}", "auc": 0.48184, "p": 0.67, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 68, "key": "{\"config\": \"history10m\", \"rep\": 68, \"source\": \"real_poker\"}", "auc": 0.44548, "p": 0.59, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 69, "key": "{\"config\": \"history10m\", \"rep\": 69, \"source\": \"real_poker\"}", "auc": 0.49726, "p": 0.7, "sec": 5.26}
+{"source": "real_poker", "config": "history10m", "rep": 70, "key": "{\"config\": \"history10m\", \"rep\": 70, \"source\": \"real_poker\"}", "auc": 0.47829, "p": 0.88, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 71, "key": "{\"config\": \"history10m\", \"rep\": 71, \"source\": \"real_poker\"}", "auc": 0.46396000000000004, "p": 0.17, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 72, "key": "{\"config\": \"history10m\", \"rep\": 72, \"source\": \"real_poker\"}", "auc": 0.5422100000000001, "p": 0.06, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 73, "key": "{\"config\": \"history10m\", \"rep\": 73, \"source\": \"real_poker\"}", "auc": 0.48557500000000003, "p": 0.67, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 74, "key": "{\"config\": \"history10m\", \"rep\": 74, \"source\": \"real_poker\"}", "auc": 0.51273, "p": 0.18, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 75, "key": "{\"config\": \"history10m\", \"rep\": 75, \"source\": \"real_poker\"}", "auc": 0.48288999999999993, "p": 0.9, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 76, "key": "{\"config\": \"history10m\", \"rep\": 76, \"source\": \"real_poker\"}", "auc": 0.51881, "p": 0.22, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 77, "key": "{\"config\": \"history10m\", \"rep\": 77, \"source\": \"real_poker\"}", "auc": 0.52344, "p": 0.95, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 78, "key": "{\"config\": \"history10m\", \"rep\": 78, \"source\": \"real_poker\"}", "auc": 0.48574, "p": 0.49, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 79, "key": "{\"config\": \"history10m\", \"rep\": 79, \"source\": \"real_poker\"}", "auc": 0.485195, "p": 0.7, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 80, "key": "{\"config\": \"history10m\", \"rep\": 80, \"source\": \"real_poker\"}", "auc": 0.4712, "p": 0.23, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 81, "key": "{\"config\": \"history10m\", \"rep\": 81, \"source\": \"real_poker\"}", "auc": 0.5225, "p": 0.31, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 82, "key": "{\"config\": \"history10m\", \"rep\": 82, \"source\": \"real_poker\"}", "auc": 0.50883, "p": 0.58, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 83, "key": "{\"config\": \"history10m\", \"rep\": 83, \"source\": \"real_poker\"}", "auc": 0.48587, "p": 0.78, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 84, "key": "{\"config\": \"history10m\", \"rep\": 84, \"source\": \"real_poker\"}", "auc": 0.5207900000000001, "p": 0.13, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 85, "key": "{\"config\": \"history10m\", \"rep\": 85, \"source\": \"real_poker\"}", "auc": 0.50917, "p": 0.87, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 87, "key": "{\"config\": \"history10m\", \"rep\": 87, \"source\": \"real_poker\"}", "auc": 0.52148, "p": 0.73, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 86, "key": "{\"config\": \"history10m\", \"rep\": 86, \"source\": \"real_poker\"}", "auc": 0.53396, "p": 0.71, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 88, "key": "{\"config\": \"history10m\", \"rep\": 88, \"source\": \"real_poker\"}", "auc": 0.55176, "p": 0.17, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 89, "key": "{\"config\": \"history10m\", \"rep\": 89, \"source\": \"real_poker\"}", "auc": 0.52957, "p": 0.11, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 90, "key": "{\"config\": \"history10m\", \"rep\": 90, \"source\": \"real_poker\"}", "auc": 0.59413, "p": 0.02, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 91, "key": "{\"config\": \"history10m\", \"rep\": 91, \"source\": \"real_poker\"}", "auc": 0.47690499999999997, "p": 0.91, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 92, "key": "{\"config\": \"history10m\", \"rep\": 92, \"source\": \"real_poker\"}", "auc": 0.5008900000000001, "p": 0.49, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 94, "key": "{\"config\": \"history10m\", \"rep\": 94, \"source\": \"real_poker\"}", "auc": 0.5298, "p": 0.41, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 95, "key": "{\"config\": \"history10m\", \"rep\": 95, \"source\": \"real_poker\"}", "auc": 0.5256500000000001, "p": 0.77, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 93, "key": "{\"config\": \"history10m\", \"rep\": 93, \"source\": \"real_poker\"}", "auc": 0.49931000000000003, "p": 0.59, "sec": 5.22}
+{"source": "real_poker", "config": "history10m", "rep": 97, "key": "{\"config\": \"history10m\", \"rep\": 97, \"source\": \"real_poker\"}", "auc": 0.54045, "p": 0.17, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 96, "key": "{\"config\": \"history10m\", \"rep\": 96, \"source\": \"real_poker\"}", "auc": 0.4575100000000001, "p": 0.86, "sec": 5.25}
+{"source": "real_poker", "config": "history10m", "rep": 98, "key": "{\"config\": \"history10m\", \"rep\": 98, \"source\": \"real_poker\"}", "auc": 0.52075, "p": 0.17, "sec": 5.28}
+{"source": "real_poker", "config": "history10m", "rep": 99, "key": "{\"config\": \"history10m\", \"rep\": 99, \"source\": \"real_poker\"}", "auc": 0.48838, "p": 0.41, "sec": 5.28}
+{"source": "real_poker", "config": "history10m", "rep": 100, "key": "{\"config\": \"history10m\", \"rep\": 100, \"source\": \"real_poker\"}", "auc": 0.53105, "p": 0.06, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 101, "key": "{\"config\": \"history10m\", \"rep\": 101, \"source\": \"real_poker\"}", "auc": 0.493, "p": 0.61, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 102, "key": "{\"config\": \"history10m\", \"rep\": 102, \"source\": \"real_poker\"}", "auc": 0.58352, "p": 0.09, "sec": 5.25}
+{"source": "real_poker", "config": "history10m", "rep": 103, "key": "{\"config\": \"history10m\", \"rep\": 103, \"source\": \"real_poker\"}", "auc": 0.44769, "p": 0.71, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 105, "key": "{\"config\": \"history10m\", \"rep\": 105, \"source\": \"real_poker\"}", "auc": 0.49183, "p": 0.81, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 104, "key": "{\"config\": \"history10m\", \"rep\": 104, \"source\": \"real_poker\"}", "auc": 0.48235999999999996, "p": 0.12, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 106, "key": "{\"config\": \"history10m\", \"rep\": 106, \"source\": \"real_poker\"}", "auc": 0.496, "p": 0.82, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 107, "key": "{\"config\": \"history10m\", \"rep\": 107, \"source\": \"real_poker\"}", "auc": 0.47014, "p": 0.48, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 108, "key": "{\"config\": \"history10m\", \"rep\": 108, \"source\": \"real_poker\"}", "auc": 0.48202, "p": 0.11, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 109, "key": "{\"config\": \"history10m\", \"rep\": 109, \"source\": \"real_poker\"}", "auc": 0.44611, "p": 0.69, "sec": 5.28}
+{"source": "real_poker", "config": "history10m", "rep": 110, "key": "{\"config\": \"history10m\", \"rep\": 110, \"source\": \"real_poker\"}", "auc": 0.46763999999999994, "p": 0.32, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 111, "key": "{\"config\": \"history10m\", \"rep\": 111, \"source\": \"real_poker\"}", "auc": 0.51833, "p": 0.46, "sec": 5.29}
+{"source": "real_poker", "config": "history10m", "rep": 112, "key": "{\"config\": \"history10m\", \"rep\": 112, \"source\": \"real_poker\"}", "auc": 0.4814099999999999, "p": 0.5, "sec": 5.31}
+{"source": "real_poker", "config": "history10m", "rep": 113, "key": "{\"config\": \"history10m\", \"rep\": 113, \"source\": \"real_poker\"}", "auc": 0.5476, "p": 0.05, "sec": 5.31}
+{"source": "real_poker", "config": "history10m", "rep": 114, "key": "{\"config\": \"history10m\", \"rep\": 114, \"source\": \"real_poker\"}", "auc": 0.51967, "p": 0.25, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 115, "key": "{\"config\": \"history10m\", \"rep\": 115, \"source\": \"real_poker\"}", "auc": 0.5257099999999999, "p": 0.52, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 117, "key": "{\"config\": \"history10m\", \"rep\": 117, \"source\": \"real_poker\"}", "auc": 0.49032, "p": 0.34, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 116, "key": "{\"config\": \"history10m\", \"rep\": 116, \"source\": \"real_poker\"}", "auc": 0.47783, "p": 0.85, "sec": 5.33}
+{"source": "real_poker", "config": "history10m", "rep": 118, "key": "{\"config\": \"history10m\", \"rep\": 118, \"source\": \"real_poker\"}", "auc": 0.49152999999999997, "p": 0.36, "sec": 5.26}
+{"source": "real_poker", "config": "history10m", "rep": 119, "key": "{\"config\": \"history10m\", \"rep\": 119, \"source\": \"real_poker\"}", "auc": 0.5168900000000001, "p": 0.46, "sec": 5.31}
+{"source": "real_poker", "config": "history10m", "rep": 120, "key": "{\"config\": \"history10m\", \"rep\": 120, \"source\": \"real_poker\"}", "auc": 0.44927, "p": 0.95, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 121, "key": "{\"config\": \"history10m\", \"rep\": 121, \"source\": \"real_poker\"}", "auc": 0.48053, "p": 0.97, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 122, "key": "{\"config\": \"history10m\", \"rep\": 122, \"source\": \"real_poker\"}", "auc": 0.468775, "p": 0.76, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 123, "key": "{\"config\": \"history10m\", \"rep\": 123, \"source\": \"real_poker\"}", "auc": 0.52101, "p": 0.36, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 124, "key": "{\"config\": \"history10m\", \"rep\": 124, \"source\": \"real_poker\"}", "auc": 0.49762, "p": 0.36, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 125, "key": "{\"config\": \"history10m\", \"rep\": 125, \"source\": \"real_poker\"}", "auc": 0.5255, "p": 0.01, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 126, "key": "{\"config\": \"history10m\", \"rep\": 126, \"source\": \"real_poker\"}", "auc": 0.47867000000000004, "p": 0.79, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 127, "key": "{\"config\": \"history10m\", \"rep\": 127, \"source\": \"real_poker\"}", "auc": 0.52854, "p": 0.08, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 128, "key": "{\"config\": \"history10m\", \"rep\": 128, \"source\": \"real_poker\"}", "auc": 0.47581000000000007, "p": 0.62, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 129, "key": "{\"config\": \"history10m\", \"rep\": 129, \"source\": \"real_poker\"}", "auc": 0.47768, "p": 0.88, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 130, "key": "{\"config\": \"history10m\", \"rep\": 130, \"source\": \"real_poker\"}", "auc": 0.48329999999999995, "p": 0.92, "sec": 5.25}
+{"source": "real_poker", "config": "history10m", "rep": 131, "key": "{\"config\": \"history10m\", \"rep\": 131, \"source\": \"real_poker\"}", "auc": 0.51381, "p": 0.64, "sec": 5.28}
+{"source": "real_poker", "config": "history10m", "rep": 132, "key": "{\"config\": \"history10m\", \"rep\": 132, \"source\": \"real_poker\"}", "auc": 0.49611500000000003, "p": 0.35, "sec": 5.29}
+{"source": "real_poker", "config": "history10m", "rep": 133, "key": "{\"config\": \"history10m\", \"rep\": 133, \"source\": \"real_poker\"}", "auc": 0.5238400000000001, "p": 0.23, "sec": 5.25}
+{"source": "real_poker", "config": "history10m", "rep": 135, "key": "{\"config\": \"history10m\", \"rep\": 135, \"source\": \"real_poker\"}", "auc": 0.47277, "p": 0.38, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 134, "key": "{\"config\": \"history10m\", \"rep\": 134, \"source\": \"real_poker\"}", "auc": 0.5067799999999999, "p": 0.37, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 136, "key": "{\"config\": \"history10m\", \"rep\": 136, \"source\": \"real_poker\"}", "auc": 0.43168999999999996, "p": 0.83, "sec": 5.26}
+{"source": "real_poker", "config": "history10m", "rep": 137, "key": "{\"config\": \"history10m\", \"rep\": 137, \"source\": \"real_poker\"}", "auc": 0.53705, "p": 0.22, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 138, "key": "{\"config\": \"history10m\", \"rep\": 138, \"source\": \"real_poker\"}", "auc": 0.4932099999999999, "p": 0.81, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 139, "key": "{\"config\": \"history10m\", \"rep\": 139, \"source\": \"real_poker\"}", "auc": 0.4678800000000001, "p": 0.5, "sec": 5.28}
+{"source": "real_poker", "config": "history10m", "rep": 140, "key": "{\"config\": \"history10m\", \"rep\": 140, \"source\": \"real_poker\"}", "auc": 0.4466899999999999, "p": 0.99, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 141, "key": "{\"config\": \"history10m\", \"rep\": 141, \"source\": \"real_poker\"}", "auc": 0.51156, "p": 0.2, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 142, "key": "{\"config\": \"history10m\", \"rep\": 142, \"source\": \"real_poker\"}", "auc": 0.46559000000000006, "p": 0.83, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 143, "key": "{\"config\": \"history10m\", \"rep\": 143, \"source\": \"real_poker\"}", "auc": 0.51554, "p": 0.36, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 144, "key": "{\"config\": \"history10m\", \"rep\": 144, \"source\": \"real_poker\"}", "auc": 0.53349, "p": 0.06, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 145, "key": "{\"config\": \"history10m\", \"rep\": 145, \"source\": \"real_poker\"}", "auc": 0.50148, "p": 0.63, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 146, "key": "{\"config\": \"history10m\", \"rep\": 146, \"source\": \"real_poker\"}", "auc": 0.49627, "p": 0.8, "sec": 5.22}
+{"source": "real_poker", "config": "history10m", "rep": 147, "key": "{\"config\": \"history10m\", \"rep\": 147, \"source\": \"real_poker\"}", "auc": 0.5139499999999999, "p": 0.24, "sec": 5.22}
+{"source": "real_poker", "config": "history10m", "rep": 148, "key": "{\"config\": \"history10m\", \"rep\": 148, \"source\": \"real_poker\"}", "auc": 0.48745, "p": 0.83, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 149, "key": "{\"config\": \"history10m\", \"rep\": 149, \"source\": \"real_poker\"}", "auc": 0.52247, "p": 0.78, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 150, "key": "{\"config\": \"history10m\", \"rep\": 150, \"source\": \"real_poker\"}", "auc": 0.47195, "p": 0.26, "sec": 5.29}
+{"source": "real_poker", "config": "history10m", "rep": 151, "key": "{\"config\": \"history10m\", \"rep\": 151, \"source\": \"real_poker\"}", "auc": 0.54754, "p": 0.26, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 152, "key": "{\"config\": \"history10m\", \"rep\": 152, \"source\": \"real_poker\"}", "auc": 0.44865, "p": 0.96, "sec": 5.37}
+{"source": "real_poker", "config": "history10m", "rep": 153, "key": "{\"config\": \"history10m\", \"rep\": 153, \"source\": \"real_poker\"}", "auc": 0.5229199999999999, "p": 0.05, "sec": 5.26}
+{"source": "real_poker", "config": "history10m", "rep": 154, "key": "{\"config\": \"history10m\", \"rep\": 154, \"source\": \"real_poker\"}", "auc": 0.518365, "p": 0.68, "sec": 5.29}
+{"source": "real_poker", "config": "history10m", "rep": 155, "key": "{\"config\": \"history10m\", \"rep\": 155, \"source\": \"real_poker\"}", "auc": 0.45574, "p": 0.87, "sec": 5.31}
+{"source": "real_poker", "config": "history10m", "rep": 156, "key": "{\"config\": \"history10m\", \"rep\": 156, \"source\": \"real_poker\"}", "auc": 0.50336, "p": 0.26, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 157, "key": "{\"config\": \"history10m\", \"rep\": 157, \"source\": \"real_poker\"}", "auc": 0.5149900000000001, "p": 0.38, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 158, "key": "{\"config\": \"history10m\", \"rep\": 158, \"source\": \"real_poker\"}", "auc": 0.52313, "p": 0.3, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 159, "key": "{\"config\": \"history10m\", \"rep\": 159, \"source\": \"real_poker\"}", "auc": 0.49831000000000003, "p": 0.66, "sec": 5.32}
+{"source": "real_poker", "config": "history10m", "rep": 160, "key": "{\"config\": \"history10m\", \"rep\": 160, \"source\": \"real_poker\"}", "auc": 0.5038, "p": 0.29, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 161, "key": "{\"config\": \"history10m\", \"rep\": 161, \"source\": \"real_poker\"}", "auc": 0.48061000000000004, "p": 0.53, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 162, "key": "{\"config\": \"history10m\", \"rep\": 162, \"source\": \"real_poker\"}", "auc": 0.46155999999999997, "p": 0.85, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 163, "key": "{\"config\": \"history10m\", \"rep\": 163, \"source\": \"real_poker\"}", "auc": 0.45541000000000004, "p": 0.86, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 164, "key": "{\"config\": \"history10m\", \"rep\": 164, \"source\": \"real_poker\"}", "auc": 0.522605, "p": 0.57, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 165, "key": "{\"config\": \"history10m\", \"rep\": 165, \"source\": \"real_poker\"}", "auc": 0.50656, "p": 0.25, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 166, "key": "{\"config\": \"history10m\", \"rep\": 166, \"source\": \"real_poker\"}", "auc": 0.50617, "p": 0.7, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 167, "key": "{\"config\": \"history10m\", \"rep\": 167, \"source\": \"real_poker\"}", "auc": 0.51831, "p": 0.17, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 168, "key": "{\"config\": \"history10m\", \"rep\": 168, \"source\": \"real_poker\"}", "auc": 0.5002300000000001, "p": 0.29, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 169, "key": "{\"config\": \"history10m\", \"rep\": 169, \"source\": \"real_poker\"}", "auc": 0.52922, "p": 0.38, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 170, "key": "{\"config\": \"history10m\", \"rep\": 170, \"source\": \"real_poker\"}", "auc": 0.4555, "p": 0.32, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 171, "key": "{\"config\": \"history10m\", \"rep\": 171, \"source\": \"real_poker\"}", "auc": 0.47561999999999993, "p": 0.67, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 172, "key": "{\"config\": \"history10m\", \"rep\": 172, \"source\": \"real_poker\"}", "auc": 0.47966999999999993, "p": 0.75, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 173, "key": "{\"config\": \"history10m\", \"rep\": 173, \"source\": \"real_poker\"}", "auc": 0.521875, "p": 0.89, "sec": 5.08}
+{"source": "real_poker", "config": "history10m", "rep": 174, "key": "{\"config\": \"history10m\", \"rep\": 174, \"source\": \"real_poker\"}", "auc": 0.49122, "p": 0.25, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 175, "key": "{\"config\": \"history10m\", \"rep\": 175, \"source\": \"real_poker\"}", "auc": 0.47129, "p": 0.46, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 176, "key": "{\"config\": \"history10m\", \"rep\": 176, \"source\": \"real_poker\"}", "auc": 0.4891, "p": 0.61, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 177, "key": "{\"config\": \"history10m\", \"rep\": 177, \"source\": \"real_poker\"}", "auc": 0.48568, "p": 0.64, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 178, "key": "{\"config\": \"history10m\", \"rep\": 178, \"source\": \"real_poker\"}", "auc": 0.50997, "p": 0.21, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 179, "key": "{\"config\": \"history10m\", \"rep\": 179, \"source\": \"real_poker\"}", "auc": 0.536625, "p": 0.24, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 180, "key": "{\"config\": \"history10m\", \"rep\": 180, \"source\": \"real_poker\"}", "auc": 0.44465, "p": 0.14, "sec": 5.08}
+{"source": "real_poker", "config": "history10m", "rep": 181, "key": "{\"config\": \"history10m\", \"rep\": 181, \"source\": \"real_poker\"}", "auc": 0.50364, "p": 0.34, "sec": 5.06}
+{"source": "real_poker", "config": "history10m", "rep": 182, "key": "{\"config\": \"history10m\", \"rep\": 182, \"source\": \"real_poker\"}", "auc": 0.53135, "p": 0.26, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 183, "key": "{\"config\": \"history10m\", \"rep\": 183, \"source\": \"real_poker\"}", "auc": 0.49326, "p": 0.37, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 184, "key": "{\"config\": \"history10m\", \"rep\": 184, \"source\": \"real_poker\"}", "auc": 0.50619, "p": 0.27, "sec": 5.08}
+{"source": "real_poker", "config": "history10m", "rep": 185, "key": "{\"config\": \"history10m\", \"rep\": 185, \"source\": \"real_poker\"}", "auc": 0.46253999999999995, "p": 0.95, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 186, "key": "{\"config\": \"history10m\", \"rep\": 186, \"source\": \"real_poker\"}", "auc": 0.45892, "p": 0.25, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 187, "key": "{\"config\": \"history10m\", \"rep\": 187, \"source\": \"real_poker\"}", "auc": 0.41217000000000004, "p": 0.95, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 188, "key": "{\"config\": \"history10m\", \"rep\": 188, \"source\": \"real_poker\"}", "auc": 0.5063300000000001, "p": 0.27, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 189, "key": "{\"config\": \"history10m\", \"rep\": 189, \"source\": \"real_poker\"}", "auc": 0.44466, "p": 0.94, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 190, "key": "{\"config\": \"history10m\", \"rep\": 190, \"source\": \"real_poker\"}", "auc": 0.46760999999999997, "p": 0.64, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 191, "key": "{\"config\": \"history10m\", \"rep\": 191, \"source\": \"real_poker\"}", "auc": 0.49615, "p": 0.23, "sec": 5.09}
+{"source": "real_poker", "config": "history10m", "rep": 192, "key": "{\"config\": \"history10m\", \"rep\": 192, \"source\": \"real_poker\"}", "auc": 0.51844, "p": 0.36, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 193, "key": "{\"config\": \"history10m\", \"rep\": 193, \"source\": \"real_poker\"}", "auc": 0.5028600000000001, "p": 0.3, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 194, "key": "{\"config\": \"history10m\", \"rep\": 194, \"source\": \"real_poker\"}", "auc": 0.5017699999999999, "p": 0.75, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 195, "key": "{\"config\": \"history10m\", \"rep\": 195, \"source\": \"real_poker\"}", "auc": 0.532915, "p": 0.21, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 197, "key": "{\"config\": \"history10m\", \"rep\": 197, \"source\": \"real_poker\"}", "auc": 0.48617000000000005, "p": 0.94, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 196, "key": "{\"config\": \"history10m\", \"rep\": 196, \"source\": \"real_poker\"}", "auc": 0.48264000000000007, "p": 0.39, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 198, "key": "{\"config\": \"history10m\", \"rep\": 198, \"source\": \"real_poker\"}", "auc": 0.51566, "p": 0.9, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 199, "key": "{\"config\": \"history10m\", \"rep\": 199, \"source\": \"real_poker\"}", "auc": 0.48364500000000005, "p": 0.23, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 200, "key": "{\"config\": \"history10m\", \"rep\": 200, \"source\": \"real_poker\"}", "auc": 0.50659, "p": 0.69, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 201, "key": "{\"config\": \"history10m\", \"rep\": 201, \"source\": \"real_poker\"}", "auc": 0.51125, "p": 0.24, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 202, "key": "{\"config\": \"history10m\", \"rep\": 202, \"source\": \"real_poker\"}", "auc": 0.47017, "p": 0.68, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 203, "key": "{\"config\": \"history10m\", \"rep\": 203, \"source\": \"real_poker\"}", "auc": 0.50888, "p": 0.33, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 204, "key": "{\"config\": \"history10m\", \"rep\": 204, \"source\": \"real_poker\"}", "auc": 0.45586, "p": 0.58, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 205, "key": "{\"config\": \"history10m\", \"rep\": 205, \"source\": \"real_poker\"}", "auc": 0.4763899999999999, "p": 0.76, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 206, "key": "{\"config\": \"history10m\", \"rep\": 206, \"source\": \"real_poker\"}", "auc": 0.46832999999999997, "p": 0.98, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 207, "key": "{\"config\": \"history10m\", \"rep\": 207, \"source\": \"real_poker\"}", "auc": 0.49233999999999994, "p": 0.24, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 208, "key": "{\"config\": \"history10m\", \"rep\": 208, \"source\": \"real_poker\"}", "auc": 0.48285999999999996, "p": 0.56, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 209, "key": "{\"config\": \"history10m\", \"rep\": 209, \"source\": \"real_poker\"}", "auc": 0.45891, "p": 0.85, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 210, "key": "{\"config\": \"history10m\", \"rep\": 210, \"source\": \"real_poker\"}", "auc": 0.45627999999999996, "p": 0.87, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 211, "key": "{\"config\": \"history10m\", \"rep\": 211, \"source\": \"real_poker\"}", "auc": 0.5025200000000001, "p": 0.22, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 212, "key": "{\"config\": \"history10m\", \"rep\": 212, \"source\": \"real_poker\"}", "auc": 0.49004, "p": 0.19, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 213, "key": "{\"config\": \"history10m\", \"rep\": 213, \"source\": \"real_poker\"}", "auc": 0.5124599999999999, "p": 0.29, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 214, "key": "{\"config\": \"history10m\", \"rep\": 214, \"source\": \"real_poker\"}", "auc": 0.46705, "p": 0.78, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 215, "key": "{\"config\": \"history10m\", \"rep\": 215, \"source\": \"real_poker\"}", "auc": 0.48871, "p": 0.77, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 216, "key": "{\"config\": \"history10m\", \"rep\": 216, \"source\": \"real_poker\"}", "auc": 0.5313899999999999, "p": 0.08, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 217, "key": "{\"config\": \"history10m\", \"rep\": 217, \"source\": \"real_poker\"}", "auc": 0.5186499999999999, "p": 0.46, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 218, "key": "{\"config\": \"history10m\", \"rep\": 218, \"source\": \"real_poker\"}", "auc": 0.4591, "p": 1.0, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 219, "key": "{\"config\": \"history10m\", \"rep\": 219, \"source\": \"real_poker\"}", "auc": 0.49681000000000003, "p": 0.45, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 220, "key": "{\"config\": \"history10m\", \"rep\": 220, \"source\": \"real_poker\"}", "auc": 0.49865, "p": 0.72, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 221, "key": "{\"config\": \"history10m\", \"rep\": 221, \"source\": \"real_poker\"}", "auc": 0.51857, "p": 0.21, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 222, "key": "{\"config\": \"history10m\", \"rep\": 222, \"source\": \"real_poker\"}", "auc": 0.51281, "p": 0.47, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 224, "key": "{\"config\": \"history10m\", \"rep\": 224, \"source\": \"real_poker\"}", "auc": 0.44578, "p": 0.19, "sec": 5.06}
+{"source": "real_poker", "config": "history10m", "rep": 223, "key": "{\"config\": \"history10m\", \"rep\": 223, \"source\": \"real_poker\"}", "auc": 0.46381, "p": 0.67, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 225, "key": "{\"config\": \"history10m\", \"rep\": 225, \"source\": \"real_poker\"}", "auc": 0.4436800000000001, "p": 0.96, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 226, "key": "{\"config\": \"history10m\", \"rep\": 226, \"source\": \"real_poker\"}", "auc": 0.51247, "p": 0.81, "sec": 5.09}
+{"source": "real_poker", "config": "history10m", "rep": 227, "key": "{\"config\": \"history10m\", \"rep\": 227, \"source\": \"real_poker\"}", "auc": 0.4648, "p": 0.49, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 228, "key": "{\"config\": \"history10m\", \"rep\": 228, \"source\": \"real_poker\"}", "auc": 0.41996, "p": 0.53, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 229, "key": "{\"config\": \"history10m\", \"rep\": 229, \"source\": \"real_poker\"}", "auc": 0.5184300000000001, "p": 0.03, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 230, "key": "{\"config\": \"history10m\", \"rep\": 230, \"source\": \"real_poker\"}", "auc": 0.5012899999999999, "p": 0.86, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 231, "key": "{\"config\": \"history10m\", \"rep\": 231, \"source\": \"real_poker\"}", "auc": 0.45842, "p": 0.89, "sec": 5.25}
+{"source": "real_poker", "config": "history10m", "rep": 232, "key": "{\"config\": \"history10m\", \"rep\": 232, \"source\": \"real_poker\"}", "auc": 0.56551, "p": 0.05, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 233, "key": "{\"config\": \"history10m\", \"rep\": 233, \"source\": \"real_poker\"}", "auc": 0.46558, "p": 0.76, "sec": 5.26}
+{"source": "real_poker", "config": "history10m", "rep": 234, "key": "{\"config\": \"history10m\", \"rep\": 234, \"source\": \"real_poker\"}", "auc": 0.46576000000000006, "p": 0.77, "sec": 5.32}
+{"source": "real_poker", "config": "history10m", "rep": 235, "key": "{\"config\": \"history10m\", \"rep\": 235, \"source\": \"real_poker\"}", "auc": 0.50135, "p": 0.27, "sec": 5.29}
+{"source": "real_poker", "config": "history10m", "rep": 236, "key": "{\"config\": \"history10m\", \"rep\": 236, \"source\": \"real_poker\"}", "auc": 0.5415800000000001, "p": 0.29, "sec": 5.34}
+{"source": "real_poker", "config": "history10m", "rep": 237, "key": "{\"config\": \"history10m\", \"rep\": 237, \"source\": \"real_poker\"}", "auc": 0.49253500000000006, "p": 0.55, "sec": 5.31}
+{"source": "real_poker", "config": "history10m", "rep": 238, "key": "{\"config\": \"history10m\", \"rep\": 238, \"source\": \"real_poker\"}", "auc": 0.5638, "p": 0.07, "sec": 5.37}
+{"source": "real_poker", "config": "history10m", "rep": 239, "key": "{\"config\": \"history10m\", \"rep\": 239, \"source\": \"real_poker\"}", "auc": 0.51828, "p": 0.83, "sec": 5.38}
+{"source": "real_poker", "config": "history10m", "rep": 240, "key": "{\"config\": \"history10m\", \"rep\": 240, \"source\": \"real_poker\"}", "auc": 0.51333, "p": 0.2, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 241, "key": "{\"config\": \"history10m\", \"rep\": 241, \"source\": \"real_poker\"}", "auc": 0.46642, "p": 0.94, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 242, "key": "{\"config\": \"history10m\", \"rep\": 242, \"source\": \"real_poker\"}", "auc": 0.48813, "p": 0.48, "sec": 5.22}
+{"source": "real_poker", "config": "history10m", "rep": 243, "key": "{\"config\": \"history10m\", \"rep\": 243, \"source\": \"real_poker\"}", "auc": 0.4938699999999999, "p": 0.08, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 244, "key": "{\"config\": \"history10m\", \"rep\": 244, \"source\": \"real_poker\"}", "auc": 0.51692, "p": 0.07, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 245, "key": "{\"config\": \"history10m\", \"rep\": 245, \"source\": \"real_poker\"}", "auc": 0.51855, "p": 0.02, "sec": 5.22}
+{"source": "real_poker", "config": "history10m", "rep": 246, "key": "{\"config\": \"history10m\", \"rep\": 246, \"source\": \"real_poker\"}", "auc": 0.5128199999999999, "p": 0.49, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 247, "key": "{\"config\": \"history10m\", \"rep\": 247, \"source\": \"real_poker\"}", "auc": 0.51049, "p": 0.39, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 248, "key": "{\"config\": \"history10m\", \"rep\": 248, \"source\": \"real_poker\"}", "auc": 0.49675500000000006, "p": 0.6, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 249, "key": "{\"config\": \"history10m\", \"rep\": 249, \"source\": \"real_poker\"}", "auc": 0.49761, "p": 0.3, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 250, "key": "{\"config\": \"history10m\", \"rep\": 250, \"source\": \"real_poker\"}", "auc": 0.51576, "p": 0.21, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 251, "key": "{\"config\": \"history10m\", \"rep\": 251, \"source\": \"real_poker\"}", "auc": 0.52761, "p": 0.16, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 252, "key": "{\"config\": \"history10m\", \"rep\": 252, \"source\": \"real_poker\"}", "auc": 0.5104, "p": 0.52, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 253, "key": "{\"config\": \"history10m\", \"rep\": 253, \"source\": \"real_poker\"}", "auc": 0.50345, "p": 0.21, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 254, "key": "{\"config\": \"history10m\", \"rep\": 254, \"source\": \"real_poker\"}", "auc": 0.5209699999999999, "p": 0.27, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 255, "key": "{\"config\": \"history10m\", \"rep\": 255, \"source\": \"real_poker\"}", "auc": 0.44860999999999995, "p": 0.8, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 256, "key": "{\"config\": \"history10m\", \"rep\": 256, \"source\": \"real_poker\"}", "auc": 0.52689, "p": 0.21, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 257, "key": "{\"config\": \"history10m\", \"rep\": 257, \"source\": \"real_poker\"}", "auc": 0.48645000000000005, "p": 0.48, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 258, "key": "{\"config\": \"history10m\", \"rep\": 258, \"source\": \"real_poker\"}", "auc": 0.51867, "p": 0.56, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 259, "key": "{\"config\": \"history10m\", \"rep\": 259, \"source\": \"real_poker\"}", "auc": 0.44054, "p": 0.72, "sec": 5.23}
+{"source": "real_poker", "config": "history10m", "rep": 260, "key": "{\"config\": \"history10m\", \"rep\": 260, \"source\": \"real_poker\"}", "auc": 0.46547000000000005, "p": 0.73, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 261, "key": "{\"config\": \"history10m\", \"rep\": 261, \"source\": \"real_poker\"}", "auc": 0.55392, "p": 0.01, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 262, "key": "{\"config\": \"history10m\", \"rep\": 262, \"source\": \"real_poker\"}", "auc": 0.5389200000000001, "p": 0.4, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 263, "key": "{\"config\": \"history10m\", \"rep\": 263, \"source\": \"real_poker\"}", "auc": 0.44920000000000004, "p": 0.88, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 264, "key": "{\"config\": \"history10m\", \"rep\": 264, \"source\": \"real_poker\"}", "auc": 0.51775, "p": 0.78, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 265, "key": "{\"config\": \"history10m\", \"rep\": 265, \"source\": \"real_poker\"}", "auc": 0.47963, "p": 0.45, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 266, "key": "{\"config\": \"history10m\", \"rep\": 266, \"source\": \"real_poker\"}", "auc": 0.48213999999999996, "p": 0.85, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 267, "key": "{\"config\": \"history10m\", \"rep\": 267, \"source\": \"real_poker\"}", "auc": 0.5197499999999999, "p": 0.21, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 268, "key": "{\"config\": \"history10m\", \"rep\": 268, \"source\": \"real_poker\"}", "auc": 0.49518000000000006, "p": 0.72, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 269, "key": "{\"config\": \"history10m\", \"rep\": 269, \"source\": \"real_poker\"}", "auc": 0.47709, "p": 0.2, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 270, "key": "{\"config\": \"history10m\", \"rep\": 270, \"source\": \"real_poker\"}", "auc": 0.46535000000000004, "p": 0.96, "sec": 5.36}
+{"source": "real_poker", "config": "history10m", "rep": 271, "key": "{\"config\": \"history10m\", \"rep\": 271, \"source\": \"real_poker\"}", "auc": 0.53055, "p": 0.15, "sec": 5.37}
+{"source": "real_poker", "config": "history10m", "rep": 272, "key": "{\"config\": \"history10m\", \"rep\": 272, \"source\": \"real_poker\"}", "auc": 0.46079, "p": 0.65, "sec": 5.37}
+{"source": "real_poker", "config": "history10m", "rep": 273, "key": "{\"config\": \"history10m\", \"rep\": 273, \"source\": \"real_poker\"}", "auc": 0.507795, "p": 0.26, "sec": 5.4}
+{"source": "real_poker", "config": "history10m", "rep": 274, "key": "{\"config\": \"history10m\", \"rep\": 274, \"source\": \"real_poker\"}", "auc": 0.47517, "p": 0.44, "sec": 5.39}
+{"source": "real_poker", "config": "history10m", "rep": 275, "key": "{\"config\": \"history10m\", \"rep\": 275, \"source\": \"real_poker\"}", "auc": 0.49446, "p": 0.82, "sec": 5.38}
+{"source": "real_poker", "config": "history10m", "rep": 276, "key": "{\"config\": \"history10m\", \"rep\": 276, \"source\": \"real_poker\"}", "auc": 0.56596, "p": 0.11, "sec": 5.4}
+{"source": "real_poker", "config": "history10m", "rep": 277, "key": "{\"config\": \"history10m\", \"rep\": 277, \"source\": \"real_poker\"}", "auc": 0.5082, "p": 0.16, "sec": 5.41}
+{"source": "real_poker", "config": "history10m", "rep": 278, "key": "{\"config\": \"history10m\", \"rep\": 278, \"source\": \"real_poker\"}", "auc": 0.47832, "p": 0.79, "sec": 5.42}
+{"source": "real_poker", "config": "history10m", "rep": 279, "key": "{\"config\": \"history10m\", \"rep\": 279, \"source\": \"real_poker\"}", "auc": 0.520705, "p": 0.22, "sec": 5.4}
+{"source": "real_poker", "config": "history10m", "rep": 280, "key": "{\"config\": \"history10m\", \"rep\": 280, \"source\": \"real_poker\"}", "auc": 0.53985, "p": 0.03, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 281, "key": "{\"config\": \"history10m\", \"rep\": 281, \"source\": \"real_poker\"}", "auc": 0.49738, "p": 0.2, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 282, "key": "{\"config\": \"history10m\", \"rep\": 282, \"source\": \"real_poker\"}", "auc": 0.54573, "p": 0.44, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 283, "key": "{\"config\": \"history10m\", \"rep\": 283, \"source\": \"real_poker\"}", "auc": 0.50463, "p": 0.35, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 284, "key": "{\"config\": \"history10m\", \"rep\": 284, \"source\": \"real_poker\"}", "auc": 0.46890999999999994, "p": 0.97, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 285, "key": "{\"config\": \"history10m\", \"rep\": 285, \"source\": \"real_poker\"}", "auc": 0.56284, "p": 0.26, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 286, "key": "{\"config\": \"history10m\", \"rep\": 286, \"source\": \"real_poker\"}", "auc": 0.52028, "p": 0.64, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 287, "key": "{\"config\": \"history10m\", \"rep\": 287, \"source\": \"real_poker\"}", "auc": 0.45775, "p": 0.52, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 288, "key": "{\"config\": \"history10m\", \"rep\": 288, \"source\": \"real_poker\"}", "auc": 0.51849, "p": 0.54, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 289, "key": "{\"config\": \"history10m\", \"rep\": 289, \"source\": \"real_poker\"}", "auc": 0.48057, "p": 0.9, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 290, "key": "{\"config\": \"history10m\", \"rep\": 290, \"source\": \"real_poker\"}", "auc": 0.4778, "p": 0.84, "sec": 5.09}
+{"source": "real_poker", "config": "history10m", "rep": 291, "key": "{\"config\": \"history10m\", \"rep\": 291, \"source\": \"real_poker\"}", "auc": 0.502, "p": 0.81, "sec": 5.09}
+{"source": "real_poker", "config": "history10m", "rep": 292, "key": "{\"config\": \"history10m\", \"rep\": 292, \"source\": \"real_poker\"}", "auc": 0.52828, "p": 0.01, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 293, "key": "{\"config\": \"history10m\", \"rep\": 293, \"source\": \"real_poker\"}", "auc": 0.52566, "p": 0.18, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 294, "key": "{\"config\": \"history10m\", \"rep\": 294, \"source\": \"real_poker\"}", "auc": 0.50315, "p": 0.1, "sec": 5.08}
+{"source": "real_poker", "config": "history10m", "rep": 295, "key": "{\"config\": \"history10m\", \"rep\": 295, \"source\": \"real_poker\"}", "auc": 0.53091, "p": 0.46, "sec": 5.09}
+{"source": "real_poker", "config": "history10m", "rep": 296, "key": "{\"config\": \"history10m\", \"rep\": 296, \"source\": \"real_poker\"}", "auc": 0.53526, "p": 0.02, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 297, "key": "{\"config\": \"history10m\", \"rep\": 297, \"source\": \"real_poker\"}", "auc": 0.5946899999999999, "p": 0.29, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 298, "key": "{\"config\": \"history10m\", \"rep\": 298, \"source\": \"real_poker\"}", "auc": 0.49517999999999995, "p": 0.15, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 299, "key": "{\"config\": \"history10m\", \"rep\": 299, \"source\": \"real_poker\"}", "auc": 0.45745, "p": 0.78, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 301, "key": "{\"config\": \"history10m\", \"rep\": 301, \"source\": \"real_poker\"}", "auc": 0.47885, "p": 0.25, "sec": 5.07}
+{"source": "real_poker", "config": "history10m", "rep": 300, "key": "{\"config\": \"history10m\", \"rep\": 300, \"source\": \"real_poker\"}", "auc": 0.49076, "p": 0.84, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 302, "key": "{\"config\": \"history10m\", \"rep\": 302, \"source\": \"real_poker\"}", "auc": 0.49267, "p": 0.99, "sec": 5.08}
+{"source": "real_poker", "config": "history10m", "rep": 303, "key": "{\"config\": \"history10m\", \"rep\": 303, \"source\": \"real_poker\"}", "auc": 0.53643, "p": 0.98, "sec": 5.09}
+{"source": "real_poker", "config": "history10m", "rep": 304, "key": "{\"config\": \"history10m\", \"rep\": 304, \"source\": \"real_poker\"}", "auc": 0.50377, "p": 0.98, "sec": 5.09}
+{"source": "real_poker", "config": "history10m", "rep": 305, "key": "{\"config\": \"history10m\", \"rep\": 305, \"source\": \"real_poker\"}", "auc": 0.55453, "p": 0.68, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 306, "key": "{\"config\": \"history10m\", \"rep\": 306, \"source\": \"real_poker\"}", "auc": 0.45793, "p": 0.82, "sec": 5.08}
+{"source": "real_poker", "config": "history10m", "rep": 307, "key": "{\"config\": \"history10m\", \"rep\": 307, \"source\": \"real_poker\"}", "auc": 0.45816999999999997, "p": 0.93, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 308, "key": "{\"config\": \"history10m\", \"rep\": 308, \"source\": \"real_poker\"}", "auc": 0.51561, "p": 0.79, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 309, "key": "{\"config\": \"history10m\", \"rep\": 309, \"source\": \"real_poker\"}", "auc": 0.45217999999999997, "p": 0.69, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 311, "key": "{\"config\": \"history10m\", \"rep\": 311, \"source\": \"real_poker\"}", "auc": 0.48774500000000004, "p": 0.8, "sec": 5.08}
+{"source": "real_poker", "config": "history10m", "rep": 310, "key": "{\"config\": \"history10m\", \"rep\": 310, \"source\": \"real_poker\"}", "auc": 0.50735, "p": 0.77, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 312, "key": "{\"config\": \"history10m\", \"rep\": 312, \"source\": \"real_poker\"}", "auc": 0.4745600000000001, "p": 0.24, "sec": 5.12}
+{"source": "real_poker", "config": "history10m", "rep": 313, "key": "{\"config\": \"history10m\", \"rep\": 313, \"source\": \"real_poker\"}", "auc": 0.462855, "p": 0.78, "sec": 5.07}
+{"source": "real_poker", "config": "history10m", "rep": 314, "key": "{\"config\": \"history10m\", \"rep\": 314, \"source\": \"real_poker\"}", "auc": 0.47974999999999995, "p": 0.8, "sec": 5.08}
+{"source": "real_poker", "config": "history10m", "rep": 315, "key": "{\"config\": \"history10m\", \"rep\": 315, \"source\": \"real_poker\"}", "auc": 0.47466, "p": 0.6, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 316, "key": "{\"config\": \"history10m\", \"rep\": 316, \"source\": \"real_poker\"}", "auc": 0.5480100000000001, "p": 0.41, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 317, "key": "{\"config\": \"history10m\", \"rep\": 317, \"source\": \"real_poker\"}", "auc": 0.49568999999999996, "p": 0.6, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 318, "key": "{\"config\": \"history10m\", \"rep\": 318, \"source\": \"real_poker\"}", "auc": 0.5426500000000001, "p": 0.38, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 319, "key": "{\"config\": \"history10m\", \"rep\": 319, \"source\": \"real_poker\"}", "auc": 0.48388, "p": 0.34, "sec": 5.25}
+{"source": "real_poker", "config": "history10m", "rep": 320, "key": "{\"config\": \"history10m\", \"rep\": 320, \"source\": \"real_poker\"}", "auc": 0.47043, "p": 0.8, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 321, "key": "{\"config\": \"history10m\", \"rep\": 321, \"source\": \"real_poker\"}", "auc": 0.53338, "p": 0.43, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 322, "key": "{\"config\": \"history10m\", \"rep\": 322, \"source\": \"real_poker\"}", "auc": 0.45447000000000004, "p": 0.49, "sec": 5.21}
+{"source": "real_poker", "config": "history10m", "rep": 323, "key": "{\"config\": \"history10m\", \"rep\": 323, \"source\": \"real_poker\"}", "auc": 0.51681, "p": 0.21, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 324, "key": "{\"config\": \"history10m\", \"rep\": 324, \"source\": \"real_poker\"}", "auc": 0.5328900000000001, "p": 0.7, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 325, "key": "{\"config\": \"history10m\", \"rep\": 325, \"source\": \"real_poker\"}", "auc": 0.51964, "p": 0.11, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 326, "key": "{\"config\": \"history10m\", \"rep\": 326, \"source\": \"real_poker\"}", "auc": 0.47343, "p": 0.96, "sec": 5.2}
+{"source": "real_poker", "config": "history10m", "rep": 327, "key": "{\"config\": \"history10m\", \"rep\": 327, \"source\": \"real_poker\"}", "auc": 0.49038, "p": 0.62, "sec": 5.22}
+{"source": "real_poker", "config": "history10m", "rep": 328, "key": "{\"config\": \"history10m\", \"rep\": 328, \"source\": \"real_poker\"}", "auc": 0.47804, "p": 0.47, "sec": 5.25}
+{"source": "real_poker", "config": "history10m", "rep": 329, "key": "{\"config\": \"history10m\", \"rep\": 329, \"source\": \"real_poker\"}", "auc": 0.51556, "p": 0.61, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 330, "key": "{\"config\": \"history10m\", \"rep\": 330, \"source\": \"real_poker\"}", "auc": 0.50955, "p": 0.92, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 331, "key": "{\"config\": \"history10m\", \"rep\": 331, \"source\": \"real_poker\"}", "auc": 0.49863, "p": 0.28, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 333, "key": "{\"config\": \"history10m\", \"rep\": 333, \"source\": \"real_poker\"}", "auc": 0.53022, "p": 0.04, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 332, "key": "{\"config\": \"history10m\", \"rep\": 332, \"source\": \"real_poker\"}", "auc": 0.50447, "p": 0.67, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 334, "key": "{\"config\": \"history10m\", \"rep\": 334, \"source\": \"real_poker\"}", "auc": 0.45925, "p": 0.45, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 335, "key": "{\"config\": \"history10m\", \"rep\": 335, \"source\": \"real_poker\"}", "auc": 0.5058999999999999, "p": 0.94, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 336, "key": "{\"config\": \"history10m\", \"rep\": 336, \"source\": \"real_poker\"}", "auc": 0.4708049999999999, "p": 0.57, "sec": 5.14}
+{"source": "real_poker", "config": "history10m", "rep": 337, "key": "{\"config\": \"history10m\", \"rep\": 337, \"source\": \"real_poker\"}", "auc": 0.44484999999999997, "p": 0.97, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 338, "key": "{\"config\": \"history10m\", \"rep\": 338, \"source\": \"real_poker\"}", "auc": 0.510485, "p": 0.17, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 339, "key": "{\"config\": \"history10m\", \"rep\": 339, \"source\": \"real_poker\"}", "auc": 0.5043799999999999, "p": 0.1, "sec": 5.18}
+{"source": "real_poker", "config": "history10m", "rep": 340, "key": "{\"config\": \"history10m\", \"rep\": 340, \"source\": \"real_poker\"}", "auc": 0.5226000000000001, "p": 0.48, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 341, "key": "{\"config\": \"history10m\", \"rep\": 341, \"source\": \"real_poker\"}", "auc": 0.48331, "p": 0.49, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 342, "key": "{\"config\": \"history10m\", \"rep\": 342, \"source\": \"real_poker\"}", "auc": 0.50928, "p": 0.9, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 343, "key": "{\"config\": \"history10m\", \"rep\": 343, \"source\": \"real_poker\"}", "auc": 0.48327000000000003, "p": 0.86, "sec": 5.19}
+{"source": "real_poker", "config": "history10m", "rep": 344, "key": "{\"config\": \"history10m\", \"rep\": 344, \"source\": \"real_poker\"}", "auc": 0.50173, "p": 0.76, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 345, "key": "{\"config\": \"history10m\", \"rep\": 345, \"source\": \"real_poker\"}", "auc": 0.49471999999999994, "p": 0.25, "sec": 5.34}
+{"source": "real_poker", "config": "history10m", "rep": 346, "key": "{\"config\": \"history10m\", \"rep\": 346, \"source\": \"real_poker\"}", "auc": 0.50613, "p": 0.78, "sec": 5.36}
+{"source": "real_poker", "config": "history10m", "rep": 347, "key": "{\"config\": \"history10m\", \"rep\": 347, \"source\": \"real_poker\"}", "auc": 0.5451449999999999, "p": 0.47, "sec": 5.43}
+{"source": "real_poker", "config": "history10m", "rep": 348, "key": "{\"config\": \"history10m\", \"rep\": 348, \"source\": \"real_poker\"}", "auc": 0.5270299999999999, "p": 0.3, "sec": 5.53}
+{"source": "real_poker", "config": "history10m", "rep": 349, "key": "{\"config\": \"history10m\", \"rep\": 349, \"source\": \"real_poker\"}", "auc": 0.51005, "p": 0.23, "sec": 5.67}
+{"source": "real_poker", "config": "history10m", "rep": 350, "key": "{\"config\": \"history10m\", \"rep\": 350, \"source\": \"real_poker\"}", "auc": 0.51319, "p": 0.38, "sec": 5.7}
+{"source": "real_poker", "config": "history10m", "rep": 351, "key": "{\"config\": \"history10m\", \"rep\": 351, \"source\": \"real_poker\"}", "auc": 0.5152549999999999, "p": 0.09, "sec": 5.75}
+{"source": "real_poker", "config": "history10m", "rep": 352, "key": "{\"config\": \"history10m\", \"rep\": 352, \"source\": \"real_poker\"}", "auc": 0.5558, "p": 0.57, "sec": 5.73}
+{"source": "real_poker", "config": "history10m", "rep": 354, "key": "{\"config\": \"history10m\", \"rep\": 354, \"source\": \"real_poker\"}", "auc": 0.51613, "p": 0.07, "sec": 5.71}
+{"source": "real_poker", "config": "history10m", "rep": 353, "key": "{\"config\": \"history10m\", \"rep\": 353, \"source\": \"real_poker\"}", "auc": 0.5294, "p": 0.1, "sec": 5.76}
+{"source": "real_poker", "config": "history10m", "rep": 355, "key": "{\"config\": \"history10m\", \"rep\": 355, \"source\": \"real_poker\"}", "auc": 0.52559, "p": 0.19, "sec": 5.59}
+{"source": "real_poker", "config": "history10m", "rep": 356, "key": "{\"config\": \"history10m\", \"rep\": 356, \"source\": \"real_poker\"}", "auc": 0.50939, "p": 0.19, "sec": 5.63}
+{"source": "real_poker", "config": "history10m", "rep": 357, "key": "{\"config\": \"history10m\", \"rep\": 357, \"source\": \"real_poker\"}", "auc": 0.5455399999999999, "p": 0.36, "sec": 5.55}
+{"source": "real_poker", "config": "history10m", "rep": 358, "key": "{\"config\": \"history10m\", \"rep\": 358, \"source\": \"real_poker\"}", "auc": 0.51654, "p": 0.72, "sec": 5.47}
+{"source": "real_poker", "config": "history10m", "rep": 359, "key": "{\"config\": \"history10m\", \"rep\": 359, \"source\": \"real_poker\"}", "auc": 0.5847100000000001, "p": 0.01, "sec": 5.4}
+{"source": "real_poker", "config": "history10m", "rep": 360, "key": "{\"config\": \"history10m\", \"rep\": 360, \"source\": \"real_poker\"}", "auc": 0.51535, "p": 0.14, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 361, "key": "{\"config\": \"history10m\", \"rep\": 361, \"source\": \"real_poker\"}", "auc": 0.44288, "p": 0.99, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 362, "key": "{\"config\": \"history10m\", \"rep\": 362, \"source\": \"real_poker\"}", "auc": 0.49207999999999996, "p": 0.36, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 363, "key": "{\"config\": \"history10m\", \"rep\": 363, \"source\": \"real_poker\"}", "auc": 0.5268700000000001, "p": 0.26, "sec": 5.11}
+{"source": "real_poker", "config": "history10m", "rep": 364, "key": "{\"config\": \"history10m\", \"rep\": 364, \"source\": \"real_poker\"}", "auc": 0.52922, "p": 0.31, "sec": 5.13}
+{"source": "real_poker", "config": "history10m", "rep": 365, "key": "{\"config\": \"history10m\", \"rep\": 365, \"source\": \"real_poker\"}", "auc": 0.5369, "p": 0.29, "sec": 5.17}
+{"source": "real_poker", "config": "history10m", "rep": 366, "key": "{\"config\": \"history10m\", \"rep\": 366, \"source\": \"real_poker\"}", "auc": 0.47802999999999995, "p": 0.58, "sec": 5.07}
+{"source": "real_poker", "config": "history10m", "rep": 367, "key": "{\"config\": \"history10m\", \"rep\": 367, \"source\": \"real_poker\"}", "auc": 0.53141, "p": 0.39, "sec": 5.15}
+{"source": "real_poker", "config": "history10m", "rep": 368, "key": "{\"config\": \"history10m\", \"rep\": 368, \"source\": \"real_poker\"}", "auc": 0.44712999999999997, "p": 0.53, "sec": 5.1}
+{"source": "real_poker", "config": "history10m", "rep": 369, "key": "{\"config\": \"history10m\", \"rep\": 369, \"source\": \"real_poker\"}", "auc": 0.53704, "p": 0.32, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 370, "key": "{\"config\": \"history10m\", \"rep\": 370, \"source\": \"real_poker\"}", "auc": 0.42904, "p": 0.67, "sec": 5.39}
+{"source": "real_poker", "config": "history10m", "rep": 371, "key": "{\"config\": \"history10m\", \"rep\": 371, \"source\": \"real_poker\"}", "auc": 0.48273, "p": 0.79, "sec": 5.24}
+{"source": "real_poker", "config": "history10m", "rep": 372, "key": "{\"config\": \"history10m\", \"rep\": 372, \"source\": \"real_poker\"}", "auc": 0.45488, "p": 0.71, "sec": 5.32}
+{"source": "real_poker", "config": "history10m", "rep": 373, "key": "{\"config\": \"history10m\", \"rep\": 373, \"source\": \"real_poker\"}", "auc": 0.5098, "p": 0.74, "sec": 5.27}
+{"source": "real_poker", "config": "history10m", "rep": 374, "key": "{\"config\": \"history10m\", \"rep\": 374, \"source\": \"real_poker\"}", "auc": 0.46509, "p": 0.2, "sec": 5.32}
+{"source": "real_poker", "config": "history10m", "rep": 375, "key": "{\"config\": \"history10m\", \"rep\": 375, \"source\": \"real_poker\"}", "auc": 0.49251, "p": 0.21, "sec": 5.3}
+{"source": "real_poker", "config": "history10m", "rep": 376, "key": "{\"config\": \"history10m\", \"rep\": 376, \"source\": \"real_poker\"}", "auc": 0.45533500000000005, "p": 0.96, "sec": 5.26}
+{"source": "real_poker", "config": "history10m", "rep": 377, "key": "{\"config\": \"history10m\", \"rep\": 377, \"source\": \"real_poker\"}", "auc": 0.49267, "p": 0.14, "sec": 5.25}
+{"source": "real_poker", "config": "history10m", "rep": 378, "key": "{\"config\": \"history10m\", \"rep\": 378, \"source\": \"real_poker\"}", "auc": 0.48527999999999993, "p": 0.24, "sec": 5.41}
+{"source": "real_poker", "config": "history10m", "rep": 379, "key": "{\"config\": \"history10m\", \"rep\": 379, \"source\": \"real_poker\"}", "auc": 0.43957, "p": 0.88, "sec": 5.45}
+{"source": "real_poker", "config": "history10m", "rep": 381, "key": "{\"config\": \"history10m\", \"rep\": 381, \"source\": \"real_poker\"}", "auc": 0.528915, "p": 0.09, "sec": 5.42}
+{"source": "real_poker", "config": "history10m", "rep": 380, "key": "{\"config\": \"history10m\", \"rep\": 380, \"source\": \"real_poker\"}", "auc": 0.4859399999999999, "p": 0.51, "sec": 5.58}
+{"source": "real_poker", "config": "history10m", "rep": 383, "key": "{\"config\": \"history10m\", \"rep\": 383, \"source\": \"real_poker\"}", "auc": 0.56923, "p": 0.44, "sec": 5.31}
+{"source": "real_poker", "config": "history10m", "rep": 382, "key": "{\"config\": \"history10m\", \"rep\": 382, \"source\": \"real_poker\"}", "auc": 0.49539, "p": 0.41, "sec": 5.41}
+{"source": "real_poker", "config": "history10m", "rep": 384, "key": "{\"config\": \"history10m\", \"rep\": 384, \"source\": \"real_poker\"}", "auc": 0.5146200000000001, "p": 0.49, "sec": 5.5}
+{"source": "real_poker", "config": "history10m", "rep": 385, "key": "{\"config\": \"history10m\", \"rep\": 385, \"source\": \"real_poker\"}", "auc": 0.54815, "p": 0.01, "sec": 5.52}
+{"source": "real_poker", "config": "history10m", "rep": 386, "key": "{\"config\": \"history10m\", \"rep\": 386, \"source\": \"real_poker\"}", "auc": 0.52311, "p": 0.18, "sec": 5.5}
+{"source": "real_poker", "config": "history10m", "rep": 387, "key": "{\"config\": \"history10m\", \"rep\": 387, \"source\": \"real_poker\"}", "auc": 0.52163, "p": 0.73, "sec": 5.49}
+{"source": "real_poker", "config": "history10m", "rep": 388, "key": "{\"config\": \"history10m\", \"rep\": 388, \"source\": \"real_poker\"}", "auc": 0.5213800000000001, "p": 0.41, "sec": 5.34}
+{"source": "real_poker", "config": "history10m", "rep": 389, "key": "{\"config\": \"history10m\", \"rep\": 389, \"source\": \"real_poker\"}", "auc": 0.5192399999999999, "p": 0.35, "sec": 5.16}
+{"source": "real_poker", "config": "history10m", "rep": 390, "key": "{\"config\": \"history10m\", \"rep\": 390, \"source\": \"real_poker\"}", "auc": 0.53733, "p": 0.36, "sec": 4.89}
+{"source": "real_poker", "config": "history10m", "rep": 391, "key": "{\"config\": \"history10m\", \"rep\": 391, \"source\": \"real_poker\"}", "auc": 0.59336, "p": 0.49, "sec": 4.87}
+{"source": "real_poker", "config": "history10m", "rep": 392, "key": "{\"config\": \"history10m\", \"rep\": 392, \"source\": \"real_poker\"}", "auc": 0.5066, "p": 0.46, "sec": 4.85}
+{"source": "real_poker", "config": "history10m", "rep": 393, "key": "{\"config\": \"history10m\", \"rep\": 393, \"source\": \"real_poker\"}", "auc": 0.51139, "p": 0.96, "sec": 4.8}
+{"source": "real_poker", "config": "history10m", "rep": 394, "key": "{\"config\": \"history10m\", \"rep\": 394, \"source\": \"real_poker\"}", "auc": 0.5122800000000001, "p": 0.73, "sec": 4.8}
+{"source": "real_poker", "config": "history10m", "rep": 395, "key": "{\"config\": \"history10m\", \"rep\": 395, \"source\": \"real_poker\"}", "auc": 0.52008, "p": 0.46, "sec": 4.74}
+{"source": "real_poker", "config": "history10m", "rep": 396, "key": "{\"config\": \"history10m\", \"rep\": 396, \"source\": \"real_poker\"}", "auc": 0.49021000000000003, "p": 0.72, "sec": 4.72}
+{"source": "real_poker", "config": "history10m", "rep": 397, "key": "{\"config\": \"history10m\", \"rep\": 397, \"source\": \"real_poker\"}", "auc": 0.50839, "p": 0.81, "sec": 4.71}
+{"source": "real_poker", "config": "history10m", "rep": 398, "key": "{\"config\": \"history10m\", \"rep\": 398, \"source\": \"real_poker\"}", "auc": 0.51701, "p": 0.03, "sec": 4.73}
+{"source": "real_poker", "config": "history10m", "rep": 399, "key": "{\"config\": \"history10m\", \"rep\": 399, \"source\": \"real_poker\"}", "auc": 0.5096, "p": 0.38, "sec": 4.78}
+{"source": "real_poker", "config": "history10m", "rep": 400, "key": "{\"config\": \"history10m\", \"rep\": 400, \"source\": \"real_poker\"}", "auc": 0.45286000000000004, "p": 0.88, "sec": 4.73}
+{"source": "real_poker", "config": "history10m", "rep": 401, "key": "{\"config\": \"history10m\", \"rep\": 401, \"source\": \"real_poker\"}", "auc": 0.49806, "p": 0.57, "sec": 4.6}
+{"source": "real_poker", "config": "history10m", "rep": 402, "key": "{\"config\": \"history10m\", \"rep\": 402, \"source\": \"real_poker\"}", "auc": 0.49419, "p": 0.63, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 403, "key": "{\"config\": \"history10m\", \"rep\": 403, \"source\": \"real_poker\"}", "auc": 0.5121, "p": 0.33, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 404, "key": "{\"config\": \"history10m\", \"rep\": 404, \"source\": \"real_poker\"}", "auc": 0.49906000000000006, "p": 0.72, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 405, "key": "{\"config\": \"history10m\", \"rep\": 405, \"source\": \"real_poker\"}", "auc": 0.49602, "p": 0.51, "sec": 4.72}
+{"source": "real_poker", "config": "history10m", "rep": 406, "key": "{\"config\": \"history10m\", \"rep\": 406, \"source\": \"real_poker\"}", "auc": 0.47834999999999994, "p": 0.69, "sec": 4.66}
+{"source": "real_poker", "config": "history10m", "rep": 407, "key": "{\"config\": \"history10m\", \"rep\": 407, \"source\": \"real_poker\"}", "auc": 0.45941, "p": 0.88, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 408, "key": "{\"config\": \"history10m\", \"rep\": 408, \"source\": \"real_poker\"}", "auc": 0.488525, "p": 0.22, "sec": 4.71}
+{"source": "real_poker", "config": "history10m", "rep": 409, "key": "{\"config\": \"history10m\", \"rep\": 409, \"source\": \"real_poker\"}", "auc": 0.5294699999999999, "p": 0.82, "sec": 4.75}
+{"source": "real_poker", "config": "history10m", "rep": 410, "key": "{\"config\": \"history10m\", \"rep\": 410, \"source\": \"real_poker\"}", "auc": 0.5589, "p": 0.05, "sec": 4.66}
+{"source": "real_poker", "config": "history10m", "rep": 411, "key": "{\"config\": \"history10m\", \"rep\": 411, \"source\": \"real_poker\"}", "auc": 0.55929, "p": 0.4, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 412, "key": "{\"config\": \"history10m\", \"rep\": 412, \"source\": \"real_poker\"}", "auc": 0.47463999999999995, "p": 0.73, "sec": 4.66}
+{"source": "real_poker", "config": "history10m", "rep": 413, "key": "{\"config\": \"history10m\", \"rep\": 413, \"source\": \"real_poker\"}", "auc": 0.50295, "p": 0.43, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 414, "key": "{\"config\": \"history10m\", \"rep\": 414, \"source\": \"real_poker\"}", "auc": 0.49935999999999997, "p": 0.27, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 415, "key": "{\"config\": \"history10m\", \"rep\": 415, \"source\": \"real_poker\"}", "auc": 0.53564, "p": 0.11, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 416, "key": "{\"config\": \"history10m\", \"rep\": 416, \"source\": \"real_poker\"}", "auc": 0.52146, "p": 0.53, "sec": 4.7}
+{"source": "real_poker", "config": "history10m", "rep": 417, "key": "{\"config\": \"history10m\", \"rep\": 417, \"source\": \"real_poker\"}", "auc": 0.48645, "p": 0.92, "sec": 4.65}
+{"source": "real_poker", "config": "history10m", "rep": 418, "key": "{\"config\": \"history10m\", \"rep\": 418, \"source\": \"real_poker\"}", "auc": 0.54993, "p": 0.12, "sec": 4.66}
+{"source": "real_poker", "config": "history10m", "rep": 419, "key": "{\"config\": \"history10m\", \"rep\": 419, \"source\": \"real_poker\"}", "auc": 0.50612, "p": 0.02, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 420, "key": "{\"config\": \"history10m\", \"rep\": 420, \"source\": \"real_poker\"}", "auc": 0.50493, "p": 0.49, "sec": 4.66}
+{"source": "real_poker", "config": "history10m", "rep": 421, "key": "{\"config\": \"history10m\", \"rep\": 421, \"source\": \"real_poker\"}", "auc": 0.5763, "p": 0.06, "sec": 4.63}
+{"source": "real_poker", "config": "history10m", "rep": 422, "key": "{\"config\": \"history10m\", \"rep\": 422, \"source\": \"real_poker\"}", "auc": 0.55204, "p": 0.35, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 423, "key": "{\"config\": \"history10m\", \"rep\": 423, \"source\": \"real_poker\"}", "auc": 0.45664000000000005, "p": 0.88, "sec": 4.66}
+{"source": "real_poker", "config": "history10m", "rep": 424, "key": "{\"config\": \"history10m\", \"rep\": 424, \"source\": \"real_poker\"}", "auc": 0.53426, "p": 0.49, "sec": 4.65}
+{"source": "real_poker", "config": "history10m", "rep": 425, "key": "{\"config\": \"history10m\", \"rep\": 425, \"source\": \"real_poker\"}", "auc": 0.50499, "p": 0.45, "sec": 4.64}
+{"source": "real_poker", "config": "history10m", "rep": 426, "key": "{\"config\": \"history10m\", \"rep\": 426, \"source\": \"real_poker\"}", "auc": 0.48152, "p": 0.53, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 427, "key": "{\"config\": \"history10m\", \"rep\": 427, \"source\": \"real_poker\"}", "auc": 0.52135, "p": 0.64, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 428, "key": "{\"config\": \"history10m\", \"rep\": 428, \"source\": \"real_poker\"}", "auc": 0.51018, "p": 0.49, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 429, "key": "{\"config\": \"history10m\", \"rep\": 429, \"source\": \"real_poker\"}", "auc": 0.533375, "p": 0.43, "sec": 4.71}
+{"source": "real_poker", "config": "history10m", "rep": 431, "key": "{\"config\": \"history10m\", \"rep\": 431, \"source\": \"real_poker\"}", "auc": 0.49951999999999996, "p": 0.69, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 430, "key": "{\"config\": \"history10m\", \"rep\": 430, \"source\": \"real_poker\"}", "auc": 0.52108, "p": 0.24, "sec": 4.74}
+{"source": "real_poker", "config": "history10m", "rep": 432, "key": "{\"config\": \"history10m\", \"rep\": 432, \"source\": \"real_poker\"}", "auc": 0.49869, "p": 0.38, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 433, "key": "{\"config\": \"history10m\", \"rep\": 433, \"source\": \"real_poker\"}", "auc": 0.521525, "p": 0.09, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 434, "key": "{\"config\": \"history10m\", \"rep\": 434, \"source\": \"real_poker\"}", "auc": 0.48162000000000005, "p": 0.43, "sec": 4.71}
+{"source": "real_poker", "config": "history10m", "rep": 435, "key": "{\"config\": \"history10m\", \"rep\": 435, \"source\": \"real_poker\"}", "auc": 0.48601000000000005, "p": 0.06, "sec": 4.74}
+{"source": "real_poker", "config": "history10m", "rep": 436, "key": "{\"config\": \"history10m\", \"rep\": 436, \"source\": \"real_poker\"}", "auc": 0.5026499999999999, "p": 0.6, "sec": 4.73}
+{"source": "real_poker", "config": "history10m", "rep": 437, "key": "{\"config\": \"history10m\", \"rep\": 437, \"source\": \"real_poker\"}", "auc": 0.57023, "p": 0.1, "sec": 4.71}
+{"source": "real_poker", "config": "history10m", "rep": 438, "key": "{\"config\": \"history10m\", \"rep\": 438, \"source\": \"real_poker\"}", "auc": 0.51984, "p": 0.22, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 439, "key": "{\"config\": \"history10m\", \"rep\": 439, \"source\": \"real_poker\"}", "auc": 0.53994, "p": 0.8, "sec": 4.79}
+{"source": "real_poker", "config": "history10m", "rep": 441, "key": "{\"config\": \"history10m\", \"rep\": 441, \"source\": \"real_poker\"}", "auc": 0.45030000000000003, "p": 0.85, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 440, "key": "{\"config\": \"history10m\", \"rep\": 440, \"source\": \"real_poker\"}", "auc": 0.45284, "p": 0.84, "sec": 4.72}
+{"source": "real_poker", "config": "history10m", "rep": 442, "key": "{\"config\": \"history10m\", \"rep\": 442, \"source\": \"real_poker\"}", "auc": 0.51902, "p": 0.47, "sec": 4.65}
+{"source": "real_poker", "config": "history10m", "rep": 443, "key": "{\"config\": \"history10m\", \"rep\": 443, \"source\": \"real_poker\"}", "auc": 0.5001, "p": 0.37, "sec": 4.63}
+{"source": "real_poker", "config": "history10m", "rep": 444, "key": "{\"config\": \"history10m\", \"rep\": 444, \"source\": \"real_poker\"}", "auc": 0.5141100000000001, "p": 0.26, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 445, "key": "{\"config\": \"history10m\", \"rep\": 445, \"source\": \"real_poker\"}", "auc": 0.50266, "p": 0.75, "sec": 4.72}
+{"source": "real_poker", "config": "history10m", "rep": 446, "key": "{\"config\": \"history10m\", \"rep\": 446, \"source\": \"real_poker\"}", "auc": 0.45576, "p": 0.96, "sec": 4.7}
+{"source": "real_poker", "config": "history10m", "rep": 447, "key": "{\"config\": \"history10m\", \"rep\": 447, \"source\": \"real_poker\"}", "auc": 0.5058199999999999, "p": 0.45, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 448, "key": "{\"config\": \"history10m\", \"rep\": 448, \"source\": \"real_poker\"}", "auc": 0.51078, "p": 0.51, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 449, "key": "{\"config\": \"history10m\", \"rep\": 449, \"source\": \"real_poker\"}", "auc": 0.58197, "p": 0.08, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 450, "key": "{\"config\": \"history10m\", \"rep\": 450, \"source\": \"real_poker\"}", "auc": 0.5122099999999999, "p": 0.42, "sec": 4.62}
+{"source": "real_poker", "config": "history10m", "rep": 451, "key": "{\"config\": \"history10m\", \"rep\": 451, \"source\": \"real_poker\"}", "auc": 0.52331, "p": 0.71, "sec": 4.66}
+{"source": "real_poker", "config": "history10m", "rep": 453, "key": "{\"config\": \"history10m\", \"rep\": 453, \"source\": \"real_poker\"}", "auc": 0.50128, "p": 0.45, "sec": 4.65}
+{"source": "real_poker", "config": "history10m", "rep": 452, "key": "{\"config\": \"history10m\", \"rep\": 452, \"source\": \"real_poker\"}", "auc": 0.54811, "p": 0.11, "sec": 4.7}
+{"source": "real_poker", "config": "history10m", "rep": 454, "key": "{\"config\": \"history10m\", \"rep\": 454, \"source\": \"real_poker\"}", "auc": 0.45822999999999997, "p": 0.98, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 455, "key": "{\"config\": \"history10m\", \"rep\": 455, \"source\": \"real_poker\"}", "auc": 0.45599, "p": 0.8, "sec": 4.63}
+{"source": "real_poker", "config": "history10m", "rep": 456, "key": "{\"config\": \"history10m\", \"rep\": 456, \"source\": \"real_poker\"}", "auc": 0.50748, "p": 0.29, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 457, "key": "{\"config\": \"history10m\", \"rep\": 457, \"source\": \"real_poker\"}", "auc": 0.472605, "p": 0.69, "sec": 4.63}
+{"source": "real_poker", "config": "history10m", "rep": 458, "key": "{\"config\": \"history10m\", \"rep\": 458, \"source\": \"real_poker\"}", "auc": 0.51835, "p": 0.04, "sec": 4.58}
+{"source": "real_poker", "config": "history10m", "rep": 459, "key": "{\"config\": \"history10m\", \"rep\": 459, \"source\": \"real_poker\"}", "auc": 0.49122, "p": 0.42, "sec": 4.67}
+{"source": "real_poker", "config": "history10m", "rep": 460, "key": "{\"config\": \"history10m\", \"rep\": 460, \"source\": \"real_poker\"}", "auc": 0.49951, "p": 0.53, "sec": 4.62}
+{"source": "real_poker", "config": "history10m", "rep": 461, "key": "{\"config\": \"history10m\", \"rep\": 461, \"source\": \"real_poker\"}", "auc": 0.51555, "p": 0.51, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 462, "key": "{\"config\": \"history10m\", \"rep\": 462, \"source\": \"real_poker\"}", "auc": 0.53939, "p": 0.69, "sec": 4.66}
+{"source": "real_poker", "config": "history10m", "rep": 463, "key": "{\"config\": \"history10m\", \"rep\": 463, \"source\": \"real_poker\"}", "auc": 0.5337099999999999, "p": 0.07, "sec": 4.65}
+{"source": "real_poker", "config": "history10m", "rep": 464, "key": "{\"config\": \"history10m\", \"rep\": 464, \"source\": \"real_poker\"}", "auc": 0.44606999999999997, "p": 0.58, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 465, "key": "{\"config\": \"history10m\", \"rep\": 465, \"source\": \"real_poker\"}", "auc": 0.5006299999999999, "p": 0.3, "sec": 4.7}
+{"source": "real_poker", "config": "history10m", "rep": 466, "key": "{\"config\": \"history10m\", \"rep\": 466, \"source\": \"real_poker\"}", "auc": 0.5200899999999999, "p": 0.52, "sec": 4.7}
+{"source": "real_poker", "config": "history10m", "rep": 467, "key": "{\"config\": \"history10m\", \"rep\": 467, \"source\": \"real_poker\"}", "auc": 0.50903, "p": 0.37, "sec": 4.68}
+{"source": "real_poker", "config": "history10m", "rep": 468, "key": "{\"config\": \"history10m\", \"rep\": 468, \"source\": \"real_poker\"}", "auc": 0.46312000000000003, "p": 0.88, "sec": 4.75}
+{"source": "real_poker", "config": "history10m", "rep": 469, "key": "{\"config\": \"history10m\", \"rep\": 469, \"source\": \"real_poker\"}", "auc": 0.461465, "p": 0.74, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 470, "key": "{\"config\": \"history10m\", \"rep\": 470, \"source\": \"real_poker\"}", "auc": 0.52908, "p": 0.44, "sec": 4.61}
+{"source": "real_poker", "config": "history10m", "rep": 471, "key": "{\"config\": \"history10m\", \"rep\": 471, \"source\": \"real_poker\"}", "auc": 0.4702, "p": 0.87, "sec": 4.54}
+{"source": "real_poker", "config": "history10m", "rep": 472, "key": "{\"config\": \"history10m\", \"rep\": 472, \"source\": \"real_poker\"}", "auc": 0.52213, "p": 0.71, "sec": 4.62}
+{"source": "real_poker", "config": "history10m", "rep": 473, "key": "{\"config\": \"history10m\", \"rep\": 473, \"source\": \"real_poker\"}", "auc": 0.56212, "p": 0.01, "sec": 4.61}
+{"source": "real_poker", "config": "history10m", "rep": 474, "key": "{\"config\": \"history10m\", \"rep\": 474, \"source\": \"real_poker\"}", "auc": 0.48655000000000004, "p": 0.71, "sec": 4.65}
+{"source": "real_poker", "config": "history10m", "rep": 475, "key": "{\"config\": \"history10m\", \"rep\": 475, \"source\": \"real_poker\"}", "auc": 0.49904, "p": 0.21, "sec": 4.61}
+{"source": "real_poker", "config": "history10m", "rep": 476, "key": "{\"config\": \"history10m\", \"rep\": 476, \"source\": \"real_poker\"}", "auc": 0.48883, "p": 0.87, "sec": 4.61}
+{"source": "real_poker", "config": "history10m", "rep": 477, "key": "{\"config\": \"history10m\", \"rep\": 477, \"source\": \"real_poker\"}", "auc": 0.5128699999999999, "p": 0.67, "sec": 4.65}
+{"source": "real_poker", "config": "history10m", "rep": 478, "key": "{\"config\": \"history10m\", \"rep\": 478, \"source\": \"real_poker\"}", "auc": 0.51271, "p": 0.47, "sec": 4.6}
+{"source": "real_poker", "config": "history10m", "rep": 479, "key": "{\"config\": \"history10m\", \"rep\": 479, \"source\": \"real_poker\"}", "auc": 0.44761, "p": 0.9, "sec": 4.72}
+{"source": "real_poker", "config": "history10m", "rep": 480, "key": "{\"config\": \"history10m\", \"rep\": 480, \"source\": \"real_poker\"}", "auc": 0.53152, "p": 0.21, "sec": 4.62}
+{"source": "real_poker", "config": "history10m", "rep": 481, "key": "{\"config\": \"history10m\", \"rep\": 481, \"source\": \"real_poker\"}", "auc": 0.5304, "p": 0.14, "sec": 4.6}
+{"source": "real_poker", "config": "history10m", "rep": 482, "key": "{\"config\": \"history10m\", \"rep\": 482, \"source\": \"real_poker\"}", "auc": 0.42483000000000004, "p": 0.98, "sec": 4.63}
+{"source": "real_poker", "config": "history10m", "rep": 483, "key": "{\"config\": \"history10m\", \"rep\": 483, \"source\": \"real_poker\"}", "auc": 0.47512, "p": 0.95, "sec": 4.63}
+{"source": "real_poker", "config": "history10m", "rep": 484, "key": "{\"config\": \"history10m\", \"rep\": 484, \"source\": \"real_poker\"}", "auc": 0.52019, "p": 0.28, "sec": 4.69}
+{"source": "real_poker", "config": "history10m", "rep": 485, "key": "{\"config\": \"history10m\", \"rep\": 485, \"source\": \"real_poker\"}", "auc": 0.47091, "p": 0.41, "sec": 4.7}

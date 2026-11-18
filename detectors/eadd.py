@@ -125,6 +125,12 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
     history_size, history_stride : int
         Samples kept for the history null, and the step between the starts
         of its windows.
+    null_match_size : bool
+        History null only: the observed and every null AUC use a reference of
+        n_reference_samples - n_current_samples samples (default False).
+    min_null_draws : int, optional
+        History null only: no test, and so no alarm, while fewer earlier
+        windows exist (default None: test with any number).
     """
 
     def __init__(
@@ -148,6 +154,8 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         null: str = "permutation",
         history_size: int = 5000,
         history_stride: int = 50,
+        min_null_draws: Optional[int] = None,
+        null_match_size: bool = False,
     ):
         super().__init__(seed)
         self.n_reference_samples = n_reference_samples
@@ -170,6 +178,13 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         assert null == "permutation" or reservoir_after_current, "history null needs reservoir_after_current"
         self.null = null
         self.history_stride = history_stride
+        # history null: no test (and no alarm) until this many earlier windows exist;
+        # right after an alarm the few null windows overlap heavily and the test is too liberal
+        self.min_null_draws = min_null_draws
+        # history null: observed and null AUCs both use a reference of
+        # n_reference_samples - n_current_samples samples (a null window's samples
+        # are removed from the reference, so null draws have fewer reference samples)
+        self.null_match_size = null_match_size
         self.history = deque(maxlen=history_size)  # samples since the last reset, with arrival time
         self.n_updates = 0
 
@@ -304,6 +319,16 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         early = self.permutation_test == "aspt"
         if self.null == "history":
             draw, n_draws = self._history_null()
+            if self.min_null_draws is not None and n_draws < self.min_null_draws:
+                self.last_aspt_permutations = 0
+                self.last_aspt_reject = False
+                return 1.0
+            if self.null_match_size:
+                m = self.n_reference_samples - self.n_current_samples
+                sub = ref_data[self.perm_rng.choice(len(ref_data), min(m, len(ref_data)), replace=False)]
+                actual_auc = self._cv_auc(np.vstack([sub, cur_data]),
+                                          np.concatenate([np.zeros(len(sub)), np.ones(len(cur_data))]),
+                                          self.perm_n_folds, int(self.perm_rng.integers(0, 2**31)))
         else:
             n_draws = self.n_permutations
             draw = lambda: self._cv_auc(X, self._permute_labels(y, groups), self.perm_n_folds,
@@ -345,6 +370,9 @@ class ExplainableAdversarialDriftDetector(UnsupervisedDriftDetector):
         def draw():
             w = past[next(it):][:n]
             r = ref[~np.isin(ref[:, -1], w[:, -1])]  # a window sample is not also a reference sample
+            if self.null_match_size:
+                m = self.n_reference_samples - self.n_current_samples
+                r = r[self.perm_rng.choice(len(r), min(m, len(r)), replace=False)]
             X = np.vstack([r[:, :-1], w[:, :-1]])
             y = np.concatenate([np.zeros(len(r)), np.ones(len(w))])
             return self._cv_auc(X, y, self.perm_n_folds, int(self.perm_rng.integers(0, 2**31)))

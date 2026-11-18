@@ -113,7 +113,7 @@ def run_job(job):
         from river.tree import HoeffdingTreeClassifier
         base, assisted = HoeffdingTreeClassifier(), HoeffdingTreeClassifier()
         correct_base = correct_assisted = n_pred = 0
-    detections, n = [], 0
+    detections, rankings, n = [], [], 0
     detector_time = 0.0
     t0 = time.perf_counter()
     for i, (x, y) in enumerate(stream):
@@ -132,6 +132,8 @@ def run_job(job):
             detector_time += time.perf_counter() - t1
             if drift:
                 detections.append(i)
+                if job.get("record_shap") and getattr(detector, "last_shap_importances", None):
+                    rankings.append([int(str(k).lstrip("x")) for k in detector.last_shap_importances])
                 if with_classifier:
                     assisted = HoeffdingTreeClassifier()
         if with_classifier:
@@ -145,6 +147,8 @@ def run_job(job):
                   total_time_sec=round(time.perf_counter() - t0, 3))
     if with_classifier:
         result.update(acc_base=correct_base / n_pred, acc_assisted=correct_assisted / n_pred)
+    if job.get("record_shap"):  # TreeSHAP feature ranking at each detection (H4)
+        result.update(rankings=rankings, shifted=getattr(stream, "shifted", None), n_features=len(x))
     for attr in ("n_tests", "n_early_stops", "n_rejections", "n_permutations_used"):
         if hasattr(detector, attr):
             result[attr] = getattr(detector, attr)

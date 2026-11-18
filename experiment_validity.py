@@ -44,7 +44,10 @@ CONFIGS = {"thesis": dict(perm_n_folds=2), "matched": dict(perm_n_folds=None),
            "history10": dict(perm_n_folds=None, reservoir_after_current=True, null="history", history_stride=10),
            # the same, in the state right after a reset: history = the last 700 samples,
            # reference = the 500 contiguous samples before the current window
-           "history10_reset": dict(perm_n_folds=None, reservoir_after_current=True, null="history", history_stride=10)}
+           "history10_reset": dict(perm_n_folds=None, reservoir_after_current=True, null="history", history_stride=10),
+    # observed and null AUCs on references of the same size (18 Nov fix)
+    "history10m": dict(perm_n_folds=None, reservoir_after_current=True, null="history", history_stride=10,
+                       null_match_size=True)}
 SOURCES = {"iid": ("iid", None), "real": ("real", "InsectsAbruptBalanced"), "ar0.9": ("ar", 0.9),
            "ar0.5": ("ar", 0.5), "ar0.99": ("ar", 0.99),
            # new H2 (experiment_h2.py) only
@@ -71,7 +74,33 @@ def window_pair(source, rep):
     return X[t_ref], X[t_cur], t_ref.astype(float), t_cur.astype(float), X
 
 
+def warm_job(job):
+    """'warm<K>': the detector's state at its first test after an alarm when it waits
+    for K earlier windows (stride 10): the stream from the alarm on is fed through
+    the detector itself, so reference and history are built as in a real run."""
+    k = int(job["config"][4:].rstrip("m"))
+    cfg = dict(CONFIGS["history10"], null_match_size=job["config"].endswith("m"))
+    n = 200 + 10 * (k - 1) + 200  # past windows + current window
+    kind, arg = SOURCES[job["source"]]
+    rng = np.random.default_rng([job["rep"], 11])
+    X = rng.normal(size=(5200, 10)) if kind == "iid" else (
+        shuffled_stream(arg, job["rep"], n=5200).X if kind == "real" else ar_stream(arg, job["rep"], n=5200).X)
+    det = ExplainableAdversarialDriftDetector(n_permutations=99, permutation_test="full", seed=job["rep"],
+                                              monitoring_frequency=10**9, **cfg)
+    for x in X[5200 - n:]:
+        det.update(dict(enumerate(x)))
+    ref_all, cur_all = np.array(det.reference_window), np.array(det.current_window)
+    groups = det._time_blocks(ref_all[:, -1], cur_all[:, -1])
+    t0 = time.perf_counter()
+    auc, _ = det._adversarial_auc_with_preds(ref_all[:, :-1], cur_all[:, :-1], groups)
+    p = det._aspt_test(ref_all[:, :-1], cur_all[:, :-1], auc, groups)
+    return dict(job, key=job_key(job), auc=auc, p=p, n_draws=det.last_aspt_permutations,
+                sec=round(time.perf_counter() - t0, 2))
+
+
 def p_job(job):
+    if job["config"].startswith("warm"):
+        return warm_job(job)
     ref, cur, t_ref, t_cur, X = window_pair(job["source"], job["rep"])
     det = ExplainableAdversarialDriftDetector(n_permutations=99, permutation_test="full",
                                               seed=job["rep"], **CONFIGS[job["config"]])
@@ -166,7 +195,7 @@ if __name__ == "__main__":
     os.makedirs(OUT_DIR, exist_ok=True)
     if "P" in a.part:
         jobs = [dict(source=s, config=c, rep=r) for s in VALIDITY_SOURCES for c in CONFIGS for r in range(REPS)
-                if not (s != "ar0.9" and c == "blocked")
+                if c != "history10m" and not (s != "ar0.9" and c == "blocked")
                 and not (s in ("ar0.5", "ar0.99") and c not in ("matched", "history", "history10", "history10_reset"))]
         run(jobs, p_job, os.path.join(OUT_DIR, "pvalues.jsonl"))
     if "F" in a.part:
