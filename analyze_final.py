@@ -118,5 +118,39 @@ def main():
     print(res.round(4).to_string(index=False))
 
 
+def online():
+    """Addendum 6: EADD against the Alibi Detect online detectors; Friedman over all detectors."""
+    from analyze_benchmark import friedman
+    path = os.path.join(OUT_DIR, "online.jsonl")
+    if not (os.path.exists(path) and os.path.getsize(path)):
+        return
+    on = pd.DataFrame([json.loads(l) for l in open(path) if l.strip()])
+    seeds = range(3000, 3003)  # addendum 6a
+    on = on[on.seed.isin(seeds)]
+    base = load("runs")
+    ps = per_stream(pd.concat([base[base.seed.isin(seeds)], on], ignore_index=True))
+    ps = ps[ps.variant != "EADD, full test"]
+    ps.groupby(["group", "variant"]).mean(numeric_only=True).round(3).to_csv(os.path.join(OUT_DIR, "online_per_type.csv"))
+    rows = []
+    for other in sorted(on.variant.unique()):
+        for test, grp, metric, alt, shift in [("H1a slow-drift recall higher", ["slow"], "recall", "greater", 0),
+                                              ("H1b slow-drift MTD lower", ["slow"], "mtd", "less", 0),
+                                              (f"H1c abrupt MTD not worse (margin {MARGIN_H1C})", ["abrupt"], "mtd", "less", MARGIN_H1C),
+                                              ("H2 fewer false alarms on autocorrelated streams without drift", ["autocorrelated"], "fa_per_10k", "less", 0)]:
+            d, ma, mb = paired(ps, grp, metric, "EADD", other)
+            rows.append(dict(hypothesis=test, against=other, n=len(d), eadd=ma, other=mb, p=wil(d - shift, alt)))
+    r = pd.DataFrame(rows)
+    r["p_holm"] = holm(r.p)
+    r.round(4).to_csv(os.path.join(OUT_DIR, "online_tests.csv"), index=False)
+    print(r.round(4).to_string(index=False))
+    drift = ps[ps.group.isin(["slow", "abrupt"])]
+    complete = drift.groupby("variant").dataset.nunique()
+    drift = drift[drift.variant.isin(complete[complete == drift.dataset.nunique()].index)]
+    fr = pd.concat([friedman(drift, m) for m in ("mtd", "recall", "fa")])
+    fr.round(3).to_csv(os.path.join(OUT_DIR, "online_friedman.csv"), index=False)
+    print(fr.round(3).to_string(index=False))
+
+
 if __name__ == "__main__":
     main()
+    online()

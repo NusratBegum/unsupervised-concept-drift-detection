@@ -22,7 +22,7 @@ import numpy as np
 from synthetic_streams import INJECT_BASES, synthetic_stream
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "experiments", "results_final", "online.jsonl")
-SEEDS = range(3000, 3010)
+SEEDS = range(3000, 3003)  # addendum 6a: compute limit
 N_REF, ERT, WINDOW, BOOT = 500, 2_500, 50, 25_000  # bootstraps at least 10 x ERT (Alibi Detect guidance)
 # the streams of experiment_confirm and experiment_h2 (not imported: they need EADD's environment)
 SLOW = ["SynthGradual", "SynthIncremental"] + [f"Inject{k}_{b}" for b in INJECT_BASES for k in ("Gradual", "Incremental")]

@@ -122,3 +122,7 @@ Protocol: the first 500 samples after a start or an alarm are the reference; the
 The 2025-2026 methods of the literature scan are not run: PUDD needs a deployed model's predictions, DriftLens works on deep-learning embeddings, the Gaussian Split and Real-Drift detectors separate real from virtual drift, and the Komorniczak 2026 detector has no released code that we found.
 
 Analysis (secondary, not in the H1-H4 families): the same metrics as addendum 5 per detector; EADD against each of the three with the H1a, H1b, H1c and H2 tests of addendum 5 (one-sided Wilcoxon over streams, Holm over the 12 tests); Friedman with Nemenyi critical difference over all detectors of addenda 5 and 6 on the 21 drift streams. ERT sets these detectors' false-alarm rate, so their false alarms are reported beside their delays, not judged alone.
+
+### Addendum 6a (18 Nov 2026, 16:05, after 20 of 1,050 runs, before any result was looked at)
+
+The online detectors recalibrate (25,000 bootstrap draws) after every alarm; on the server this takes about 20 minutes per run, so 1,050 runs would need about 36 hours. They are therefore run on seeds 3000-3002 only (315 runs), and every comparison in addendum 6 uses the same three seeds for EADD, D3-LightGBM and D3 (stream means over seeds 3000-3002 from addendum 5's runs). The 20 runs already finished with other seeds are kept in the file but not analysed.
