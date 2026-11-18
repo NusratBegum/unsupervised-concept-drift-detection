@@ -1,0 +1,135 @@
+group,dataset,variant,recall,mtd,fa,perms_per_test,fa_per_10k
+abrupt,InjectAbrupt_Electricity,D3,0.9667,166.4667,0.0,,
+abrupt,InjectAbrupt_Electricity,D3-LightGBM,1.0,120.4333,0.0,,
+abrupt,InjectAbrupt_Electricity,EADD,1.0,116.7667,0.0,59.0,
+abrupt,InjectAbrupt_Electricity,"EADD, full test",1.0,116.7667,0.0,199.0,
+abrupt,InjectAbrupt_InsectsIncrementalBalanced,D3,1.0,113.7667,0.0,,
+abrupt,InjectAbrupt_InsectsIncrementalBalanced,D3-LightGBM,1.0,112.1,0.0,,
+abrupt,InjectAbrupt_InsectsIncrementalBalanced,EADD,1.0,106.7667,0.0,59.0,
+abrupt,InjectAbrupt_InsectsIncrementalBalanced,"EADD, full test",1.0,106.7667,0.0,199.0,
+abrupt,InjectAbrupt_NOAAWeather,D3,1.0,117.1,0.0,,
+abrupt,InjectAbrupt_NOAAWeather,D3-LightGBM,1.0,120.4333,0.0,,
+abrupt,InjectAbrupt_NOAAWeather,EADD,1.0,108.4333,0.0,59.0,
+abrupt,InjectAbrupt_NOAAWeather,"EADD, full test",1.0,108.4333,0.0,199.0,
+abrupt,InjectAbrupt_PokerHand,D3,1.0,125.4333,0.0,,
+abrupt,InjectAbrupt_PokerHand,D3-LightGBM,1.0,112.1,0.0,,
+abrupt,InjectAbrupt_PokerHand,EADD,1.0,106.7667,0.0,59.0,
+abrupt,InjectAbrupt_PokerHand,"EADD, full test",1.0,106.7667,0.0,199.0,
+abrupt,InjectAbrupt_Powersupply,D3,1.0,108.7667,0.0,,
+abrupt,InjectAbrupt_Powersupply,D3-LightGBM,1.0,112.1,0.0,,
+abrupt,InjectAbrupt_Powersupply,EADD,1.0,106.7667,0.0,59.0,
+abrupt,InjectAbrupt_Powersupply,"EADD, full test",1.0,106.7667,0.0,199.0,
+abrupt,InjectAbrupt_RialtoBridgeTimelapse,D3,1.0,122.1,0.0,,
+abrupt,InjectAbrupt_RialtoBridgeTimelapse,D3-LightGBM,1.0,113.7667,0.0,,
+abrupt,InjectAbrupt_RialtoBridgeTimelapse,EADD,1.0,103.4333,0.0,59.0,
+abrupt,InjectAbrupt_RialtoBridgeTimelapse,"EADD, full test",1.0,103.4333,0.0,199.0,
+abrupt,SynthAbrupt,D3,1.0,133.7667,0.0,,
+abrupt,SynthAbrupt,D3-LightGBM,1.0,160.4333,0.0,,
+abrupt,SynthAbrupt,EADD,1.0,155.1,0.0,59.0,
+abrupt,SynthAbrupt,"EADD, full test",1.0,155.1,0.0,199.0,
+autocorrelated,AR0.8,D3,,,,,15.35
+autocorrelated,AR0.8,D3-LightGBM,,,,,19.5
+autocorrelated,AR0.8,EADD,,,,17.9991,5.0
+autocorrelated,AR0.85,D3,,,,,18.15
+autocorrelated,AR0.85,D3-LightGBM,,,,,19.5
+autocorrelated,AR0.85,EADD,,,,17.8159,4.5
+autocorrelated,AR0.9,D3,,,,,19.25
+autocorrelated,AR0.9,D3-LightGBM,,,,,19.5
+autocorrelated,AR0.9,EADD,,,,18.6949,6.0
+autocorrelated,AR0.93,D3,,,,,19.45
+autocorrelated,AR0.93,D3-LightGBM,,,,,19.5
+autocorrelated,AR0.93,EADD,,,,18.2849,5.6
+autocorrelated,AR0.95,D3,,,,,19.5
+autocorrelated,AR0.95,D3-LightGBM,,,,,19.5
+autocorrelated,AR0.95,EADD,,,,18.3351,6.3
+autocorrelated,AR0.97,D3,,,,,19.5
+autocorrelated,AR0.97,D3-LightGBM,,,,,19.5
+autocorrelated,AR0.97,EADD,,,,18.437,6.15
+no drift,AR0.5,D3,,,,,0.05
+no drift,AR0.5,D3-LightGBM,,,,,0.05
+no drift,AR0.5,EADD,,,,,0.0
+no drift,AR0.5,"EADD, full test",,,,,0.0
+no drift,AR0.9,D3,,,,,19.25
+no drift,AR0.9,D3-LightGBM,,,,,19.5
+no drift,AR0.9,EADD,,,,18.6949,6.0
+no drift,AR0.9,"EADD, full test",,,,133.2071,5.0
+no drift,ShuffledElectricity,D3,,,,,0.0
+no drift,ShuffledElectricity,D3-LightGBM,,,,,0.0
+no drift,ShuffledElectricity,EADD,,,,,0.0
+no drift,ShuffledElectricity,"EADD, full test",,,,,0.0
+no drift,ShuffledNOAAWeather,D3,,,,,0.0
+no drift,ShuffledNOAAWeather,D3-LightGBM,,,,,0.0
+no drift,ShuffledNOAAWeather,EADD,,,,,0.0
+no drift,ShuffledNOAAWeather,"EADD, full test",,,,,0.0
+no drift,ShuffledPokerHand,D3,,,,,0.0
+no drift,ShuffledPokerHand,D3-LightGBM,,,,,0.0
+no drift,ShuffledPokerHand,EADD,,,,,0.0
+no drift,ShuffledPokerHand,"EADD, full test",,,,,0.0
+no drift,ShuffledPowersupply,D3,,,,,0.0
+no drift,ShuffledPowersupply,D3-LightGBM,,,,,0.0
+no drift,ShuffledPowersupply,EADD,,,,,0.0
+no drift,ShuffledPowersupply,"EADD, full test",,,,,0.0
+no drift,ShuffledRialtoBridgeTimelapse,D3,,,,,0.0
+no drift,ShuffledRialtoBridgeTimelapse,D3-LightGBM,,,,,0.0
+no drift,ShuffledRialtoBridgeTimelapse,EADD,,,,,0.0
+no drift,ShuffledRialtoBridgeTimelapse,"EADD, full test",,,,,0.0
+no drift,SynthStable,D3,,,,,0.0
+no drift,SynthStable,D3-LightGBM,,,,,0.0
+no drift,SynthStable,EADD,,,,,0.0
+no drift,SynthStable,"EADD, full test",,,,,0.0
+slow,InjectGradual_Electricity,D3,0.0,1500.0,0.0,,
+slow,InjectGradual_Electricity,D3-LightGBM,0.0667,1444.9667,0.0,,
+slow,InjectGradual_Electricity,EADD,1.0,561.7667,0.4,63.805,
+slow,InjectGradual_Electricity,"EADD, full test",1.0,561.7667,0.4,184.905,
+slow,InjectGradual_InsectsIncrementalBalanced,D3,0.2333,1338.8,0.0,,
+slow,InjectGradual_InsectsIncrementalBalanced,D3-LightGBM,0.3,1337.2333,0.0,,
+slow,InjectGradual_InsectsIncrementalBalanced,EADD,1.0,533.4333,0.8,64.4717,
+slow,InjectGradual_InsectsIncrementalBalanced,"EADD, full test",1.0,533.4333,0.8,169.755,
+slow,InjectGradual_NOAAWeather,D3,0.5,1152.7,0.0,,
+slow,InjectGradual_NOAAWeather,D3-LightGBM,0.0333,1482.5333,0.0,,
+slow,InjectGradual_NOAAWeather,EADD,1.0,576.7667,0.3,57.655,
+slow,InjectGradual_NOAAWeather,"EADD, full test",1.0,576.7667,0.3,188.555,
+slow,InjectGradual_PokerHand,D3,0.1,1424.4,0.0,,
+slow,InjectGradual_PokerHand,D3-LightGBM,0.3667,1285.3667,0.0,,
+slow,InjectGradual_PokerHand,EADD,1.0,545.1,0.6,56.255,
+slow,InjectGradual_PokerHand,"EADD, full test",1.0,545.1,0.6,176.655,
+slow,InjectGradual_Powersupply,D3,0.5667,1085.9333,0.0,,
+slow,InjectGradual_Powersupply,D3-LightGBM,0.2667,1294.7667,0.0,,
+slow,InjectGradual_Powersupply,EADD,1.0,548.4333,0.8,56.405,
+slow,InjectGradual_Powersupply,"EADD, full test",1.0,548.4333,0.8,170.105,
+slow,InjectGradual_RialtoBridgeTimelapse,D3,0.5667,1078.5333,0.0,,
+slow,InjectGradual_RialtoBridgeTimelapse,D3-LightGBM,0.4,1266.1333,0.0,,
+slow,InjectGradual_RialtoBridgeTimelapse,EADD,1.0,531.7667,1.3,56.57,
+slow,InjectGradual_RialtoBridgeTimelapse,"EADD, full test",1.0,531.7667,1.3,153.17,
+slow,InjectIncremental_Electricity,D3,0.0333,1474.7667,0.0,,
+slow,InjectIncremental_Electricity,D3-LightGBM,1.0,167.3333,5.8,,
+slow,InjectIncremental_Electricity,EADD,1.0,185.1,3.8,32.8545,
+slow,InjectIncremental_Electricity,"EADD, full test",1.0,195.1,3.5,82.2083,
+slow,InjectIncremental_InsectsIncrementalBalanced,D3,1.0,409.7667,2.5,,
+slow,InjectIncremental_InsectsIncrementalBalanced,D3-LightGBM,1.0,177.4333,6.0,,
+slow,InjectIncremental_InsectsIncrementalBalanced,EADD,1.0,233.4333,3.4,33.7393,
+slow,InjectIncremental_InsectsIncrementalBalanced,"EADD, full test",1.0,236.7667,3.5,85.2607,
+slow,InjectIncremental_NOAAWeather,D3,0.8333,480.2667,4.5,,
+slow,InjectIncremental_NOAAWeather,D3-LightGBM,0.9333,382.9667,3.9,,
+slow,InjectIncremental_NOAAWeather,EADD,1.0,298.4333,3.3,65.8111,
+slow,InjectIncremental_NOAAWeather,"EADD, full test",1.0,300.1,3.2,117.7567,
+slow,InjectIncremental_PokerHand,D3,0.7333,860.8667,1.0,,
+slow,InjectIncremental_PokerHand,D3-LightGBM,1.0,119.1,6.0,,
+slow,InjectIncremental_PokerHand,EADD,1.0,221.7667,2.2,23.2474,
+slow,InjectIncremental_PokerHand,"EADD, full test",1.0,205.1,2.1,99.2637,
+slow,InjectIncremental_Powersupply,D3,1.0,217.4333,6.0,,
+slow,InjectIncremental_Powersupply,D3-LightGBM,1.0,242.4333,6.0,,
+slow,InjectIncremental_Powersupply,EADD,1.0,281.7667,3.0,63.5497,
+slow,InjectIncremental_Powersupply,"EADD, full test",1.0,281.7667,3.0,97.5627,
+slow,InjectIncremental_RialtoBridgeTimelapse,D3,1.0,194.0,5.7,,
+slow,InjectIncremental_RialtoBridgeTimelapse,D3-LightGBM,1.0,107.4333,6.0,,
+slow,InjectIncremental_RialtoBridgeTimelapse,EADD,1.0,191.7667,0.7,17.3193,
+slow,InjectIncremental_RialtoBridgeTimelapse,"EADD, full test",1.0,190.1,0.6,128.447,
+slow,SynthGradual,D3,0.0,1500.0,0.0,,
+slow,SynthGradual,D3-LightGBM,0.0,1500.0,0.0,,
+slow,SynthGradual,EADD,1.0,780.1,0.0,59.0,
+slow,SynthGradual,"EADD, full test",1.0,780.1,0.0,199.0,
+slow,SynthIncremental,D3,0.1333,1400.4667,0.0,,
+slow,SynthIncremental,D3-LightGBM,0.0,1500.0,0.0,,
+slow,SynthIncremental,EADD,1.0,713.4333,0.0,59.0,
+slow,SynthIncremental,"EADD, full test",1.0,713.4333,0.0,199.0,

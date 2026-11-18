@@ -1,0 +1,16 @@
+hypothesis,against,n,eadd,other,p,p_holm,role,supported
+H1a slow-drift recall higher,D3-LightGBM,14,1.0,0.5262,0.0038,0.0153,primary,True
+H1b slow-drift MTD lower,D3-LightGBM,14,443.0762,879.1214,0.0101,0.0234,primary,True
+H1c abrupt MTD not worse (margin 50),D3-LightGBM,7,114.8619,121.6238,0.0078,0.0234,primary,True
+H2 fewer false alarms on autocorrelated streams without drift,D3-LightGBM,6,5.5917,19.5,0.0156,0.0234,primary,True
+H1a slow-drift recall higher,D3,14,1.0,0.4786,0.0017,0.005,secondary,True
+H1b slow-drift MTD lower,D3,14,443.0762,1008.4238,0.0002,0.0007,secondary,True
+H1c abrupt MTD not worse (margin 50),D3,7,114.8619,126.7714,0.0078,0.0156,secondary,True
+H2 fewer false alarms on autocorrelated streams without drift,D3,6,5.5917,18.5333,0.0156,0.0156,secondary,True
+H3a equivalent recall on drift streams (margin 0.05),"EADD, full test",21,1.0,1.0,0.0,,primary,True
+H3a equivalent mtd on drift streams (margin 50),"EADD, full test",21,333.6714,333.5127,0.0,,primary,True
+H3a equivalent fa on drift streams (margin 0.5),"EADD, full test",21,0.981,0.9571,0.0,,primary,True
+H3a equivalent fa_per_10k on no drift streams (margin 1.0),"EADD, full test",8,0.75,0.625,0.0078,,primary,True
+H3b fewer permutations per test,"EADD, full test",22,51.8808,162.6296,0.0,,primary,True
+H4 precision@k above chance (top-1 98.4%),chance,21,0.7508,0.3142,0.0,,primary,True
+test validity (descriptive): 1 of 7 conditions pass,,7,,,,,descriptive,
