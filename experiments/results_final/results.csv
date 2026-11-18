@@ -13,4 +13,4 @@ H3a equivalent fa on drift streams (margin 0.5),"EADD, full test",21,0.981,0.957
 H3a equivalent fa_per_10k on no drift streams (margin 1.0),"EADD, full test",8,0.75,0.625,0.0078,,primary,True
 H3b fewer permutations per test,"EADD, full test",22,51.8808,162.6296,0.0,,primary,True
 H4 precision@k above chance (top-1 98.4%),chance,21,0.7508,0.3142,0.0,,primary,True
-test validity (descriptive): 1 of 7 conditions pass,,7,,,,,descriptive,
+test validity (descriptive): 7 of 10 conditions pass,,10,,,,,descriptive,
