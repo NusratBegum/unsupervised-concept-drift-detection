@@ -21,7 +21,7 @@ The thesis compares EADD with D3 using the same LightGBM classifier and windows 
 
 ---
 
-## Validity fixes and new benchmark (16-17 Nov 2026, in progress)
+## Validity fixes and new benchmark (16-17 Nov 2026)
 
 A review found problems in EADD's test and in the evaluation; each fix is an option of `ExplainableAdversarialDriftDetector` (the defaults keep the thesis behaviour, and the thesis runs still reproduce exactly):
 
@@ -33,6 +33,30 @@ A review found problems in EADD's test and in the evaluation; each fix is an opt
 | Shuffling labels assumes exchangeable samples, which autocorrelated streams violate | `null="history"` (null AUCs from earlier windows of the same stream) |
 
 `experiment_validity.py` checks the p-values and false alarms on streams without drift; `experiment_benchmark.py` runs all detectors on INSECTS, synthetic streams and real streams with injected drifts; `analyze_benchmark.py` tests per stream (Friedman, Nemenyi, Holm-corrected Wilcoxon). Results: `experiments/results_validity/`, `experiments/results_benchmark/`. The thesis results below predate these fixes and will be updated.
+
+## Registered tests of H1-H4 and how to reproduce them (17-18 Nov 2026)
+
+Every test below was written into [`experiments/results_confirm/PREREGISTRATION.md`](experiments/results_confirm/PREREGISTRATION.md) and committed before its runs (addenda 1-6; the git history shows the order). Each uses new seeds.
+
+| Test | Seeds | Script, then analysis | Results | Verdict |
+|---|---|---|---|---|
+| Confirmatory test of the revised H1/H2, plus H3, H4 | 1000-1009 | `experiment_confirm.py`, `analyze_confirm.py` | `experiments/results_confirm/` | H1, H4 supported; revised H2 not; H3 timing supported |
+| New H2 (addendum 3) | 2000-2009 | `experiment_h2.py`, `analyze_confirm.py` | `h2_new*.csv` | fewer false alarms supported; test validity 8 of 10 |
+| Robustness R1/R2 (addendum 4) | 1000-1009 | `experiment_robust.py`, `analyze_confirm.py` | `robust*.csv` | H1 holds with identical check schedules |
+| **Final test of H1-H4 (addendum 5)** | **3000-3009** | `experiment_final.py`, `analyze_final.py` | `experiments/results_final/results.csv` | **H1, H2, H3, H4 supported** |
+
+To rerun a test from scratch (the scripts skip finished runs, so an interrupted run resumes with the same command):
+
+```bash
+uv venv --python 3.13 && source .venv/bin/activate && uv pip install -r requirements-lock.txt
+# datasets: see "Datasets" below; synthetic and AR streams need no files
+mv experiments/results_final experiments/results_final_published                          # keep the published results
+OMP_NUM_THREADS=1 python experiment_final.py --shard 0/1    # 1,340 stream runs + 10,000 single tests, about 15 CPU-hours
+python analyze_final.py                                      # writes experiments/results_final/results.csv
+diff experiments/results_final/results.csv experiments/results_final_published/results.csv
+```
+
+Runs are deterministic for a given seed and library versions (`requirements-lock.txt`), so a rerun gives the same detections. On a machine with more cores the worker pool grows with `os.process_cpu_count()`; limit it with `taskset` if needed.
 
 ## Key Results (thesis, Chapter 4)
 

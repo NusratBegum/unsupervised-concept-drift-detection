@@ -110,3 +110,15 @@ An independent code review found that the three detectors check on fixed schedul
 - H3 is supported if H3a and H3b hold.
 - H4 is supported if its test is significant at 0.05.
 - Secondary: the same H1/H2 tests against D3.
+
+## Addendum 6: newer online detectors on the final-test streams (registered 18 Nov 2026, afternoon, before these runs)
+
+To compare EADD with more recent unsupervised multivariate detectors that have maintained public code, three online detectors from Alibi Detect 0.13.0 are run on the same 35 streams and seeds 3000-3009 as addendum 5, with the same random start per seed:
+- MMD-Online and LSDD-Online (Cobb, Van Looveren and Klaise, "Sequential multivariate change detection with calibrated and memoryless false detection rates", AISTATS 2022);
+- CVM-Online (Cramér-von Mises online detector of the same library).
+
+Protocol: the first 500 samples after a start or an alarm are the reference; the detector is calibrated on them for an expected run time (ERT) of 2,500 samples without drift, window 50, 25,000 bootstrap draws (at least ten times the ERT); after an alarm it restarts with the next 500 samples. Torch CPU backend, one thread. These detectors run in a separate environment (Python 3.12, numpy 1.26), because Alibi Detect does not install beside EADD's pinned packages. Code: `baselines_online.py`; output `experiments/results_final/online.jsonl`.
+
+The 2025-2026 methods of the literature scan are not run: PUDD needs a deployed model's predictions, DriftLens works on deep-learning embeddings, the Gaussian Split and Real-Drift detectors separate real from virtual drift, and the Komorniczak 2026 detector has no released code that we found.
+
+Analysis (secondary, not in the H1-H4 families): the same metrics as addendum 5 per detector; EADD against each of the three with the H1a, H1b, H1c and H2 tests of addendum 5 (one-sided Wilcoxon over streams, Holm over the 12 tests); Friedman with Nemenyi critical difference over all detectors of addenda 5 and 6 on the 21 drift streams. ERT sets these detectors' false-alarm rate, so their false alarms are reported beside their delays, not judged alone.
