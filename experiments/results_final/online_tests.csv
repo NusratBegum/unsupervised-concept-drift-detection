@@ -1,0 +1,9 @@
+hypothesis,against,n,eadd,other,p,p_holm
+H1a slow-drift recall higher,LSDD-Online,14,1.0,1.0,1.0,1.0
+H1b slow-drift MTD lower,LSDD-Online,14,443.3492,364.6032,0.8662,1.0
+H1c abrupt MTD not worse (margin 50),LSDD-Online,7,114.381,66.0635,0.4062,1.0
+H2 fewer false alarms on autocorrelated streams without drift,LSDD-Online,6,5.8889,19.0556,0.0156,0.125
+H1a slow-drift recall higher,MMD-Online,14,1.0,0.9365,0.0786,0.4719
+H1b slow-drift MTD lower,MMD-Online,14,443.3492,463.4683,0.5,1.0
+H1c abrupt MTD not worse (margin 50),MMD-Online,7,114.381,132.8413,0.3438,1.0
+H2 fewer false alarms on autocorrelated streams without drift,MMD-Online,6,5.8889,19.2222,0.0156,0.125

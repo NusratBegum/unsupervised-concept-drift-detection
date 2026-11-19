@@ -1,0 +1,16 @@
+metric,variant,mean_rank,n_streams,friedman_p,nemenyi_cd
+mtd,LSDD-Online,2.095,21,0.0,1.331
+mtd,MMD-Online,2.571,21,0.0,1.331
+mtd,EADD,2.714,21,0.0,1.331
+mtd,D3-LightGBM,3.524,21,0.0,1.331
+mtd,D3,4.095,21,0.0,1.331
+recall,EADD,2.381,21,0.001,1.331
+recall,LSDD-Online,2.595,21,0.001,1.331
+recall,MMD-Online,2.929,21,0.001,1.331
+recall,D3-LightGBM,3.5,21,0.001,1.331
+recall,D3,3.595,21,0.001,1.331
+fa,D3,1.762,21,0.0,1.331
+fa,EADD,2.19,21,0.0,1.331
+fa,D3-LightGBM,2.214,21,0.0,1.331
+fa,MMD-Online,4.238,21,0.0,1.331
+fa,LSDD-Online,4.595,21,0.0,1.331

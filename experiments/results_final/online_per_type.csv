@@ -1,0 +1,21 @@
+group,variant,recall,mtd,fa,perms_per_test,fa_per_10k
+abrupt,D3,1.0,129.079,0.0,,
+abrupt,D3-LightGBM,1.0,123.524,0.0,,
+abrupt,EADD,1.0,114.381,0.0,59.0,
+abrupt,LSDD-Online,0.968,66.063,6.238,,
+abrupt,MMD-Online,0.841,132.841,5.571,,
+autocorrelated,D3,,,,,18.611
+autocorrelated,D3-LightGBM,,,,,19.5
+autocorrelated,EADD,,,,18.512,5.889
+autocorrelated,LSDD-Online,,,,,19.056
+autocorrelated,MMD-Online,,,,,19.222
+no drift,D3,,,,,2.396
+no drift,D3-LightGBM,,,,,2.438
+no drift,EADD,,,,18.28,0.75
+no drift,LSDD-Online,,,,,6.823
+no drift,MMD-Online,,,,,6.842
+slow,D3,0.429,1058.484,1.262,,
+slow,D3-LightGBM,0.524,894.087,2.381,,
+slow,EADD,1.0,443.349,1.524,50.569,
+slow,LSDD-Online,1.0,364.603,7.667,,
+slow,MMD-Online,0.937,463.468,6.881,,
