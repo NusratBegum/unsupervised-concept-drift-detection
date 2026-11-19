@@ -19,5 +19,5 @@ jobs:
       # test/datasets needs the USP CSVs, which are not in git
       - name: Unit tests that need no dataset files
         run: .venv/bin/python -m pytest -q test --ignore=test/datasets
-      - name: Stream generator self-check
-        run: .venv/bin/python synthetic_streams.py
+      - name: Quick-start example (synthetic stream, no data files)
+        run: .venv/bin/python examples/quickstart.py

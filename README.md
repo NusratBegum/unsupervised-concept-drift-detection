@@ -152,7 +152,7 @@ Airlines, Chess, IntrusionDetection, Keystroke and SensorStream are not used in 
 ```bash
 python -m pytest -q test --ignore=test/datasets    # about 30 s; needs no dataset files (run in CI)
 python -m pytest -q test/datasets                  # loader checks; need the CSVs in datasets/files/
-python synthetic_streams.py                        # self-check of the stream generators
+python synthetic_streams.py                        # self-check of the stream generators (needs NOAA.csv)
 ```
 
 `test/detectors/test_eadd.py` covers EADD's reference, each validity option, ASPT and the history null; `test_d3_lightgbm.py` and `test_bndm.py` the modified baselines.
