@@ -24,22 +24,33 @@ This repository contains source code under TWO different licenses:
      analyze_benchmark.py
      analyze_comparison.py
      analyze_confirm.py
+     analyze_final.py
      analyze_hypotheses.py
      analyze_validity.py
+     baselines_online.py
      check_reproduced.py
+     dev_match.py
+     dev_warm.py
+     examples/quickstart.py
      experiment_aspt_runtime.py
      experiment_aspt_type1.py
      experiment_benchmark.py
      experiment_comparison.py
      experiment_confirm.py
+     experiment_final.py
+     experiment_h2.py
      experiment_hypotheses.py
      experiment_offsets.py
+     experiment_robust.py
      experiment_root_cause.py
      experiment_shap.py
      experiment_validity.py
      make_comparison_figures.py
+     make_concept_figures.py
+     make_final_figures.py
      make_hypothesis_figures.py
      synthetic_streams.py
+     trace_example.py
      legacy/demo.py
      legacy/demo_eadd.py
      legacy/experiment1_temporal_patterns.py

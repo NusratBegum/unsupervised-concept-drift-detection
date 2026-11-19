@@ -297,3 +297,11 @@ cython_debug/
 __MACOSX/
 datasets/files/USP DS Repository/
 s41060-024-00620-y.pdf
+
+# This project: environments, caches, run logs and dataset files
+.venv*/
+.pytest_cache/
+*.log
+*.crashes.log
+datasets/files/*
+!datasets/files/.gitkeep
