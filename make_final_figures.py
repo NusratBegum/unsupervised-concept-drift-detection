@@ -25,9 +25,11 @@ plt.rcParams.update({"font.family": "serif", "font.size": 9, "axes.spines.top": 
 
 
 def pattern(ds):
+    # by prefix: "InjectAbrupt_InsectsIncrementalBalanced" is abrupt drift on an INSECTS base
     for k in ("Gradual", "Incremental", "Abrupt"):
-        if k in ds:
+        if ds.startswith(("Synth" + k, "Inject" + k)):
             return k.lower()
+    assert False, ds
 
 
 def per_pattern():
