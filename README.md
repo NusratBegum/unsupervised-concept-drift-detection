@@ -15,9 +15,9 @@ EADD is an integrated framework for unsupervised feature drift detection based o
 2. A **reservoir-sampled reference window** that summarises all data since the last confirmed drift
 3. **Prediction entropy monitoring** ($H_{pred}$) of the discriminator's outputs
 4. An **adaptive sequential permutation test (ASPT)** that stops the permutation test early (`permutation_test="aspt"`; `"full"` draws all 199 permutations, `"none"` skips the test)
-5. A **TreeSHAP ranking** of the features behind each confirmed drift (reported, not evaluated in the thesis)
+5. A **TreeSHAP ranking** of the features behind each confirmed drift (evaluated as H4)
 
-The thesis compares EADD with D3 using the same LightGBM classifier and windows (D3-LightGBM) and with six detectors of the Lukats et al. benchmark, on real-world streams only.
+The thesis compares EADD with D3 using the same LightGBM classifier and windows (D3-LightGBM) and with six detectors of the Lukats et al. benchmark and three online detectors of Alibi Detect, on synthetic, injected-drift real, real annotated and no-drift streams.
 
 ---
 
@@ -58,20 +58,20 @@ diff experiments/results_final/results.csv experiments/results_final_published/r
 
 Runs are deterministic for a given seed and library versions (`requirements-lock.txt`), so a rerun gives the same detections. On a machine with more cores the worker pool grows with `os.process_cpu_count()`; limit it with `taskset` if needed.
 
-## Key Results (thesis, Chapter 4)
+## Key Results (final registered test, thesis Chapter 4)
 
-Four annotated INSECTS streams (10 drift points), 5 seeds, 20 runs per detector; a detection matches if it is within 500 samples after a drift point; a missed drift point counts as MTD 500. One-sided Mann-Whitney U tests.
+Seeds 3000-3009; 21 drift streams (7 abrupt, 7 gradual, 7 incremental: synthetic plus real streams with injected drift), 8 no-drift streams and 6 autocorrelated no-drift streams; EADD, D3-LightGBM and D3 with identical windows (500/200), threshold 0.7, 5-fold CV, a check every 50 samples and the same random start per seed. One-sided Wilcoxon over streams, Holm-corrected. Plan registered before the runs (addendum 5).
 
-| | Recall | MTD | False alarms per run |
-|---|---|---|---|
-| D3-LightGBM | 0.65 | 279 | 5.6 |
-| EADD | 0.50 | 302 | 8.9 |
+| Hypothesis | EADD | D3-LightGBM | p (Holm) | Result |
+|---|---|---|---|---|
+| H1a slow-drift recall | 1.00 | 0.53 | 0.015 | supported |
+| H1b slow-drift MTD (samples) | 443 | 879 | 0.023 | supported |
+| H1c abrupt MTD, at most 50 higher | 115 | 122 | 0.023 | supported |
+| H2 false alarms per 10k, autocorrelated streams without drift | 5.6 | 19.5 | 0.023 | supported |
+| H3 ASPT vs full test: recall / MTD / false alarms equivalent; permutations per test | 52 | 163 (full test) | < 0.01 | supported |
+| H4 TreeSHAP precision@k vs chance | 0.75 | 0.31 (chance) | < 0.001 | supported |
 
-- **H1 (higher recall, lower MTD than D3-LightGBM):** not supported (p = 0.90, p = 0.78). 16 of EADD's 21 missed drift points had an EADD detection in the 500 samples before the annotated point.
-- **H2 (fewer false alarms):** not supported; D3-LightGBM raised significantly fewer (p < 0.001).
-- **H3 (ASPT keeps the decisions of a full permutation test and is faster):** supported; identical detections in 20 of 20 runs, runtime 112 s vs. 149 s per run, measured one run at a time (25% less, faster in 20 of 20 runs; one-sided paired Wilcoxon p < 0.001, Mann-Whitney p = 0.022).
-- **Threshold sensitivity:** at tau <= 0.5 ASPT rejects most alarms and cuts false alarms by 31-81% against no test.
-- **Unannotated streams (Lukats et al. protocol, Hoeffding tree reset at every detection):** EADD 65.4% vs. D3-LightGBM 65.7% accuracy (two-sided paired Wilcoxon over 9 streams, p = 0.65).
+Against newer online detectors (Alibi Detect MMD-Online and LSDD-Online, AISTATS 2022; seeds 3000-3002), EADD has the best mean recall rank and about five times fewer false alarms; LSDD-Online detects faster. Earlier results on the four INSECTS streams of the first thesis draft (before the fixes) are in `experiments/results_hypotheses/`.
 
 ---
 
