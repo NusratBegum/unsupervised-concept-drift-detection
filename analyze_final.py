@@ -127,6 +127,8 @@ def online():
     on = pd.DataFrame([json.loads(l) for l in open(path) if l.strip()])
     seeds = range(3000, 3003)  # addendum 6a
     on = on[on.seed.isin(seeds)]
+    n_runs = on.groupby("variant").size()
+    on = on[on.variant.isin(n_runs[n_runs == 35 * len(seeds)].index)]  # complete detectors only (addendum 6b)
     base = load("runs")
     ps = per_stream(pd.concat([base[base.seed.isin(seeds)], on], ignore_index=True))
     ps = ps[ps.variant != "EADD, full test"]

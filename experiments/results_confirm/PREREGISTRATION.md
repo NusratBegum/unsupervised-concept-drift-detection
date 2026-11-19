@@ -126,3 +126,7 @@ Analysis (secondary, not in the H1-H4 families): the same metrics as addendum 5 
 ### Addendum 6a (18 Nov 2026, 16:05, after 20 of 1,050 runs, before any result was looked at)
 
 The online detectors recalibrate (25,000 bootstrap draws) after every alarm; on the server this takes about 20 minutes per run, so 1,050 runs would need about 36 hours. They are therefore run on seeds 3000-3002 only (315 runs), and every comparison in addendum 6 uses the same three seeds for EADD, D3-LightGBM and D3 (stream means over seeds 3000-3002 from addendum 5's runs). The 20 runs already finished with other seeds are kept in the file but not analysed.
+
+### Addendum 6b (19 Nov 2026, morning, before CVM-Online's results were looked at)
+
+CVM-Online with 25,000 bootstrap draws failed with a library error ("quantile should not be estimated using only 24,995 samples") on 69 of its 105 runs: its per-feature thresholds need more draws on streams with many features. MMD-Online and LSDD-Online completed all 105 runs and are analysed as registered. CVM-Online is rerun on all 105 runs with 100,000 draws (variant name "CVM-Online (100k)"); the failed configuration is not analysed. Only detectors with all 105 runs enter the analysis.

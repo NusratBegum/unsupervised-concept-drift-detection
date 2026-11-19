@@ -30,6 +30,7 @@ ABRUPT = ["SynthAbrupt"] + [f"InjectAbrupt_{b}" for b in INJECT_BASES]
 NO_DRIFT = ["SynthStable", "AR0.5", "AR0.9", "ShuffledElectricity", "ShuffledNOAAWeather", "ShuffledPowersupply",
             "ShuffledPokerHand", "ShuffledRialtoBridgeTimelapse"]
 F_STREAMS = ["AR0.8", "AR0.85", "AR0.9", "AR0.93", "AR0.95", "AR0.97"]
+CVM_BOOT = 100_000
 GROUPS = (("slow", SLOW), ("abrupt", ABRUPT), ("no drift", NO_DRIFT), ("autocorrelated", F_STREAMS))
 
 
@@ -46,8 +47,9 @@ def make(name, x_ref, seed):
         return MMDDriftOnline(x_ref, ERT, WINDOW, backend="pytorch", n_bootstraps=BOOT, verbose=False, device="cpu")
     if name == "LSDD-Online":
         return LSDDDriftOnline(x_ref, ERT, WINDOW, backend="pytorch", n_bootstraps=BOOT, verbose=False, device="cpu")
-    if name == "CVM-Online":
-        return CVMDriftOnline(x_ref, ERT, window_sizes=[WINDOW], n_bootstraps=BOOT, verbose=False)
+    if name.startswith("CVM-Online"):
+        # addendum 6b: 25,000 draws are too few for its per-feature thresholds on many-feature streams
+        return CVMDriftOnline(x_ref, ERT, window_sizes=[WINDOW], n_bootstraps=CVM_BOOT, verbose=False)
     raise ValueError(name)
 
 
@@ -79,7 +81,7 @@ def run(job):
 def jobs():
     return [dict(part="annotated", group=g, dataset=s, seed=seed, variant=v, offset=offset(seed),
                  ert=ERT, window=WINDOW, n_ref=N_REF)
-            for v in ("MMD-Online", "LSDD-Online", "CVM-Online") for g, ss in GROUPS for s in ss for seed in SEEDS]
+            for v in ("MMD-Online", "LSDD-Online", "CVM-Online (100k)") for g, ss in GROUPS for s in ss for seed in SEEDS]
 
 
 if __name__ == "__main__":
