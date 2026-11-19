@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the thesis and the JCSSE 2026 paper below."
+title: "EADD: feature drift detection via adversarial validation (thesis code and results)"
+type: software
+authors:
+  - family-names: Begum
+    given-names: Nusrat
+    affiliation: "Faculty of Information and Communication Technology, Mahidol University"
+    email: nusrat.beg@student.mahidol.ac.th
+repository-code: "https://github.com/NusratBegum/unsupervised-concept-drift-detection"
+license-url: "https://github.com/NusratBegum/unsupervised-concept-drift-detection/blob/main/NOTICE"
+date-released: 2026-11-19
+keywords:
+  - concept drift
+  - feature drift
+  - classifier two-sample test
+  - adversarial validation
+  - data streams
+preferred-citation:
+  type: thesis
+  thesis-type: "M.Sc. thesis"
+  title: "Feature Drift Detection Techniques via Adversarial Validation"
+  authors:
+    - family-names: Begum
+      given-names: Nusrat
+  institution:
+    name: "Mahidol University"
+    city: "Nakhon Pathom"
+    country: TH
+  department: "Faculty of Information and Communication Technology"
+  year: 2026
+references:
+  - type: conference-paper
+    title: "Enhanced Adversarial Drift Detection for MLOps Feature Monitoring"
+    authors:
+      - family-names: Begum
+        given-names: Nusrat
+      - family-names: Yamchote
+        given-names: Phaphontee
+      - family-names: Amornbunchornvej
+        given-names: Chainarong
+      - family-names: Noraset
+        given-names: Thanapon
+    collection-title: "Proceedings of the 23rd International Joint Conference on Computer Science and Software Engineering (JCSSE)"
+    publisher:
+      name: IEEE
+    year: 2026
+    url: "https://ieeexplore.ieee.org/document/11596765"
+  - type: software
+    title: "unsupervised-concept-drift-detection (upstream benchmark)"
+    authors:
+      - name: "DFKI Niedersachsen"
+    repository-code: "https://github.com/DFKI-NI/unsupervised-concept-drift-detection"

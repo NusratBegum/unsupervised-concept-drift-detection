@@ -12,6 +12,8 @@ Experiment code for Nusrat Begum's M.Sc. thesis (Mahidol University) on EADD, an
 source .venv/bin/activate                 # Python 3.13, managed with uv: uv pip install -r requirements-lock.txt
 python -m pytest -q test/detectors/test_eadd.py test/detectors/test_d3_lightgbm.py test/detectors/test_bndm.py
 python -m pytest -q test/detectors/test_eadd.py -k sliding_reference      # single test
+python -m pytest -q test --ignore=test/datasets   # every test that needs no dataset files (~30 s); what CI runs (.github/workflows/tests.yml)
+python examples/quickstart.py             # EADD with the final-test settings on SynthGradual (~30 s, no data files)
 
 python experiment_hypotheses.py           # all thesis runs; resumable; ~25 CPU-hours
 python experiment_aspt_runtime.py         # H3 timing; ~3 h; run with nothing else on the machine
@@ -45,6 +47,8 @@ print(detection_metrics(r['detections'], r['true_drifts']))"
 
 There is no linter or build step.
 
+Docs for readers: `docs/ARCHITECTURE.md` (detectors, streams, `run_job`, analysis, result files, every EADD option), `docs/REPRODUCIBILITY.md` (environment, seeds, how to rerun each registered test, runtimes, verifying `results.csv`), `CHANGELOG.md`, `CITATION.cff`. Keep them in step with the code when an option, script or result folder changes. `examples/` holds runnable examples (no dataset files needed).
+
 ## Architecture
 
 - `detectors/`: every detector subclasses `UnsupervisedDriftDetector` (`base.py`) and implements `update(features: dict) -> bool`, called once per sample. `eadd.py` is the thesis detector; `d3_lightgbm.py` is the baseline (D3 with EADD's LightGBM settings). The rest are upstream benchmark detectors.
@@ -65,7 +69,8 @@ There is no linter or build step.
   - `reservoir_after_current=True`: no sample is in both windows.
   - `perm_n_folds=None`: permuted AUCs use the same CV as the observed AUC (the thesis used 2-fold vs 5-fold).
   - `aspt_alpha_split=1/3`: ASPT spends alpha/3 on the early reject and the rest on the final test, an exact level-alpha test (the thesis rule has Type I 0.059 at alpha 0.05; `experiment_aspt_type1.py`).
-  - `block_size=b`: blocked CV and block permutation against autocorrelation.
+  - `null="history"`, `history_stride=10`: null AUCs from earlier windows of the same stream (needs `reservoir_after_current`); with `FIXED` this is `experiment_final.EADD_KW`, the detector of the final test.
+  - `block_size=b`: blocked CV and block permutation against autocorrelation (not a valid null; not used).
 - Each stored window vector carries its arrival time as the last element; `_detect_drift` strips it.
 - Stream names understood by `run_job`: `Synth<Kind>`, `AR<rho>` (stationary AR(1)), `Shuffled<Dataset>` (real rows in random order), `Inject<Abrupt|Incremental>_<Dataset>` (shuffled real stream with drifts injected at 5k/10k/15k).
 - Timing runs must be sequential; LightGBM is multithreaded and parallel jobs distort runtimes.
