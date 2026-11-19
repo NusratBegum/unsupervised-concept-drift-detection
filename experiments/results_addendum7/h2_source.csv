@@ -1,0 +1,7 @@
+dataset,D3-LightGBM,EADD,"EADD, label-shuffle null","EADD, sliding + history null"
+AR0.8,19.5,5.9,19.5,5.0
+AR0.85,19.5,4.4,19.5,4.4
+AR0.9,19.5,5.6,19.5,4.7
+AR0.93,19.5,5.8,19.5,3.9
+AR0.95,19.5,6.4,19.5,3.7
+AR0.97,19.5,5.8,19.5,3.2

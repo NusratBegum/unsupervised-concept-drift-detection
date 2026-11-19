@@ -1,0 +1,2 @@
+{'D3-LightGBM': 19.5, 'EADD': 5.65, 'EADD, label-shuffle null': 19.5, 'EADD, sliding + history null': 4.15}
+one-sided Wilcoxon, sliding + history null < label-shuffle null: p = 0.0156
