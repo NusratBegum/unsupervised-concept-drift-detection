@@ -1,4 +1,4 @@
-# EADD: feature drift detection via adversarial validation
+# EADD: Enhanced Adversarial Drift Detection for MLOps Feature Monitoring
 
 [![tests](https://github.com/NusratBegum/unsupervised-concept-drift-detection/actions/workflows/tests.yml/badge.svg)](https://github.com/NusratBegum/unsupervised-concept-drift-detection/actions/workflows/tests.yml)
 

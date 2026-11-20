@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the thesis and the JCSSE 2026 paper below."
-title: "EADD: feature drift detection via adversarial validation (thesis code and results)"
+title: "EADD: Enhanced Adversarial Drift Detection for MLOps Feature Monitoring (thesis code and results)"
 type: software
 authors:
   - family-names: Begum
