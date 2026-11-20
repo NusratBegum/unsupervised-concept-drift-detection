@@ -1,0 +1,3 @@
+test,detector_time_sec,n_tests,n_permutations_used,perms_per_test,sec_per_run,identical_detections,p_aspt_faster
+aspt,2579.782,194,16033,82.644,322.473,3,0.004
+full,4551.81,216,36324,168.167,568.976,3,0.004
