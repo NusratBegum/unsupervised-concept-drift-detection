@@ -37,7 +37,7 @@ References
 - Vitter (1985). Random sampling with a reservoir. ACM TOMS 11(1):37-57.
 
 Author: Nusrat Begum
-Thesis: Feature Drift Detection Techniques via Adversarial Validation
+Thesis: Enhanced Adversarial Drift Detection for MLOps Feature Monitoring
 Mahidol University, 2026
 """
 

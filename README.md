@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/NusratBegum/unsupervised-concept-drift-detection/actions/workflows/tests.yml/badge.svg)](https://github.com/NusratBegum/unsupervised-concept-drift-detection/actions/workflows/tests.yml)
 
-Code, raw runs and registered analysis plans for the M.Sc. thesis *Feature Drift Detection Techniques via Adversarial Validation* (Nusrat Begum, Faculty of ICT, Mahidol University, 2026; LaTeX source: [Nusrat-Thesis-Mahidol-University](https://github.com/NusratBegum/Nusrat-Thesis-Mahidol-University)). An earlier version was published at [JCSSE 2026 (IEEE Xplore)](https://ieeexplore.ieee.org/document/11596765) (source: [JCSEE-Submission](https://github.com/NusratBegum/JCSEE-Submission)). The repository is a fork of [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection), the benchmark of [Lukats et al. (2024)](https://link.springer.com/article/10.1007/s41060-024-00620-y).
+Code, raw runs and registered analysis plans for the M.Sc. thesis *Enhanced Adversarial Drift Detection for MLOps Feature Monitoring* (Nusrat Begum, Faculty of ICT, Mahidol University, 2026; LaTeX source: [Nusrat-Thesis-Mahidol-University](https://github.com/NusratBegum/Nusrat-Thesis-Mahidol-University)). An earlier version was published at [JCSSE 2026 (IEEE Xplore)](https://ieeexplore.ieee.org/document/11596765) (source: [JCSEE-Submission](https://github.com/NusratBegum/JCSEE-Submission)). The repository is a fork of [DFKI-NI/unsupervised-concept-drift-detection](https://github.com/DFKI-NI/unsupervised-concept-drift-detection), the benchmark of [Lukats et al. (2024)](https://link.springer.com/article/10.1007/s41060-024-00620-y).
 
 ## Summary
 
@@ -23,11 +23,11 @@ Seeds 3000-3009; 21 drift streams (7 abrupt, 7 gradual, 7 incremental: synthetic
 | H3 ASPT vs full test: recall / MTD / false alarms equivalent; permutations per test | 52 | 163 (full test) | < 0.01 | supported |
 | H4 TreeSHAP precision@k vs chance | 0.75 | 0.31 (chance) | < 0.001 | supported |
 
-Against the newer online detectors (seeds 3000-3002), EADD has the best mean recall rank and about five times fewer false alarms; LSDD-Online detects faster. All numbers: [`experiments/results_final/results.csv`](experiments/results_final/results.csv), `per_type.csv`, `per_stream.csv`, `h2a.csv`, `h4_per_stream.csv`, `online_*.csv`.
+Against the newer online detectors (seeds 3000-3002), EADD has the best mean recall rank and about five times fewer false alarms on slow-drift streams (1.5 vs 6.9-7.7 per stream); LSDD-Online detects faster. All numbers: [`experiments/results_final/results.csv`](experiments/results_final/results.csv), `per_type.csv`, `per_stream.csv`, `h2a.csv`, `h4_per_stream.csv`, `online_*.csv`.
 
 ### Registered tests and how to reproduce them
 
-Each test uses new seeds (addenda 1-6 of the plan; the git history shows that each plan precedes its runs).
+Each test of addenda 1-6 uses new seeds; addendum 7 reuses earlier seeds for three secondary checks. The git history shows that each plan precedes its runs.
 
 | Test | Seeds | Script, then analysis | Results | Verdict |
 |---|---|---|---|---|
@@ -35,7 +35,8 @@ Each test uses new seeds (addenda 1-6 of the plan; the git history shows that ea
 | New H2 (addendum 3) | 2000-2009 | `experiment_h2.py`, `analyze_confirm.py` | `h2_new*.csv` | fewer false alarms supported; test validity 8 of 10 |
 | Robustness R1/R2 (addendum 4) | 1000-1009 | `experiment_robust.py`, `analyze_confirm.py` | `robust*.csv` | H1 holds with identical check schedules |
 | **Final test of H1-H4 (addendum 5)** | **3000-3009** | `experiment_final.py`, `analyze_final.py` | `experiments/results_final/results.csv` | **H1, H2, H3, H4 supported** |
-| Newer online detectors (addenda 6-6b) | 3000-3002 | `baselines_online.py`, `analyze_final.py` | `experiments/results_final/online_*.csv` | best recall rank, fewer false alarms; not significant with 3 seeds |
+| Newer online detectors (addenda 6-6b) | 3000-3002 | `baselines_online.py`, `analyze_final.py` | `experiments/results_final/online_*.csv` | best recall rank, fewer false alarms; not significant with 3 seeds (the CVM-Online rerun with 100,000 draws is not yet in the repository) |
+| Secondary checks (addendum 7): 7a TreeSHAP vs univariate rankings, 7b source of the H2 effect, 7c ASPT wall-clock time with the history null | 7a 3000-3009, 7b 3000-3004, 7c 42 and 142 | `experiment_addendum7.py` (7c: `--timing`), `analyze_addendum7.py` | `experiments/results_addendum7/` | 7a: TreeSHAP precision@k 0.75 below KS 0.97 and SMD 0.89 (H4 above chance unchanged); 7b: the history null, not the reservoir, gives the H2 effect (4.15 vs 19.5 false alarms per 10k, p = 0.016); 7c: ASPT 322 vs 569 s per run, faster in 8 of 8, p = 0.004 |
 
 To rerun the final test from scratch (the scripts skip finished runs, so an interrupted run resumes with the same command):
 
@@ -95,8 +96,9 @@ for i, (x, _) in enumerate(stream):     # x: {"feature name": value, ...}; label
 | 10 Nov comparison (EADD vs D3, identical setup) | `experiment_comparison.py`, `analyze_comparison.py` (report: `experiments/results_comparison/REPORT.md`) |
 | Validity checks and benchmark (16-17 Nov) | `experiment_validity.py`, `analyze_validity.py`, `experiment_benchmark.py`, `analyze_benchmark.py`, `experiment_shap.py` |
 | Confirmatory and final tests (17-18 Nov) | `experiment_confirm.py`, `experiment_h2.py`, `experiment_robust.py`, `analyze_confirm.py`, `experiment_final.py`, `analyze_final.py`; development checks (not registered tests): `dev_match.py`, `dev_warm.py` |
+| Secondary checks of addendum 7 (19-20 Nov) | `experiment_addendum7.py`, `analyze_addendum7.py` |
 | Newer detectors (19 Nov) | `baselines_online.py` (Alibi Detect MMD-, LSDD- and CVM-Online; own environment) |
-| Figures | `make_final_figures.py`, `make_concept_figures.py` (thesis), `make_hypothesis_figures.py`, `make_comparison_figures.py`, `trace_example.py` (illustration only) |
+| Figures | `make_final_figures.py`, `make_concept_figures.py` (thesis Chapters 2 and 4, MU-IEEE-Paper print style), `make_hypothesis_figures.py`, `make_comparison_figures.py`, `trace_example.py` (illustration only) |
 | Checks | `check_reproduced.py` (first thesis runs reproduce with the current code), `test/` (unit tests) |
 | Examples and docs | `examples/quickstart.py`, `docs/ARCHITECTURE.md`, `docs/REPRODUCIBILITY.md` |
 | Results | `experiments/results_*/` (raw runs as JSON lines, tables, figures) |
@@ -181,7 +183,7 @@ Please cite the thesis (metadata in [CITATION.cff](CITATION.cff); GitHub's "Cite
 ```bibtex
 @mastersthesis{begum2026thesis,
   author = {Begum, Nusrat},
-  title  = {Feature Drift Detection Techniques via Adversarial Validation},
+  title  = {Enhanced Adversarial Drift Detection for {MLOps} Feature Monitoring},
   school = {Faculty of Information and Communication Technology, Mahidol University},
   year   = {2026},
   type   = {M.Sc. thesis},
@@ -195,7 +197,9 @@ Please cite the thesis (metadata in [CITATION.cff](CITATION.cff); GitHub's "Cite
   booktitle = {Proc. 23rd International Joint Conference on Computer
                Science and Software Engineering (JCSSE)},
   year      = {2026},
+  pages     = {684--689},
   publisher = {IEEE},
+  doi       = {10.1109/JCSSE68839.2026.11596765},
   url       = {https://ieeexplore.ieee.org/document/11596765},
 }
 ```

@@ -33,6 +33,14 @@ taskset -c 0-9 python check_reproduced.py        # thesis EADD runs still reprod
 taskset -c 0-9 python experiment_validity.py     # P: p-values under no drift; F: false alarms on no-drift streams
 taskset -c 0-9 python experiment_benchmark.py    # all detectors x INSECTS, synthetic, injected-drift real, unannotated
 python analyze_validity.py; python analyze_benchmark.py   # per-stream stats, Friedman + Nemenyi CD, Holm-corrected Wilcoxon
+
+# 18-20 Nov 2026 registered tests (plans: experiments/results_confirm/PREREGISTRATION.md); the thesis reports these
+OMP_NUM_THREADS=1 python experiment_final.py --shard 0/1   # final test of H1-H4 (addendum 5), seeds 3000-3009, ~15 CPU-hours
+python analyze_final.py                   # experiments/results_final/results.csv, per_type.csv, per_stream.csv, h2a.csv, h4_per_stream.csv, online_*.csv
+python make_final_figures.py              # thesis Chapter 4 figures; then python make_concept_figures.py (Chapter 2); run them separately
+python experiment_addendum7.py            # addendum 7a/7b; with --timing: 7c, sequential, nothing else running
+python analyze_addendum7.py               # experiments/results_addendum7/
+# baselines_online.py (addenda 6-6b) needs its own Python 3.12 environment: docs/REPRODUCIBILITY.md
 ```
 
 One run, for a quick check (D3 ~12 s, EADD ~2-3 min):
@@ -72,7 +80,7 @@ Docs for readers: `docs/ARCHITECTURE.md` (detectors, streams, `run_job`, analysi
   - `null="history"`, `history_stride=10`: null AUCs from earlier windows of the same stream (needs `reservoir_after_current`); with `FIXED` this is `experiment_final.EADD_KW`, the detector of the final test.
   - `block_size=b`: blocked CV and block permutation against autocorrelation (not a valid null; not used).
 - Each stored window vector carries its arrival time as the last element; `_detect_drift` strips it.
-- Stream names understood by `run_job`: `Synth<Kind>`, `AR<rho>` (stationary AR(1)), `Shuffled<Dataset>` (real rows in random order), `Inject<Abrupt|Incremental>_<Dataset>` (shuffled real stream with drifts injected at 5k/10k/15k).
+- Stream names understood by `run_job`: `Synth<Kind>`, `AR<rho>` (stationary AR(1)), `Shuffled<Dataset>` (real rows in random order), `Inject<Abrupt|Gradual|Incremental>_<Dataset>` (shuffled real stream with drifts injected at 5k/10k/15k).
 - Timing runs must be sequential; LightGBM is multithreaded and parallel jobs distort runtimes.
 - Use uv for every Python package (`uv pip install`, `uv venv`); never plain pip.
 - The advisor's server has no internet access and allows at most 10 cores (run under `taskset -c 0-9`); its setup is described in the workspace notes outside this repository. The scripts size their worker pool from `os.process_cpu_count()`, so they follow that limit.

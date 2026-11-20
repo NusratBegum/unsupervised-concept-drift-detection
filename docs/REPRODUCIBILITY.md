@@ -17,12 +17,12 @@
 ## Seeds and determinism
 
 - Each run is fixed by its seed: the stream generator is seeded with `(seed, kind)` (or `(seed, 13)` for the injected shift), EADD's reservoir with `seed`, its permutation test with `seed + 1`, LightGBM with `seed`, and the random start (`offset`, 0-49) of the final test with `(seed, 21)`. A rerun with the same library versions gives the same detections, whatever the number of workers.
-- Each registered test used fresh seeds: first thesis runs 42-442; confirmatory test 1000-1009 (p-value reps 1000-1999); new H2 2000-2009; final test 3000-3009 (p-value reps 3000-3999); online detectors 3000-3002. Development checks used reps 0-499.
+- Each registered test used fresh seeds: first thesis runs 42-442; confirmatory test 1000-1009 (p-value reps 1000-1999); new H2 2000-2009; final test 3000-3009 (p-value reps 3000-3999); online detectors 3000-3002. Addendum 7 reuses earlier seeds on purpose: 7a reruns the final-test EADD runs (3000-3009), 7b uses 3000-3004, 7c the INSECTS seeds 42 and 142. Development checks used reps 0-499.
 - `check_reproduced.py` reruns 16 of the first thesis EADD runs with the current code and default options and compares the detections with the stored ones (expected: 16 of 16).
 
 ## Registered plans
 
-`experiments/results_confirm/PREREGISTRATION.md` holds the hypotheses, streams, seeds, tests and decision rules of every confirmatory test (the main plan and addenda 1-6b). Each plan was committed before its runs; `git log --follow experiments/results_confirm/PREREGISTRATION.md` and the commit dates of the result files show the order. The analysis scripts implement the plans exactly; any other number is labelled exploratory or descriptive.
+`experiments/results_confirm/PREREGISTRATION.md` holds the hypotheses, streams, seeds, tests and decision rules of every confirmatory test (the main plan and addenda 1-7). Each plan was committed before its runs; `git log --follow experiments/results_confirm/PREREGISTRATION.md` and the commit dates of the result files show the order. The analysis scripts implement the plans exactly; any other number is labelled exploratory or descriptive.
 
 ## Rerunning each test
 
@@ -31,7 +31,9 @@ All experiment scripts skip jobs already in their output file, so an interrupted
 | Test | Commands | Size, time | Output |
 |---|---|---|---|
 | Final test of H1-H4 (addendum 5, thesis main result) | `OMP_NUM_THREADS=1 python experiment_final.py --shard 0/1`; `python analyze_final.py`; `python make_final_figures.py` | 1,340 stream runs + 10,000 single tests, about 15 CPU-hours | `experiments/results_final/` |
-| H3 wall-clock timing (EADD with `experiment_validity.FIXED`, INSECTS) | `python experiment_aspt_runtime.py --fixed` (alone on the machine, sequential) | 20 run pairs, several hours | `experiments/results_hypotheses/aspt_runtime_fixed.csv` |
+| H3 wall-clock timing (EADD with `experiment_validity.FIXED`, label-shuffle null, INSECTS) | `python experiment_aspt_runtime.py --fixed` (alone on the machine, sequential) | 20 run pairs, several hours | `experiments/results_hypotheses/aspt_runtime_fixed.csv` |
+| Addendum 7a, 7b (TreeSHAP vs univariate rankings; source of the H2 effect) | `python experiment_addendum7.py`; `python analyze_addendum7.py` | 270 runs | `experiments/results_addendum7/runs.jsonl`, `h4_univariate*.csv`, `h2_source*` |
+| Addendum 7c (ASPT wall-clock time with the history null, INSECTS) | `python experiment_addendum7.py --timing` (alone on the machine, sequential); `python analyze_addendum7.py` | 8 run pairs, about 2 h of detector time | `experiments/results_addendum7/timing.csv`, `timing_summary.csv` |
 | Newer online detectors (addenda 6-6b) | `<py312 env>/bin/python baselines_online.py 10`; `python analyze_final.py` | 315 runs, about 20 min each with recalibration | `experiments/results_final/online.jsonl`, `online_*.csv` |
 | Confirmatory test (seeds 1000-1009) | `python experiment_confirm.py`; `python analyze_confirm.py` | 870 runs + 8,000 single tests | `experiments/results_confirm/results.csv`, `h2a.csv`, `h3_h4.csv` |
 | New H2 (addendum 3) | `python experiment_h2.py --part P F`; `python analyze_confirm.py` | 10,000 single tests + 180 runs | `experiments/results_confirm/h2_new*.csv` |
@@ -51,4 +53,4 @@ python analyze_final.py
 diff experiments/results_final/results.csv experiments/results_final_published/results.csv   # expected: no output
 ```
 
-Without rerunning the detectors, `python analyze_final.py` recomputes every table from the published `runs.*.jsonl`, `pvalues.*.jsonl` and `online.jsonl`; `git diff experiments/results_final/` should then be empty. `results.csv` has one row per registered test: the hypothesis, the comparison detector, the number of streams, both means, the p-value, the Holm-corrected p-value, its role (primary, secondary, descriptive) and whether it is supported. The other tables are `per_stream.csv`, `per_type.csv` (means per drift group and detector), `h2a.csv` (false-rejection rates with Clopper-Pearson bounds), `h4_per_stream.csv` and `online_*.csv`.
+Without rerunning the detectors, `python analyze_final.py` recomputes every table from the published `runs.*.jsonl`, `pvalues.*.jsonl` and `online.jsonl`; `git diff experiments/results_final/` should then be empty. Likewise `python analyze_addendum7.py` recomputes `experiments/results_addendum7/` from its `runs.jsonl`, its `timing.csv` and the final-test `runs.*.jsonl`. `results.csv` has one row per registered test: the hypothesis, the comparison detector, the number of streams, both means, the p-value, the Holm-corrected p-value, its role (primary, secondary, descriptive) and whether it is supported. The other tables are `per_stream.csv`, `per_type.csv` (means per drift group and detector), `h2a.csv` (false-rejection rates with Clopper-Pearson bounds), `h4_per_stream.csv` and `online_*.csv`.

@@ -83,4 +83,8 @@ Options kept for the record and not used in the final test: `block_size` (blocke
 | `experiments/results_validity/`, `results_benchmark/`, `results_shap/` | validity, benchmark and SHAP scripts | 16-17 Nov checks and benchmark |
 | `experiments/results_confirm/` | `experiment_confirm.py`, `experiment_h2.py`, `experiment_robust.py`, `analyze_confirm.py` | `PREREGISTRATION.md`, confirmatory runs and tests |
 | `experiments/results_final/` | `experiment_final.py`, `baselines_online.py`, `analyze_final.py`, `make_final_figures.py`, `make_concept_figures.py` | Final test: `runs.*.jsonl`, `pvalues.*.jsonl`, `online.jsonl`, `results.csv`, per-stream and per-type tables, figures |
+| `experiments/results_addendum7/` | `experiment_addendum7.py` (7c with `--timing`), `analyze_addendum7.py` | Secondary checks of addendum 7: `runs.jsonl` (7a, 7b), `h4_univariate*.csv` (TreeSHAP vs KS and SMD rankings), `h2_source.csv` and `h2_source_test.txt` (source of the H2 effect), `timing.csv` and `timing_summary.csv` (ASPT vs full test wall-clock time with the history null) |
 | `experiments/results/`, `results_cameraready/`, `figures/` | `legacy/` scripts | JCSSE paper |
+| `experiments/results_aspt_threshold/`, `results_d3_lightgbm/`, `results_realworld_ablation/` | `legacy/` scripts | October 2026 thesis drafts |
+
+The thesis charts (`make_final_figures.py`, `make_concept_figures.py`) are drawn at the thesis text width (5.8 in) in the MU-IEEE-Paper print style: Arial 8-9 pt, 1 pt strokes, and a colour plus a marker or hatch per series, so each series also reads in grayscale. Both scripts set matplotlib's global style when imported, so run each one on its own (`python make_final_figures.py`, `python make_concept_figures.py`).
