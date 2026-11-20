@@ -2,12 +2,13 @@
 
 Main milestones, from the git history. Dates are commit dates; each registered plan was committed before its runs.
 
-## 2026-11-19 to 2026-11-20: Addendum 7 and restyled thesis charts
+## 2026-11-19 to 2026-11-20: Addendum 7, CVM-Online and restyled thesis charts
+- CVM-Online (100,000 draws) added to the registered comparison of addendum 6b: `online.jsonl` holds all 105 runs; `analyze_final.py` was rerun on the advisor's server with the pinned environment and reproduces every committed table, now with CVM-Online in `online_*.csv` (Nemenyi critical difference 1.65 for six detectors; Holm over 12 pairwise tests). `fig_newer_detectors.pdf` shows all six detectors with one legend.
 - Addendum 7, three secondary checks registered before their runs (`experiment_addendum7.py`, `analyze_addendum7.py`, `experiments/results_addendum7/`): 7a TreeSHAP precision@k beside KS and standardised-mean-difference rankings (EADD reruns reproduce all 210 final-test runs); 7b the source of the H2 effect on the autocorrelated streams (the history null); 7c ASPT against the full test in wall-clock time with the history null (322 vs 569 s per run, faster in 8 of 8, p = 0.004).
 - `make_final_figures.py` and `make_concept_figures.py` restyled to the MU-IEEE-Paper print style (Arial 8-9 pt, 1 pt strokes, colour plus marker or hatch per series); numbers unchanged.
 
 ## 2026-11-19: Newer detectors and thesis figures
-- Comparison with MMD-Online and LSDD-Online (Alibi Detect, Cobb et al., AISTATS 2022) on the final-test streams, seeds 3000-3002 (addenda 6-6b; `baselines_online.py`); CVM-Online rerun with 100,000 bootstrap draws started (addendum 6b; its results are not yet in the repository).
+- Comparison with MMD-Online and LSDD-Online (Alibi Detect, Cobb et al., AISTATS 2022) on the final-test streams, seeds 3000-3002 (addenda 6-6b; `baselines_online.py`); CVM-Online rerun with 100,000 bootstrap draws (addendum 6b), finished on the advisor's server on 20 Nov 2026 (105 of 105 runs).
 - Vector figures of the final test (`make_final_figures.py`) and concept figures for Chapter 2 (`make_concept_figures.py`); fix of the drift-pattern grouping in the figures.
 - README with the key results of the final test; quick-start example, architecture and reproducibility notes, citation metadata and CI.
 

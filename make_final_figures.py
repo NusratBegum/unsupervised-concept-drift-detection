@@ -186,21 +186,21 @@ def main():
     on = os.path.join(D, "online_per_type.csv")
     if os.path.exists(on):
         t = pd.read_csv(on)
-        fig, axs = plt.subplots(1, 2, figsize=(W, 2.6), layout="constrained")
+        fig, axs = plt.subplots(1, 2, figsize=(W, 3.0), layout="constrained")
         for ax, grp, p, title in ((axs[0], "slow", "a", "Slow drift (14 streams)"), (axs[1], "abrupt", "b", "Abrupt drift (7 streams)")):
             for v in S:  # legend in the order of the encoding table, EADD first
                 r = t[(t.group == grp) & (t.variant == v)]
                 if r.empty:
                     continue
-                ax.plot(r.fa, r.mtd, label=f"{v} (recall {r.recall.iloc[0]:.2f})", **marker_style(v))
-            ax.set_xlim(-0.4, 12.4); ax.set_xticks(range(0, 13, 2))  # same scale in both panels; room on the right for the legend
+                ax.plot(r.fa, r.mtd, label=v.replace(" (100k)", ""), **marker_style(v))  # recall: Table 4.8
+            ax.set_xlim(-0.4, 12.4); ax.set_xticks(range(0, 13, 2))  # same scale in both panels
             ax.set_xlabel("False alarms per stream"); ax.set_ylabel("MTD (samples)")
             ax.yaxis.set_major_formatter(SAMPLES)
             panel(ax, p, title)
         axs[0].margins(y=0.12)
         axs[1].set_ylim(50, 140)
-        axs[0].legend(loc="upper right")  # the only data-free corner of (a)
-        axs[1].legend(loc="center right")  # the gap between MMD (133) and LSDD (66)
+        # one legend below both panels: with six detectors no corner of the plots is free of data
+        fig.legend(*axs[0].get_legend_handles_labels(), loc="outside lower center", ncol=6, columnspacing=1.2)
         fig.savefig(os.path.join(OUT, "fig_newer_detectors.pdf"))
 
     a = pd.read_csv(os.path.join(D, "h2a.csv"))
