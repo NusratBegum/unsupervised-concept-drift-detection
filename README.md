@@ -8,7 +8,7 @@ Code, raw runs and registered analysis plans for the M.Sc. thesis *Enhanced Adve
 
 EADD (`ExplainableAdversarialDriftDetector`, `detectors/eadd.py`) detects feature drift (a change in P(X)) in a data stream without labels. Every 50 samples it runs a classifier two-sample test (C2ST): a LightGBM classifier tries to tell a reference window (500 samples) from the current window (the newest 200), scored by 5-fold cross-validated AUC. An alarm needs AUC >= 0.7 and a rejection by a permutation test run as an adaptive sequential permutation test (ASPT), which stops drawing null AUCs as soon as the decision is clear. The reference is a reservoir sample of all data since the last alarm, and the null AUCs come from earlier windows of the same stream (the "history null"), so the test keeps the stream's autocorrelation. After each alarm TreeSHAP ranks the features behind the drift.
 
-EADD is compared with D3 (Gozuacik et al., 2019) and with D3-LightGBM (D3 with EADD's classifier, which isolates EADD's reference and test) in an identical setup, with six detectors of the Lukats et al. benchmark, and with the online detectors MMD-Online and LSDD-Online of Alibi Detect (Cobb et al., AISTATS 2022). Every confirmatory test was registered in [`experiments/results_confirm/PREREGISTRATION.md`](experiments/results_confirm/PREREGISTRATION.md) and committed before its runs.
+EADD is compared with D3 (Gozuacik et al., 2019) and with D3-LightGBM (D3 with EADD's classifier, which isolates EADD's reference and test) in an identical setup, with six detectors of the Lukats et al. benchmark, and with the online detectors MMD-Online, LSDD-Online (Cobb et al., AISTATS 2022) and CVM-Online (Ross and Adams, 2012) of Alibi Detect. Every confirmatory test was registered in [`experiments/results_confirm/PREREGISTRATION.md`](experiments/results_confirm/PREREGISTRATION.md) and committed before its runs.
 
 ### Key results (final registered test, thesis Chapter 4)
 
@@ -23,7 +23,7 @@ Seeds 3000-3009; 21 drift streams (7 abrupt, 7 gradual, 7 incremental: synthetic
 | H3 ASPT vs full test: recall / MTD / false alarms equivalent; permutations per test | 52 | 163 (full test) | < 0.01 | supported |
 | H4 TreeSHAP precision@k vs chance | 0.75 | 0.31 (chance) | < 0.001 | supported |
 
-Against the newer online detectors (seeds 3000-3002), EADD has the best mean recall rank and about five times fewer false alarms on slow-drift streams (1.5 vs 6.9-7.7 per stream); LSDD-Online detects faster. All numbers: [`experiments/results_final/results.csv`](experiments/results_final/results.csv), `per_type.csv`, `per_stream.csv`, `h2a.csv`, `h4_per_stream.csv`, `online_*.csv`.
+Against the newer online detectors (seeds 3000-3002), EADD has the best mean recall rank and 4.5 to 6.5 times fewer false alarms on slow-drift streams (1.5 vs 6.9-9.9 per stream); the online detectors detect faster, and CVM-Online has the best mean MTD rank (1.90). All numbers: [`experiments/results_final/results.csv`](experiments/results_final/results.csv), `per_type.csv`, `per_stream.csv`, `h2a.csv`, `h4_per_stream.csv`, `online_*.csv`.
 
 ### Registered tests and how to reproduce them
 
@@ -113,6 +113,7 @@ for i, (x, _) in enumerate(stream):     # x: {"feature name": value, ...}; label
 | **D3-LightGBM** | D3 with EADD's LightGBM classifier | this repository |
 | **D3** | C2ST with logistic regression and a sliding reference | Gozuacik et al., 2019 |
 | **MMD-Online**, **LSDD-Online** | Sequential kernel and least-squares density-difference tests, calibrated to an expected run time | Cobb et al., 2022 (Alibi Detect 0.13) |
+| **CVM-Online** | Online Cramér-von Mises test on each feature, calibrated to an expected run time | Ross and Adams, 2012 (Alibi Detect 0.13) |
 | **BNDM** | Bayesian non-parametric Polya tree test | Xuan et al., 2020 |
 | **CSDDM** | PCA + K-Means + statistical tests | Wan and Wang, 2021 |
 | **IBDD** | Image-based comparison | Souza et al., 2021 |
@@ -204,7 +205,7 @@ Please cite the thesis (metadata in [CITATION.cff](CITATION.cff); GitHub's "Cite
 }
 ```
 
-Other references: Lukats et al. (2024), [benchmark of fully unsupervised concept drift detectors](https://link.springer.com/article/10.1007/s41060-024-00620-y); Ke et al. (2017), [LightGBM](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree); Lundberg and Lee (2017), [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions); Cobb et al. (2022), sequential multivariate change detection (AISTATS). History of the repository: [CHANGELOG.md](CHANGELOG.md).
+Other references: Lukats et al. (2024), [benchmark of fully unsupervised concept drift detectors](https://link.springer.com/article/10.1007/s41060-024-00620-y); Ke et al. (2017), [LightGBM](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree); Lundberg and Lee (2017), [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions); Cobb et al. (2022), sequential multivariate change detection (AISTATS); Ross and Adams (2012), [nonparametric control charts for distribution changes](https://doi.org/10.1080/00224065.2012.11917887) (Journal of Quality Technology). History of the repository: [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
