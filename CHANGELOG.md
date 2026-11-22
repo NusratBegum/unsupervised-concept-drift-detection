@@ -2,6 +2,9 @@
 
 Main milestones, from the git history. Dates are commit dates; each registered plan was committed before its runs.
 
+## 2026-11-22: Documentation of the online comparison
+- README: the pairwise tests against the online detectors were not significant because the online detectors matched EADD's recall and had a lower MTD, and on H2 six streams give raw p = 0.0156 at best, which Holm over 12 tests raises to 0.19 (`results_final/online_tests.csv`); the earlier wording ("not significant with 3 seeds") was imprecise. The thesis was corrected in the same way (thesis commit 2fc9472). No code or result changed.
+
 ## 2026-11-19 to 2026-11-20: Addendum 7, CVM-Online and restyled thesis charts
 - CVM-Online (100,000 draws) added to the registered comparison of addendum 6b: `online.jsonl` holds all 105 runs; `analyze_final.py` was rerun on the advisor's server with the pinned environment and reproduces every committed table, now with CVM-Online in `online_*.csv` (Nemenyi critical difference 1.65 for six detectors; Holm over 12 pairwise tests). `fig_newer_detectors.pdf` shows all six detectors with one legend.
 - Addendum 7, three secondary checks registered before their runs (`experiment_addendum7.py`, `analyze_addendum7.py`, `experiments/results_addendum7/`): 7a TreeSHAP precision@k beside KS and standardised-mean-difference rankings (EADD reruns reproduce all 210 final-test runs); 7b the source of the H2 effect on the autocorrelated streams (the history null); 7c ASPT against the full test in wall-clock time with the history null (322 vs 569 s per run, faster in 8 of 8, p = 0.004).
