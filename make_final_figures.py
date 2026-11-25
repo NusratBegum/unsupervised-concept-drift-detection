@@ -94,6 +94,7 @@ def main():
     pats = ["gradual", "incremental", "abrupt"]
     df = per_pattern()
     fig, axs = plt.subplots(1, 3, figsize=(W, 2.1), sharey=True, layout="constrained")
+    fig.get_layout_engine().set(wspace=0.06)
     bars(axs[0], df, "recall", three, pats, "Recall")
     axs[0].set_xlim(0, 1.05); axs[0].set_xticks([0, 0.5, 1])
     bars(axs[1], df, "mtd", three, pats, "MTD (samples)")
@@ -167,7 +168,7 @@ def main():
         pat, _, src = d.replace("Inject", "").partition("_")
         if not src:  # SynthAbrupt -> Synthetic (abrupt)
             return f"Synthetic ({d.replace('Synth', '').lower()})"
-        src = src.replace("InsectsIncrementalBalanced", "INSECTS Incr.").replace("RialtoBridgeTimelapse", "Rialto")
+        src = src.replace("InsectsIncrementalBalanced", "InsectsIncr.").replace("RialtoBridgeTimelapse", "Rialto")
         return f"{src} ({pat.lower()})"
     ax.set_yticks(y, [name(d) for d in h.dataset])
     ax.tick_params(axis="y", length=0)
@@ -193,12 +194,12 @@ def main():
                 if r.empty:
                     continue
                 ax.plot(r.fa, r.mtd, label=v.replace(" (100k)", ""), **marker_style(v))  # recall: Table 4.8
-            ax.set_xlim(-0.4, 12.4); ax.set_xticks(range(0, 13, 2))  # same scale in both panels
+            ax.set_xlim(-0.7, 12.4); ax.set_xticks(range(0, 13, 2))  # same scale in both panels
             ax.set_xlabel("False alarms per stream"); ax.set_ylabel("MTD (samples)")
             ax.yaxis.set_major_formatter(SAMPLES)
             panel(ax, p, title)
-        axs[0].margins(y=0.12)
-        axs[1].set_ylim(50, 140)
+        axs[0].set_ylim(0, 1180)
+        axs[1].set_ylim(0, 145)
         # one legend below both panels: with six detectors no corner of the plots is free of data
         fig.legend(*axs[0].get_legend_handles_labels(), loc="outside lower center", ncol=6, columnspacing=1.2)
         fig.savefig(os.path.join(OUT, "fig_newer_detectors.pdf"))
