@@ -25,6 +25,7 @@ from synthetic_streams import POINTS, SyntheticStream
 OUT = os.path.join("experiments", "results_final", "figures")
 BLUE, GREEN, AMBER, NEUTRAL, INK = "#0035AD", "#006C6C", "#D55E00", "#595959", "#1A1A1A"
 GREEN_TINT, AMBER_TINT = "#E6F0F0", "#FBEADF"
+BAND = "#F2F2F2"  # transition bands: the same light grey as Figure 4.2; amber is reserved for D3
 DOT_ALPHA = 0.45  # Neutral at 45% prints as light grey, below the moving-mean line in grayscale
 DASH = (0, (4, 2))
 BAND_HATCH = "//"  # transition bands: sparse amber hatch over the amber tint; "////" outweighed the mean line in gs/Quartz renders
@@ -58,8 +59,9 @@ def concept():
     r = norm.pdf(x, 2.0, 1.0)
     fig, axs = plt.subplots(1, 2, figsize=(WIDTH, 2.0), sharey=True, layout="constrained")
     fig.get_layout_engine().set(wspace=0.075)  # 0.30 in between the panel boxes
-    for ax, mu, letter, name in ((axs[0], 2.15, "a", "No drift, AUC ≈ 0.5"),
-                                 (axs[1], 5.5, "b", "Drift, AUC ≫ 0.5")):
+    # words, not "≈"/"≫": the advisor marked the symbol shorthand in prose (rulebook R11)
+    for ax, mu, letter, name in ((axs[0], 2.15, "a", "No Drift, AUC near 0.5"),
+                                 (axs[1], 5.5, "b", "Drift, AUC Well above 0.5")):
         c = norm.pdf(x, mu, 1.0 if mu < 3 else 1.2)
         # curves and fills stop where the density is below 1e-3, so no flat tail runs along the axis
         ax.fill_between(x, c, where=c > 1e-3, fc=GREEN_TINT, lw=0)
@@ -69,10 +71,10 @@ def concept():
         panel_label(ax, letter, name, "lower left", (0, 1), dy_pt=4)
         ax.set_xlim(-4, 9); ax.set_ylim(0, 0.46)
         ax.set_xticks([-4, 0, 4, 8]); ax.set_yticks([0, 0.2, 0.4])
-        ax.set_xlabel("Feature value $x$")
+        ax.set_xlabel("Feature Value $x$")
     # the shift of the mean, drawn above both peaks so it crosses no fill
     axs[1].annotate("", xy=(5.5, 0.43), xytext=(2.0, 0.43),
-                    arrowprops=dict(arrowstyle="-|>", color=AMBER, lw=1.0, mutation_scale=8, shrinkA=0, shrinkB=0))
+                    arrowprops=dict(arrowstyle="-|>", color=NEUTRAL, lw=1.0, mutation_scale=8, shrinkA=0, shrinkB=0))
     axs[0].set_ylabel("Density")
     axs[0].legend(handles=[Patch(fc="white", ec=BLUE, hatch="///", ls="--", lw=1.0, label="Reference"),
                            Patch(fc=GREEN_TINT, ec=GREEN, lw=1.0, label="Current")],
@@ -89,8 +91,8 @@ def patterns():
         t = np.arange(len(v))
         for p in POINTS:
             if kind in ("Gradual", "Incremental"):
-                ax.axvspan(p, p + 1000, fc=AMBER_TINT, hatch=BAND_HATCH, hatchcolor=AMBER, hatch_linewidth=BAND_HATCH_LW, lw=0, zorder=0)
-            ax.axvline(p, color=AMBER, ls=DASH, lw=1.0, zorder=2)
+                ax.axvspan(p, p + 1000, fc=BAND, lw=0, zorder=0)
+            ax.axvline(p, color=INK, ls=DASH, lw=0.8, zorder=2)
         ax.scatter(t[::10], v[::10], s=1.5, color=NEUTRAL, alpha=DOT_ALPHA, lw=0, zorder=1)
         m = np.convolve(v, np.ones(200) / 200, mode="same")
         ax.plot(t[100:-100], m[100:-100], color=GREEN, lw=1.2, zorder=3)
@@ -101,16 +103,15 @@ def patterns():
     axs[-1].set_xticks(range(0, 20_001, 5_000))
     axs[-1].xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:,.0f}"))
     axs[-1].set_xlabel("Sample")
-    fig.supylabel("Drifting feature", fontsize=9)
+    fig.supylabel("Drifting Feature", fontsize=9)
     leg = axs[0].legend(
         handles=[Line2D([], [], ls="", marker="o", ms=3, mfc=NEUTRAL, mec="none", alpha=DOT_ALPHA,
-                        label="Every 10th sample"),
-                 Line2D([], [], color=GREEN, lw=1.2, label="Moving mean"),
-                 Line2D([], [], color=AMBER, lw=1.0, ls=DASH, label="Drift point"),
-                 Patch(fc=AMBER_TINT, hatch=BAND_HATCH, hatchcolor=AMBER, lw=0, label="Transition")],
+                        label="Every 10th Sample"),
+                 Line2D([], [], color=GREEN, lw=1.2, label="Moving Mean"),
+                 Line2D([], [], color=INK, lw=0.8, ls=DASH, label="Drift Point"),
+                 Patch(fc=BAND, lw=0, label="Transition")],
         loc="lower right", bbox_to_anchor=(1, 1.0), ncol=4, borderaxespad=0.7,
         handlelength=1.8, columnspacing=LEGEND_COLSPACE, handletextpad=0.5)
-    leg.legend_handles[-1].set_hatch_linewidth(BAND_HATCH_LW)  # the legend copy of a Patch drops hatch_linewidth
     fig.savefig(os.path.join(OUT, "fig_drift_patterns.pdf"))
     check_legend_clear(fig, axs[0], leg)
 
