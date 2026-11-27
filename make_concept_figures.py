@@ -25,7 +25,7 @@ from synthetic_streams import POINTS, SyntheticStream
 OUT = os.path.join("experiments", "results_final", "figures")
 BLUE, GREEN, AMBER, NEUTRAL, INK = "#0035AD", "#006C6C", "#D55E00", "#595959", "#1A1A1A"
 GREEN_TINT, AMBER_TINT = "#E6F0F0", "#FBEADF"
-BAND = "#F2F2F2"  # transition bands: the same light grey as Figure 4.2; amber is reserved for D3
+BAND = "#DDDDDD"  # transition bands remain distinct from the white background in grayscale
 DOT_ALPHA = 0.45  # Neutral at 45% prints as light grey, below the moving-mean line in grayscale
 DASH = (0, (4, 2))
 BAND_HATCH = "//"  # transition bands: sparse amber hatch over the amber tint; "////" outweighed the mean line in gs/Quartz renders
